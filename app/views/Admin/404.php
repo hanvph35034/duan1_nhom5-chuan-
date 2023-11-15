@@ -31,16 +31,16 @@
                         <div class="card-header">
                             <h3 class="card-title">code là đam mê</h3>
                         </div>
-                        <!-- /.card-header -->
+                      
                         <div class="card-body">
                           <h3>xin chào bạn  </h3>
                           <h4>Bạn đã vào trang lỗi</h4>
                         </div>
-                        <!-- /.card-body -->
+                   
                     </div>
-                    <!-- /.card -->
+                   
                 </div>
-                <!-- /.col -->
+               
             </div>
             <!-- /.row -->
         </div>
