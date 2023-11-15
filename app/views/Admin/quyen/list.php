@@ -25,14 +25,14 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Quản trị danh mục </h3>
+                  <h3 class="card-title">Quản trị Quyền </h3>
                 </div>
               </div>
               <!-- /.card -->
 
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Bảng danh sách danh mục</h3>
+                  <h3 class="card-title">Bảng danh sách quyền</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -40,50 +40,36 @@
                     <thead>
                       <tr>
                         <th>STT</th>
-                        <th>Tên danh mục</th>
-                        <th>Sửa danh mục</th>
-                        <th>Xóa danh mục (xóa mềm) </th>
-                        <th>Xóa danh mục (xóa cứng) </th>
+                        <th>Tên Quyền</th>
+                        <th>Sửa </th>
+                        <th>Xóa  </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td>Sơ mi</td>
-                        <td><a href="./update.html"> Sửa danh mục </a></td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
+                        <td>Admin</td>
+                        <td><a href="?act=updatequyen"> Sửa  </a></td>
+                        <td><a href=""> Xóa </a> </td>
                       </tr>
                       <tr>
                         <td>1</td>
-                        <td>Sơ mi</td>
-                   
-                        <td><a href="./update.html"> Sửa danh mục </a></td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
+                        <td>Admin</td>
+                        <td><a href="?act=updatequyen"> Sửa  </a></td>
+                        <td><a href=""> Xóa </a> </td>
                       </tr>
                       <tr>
                         <td>1</td>
-                        <td>Sơ mi</td>
-                     
-                        <td><a href="./update.html"> Sửa danh mục </a></td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Sơ mi</td>
-                  
-                        <td><a href="./update.html"> Sửa danh mục </a></td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
+                        <td>Admin</td>
+                        <td><a href="?act=updatequyen"> Sửa  </a></td>
+                        <td><a href=""> Xóa  </a> </td>
                       </tr>
                       
                     </tbody>
                  
                   </table>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-sidebar"><a href="?act=adddm">Thêm danh mục</a></button>
+                    <button type="submit" class="btn btn-sidebar"><a href="?act=addquyen">Thêm Quyền </a></button>
                   </div>
                 </div>
                 <!-- /.card-body -->

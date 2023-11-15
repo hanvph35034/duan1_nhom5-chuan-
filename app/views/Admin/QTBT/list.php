@@ -44,27 +44,25 @@
                         <th>Size</th> 
                         <th>Số lượng</th>
                         <th>Trạng Thái</th>
-                        <th> <a href="">Sửa</a> </th>
-                        <th> <a href="">Xóa</a> </th>
+                        <th> Sửa </th>
+                        <th> Xóa </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td>Sơ mi nam</td>
-                        <td>chất lươbg châu âu</td>
-                          <td>100000</td>
-                          <td><img src="images/product/1.jpg" alt="product" width="100"></td>
-                          <td>2020-01-01</td>
-                        <td><a href="./update.php"> Sửa danh mục </a></td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
+                        <td>đỏ </td>
+                        <td>XL</td>
+                          <td>100</td>
+                          <td>0</td>
+                        <td><a href="?act=updatebt"> Sửa  </a></td>
+                        <td><a href=""> Xóa </a> </td>
                       </tr>
                     </tbody>
                  
                   </table>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-sidebar"><a href="?act=adddm">Thêm danh mục</a></button>
+                    <button type="submit" class="btn btn-sidebar"><a href="?act=addbt">Thêm </a></button>
                   </div>
                 </div>
                 <!-- /.card-body -->

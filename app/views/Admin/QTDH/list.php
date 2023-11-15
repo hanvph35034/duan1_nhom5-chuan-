@@ -1,21 +1,20 @@
 
-   <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Quản trị BANNER</h1>
+              <h1>Quản trị Đơn hàng </h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">danh sách </li>
+                <li class="breadcrumb-item active">danh sách Đơn Hàng</li>
               </ol>
             </div>
           </div>
-        </div><!-- /.container-fluid -->
+        </div>
       </section>
 
       <!-- Main content -->
@@ -25,14 +24,13 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Quản trị danh mục </h3>
+                  <h3 class="card-title">Quản trị Đơn hàng  </h3>
                 </div>
               </div>
-              <!-- /.card -->
 
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Bảng danh sách banner</h3>
+                  <h3 class="card-title">Bảng danh sách Đơn hàng</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -40,44 +38,39 @@
                     <thead>
                       <tr>
                         <th>STT</th>
-                        <th>Tên banner</th>
-                        <th>Ảnh BANNER</th>
-                        <th>link </th>
-                        <th>Sửa</th>
-                        <th>Xóa</th>
+                        <th>MÃ đơn Hàng </th>
+                        <th>Ngày đặt </th>
+                       <th>Tổng giá </th>
+                        <th>Trạng thái </th>                        
+                        <th>Xóa Đơn hàng </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td>BANNER 1</td>
-                        <td>Ảnh banner</td>
-                        <td> link </td>
-                        <td><a href="?act=updatebanner"> Sửa </a></td>
-                        <td> <a href=""> Xóa</a> </td>
+                        <td>4g4g4wgj</td>
+                        <td>24/12/2023</td>
+                        <td>20.000</td>
+                        <td>hoàn Thành</td>
+                        <td><a href=""> Xóa </a></td>
                       </tr>
                       <tr>
                         <td>1</td>
-                        <td>BANNER 1</td>
-                        <td>Ảnh banner</td>
-                        <td> link </td>
-                        <td><a href="?act=updatebanner"> Sửa </a></td>
-                        <td> <a href=""> Xóa</a> </td>
+                        <td>4g4g4wgj</td>
+                        <td>24/12/2023</td>
+                        <td>20.000</td>
+                        <td>hoàn Thành</td>
+                        <td><a href=""> Xóa </a></td>
                       </tr>
                       <tr>
                         <td>1</td>
-                        <td>BANNER 1</td>
-                        <td>Ảnh banner</td>
-                        <td> link </td>
-                        <td><a href="?act=updatebanner"> Sửa </a></td>
-                        <td> <a href=""> Xóa</a> </td>
+                        <td>4g4g4wgj</td>
+                        <td>24/12/2023</td>
+                        <td>20.000</td>
+                        <td>hoàn Thành</td>
+                        <td><a href=""> Xóa </a></td>
                       </tr>
-                    </tbody>
-                 
                   </table>
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-sidebar"><a href="?act=addbanner">Thêm </a></button>
-                  </div>
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -91,5 +84,3 @@
       </section>
       <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-  

@@ -51,35 +51,23 @@
                       <tr>
                         <td>1</td>
                         <td>Sơ mi</td>
-                        <td><a href="./update.html"> Sửa danh mục </a></td>
+                        <td><a href="?act=updatedm"> Sửa danh mục </a></td>
                         <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
                         <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
                       </tr>
                       <tr>
                         <td>1</td>
                         <td>Sơ mi</td>
-                   
-                        <td><a href="./update.html"> Sửa danh mục </a></td>
+                        <td><a href="?act=updatedm"> Sửa danh mục </a></td>
                         <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
                         <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                      </tr>
-                      <tr>
+                      </tr>   <tr>
                         <td>1</td>
                         <td>Sơ mi</td>
-                     
-                        <td><a href="./update.html"> Sửa danh mục </a></td>
+                        <td><a href="?act=updatedm"> Sửa danh mục </a></td>
                         <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
                         <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
                       </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Sơ mi</td>
-                  
-                        <td><a href="./update.html"> Sửa danh mục </a></td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                      </tr>
-                      
                     </tbody>
                  
                   </table>

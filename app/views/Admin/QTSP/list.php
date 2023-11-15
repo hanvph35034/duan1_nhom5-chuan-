@@ -58,7 +58,7 @@
                           <td>100000</td>
                           <td><img src="images/product/1.jpg" alt="product" width="100"></td>
                           <td>2020-01-01</td>
-                        <td><a href="./update.php"> Sửa danh mục </a></td>
+                        <td><a href="?act=updatesp"> Sửa  </a></td>
                         <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
                         <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
                       </tr>
@@ -66,7 +66,7 @@
                  
                   </table>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-sidebar"><a href="?act=adddm">Thêm danh mục</a></button>
+                    <button type="submit" class="btn btn-sidebar"><a href="?act=addsp">Thêm sản phẩm</a></button>
                   </div>
                 </div>
                 <!-- /.card-body -->

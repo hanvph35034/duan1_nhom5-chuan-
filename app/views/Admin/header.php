@@ -89,19 +89,19 @@
               <a href="?act=qtkh" class="nav-link">Quản Trị Khách hàng </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtkm" class="nav-link">Quản Trị Khuyến mại </a>
+              <a href="?act=qtdh" class="nav-link">Quản Trị Đơn hàng </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtsn" class="nav-link">Quản Trị sản phẩm </a>
+              <a href="?act=qtsp" class="nav-link">Quản Trị sản phẩm </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtsn" class="nav-link">Quản Trị banner </a>
+              <a href="?act=qtbanner" class="nav-link">Quản Trị banner </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtsn" class="nav-link">Quản Trị bài viết </a>
+              <a href="?act=qtbv" class="nav-link">Quản Trị bài viết </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtsn" class="nav-link">Quản Trị quyền </a>
+              <a href="?act=qtquyen" class="nav-link">Quản Trị quyền </a>
             </li>
             <li class="nav-item">
               <a href="?act=bienthe" class="nav-link">Quản Trị biến thể </a>

@@ -15,10 +15,10 @@
               </ol>
             </div>
           </div>
-        </div><!-- /.container-fluid -->
+        </div>
       </section>
 
-      <!-- Main content -->
+     
       <section class="content">
         <div class="container-fluid">
           <div class="row">
@@ -55,7 +55,7 @@
                         <td>11/12</td>
                         <td> <img src="images/img.jpg" alt="" width="100px" height="100px"></td>
                         <td>Nội dung</td>
-                        <td> <a href=""> Sửa</a> </td>
+                        <td> <a href="?act=updatebv"> Sửa</a> </td>
                         <td><a href=""> Xóa </a> </td>
                       </tr>
                       <tr>
@@ -64,7 +64,7 @@
                         <td>11/12</td>
                         <td> <img src="images/img.jpg" alt="" width="100px" height="100px"></td>
                         <td>Nội dung</td>
-                        <td> <a href=""> Sửa</a> </td>
+                        <td> <a href="?act=updatebv""> Sửa</a> </td>
                         <td><a href=""> Xóa </a> </td>
                       </tr>
                       <tr>
@@ -73,14 +73,14 @@
                         <td>11/12</td>
                         <td> <img src="images/img.jpg" alt="" width="100px" height="100px"></td>
                         <td>Nội dung</td>
-                        <td> <a href=""> Sửa</a> </td>
+                        <td> <a href="?act=updatebv""> Sửa</a> </td>
                         <td><a href=""> Xóa </a> </td>
                       </tr> 
                     </tbody>
                  
                   </table>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-sidebar"><a href="?act=">Thêm </a></button>
+                    <button type="submit" class="btn btn-sidebar"><a href="?act=addbv">Thêm </a></button>
                   </div>
                 </div>
                 <!-- /.card-body -->
