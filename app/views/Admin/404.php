@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Đây là trang chu</h1>
+                    <h1>Đây là trang 404  </h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -34,6 +34,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                           <h3>xin chào bạn  </h3>
+                          <h4>Bạn đã vào trang lỗi</h4>
                         </div>
                         <!-- /.card-body -->
                     </div>
