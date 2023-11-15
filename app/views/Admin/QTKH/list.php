@@ -79,7 +79,6 @@
                         <td> <a href=""> Xóa tài khoản <br> (xóa mềm)</a> </td>
                         <td><a href=""> Xóa tài khoản <br> (xóa cứng)</a> </td>
                       </tr>
-                      
                   </table>
                 </div>
                 <!-- /.card-body -->

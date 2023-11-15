@@ -34,6 +34,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include 'Admin/QTKM/add.php';
             break;
             
+            
     }
 } else {
     include 'Admin/home.php';
