@@ -48,26 +48,21 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Sơ mi</td>
-                        <td><a href="?act=updatedm"> Sửa danh mục </a></td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Sơ mi</td>
-                        <td><a href="?act=updatedm"> Sửa danh mục </a></td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                      </tr>   <tr>
-                        <td>1</td>
-                        <td>Sơ mi</td>
-                        <td><a href="?act=updatedm"> Sửa danh mục </a></td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                      </tr>
+                      <?php 
+                        foreach($loaddm as $lisdm){
+                          extract($lisdm);
+                          echo'
+                          <tr>
+                          <td>'.$id.'</td>
+                          <td>'.$ten.'</td>
+                          <td><a href="?act=suadm&&id='.$id.'"> Sửa danh mục </a></td>
+                          <td> <a href="?act=deletedm&&id='.$id.'"> Xóa danh mục <br> (xóa mềm)</a> </td>
+                          <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
+                        </tr>
+                          ';
+                        
+                        }
+                      ?>
                     </tbody>
                  
                   </table>

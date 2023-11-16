@@ -1,6 +1,7 @@
 <?php
 include 'header.php';
-
+include '../../models/pdo.php';
+include '../../models/danhmuc.php';
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
     switch ($act) {
@@ -10,15 +11,40 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
             //  danh mục
         case 'qtdm':
+            $loaddm = loadall_danhmuc();
             include 'QTDM/list.php';
             break;
         case 'adddm':
-            
+            if (isset($_POST['submit'])) {
+                $them = $_POST['addm'];
+                insert_danhmuc($them);
+            }
             include 'QTDM/add.php';
             break;
-        case 'updatedm':
+            case 'suadm' :
+             if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $loadd = loadone_danhmuc($id);
+            }
             include 'QTDM/update.php';
+            break;                
+        case 'updatedm':
+            if (isset($_POST['submit'])) {
+                $update = $_POST['tendm'];
+                $id = $_POST['iddm'];
+                fix_danhmuc($id,$update);
+            }
+            $loaddm = loadall_danhmuc();
+            include 'QTDM/list.php';
             break;
+        case 'deletedm':
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                delete_danhmuc($id);
+            }
+            $loaddm = loadall_danhmuc();
+            echo '<script>alert("vui long quay ve trang chu");</script>';
+            include 'QTDM/list.php';
 
             // khách hàng
         case 'qtkh':
@@ -27,6 +53,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'addkh':
             include 'QTKH/add.php';
             break;
+
+
             // đơn hàng
         case 'qtdh':
             include 'QTDH/list.php';

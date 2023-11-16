@@ -22,7 +22,7 @@ function loadall_danhmuc_xoamem(){
 
 // them danh muc 
 function insert_danhmuc($ten){
-    $sql = "insert into danhmuc(ten_danh_muc) values ('$ten')";
+    $sql = "INSERT INTO `danhmuc`(`ten`) VALUES ('$ten')";
     pdo_execute($sql);
 }
 
@@ -53,7 +53,7 @@ function restore_danhmuc($id){
 
 // sua danh muc
 function fix_danhmuc($id, $ten){
-    $sql = "update danhmuc set ten_danh_muc = '$ten' where id = '$id'";
+    $sql = "update danhmuc set ten = '$ten' where id = '$id'";
     pdo_execute($sql);
 }
 

@@ -30,18 +30,18 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="index.php?act=adddm" method="post" >
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Thêm mới</label>
-                    <input type="text" class="form-control"  placeholder="Thêm danh mục mới">
+                    <input name="addm" type="text" class="form-control"  placeholder="Thêm danh mục mới">
                   </div>
                   </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button name="submit" type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
             </div>
