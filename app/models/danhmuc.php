@@ -1,7 +1,7 @@
 <?php
 // load danh muc
 function loadall_danhmuc(){
-    $sql = "select * from danhmuc where trang_thai = '0' order by id desc";
+    $sql = "SELECT `id`, `ten`, `trang_thai` FROM `danhmuc` WHERE 1";
     $listdanhmuc = pdo_query($sql);
     return $listdanhmuc;
 }
