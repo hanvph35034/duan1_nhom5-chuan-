@@ -4,15 +4,16 @@ include 'header.php';
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
     switch ($act) {
-        // quản trị bình luận
+            // quản trị bình luận
         case 'listbl':
             include 'listbl.php';
             break;
-//  danh mục
+            //  danh mục
         case 'qtdm':
             include 'QTDM/list.php';
             break;
         case 'adddm':
+            
             include 'QTDM/add.php';
             break;
         case 'updatedm':
@@ -26,7 +27,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'addkh':
             include 'QTKH/add.php';
             break;
- // đơn hàng
+            // đơn hàng
         case 'qtdh':
             include 'QTDH/list.php';
             break;
@@ -36,7 +37,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             // case 'addkm':
             //     include 'QTKM/add.php';
             //     break;
- // sản phẩm
+            // sản phẩm
         case 'qtsp':
             include 'QTSP/list.php';
             break;
@@ -46,7 +47,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'updatesp':
             include 'QTSP/update.php';
             break;
- // banner
+            // banner
         case 'qtbanner':
             include 'QTBANER/list.php';
             break;
@@ -56,7 +57,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'updatebanner':
             include 'QTBANER/update.php';
             break;
- // bài viết
+            // bài viết
         case 'qtbv':
             include 'QTBV/list.php';
             break;
@@ -76,17 +77,17 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'updatequyen':
             include 'quyen/update.php';
             break;
-            
-            case 'bienthe':
-               include 'QTBT/list.php';
-               break;
-               case 'addbt':
-                include 'QTBT/add.php';
-                break;
-               case 'updatebt':
-                include 'QTBT/update.php';
-                break;
-    
+
+        case 'bienthe':
+            include 'QTBT/list.php';
+            break;
+        case 'addbt':
+            include 'QTBT/add.php';
+            break;
+        case 'updatebt':
+            include 'QTBT/update.php';
+            break;
+
 
         default:
             include '404.php';

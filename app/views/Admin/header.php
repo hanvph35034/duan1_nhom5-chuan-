@@ -80,31 +80,31 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="?act=listbl" class="nav-link">Quản Trị bình luận </a>
+                <a href="?act=listbl" class="nav-link">Quản Lý bình luận </a>
               </li>
             <li class="nav-item">
-              <a href="?act=qtdm" class="nav-link">Quản Trị danh mục </a>
+              <a href="?act=qtdm" class="nav-link">Quản Lý danh mục </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtkh" class="nav-link">Quản Trị Khách hàng </a>
+              <a href="?act=qtkh" class="nav-link">Quản Lý Khách hàng </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtdh" class="nav-link">Quản Trị Đơn hàng </a>
+              <a href="?act=qtdh" class="nav-link">Quản Lý Đơn hàng </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtsp" class="nav-link">Quản Trị sản phẩm </a>
+              <a href="?act=qtsp" class="nav-link">Quản Lý sản phẩm </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtbanner" class="nav-link">Quản Trị banner </a>
+              <a href="?act=qtbanner" class="nav-link">Quản Lý banner </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtbv" class="nav-link">Quản Trị bài viết </a>
+              <a href="?act=qtbv" class="nav-link">Quản Lý bài viết </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtquyen" class="nav-link">Quản Trị quyền </a>
+              <a href="?act=qtquyen" class="nav-link">Quản Lý quyền </a>
             </li>
             <li class="nav-item">
-              <a href="?act=bienthe" class="nav-link">Quản Trị biến thể </a>
+              <a href="?act=bienthe" class="nav-link">Quản Lý biến thể </a>
             </li>
 
           </ul>

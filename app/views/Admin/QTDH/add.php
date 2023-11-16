@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản trị Khuyến mại</h1>
+            <h1>Quản trị Đơn hàng</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -28,19 +28,19 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Thêm mới khuyến mại</h3>
+                <h3 class="card-title">Thêm mới Đơn hàng</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form>
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Tên khuyến mại</label>
-                    <input type="text" class="form-control"  placeholder="Tên Khuyến mại">
+                    <label for="exampleInputEmail1">Tên MÃ Đơn Hàng</label>
+                    <input type="text" class="form-control"  placeholder="Tên Đơn Hàng">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">mô tả</label>
-                    <input type="text" class="form-control"  placeholder="Mô tả Khuyến mại">
+                    <input type="text" class="form-control"  placeholder="Mô tả ">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Giá khuyến mại</label>
