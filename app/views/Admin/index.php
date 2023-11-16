@@ -2,11 +2,21 @@
 include 'header.php';
 include '../../models/pdo.php';
 include '../../models/danhmuc.php';
+include '../../models/binhluan.php';
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
     switch ($act) {
             // quản trị bình luận
         case 'listbl':
+            $load_binhluan =  load_binhluan();
+            include 'listbl.php';
+            break;
+        case 'deletebl':
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                delete_binhluan($id);
+            }
+            $load_binhluan = load_binhluan();
             include 'listbl.php';
             break;
             //  danh mục
@@ -21,18 +31,18 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include 'QTDM/add.php';
             break;
-            case 'suadm' :
-             if (isset($_GET['id'])) {
+        case 'suadm':
+            if (isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $loadd = loadone_danhmuc($id);
             }
             include 'QTDM/update.php';
-            break;                
+            break;
         case 'updatedm':
             if (isset($_POST['submit'])) {
                 $update = $_POST['tendm'];
                 $id = $_POST['iddm'];
-                fix_danhmuc($id,$update);
+                fix_danhmuc($id, $update);
             }
             $loaddm = loadall_danhmuc();
             include 'QTDM/list.php';
@@ -45,7 +55,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $loaddm = loadall_danhmuc();
             echo '<script>alert("vui long quay ve trang chu");</script>';
             include 'QTDM/list.php';
-
+            break;
             // khách hàng
         case 'qtkh':
             include 'QTKH/list.php';

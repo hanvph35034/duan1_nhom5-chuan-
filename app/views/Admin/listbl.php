@@ -48,42 +48,25 @@
                         <th>Ảnh sản phẩm</th>
                         <th>Nội dung</th>
                         <th>Ngày</th>
-                        <th>Xóa bình luận (xóa mềm) </th>
-                        <th>Xóa bình luận (xóa cứng) </th>
+                        <th>Xóa bình luận  </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Mai Thi Ngọc Chi </td>
-                        <td><a href="./add.html">Áo sơ mi</a></td>
-                        <td><a href="./update.html"> ảnh sản phẩm </a></td>
-                        <td>Sản phẩm đẹp quá</td>
-                        <td>13/10/2023</td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Mai Thi Ngọc Chi </td>
-                        <td><a href="./add.html">Áo sơ mi</a></td>
-                        <td><a href="./update.html"> ảnh sản phẩm </a></td>
-                        <td>Sản phẩm đẹp quá</td>
-                        <td>13/10/2023</td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Mai Thi Ngọc Chi </td>
-                        <td><a href="./add.html">Áo sơ mi</a></td>
-                        <td><a href="./update.html"> ảnh sản phẩm </a></td>
-                        <td>Sản phẩm đẹp quá</td>
-                        <td>13/10/2023</td>
-                        <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                        <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                      </tr>
+                      <?php
+                      foreach ($load_binhluan as $row) {
+                        extract($row);
+                          echo '  <tr>
+                          <td>'.$id.'</td>
+                          <td>'.$ten.' </td>
+                          <td><a>'.$tensp. ' </a></td>
+                          <td> '.$img_dai_dien.' </td>
+                          <td>'.$ndbl.'</td>
+                          <td>'.$ngaybl.'</td>
+                          <td><a href="?act=deletebl&&id='.$id.'"> Xóa </a></td>
+                          </tr>';
+                      }
+                      ?>                    
+                       
                      
                     </tfoot>
                   </table>
-                

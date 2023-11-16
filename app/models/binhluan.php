@@ -1,11 +1,9 @@
 <?php
 // load binh luan cua san pham
-function load_binhluan($id){
-    $sql = "SELECT binhluan.id as idbl, sanpham.id as idsp, binhluan.noidung, binhluan.ngay, khachhang.ten
-    FROM `binhluan` 
-    JOIN sanpham on binhluan.idpro=sanpham.id 
-    JOIN khachang on khachang.id = binhluan.idkh 
-    WHERE sanpham.id = $id;";
+function load_binhluan(){
+    $sql = "SELECT binhluan.id, binhluan.noidung as ndbl, binhluan.ngay as ngaybl, sanpham.ten as tensp, sanpham.img_dai_dien, khachhang.ten
+    FROM binhluan JOIN khachhang ON binhluan.id_kh = khachhang.id
+    JOIN sanpham ON binhluan.id_sp = sanpham.id";
     $binhluan = pdo_query($sql);
     return $binhluan;
 }
