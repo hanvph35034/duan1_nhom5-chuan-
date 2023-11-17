@@ -3,6 +3,7 @@ include 'header.php';
 include '../../models/pdo.php';
 include '../../models/danhmuc.php';
 include '../../models/binhluan.php';
+include '../../models/khachhang.php';
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
     switch ($act) {
@@ -26,8 +27,15 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case 'adddm':
             if (isset($_POST['submit'])) {
-                $them = $_POST['addm'];
-                insert_danhmuc($them);
+                $error = [];
+                if(empty($_POST['addm'])){
+                    $error['addm'] = "Vui lòng nhập";
+                }else{
+                    $them = $_POST['addm'];   
+                }
+                if(empty($error)){
+                    insert_danhmuc($them);
+                }
             }
             include 'QTDM/add.php';
             break;
@@ -58,11 +66,34 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
             // khách hàng
         case 'qtkh':
+            $loadkh = loadall_khachhang();
+            include 'QTKH/list.php';
+            break;
+            case 'deletekh':
+                if (isset($_GET['id'])) {
+                    $id = $_GET['id'];
+                    delete_khachhang($id);
+                }
+                $loadkh = loadall_khachhang();
+                include 'QTKH/list.php';
+                break;
+        case 'updatekh':  
             include 'QTKH/list.php';
             break;
         case 'addkh':
+            if (isset($_POST['submit'])) {
+                $user = $_POST['user'];
+                $pass = $_POST['pass'];
+                $ten_dn = $_POST['ten_dn'];
+                $diachi = $_POST['diachi'];
+                $sdt = $_POST['sdt'];
+                $email = $_POST['email'];
+                $date = $_POST['date'];
+                insert_khachhang($user,$pass,$ten_dn,$diachi,$sdt,$email,$date);
+            }
             include 'QTKH/add.php';
             break;
+            
 
 
             // đơn hàng
