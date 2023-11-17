@@ -30,47 +30,75 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="index.php?act=addsp" method="post" enctype="multipart/form-data">
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Tên sản phẩm</label>
-                    <input type="text" class="form-control"  placeholder="Thêm danh mục mới">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Mô tả</label>
-                    <input type="text" class="form-control"  placeholder="Thêm danh mục mới">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Giá</label>
-                    <input type="text" class="form-control"  placeholder="Thêm danh mục mới">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Hình Ảnh</label>
-                    <input type="file" class="form-control"  >
-                  </div> <div class="form-group">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Hình Ảnh</label>
-                      <input type="file" class="form-control"  >
-                    </div> <div class="form-group">
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Hình Ảnh</label>
-                        <input type="file" class="form-control"  >
-                      </div> <div class="form-group">
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Hình Ảnh</label>
-                          <input type="file" class="form-control"  >
-                        </div> <div class="form-group">
-                    <label for="exampleInputEmail1">Ngày Đăng</label>
-                    <input type="date" class="form-control"  >
-                  </div>
-                  </div>
+                        <label for="exampleInputEmail1">Tên sản phẩm</label>
+                        <input name="ten" type="text" class="form-control" id="exampleInputEmail1" placeholder="Tên sản phẩm">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Mô tả sản phẩm</label>
+                        <input name="mo_ta" type="text" class="form-control" id="exampleInputEmail1" placeholder="Mô tả sản phẩm">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Giá sản phẩm</label>
+                        <input name="gia" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm">
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="img_dai_dien">Ảnh đại diện sản phẩm</label><br>
+                        <input type="file" name="img_dai_dien" id="img_dai_dien">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Ngày nhập</label>
+                        <input name="ngay_nhap" type="date" class="form-control" id="exampleInputEmail1" placeholder="Ngày nhập">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Danh mục sản phẩm</label><br>
+                        <select name="id_danh_muc" id="id_danh_muc">
+                          <?php
+                             if (is_array($loaddm)){
+                              extract($loaddm);
+                            ?>
+                                <option value="<?= $id ?>"><?echo $ten ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="img_1">Ảnh 1</label><br>
+                        <input type="file" name="img_1" id="img_1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="img_2">Ảnh 2</label><br>
+                        <input type="file" name="img_2" id="img_2">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="img_3">Ảnh 3</label><br>
+                        <input type="file" name="img_3" id="img_3">
+                    </div>
+
+                    
                 </div>
-                
+                <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Thêm mới</button>
+                    <input type="submit" class="btn btn-primary" name="addsp" id="" value="Thêm sản phẩm">
                 </div>
-              </form>
+                <?php
+                if (isset($thongbao) && ($thongbao) != "") {
+                    echo $thongbao;
+                }
+                ?>
+            </form>
             </div>
           </div>
           <!--/.col (left) -->

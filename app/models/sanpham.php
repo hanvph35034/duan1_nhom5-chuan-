@@ -36,18 +36,24 @@
     }
 
     // load tất cả các sản phẩm
-    function loadall_sanpham($keyw="", $iddm=0){
-        $sql = "select * from sanpham where trang_thai='0' ";
-        if($keyw!=""){
-            $sql.="and name like '%".$keyw."%'";
-        }
-        if($iddm>0){
-            $sql.="and iddm = '".$iddm."'";
-        }
-        $sql.= "order by id desc";
+    function loadall_sanpham(){
+        $sql = "SELECT * FROM sanpham
+        ORDER BY id ASC, id_danh_muc ASC;";
         $listsanpham = pdo_query($sql);
         return $listsanpham;
     }
+    // function loadall_sanpham($keyw="", $iddm=0){
+    //     $sql = "select * from sanpham where trang_thai='0' ";
+    //     if($keyw!=""){
+    //         $sql.="and name like '%".$keyw."%'";
+    //     }
+    //     if($iddm>0){
+    //         $sql.="and iddm = '".$iddm."'";
+    //     }
+    //     $sql.= "order by id desc";
+    //     $listsanpham = pdo_query($sql);
+    //     return $listsanpham;
+    // }
 
     // sửa sản phẩm
     function update_sanpham($id, $name, $price, $img, $mota, $luotxem, $iddm){
@@ -60,12 +66,17 @@
     }
     
     // thêm sản phẩm
-    function add_sanpham($tensanpham, $giasanpham, $anhdaidien, $mota, $soluongsanpham, $anh1, $anh2, $anh3, $iddm){
-        $sql = "INSERT INTO sanpham(ten_san_pham, gia_san_pham, img_dai_dien, mo_ta_san_pham, so_luong, img_san_pham1, img_san_pham2, img_san_pham3, iddm) 
-        VALUES('$tensanpham', '$giasanpham', '$anhdaidien', '$mota', '$soluongsanpham', '$anh1', '$anh2', '$anh3', '$iddm');";
+    function add_sanpham($ten,$mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3){
+        $sql = "INSERT INTO `sanpham`(`ten, mo_ta, gia, img_dai_dien, ngay_nhap, id_danh_muc, img_1, img_2, img_3`)
+         VALUES ('$$ten,$mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3')";
         pdo_execute($sql);
     }
-
+    // function add_sanpham($ten,$mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3 ){
+    //     $sql = "INSERT INTO sanpham(ten, mo_ta, gia, img_dai_dien, ngay_nhap, id_danh_muc, img_1, img_2, img_3) 
+    //     VALUES('$ten,$mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3');";
+    //     pdo_execute($sql);
+    // }
+    
     function add_sanpham1($tensanpham, $giasanpham, $anhdaidien, $mota, $soluongsanpham, $iddm){
         $sql = "insert into 
         sanpham(ten_san_pham, gia_san_pham, img_dai_dien, mo_ta_san_pham, so_luong, iddm) 
