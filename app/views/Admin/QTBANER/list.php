@@ -56,24 +56,25 @@
                         <td><a href="?act=updatebanner"> Sửa </a></td>
                         <td> <a href=""> Xóa</a> </td>
                       </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>BANNER 1</td>
-                        <td>Ảnh banner</td>
-                        <td> link </td>
-                        <td><a href="?act=updatebanner"> Sửa </a></td>
-                        <td> <a href=""> Xóa</a> </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>BANNER 1</td>
-                        <td>Ảnh banner</td>
-                        <td> link </td>
-                        <td><a href="?act=updatebanner"> Sửa </a></td>
-                        <td> <a href=""> Xóa</a> </td>
-                      </tr>
+                      
                     </tbody>
-                 
+                 <tbody>
+                      <?php 
+                        foreach($loadbn as $lisdm){
+                          extract($lisdm);
+                          echo'
+                          <tr>
+                          <td>'.$id.'</td>
+                          <td>'.$ten.'</td>
+                          <td><a href="?act=suadm&&id='.$id.'"> Sửa danh mục </a></td>
+                          <td> <a href="?act=deletedm&&id='.$id.'"> Xóa danh mục <br> (xóa mềm)</a> </td>
+                          <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
+                        </tr>
+                          ';
+                        
+                        }
+                      ?>
+                    </tbody>
                   </table>
                   <div class="card-footer">
                     <button type="submit" class="btn btn-sidebar"><a href="?act=addbanner">Thêm </a></button>
