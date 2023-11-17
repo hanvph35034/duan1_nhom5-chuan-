@@ -62,7 +62,7 @@ function suatk($id, $user, $email, $sdt, $pass, $address, $img){
 }
 
 // xoa tai khoan
-function delete_khachhang($id){
+function delete_taikhoan($id){
     $sql = "delete from taikhoan where id = '$id'";
     pdo_execute($sql);
 }

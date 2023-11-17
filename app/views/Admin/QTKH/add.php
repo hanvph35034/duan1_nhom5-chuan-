@@ -27,22 +27,47 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Thêm mới danh mục</h3>
+                <h3 class="card-title">Thêm mới khách hàng </h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="index.php?act=addkh" method="POST">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Thêm mới</label>
-                    <input type="text" class="form-control"  placeholder="Thêm danh mục mới">
+                    <label for="exampleInputEmail1">Tên tài khoản</label>
+                    <input name="user" type="text" class="form-control"  placeholder="Thêm  mới">
                   </div>
+                  <div class="form-group">
+                    <label >Mật khẩu</label>
+                    <input name="pass" type="password" class="form-control"  placeholder="Thêm  mới">
+                  </div>
+                  <div class="form-group">
+                    <label >Họ và Tên</label>
+                    <input name="ten_dn"  type="text" class="form-control"  placeholder="Thêm  mới">
+                  </div>
+                  <div class="form-group">
+                    <label >Địa chỉ </label>
+                    <input name="diachi" type="text" class="form-control"  placeholder="Thêm  mới">
+                  </div>
+                  <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input name="sdt" type="text" class="form-control"  placeholder="Thêm  mới">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">email </label>
+                    <input name ="email" type="text" class="form-control"  placeholder="Thêm  mới">
+                  </div>
+                  <div class="form-group">
+                    <label  >Ngày Sinh </label>
+                    <input name="date" type="date" class="form-control"  placeholder="Thêm  mới">
+                  </div>
+                  
                   </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button name="submit"  type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
             </div>

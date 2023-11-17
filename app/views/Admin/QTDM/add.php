@@ -35,6 +35,7 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Thêm mới</label>
                     <input name="addm" type="text" class="form-control"  placeholder="Thêm danh mục mới">
+                    <?= is_error('addm') ?>
                   </div>
                   </div>
                 </div>

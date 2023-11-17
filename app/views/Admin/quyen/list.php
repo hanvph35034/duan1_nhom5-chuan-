@@ -40,6 +40,7 @@
                     <thead>
                       <tr>
                         <th>STT</th>
+                        <th>Tên tài khoản</th>
                         <th>Tên Quyền</th>
                         <th>Sửa </th>
                         <th>Xóa  </th>
