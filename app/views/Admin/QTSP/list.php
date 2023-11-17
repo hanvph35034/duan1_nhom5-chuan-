@@ -53,44 +53,33 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                  foreach ($loadsanpham as $listsp){
-                  extract($listsp);
-                  $linkimg = '../../views/img/'.$img_dai_dien;
-                  $linkimg = '../../views/img/'.$img_1;
-                  $linkimg = '../../views/img/'.$img_2;
-                  $linkimg = '../../views/img/'.$img_3;
+                <?php
+foreach ($loadsanpham as $listsp) {
+    extract($listsp);
+    $linkimg_dai_dien = '../../views/img/' . $img_dai_dien;
+    $linkimg_1 = '../../views/img/' . $img_1;
+    $linkimg_2 = '../../views/img/' . $img_2;
+    $linkimg_3 = '../../views/img/' . $img_3;
 
-                          echo'
-                          <tr>
-                          <td>'.$id.'</td>
-                          <td>'.$ten.'</td>
-                          <td>'.$mo_ta.'</td>
-                          <td>'.$gia.'</td>
-                          <td>'.$img_dai_dien.'</td>
-                          <td>'.$ngay_nhap.'</td>
-                          <td>'.$id_danh_muc.'</td>
-                          <td>'.$img_1.'</td>
-                          <td>'.$img_2.'</td>
-                          <td>'.$img_3.'</td>
-                          <td><a href="?act=suadm&&id='.$id.'"> Sửa danh mục </a></td>
-                          <td> <a href="?act=deletedm&&id='.$id.'"> Xóa danh mục <br> (xóa mềm)</a> </td>
-                          <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                        </tr>
-                          ';
-                        }
-                  ?>
-                  <!-- <tr>
-                    <td>1</td>
-                    <td>Sơ mi nam</td>
-                    <td>chất lươbg châu âu</td>
-                    <td>100000</td>
-                    <td><img src="images/product/1.jpg" alt="product" width="100"></td>
-                    <td>2020-01-01</td>
-                    <td><a href="?act=updatesp"> Sửa </a></td>
-                    <td> <a href=""> Xóa danh mục <br> (xóa mềm)</a> </td>
-                    <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
-                  </tr> -->
+    echo '
+        <tr>
+            <td>' . $id . '</td>
+            <td>' . $ten . '</td>
+            <td>' . $mo_ta . '</td>
+            <td>' . $gia . '</td>
+            <td><img src="' . $linkimg_dai_dien . '" alt="product" width="100"></td>
+            <td>' . $ngay_nhap . '</td>
+            <td>' . $id_danh_muc . '</td>
+            <td><img src="' . $linkimg_1 . '" alt="product" width="100"></td>
+            <td><img src="' . $linkimg_2 . '" alt="product" width="100"></td>
+            <td><img src="' . $linkimg_3 . '" alt="product" width="100"></td>
+            <td><a href="?act=updatesp"> Sửa danh mục </a></td>
+            <td><a href="?act=deletedm&&id=' . $id . '"> Xóa danh mục <br> (xóa mềm)</a></td>
+            <td><a href=""> Xóa danh mục <br> (xóa cứng)</a></td>
+        </tr>
+    ';
+}
+?>
                 </tbody>
 
               </table>
