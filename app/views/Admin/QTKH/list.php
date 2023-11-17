@@ -24,6 +24,9 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Quản trị khách hàng </h3>
+              <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="?act=addkh">Thêm Khách hàng</a></li>
+          </ol>
             </div>
           </div>
           <!-- /.card -->
@@ -36,6 +39,7 @@
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
+             
                   <tr>
                     <th>STT</th>
                     <th>Tên khách hàng</th>
@@ -46,30 +50,18 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Nguyễn Xuân Việt </td>
-                    <td>Email</td>
-                    <td> 0962630463 </td>
-                    <td>HÀ Nội</td>
-                    <td><a href=""> Xóa tài khoản </a> </td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Nguyễn Xuân Việt </td>
-                    <td>Email</td>
-                    <td> 0962630463 </td>
-                    <td>HÀ Nội</td>
-                    <td><a href=""> Xóa tài khoản </a> </td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Nguyễn Xuân Việt </td>
-                    <td>Email</td>
-                    <td> 0962630463 </td>
-                    <td>HÀ Nội</td>
-                    <td><a href=""> Xóa tài khoản </a> </td>
-                  </tr>
+                <?php 
+                  
+                  foreach ($loadkh as $khachhang) {
+                    extract($khachhang);
+                    echo' <tr>
+                    <td>'.$id.'</td>
+                    <td>'.$ten.'</td>
+                    <td>'.$email.'</td>
+                    <td>'.$so_dien_thoai.'</td>
+                    <td>'.$dia_chi.'</td>
+                    <td><a href="?act=deletekh&&id='.$id.'"> Xóa tài khoản </a> </td> ' ;}
+                  ?>
               </table>
             </div>
             <!-- /.card-body -->
