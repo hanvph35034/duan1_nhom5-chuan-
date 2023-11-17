@@ -22,18 +22,18 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include 'QTDM/add.php';
             break;
-        case 'suadm':
-            if (isset($_GET['id'])) {
+            case 'suadm' :
+             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $loadd = loadone_danhmuc($id);
             }
             include 'QTDM/update.php';
-            break;
+            break;                
         case 'updatedm':
             if (isset($_POST['submit'])) {
                 $update = $_POST['tendm'];
                 $id = $_POST['iddm'];
-                fix_danhmuc($id, $update);
+                fix_danhmuc($id,$update);
             }
             $loaddm = loadall_danhmuc();
             include 'QTDM/list.php';
@@ -70,19 +70,20 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
 
             // sản phẩm
-
+            
         case 'qtsp':
             $loadsanpham = loadall_sanpham();
             include 'QTSP/list.php';
             break;
-
+            
         case 'addsp':
             if (isset($_POST['addsp'])) {
                 $ten = $_POST['ten'];
                 $mo_ta = $_POST['mo_ta'];
                 $gia = $_POST['gia'];
                 $ngay_nhap = $_POST['ngay_nhap'];
-                $target_dir = '../../views/Admin/img/';
+                $id_danh_muc = $_POST['id_danh_muc'];
+                    $target_dir = '../../views/Admin/img/';
 
                 $img_dai_dien = $_FILES['img_dai_dien']['name'];
                 $target_file = $target_dir . basename($img_dai_dien);
@@ -100,21 +101,19 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $target_file3 = $target_dir . basename($img_3);
                 move_uploaded_file($_FILES['img_3']['tmp_name'], $target_file3);
                 if ($ten != '' && $mo_ta != '' && $gia > 0 && $img_dai_dien != ''  && $ngay_nhap != '' && $img_1 != '' && $img_2 != '' && $img_3 != '') {
-                    add_sanpham($ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3);
+                    add_sanpham($ten,$mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3);
                     $thongbao = 'thêm sản phẩm thành công';
                 } else {
                     $thongbao = 'thất bại';
                 }
             }
-            $loaddm = loadall_danhmuc();
-
             // if (isset($_POST['addsp']) && ($_POST['addsp'])) {
             //     $ten = $_POST['ten'];
             //     $mo_ta = $_POST['mo_ta'];
             //     $gia = $_POST['gia'];
             //     $ngay_nhap = $_POST['ngay_nhap'];
             //     $id_danh_muc = $_POST['id_danh_muc'];
-
+                
             //     $target_dir = '../../views/img/';
             //     $img_dai_dien = $_FILES['img_dai_dien']['name'];
             //     $target_file = $target_dir . basename($img_dai_dien);

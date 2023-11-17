@@ -68,7 +68,7 @@
     // thêm sản phẩm
     function add_sanpham($ten,$mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3){
         $sql = "INSERT INTO `sanpham`(`ten, mo_ta, gia, img_dai_dien, ngay_nhap, id_danh_muc, img_1, img_2, img_3`)
-         VALUES ('$$ten,$mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3')";
+         VALUES ('$ten,$mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3')";
         pdo_execute($sql);
     }
     // function add_sanpham($ten,$mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3 ){
