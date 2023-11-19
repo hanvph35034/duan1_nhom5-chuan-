@@ -29,25 +29,28 @@
                 <h3 class="card-title">Thêm mới BANNER</h3>
               </div>
            
-              <form>
+              <form action="index.php?act=addbanner" method="post" enctype="multipart/form-data">
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Tên banner</label>
-                    <input type="text" class="form-control"  placeholder="Thêm banner mới">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Ảnh banner</label>
+                    <br>
+                    <input type="file" name="img" id="img">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Ảnh banner</label>
-                    <input type="file" class="form-control"  >
-                  </div>  <div class="form-group">
+                    <label for="exampleInputEmail1">Tên banner</label>
+                    <input type="text" name="ten" id="ten" class="form-control"  placeholder="Tên banner">
+                  </div>
+                    
+                  <div class="form-group">
                     <label for="exampleInputEmail1">Link</label>
-                    <input type="text" class="form-control"  placeholder="Thêm banner mới">
+                    <input type="text" name="link" id="link" class="form-control"  placeholder="LInk truyền">
                   </div>
                   </div>
                 </div>
           
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Thêm mới </button>
+                  <button type="submit" class="btn btn-primary" name="addbanner" >Thêm mới </button>
                 </div>
               </form>
             </div>

@@ -56,10 +56,10 @@
                 <?php
 foreach ($loadsanpham as $listsp) {
     extract($listsp);
-    $linkimg_dai_dien = '../../views/img/' . $img_dai_dien;
-    $linkimg_1 = '../../views/img/' . $img_1;
-    $linkimg_2 = '../../views/img/' . $img_2;
-    $linkimg_3 = '../../views/img/' . $img_3;
+    $linkimg_dai_dien = '../../views/Admin/img/' . $img_dai_dien;
+    $linkimg_1 = '../../views/Admin/img/' . $img_1;
+    $linkimg_2 = '../../views/Admin/img/' . $img_2;
+    $linkimg_3 = '../../views/Admin/img/' . $img_3;
 
     echo '
         <tr>
@@ -73,9 +73,8 @@ foreach ($loadsanpham as $listsp) {
             <td><img src="' . $linkimg_1 . '" alt="product" width="100"></td>
             <td><img src="' . $linkimg_2 . '" alt="product" width="100"></td>
             <td><img src="' . $linkimg_3 . '" alt="product" width="100"></td>
-            <td><a href="?act=updatesp"> Sửa danh mục </a></td>
-            <td><a href="?act=deletedm&&id=' . $id . '"> Xóa danh mục <br> (xóa mềm)</a></td>
-            <td><a href=""> Xóa danh mục <br> (xóa cứng)</a></td>
+            <td><a href="?act=suasp&&id='.$id.'"> Sửa danh mục </a></td>
+            <td><a href="?act=deletesp&&id=' . $id . '"> Xóa danh mục </a></td>
         </tr>
     ';
 }
