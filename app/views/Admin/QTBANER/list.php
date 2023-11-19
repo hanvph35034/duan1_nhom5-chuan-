@@ -40,35 +40,26 @@
                     <thead>
                       <tr>
                         <th>STT</th>
-                        <th>Tên banner</th>
                         <th>Ảnh BANNER</th>
+                        <th>Tên banner</th>
                         <th>link </th>
                         <th>Sửa</th>
                         <th>Xóa</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>BANNER 1</td>
-                        <td>Ảnh banner</td>
-                        <td> link </td>
-                        <td><a href="?act=updatebanner"> Sửa </a></td>
-                        <td> <a href=""> Xóa</a> </td>
-                      </tr>
-                      
-                    </tbody>
                  <tbody>
                       <?php 
-                        foreach($loadbn as $lisdm){
-                          extract($lisdm);
+                        foreach($loadbanner as $listbn){
+                          extract($listbn);
+                          $linkimg = '../../views/Admin/img/' . $img;
                           echo'
                           <tr>
                           <td>'.$id.'</td>
+                          <td><img src="' . $linkimg . '" alt="product" width="100"></td>
                           <td>'.$ten.'</td>
-                          <td><a href="?act=suadm&&id='.$id.'"> Sửa danh mục </a></td>
-                          <td> <a href="?act=deletedm&&id='.$id.'"> Xóa danh mục <br> (xóa mềm)</a> </td>
-                          <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
+                          <td>'.$link.'</td>
+                          <td><a href="?act=suabn&&id='.$id.'"> Sửa </a></td>
+                          <td> <a href="?act=deletebn&&id='.$id.'"> Xóa</a> </td>
                         </tr>
                           ';
                         

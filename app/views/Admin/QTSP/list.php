@@ -70,12 +70,11 @@ foreach ($loadsanpham as $listsp) {
             <td><img width="50px" height="50px" src="' . $linkimg_dai_dien . '" alt="product" width="100"></td>
             <td>' . $ngay_nhap . '</td>
             <td>' . $id_danh_muc . '</td>
-            <td><img width="50px" height="50px" src="' . $linkimg_1 . '" alt="product" width="100"></td>
-            <td><img width="50px" height="50px" src="' . $linkimg_2 . '" alt="product" width="100"></td>
-            <td><img width="50px" height="50px" src="' . $linkimg_3 . '" alt="product" width="100"></td>
-            <td><a href="?act=updatesp"> Sửa danh mục </a></td>
-            <td><a href="?act=deletedm&&id=' . $id . '"> Xóa danh mục <br> (xóa mềm)</a></td>
-            <td><a href=""> Xóa danh mục <br> (xóa cứng)</a></td>
+            <td><img src="' . $linkimg_1 . '" alt="product" width="100"></td>
+            <td><img src="' . $linkimg_2 . '" alt="product" width="100"></td>
+            <td><img src="' . $linkimg_3 . '" alt="product" width="100"></td>
+            <td><a href="?act=suasp&&id='.$id.'"> Sửa danh mục </a></td>
+            <td><a href="?act=deletesp&&id=' . $id . '"> Xóa danh mục </a></td>
         </tr>
     ';
 }

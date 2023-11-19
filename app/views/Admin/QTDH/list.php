@@ -38,39 +38,38 @@
                     <thead>
                       <tr>
                         <th>STT</th>
-                        <th>MÃ đơn Hàng </th>
                         <th>Ngày đặt </th>
                        <th>Tổng giá </th>
-                        <th>Trạng thái </th>                        
+                        <th>Trạng thái </th>   
+                        <th>ID_khách Hàng </th>                       
                         <th>Xóa Đơn hàng </th>
+                        <th>Sửa Đơn hàng </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>4g4g4wgj</td>
-                        <td>24/12/2023</td>
-                        <td>20.000</td>
-                        <td>hoàn Thành</td>
-                        <td><a href=""> Xóa </a></td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>4g4g4wgj</td>
-                        <td>24/12/2023</td>
-                        <td>20.000</td>
-                        <td>hoàn Thành</td>
-                        <td><a href=""> Xóa </a></td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>4g4g4wgj</td>
-                        <td>24/12/2023</td>
-                        <td>20.000</td>
-                        <td>hoàn Thành</td>
-                        <td><a href=""> Xóa </a></td>
-                      </tr>
+                      <?php 
+                        foreach($loaddh as $lisdh){
+                          extract($lisdh);
+                          echo'
+                          <tr>
+                          <td>'.$id.'</td>
+                          <td>'.$ngay_dat.'</td>
+                          <td>'.$tong_gia.'</td>
+                          <td>'.$trang_thai.'</td>
+                          <td>'.$id_kh.'</td>
+                          <td><a href="?act=suadh&&id='.$id.'"> Sửa danh mục </a></td>
+                          <td> <a href="?act=deletedh&&id='.$id.'"> Xóa danh mục</a> </td>
+                        </tr>
+                          ';
+                        
+                        }
+                      ?>
+                    </tbody>
+                 
                   </table>
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-sidebar"><a href="?act=adddh">Thêm đơn hàng</a></button>
+                  </div>
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -84,3 +83,4 @@
       </section>
       <!-- /.content -->
     </div>
+    <!-- /.content-wrapper -->

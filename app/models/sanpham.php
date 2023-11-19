@@ -13,7 +13,11 @@
         $listsanpham = pdo_query($sql);
         return $listsanpham;
     }
-
+// UPLOAD image 
+function upload_anh($target_f,$tmp_file) {
+    $target = "..views/Admin/img/".$target_f;
+    move_uploaded_file($tmp_file,$target);
+}
     // load 1 sản phẩm cùng loại
     function loadone_sanpham($id){
         $sql = "select * from sanpham where id = '$id'";
@@ -22,32 +26,13 @@
     }
      // sửa sản phẩm
      function update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3){
-        if($img_dai_dien != ''){
-            $sql = "UPDATE sanpham SET 
-                    ten = '$ten', 
-                    mo_ta = '$mo_ta', 
-                    gia = '$gia', 
-                    img_dai_dien = '$img_dai_dien', 
-                    ngay_nhap = '$ngay_nhap', 
-                    id_danh_muc = '$id_danh_muc', 
-                    img_1 = '$img_1', 
-                    img_2 = '$img_2', 
-                    img_3 = '$img_3' 
-                    WHERE id = '$id'";
-        } else {
-            $sql = "UPDATE sanpham SET 
-                    ten = '$ten', 
-                    mo_ta = '$mo_ta', 
-                    gia = '$gia', 
-                    ngay_nhap = '$ngay_nhap', 
-                    id_danh_muc = '$id_danh_muc', 
-                    img_1 = '$img_1', 
-                    img_2 = '$img_2', 
-                    img_3 = '$img_3' 
-                    WHERE id = '$id'";
-        }
+            $sql = "UPDATE `sanpham` SET `id`='$id',`ten`='$ten',`mo_ta`='$mo_ta',`gia`='$gia',`img_dai_dien`='$img_dai_dien',
+            `ngay_nhap`='$ngay_nhap]',`id_danh_muc`='$id_danh_muc',`img_1`='$img_1',`img_2`='$img_2',`img_3`='$img_3' WHERE `id`='$id'";
         pdo_execute($sql);
-    }
+        
+        }
+        
+    
 
     // load các sản phẩm cùng loại trừ sản phẩm đang xem
     function loadallsp_cungloai($id, $iddm){
@@ -62,10 +47,10 @@
         $sanpham = pdo_query($sql);
         return $sanpham;
     }
-
+   
     // load tất cả các sản phẩm
     function loadall_sanpham(){
-        $sql = "SELECT * FROM sanpham
+        $sql = "SELECT * FROM `sanpham` where 1
         ORDER BY id ASC, id_danh_muc ASC;";
         $listsanpham = pdo_query($sql);
         return $listsanpham;
@@ -105,7 +90,7 @@
     }
     
     // xóa cứng
-    function hard_delete_sanpham($id){
+    function delete_sanpham($id){
         $sql = "delete from sanpham where id = '$id'";
         pdo_execute($sql);
     }

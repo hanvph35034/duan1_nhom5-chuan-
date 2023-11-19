@@ -2,13 +2,14 @@
 //tat ca banner
 function loadall_banner(){
     $sql = "SELECT * FROM banner
-    ORDER BY id DESC;";
+    ORDER BY id asc;";
     $listbanner = pdo_query($sql);
     return $listbanner;
 }
 // them banner
-function insert_danhmuc($img,$ten,$link){
-    $sql = "INSERT INTO `danhmuc`(`img,ten,link`) VALUES ('$img,$ten,$link')";
+
+function add_banner($img,$ten,$link){
+    $sql = "INSERT INTO `banner`(`img`,`ten`,`link`) VALUES ('$img','$ten','$link')";
     pdo_execute($sql);
 }
 //load 1 banner de sua
@@ -23,14 +24,13 @@ function delete_banner($id){
     pdo_execute($sql);
 }
 // sua banner
-function fix_dbanner($id, $img,$ten,$link){
-    if ($img != '') {
-        $sql = "update danhmuc set img ='$img',ten = '$ten',link = '$link'  where id = '$id'";
-    } else {
-        $sql = "update danhmuc set ten = '$ten',link = '$link'  where id = '$id'";
-    }
-    
+function update_banner($id, $img, $ten, $link)
+{
+    $sql = "UPDATE `banner`
+    SET
+      `ten`='$ten',
+      `link`='$link'
+    WHERE
+      `id`='$id' AND (`img`='$img' OR '$img' = '');";
     pdo_execute($sql);
 }
-
-?>
