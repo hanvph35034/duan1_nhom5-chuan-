@@ -30,13 +30,14 @@
             <!-- /.card-header -->
             <!-- form start -->
             <!-- index.php?act=updatesp -->
-            <form action="index.php?act=updatesp" method="post" enctype="multipart/form-data">
-              <div class="card-body">
-                <div class="form-group">
-                  <?php
-                  if (is_array($loadsp)) {
-                    extract($loadsp);
-                  ?>
+            <?php
+            if (is_array($loadsp)) {
+              extract($loadsp);
+            ?>
+              <form action="index.php?act=updatesp&id=<?= $id ?>" method="post" enctype="multipart/form-data">
+                <div class="card-body">
+                  <div class="form-group">
+
                     <label for="exampleInputEmail1">Update</label>
                     <div class="card-body">
                       <div class="form-group">
@@ -83,21 +84,21 @@
 
                       </div>
                       <div class="form-group">
-                        <label for="img_1">Ảnh đại diện sản phẩm</label><br>
+                        <label for="img_1">Ảnh đại diện 1</label><br>
                         <?php if (isset($linkimg_1) && $linkimg_1 != '') : ?>
                           <img src="<?php echo $linkimg_1; ?>" alt="product" width="100">
                         <?php endif; ?>
                         <input type="file" name="img_1" id="img_1">
                       </div>
                       <div class="form-group">
-                        <label for="img_1">Ảnh đại diện sản phẩm</label><br>
+                        <label for="img_2">Ảnh đại diện 2</label><br>
                         <?php if (isset($linkimg_2) && $linkimg_2 != '') : ?>
                           <img src="<?php echo $linkimg_2; ?>" alt="product" width="100">
                         <?php endif; ?>
-                        <input type="file" name="img_1" id="img_1">
+                        <input type="file" name="img_2" id="img_1">
                       </div>
                       <div class="form-group">
-                        <label for="img_3">Ảnh đại diện sản phẩm</label><br>
+                        <label for="img_3">Ảnh đại diện 3</label><br>
                         <?php if (isset($linkimg_3) && $linkimg_3 != '') : ?>
                           <img src="<?php echo $linkimg_3; ?>" alt="product" width="100">
                         <?php endif; ?>
@@ -106,20 +107,20 @@
 
 
                     </div>
+                  </div>
                 </div>
-              </div>
           </div>
 
         <?php
-                  }
+            }
 
         ?>
 
         <div class="card-footer">
-          <button type="submit" name="submit" class="btn btn-primary">UPDATE</button>
+          <button type="submit" name="submit" class="btn btn-primary" value="btn">UPDATE</button>
         </div>
         <?php
-        if(isset($thongbao) && ($thongbao) != ""){
+        if (isset($thongbao) && ($thongbao) != "") {
           echo $thongbao;
         }
         ?>

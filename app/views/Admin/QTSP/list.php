@@ -84,7 +84,7 @@ foreach ($loadsanpham as $listsp) {
 
               </table>
               <div class="card-footer">
-                <button type="submit" class="btn btn-sidebar"><a href="?act=addsp">Thêm sản phẩm</a></button>
+                <button name="submit" type="submit" class="btn btn-sidebar"><a href="?act=addsp">Thêm sản phẩm</a></button>
               </div>
             </div>
             <!-- /.card-body -->

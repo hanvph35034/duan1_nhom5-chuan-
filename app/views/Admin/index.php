@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+ include 'header.php';
 include '../../models/pdo.php';
 include '../../models/danhmuc.php';
 include '../../models/sanpham.php';
@@ -115,7 +115,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             // sản phẩm
 
         case 'qtsp':
-            
+
             $loadsanpham = loadall_sanpham();
             include 'QTSP/list.php';
             break;
@@ -167,7 +167,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include 'QTSP/update.php';
             break;
         case 'updatesp':
-
             if (isset($_POST['submit']) && ($_POST['submit'])) {
                 $id = $_POST['id'];
                 $ten = $_POST['ten'];
@@ -176,7 +175,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $ngay_nhap = $_POST['ngay_nhap'];
                 $id_danh_muc = $_POST['id_danh_muc'];
 
-                $target_dir = '../../view/Admin/img/';
+                $target_dir = 'img/';
                 $img_dai_dien = $_FILES['img_dai_dien']['name'];
                 $target_file = $target_dir . basename($img_dai_dien);
                 move_uploaded_file($_FILES['img_dai_dien']['tmp_name'], $target_file);
@@ -193,19 +192,18 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $target_file3 = $target_dir . basename($img_3);
                 move_uploaded_file($_FILES['img_3']['tmp_name'], $target_file3);
 
-                if ($ten != '' && $mo_ta != '' && $gia > 0 && $img_dai_dien != '' && $ngay_nhap != '' && $img_1 != '' && $img_2 != '' && $img_3 != '') {
-                    update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3);
-                    // header("location: index.php?act=suasp&&id=$id");
-                    // $loadsp = loadone_sanpham($id);
-                    // $loaddm = loadall_danhmuc();
-                    // $loadsanpham = loadall_sanpham();
-                    header("location: " . $_SERVER['HTTP_REFERER']); 
-                    include 'QTSP/update.php';
-                } else {
-                    $thongbao = 'sua san pham that bai';
-                }
+                update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3);
+                // header("location: index.php?act=suasp&&id=$id");
+                // $loadsp = loadone_sanpham($id);
+                $loaddm = loadall_danhmuc();
+                // $loadsanpham = loadall_sanpham();
+                // header("location: " . $_SERVER['HTTP_REFERER']);
+                // } else {
+                //     $thongbao = 'sua san pham that bai';
+                // }
             }
-            $loadsp = loadone_sanpham($id);
+            $loadsp = loadone_sanpham($_GET['id']);
+            var_dump($loadsp);
             // $loadsanpham = loadall_sanpham();
             include 'QTSP/update.php';
             break;
