@@ -66,10 +66,11 @@
                                 <ul>
                                     <li class="top_links"><a href="#"><i class="ion-android-person"></i>Tài khoản của tôi<i class="ion-ios-arrow-down"></i></a>
                                         <ul class="dropdown_links">
-                                            <li><a href="checkout.html">Thủ tục thanh toán </a></li>
-                                            <li><a href="?act=trang_tk">Tài khoản của tôi </a></li>
+                                            <li><a href="?act=dangki">Đăng kí </a></li>
+                                            <li><a href="?act=login">Đăng nhập</a></li>
+                                            <li><a href="?act=trang_tk">Tài khoản của tôi</a></li>
                                             <li><a href="cart.html">Giỏ hàng</a></li>
-                                            <li><a href="wishlist.html">Danh sách yêu thích</a></li>
+                                           
                                         </ul>
                                     </li>
                                 </ul>

@@ -29,7 +29,7 @@
                                 <li><a href="#downloads" data-toggle="tab" class="nav-link">Downloads</a></li>
                                 <li><a href="#address" data-toggle="tab" class="nav-link">Địa chỉ</a></li>
                                 <li><a href="#account-details" data-toggle="tab" class="nav-link">Chi tiết tài khoản</a></li>
-                                <li><a href="login.html" class="nav-link">Đăng xuất</a></li>
+                                <li><a href="?act=dangxuat" class="nav-link">Đăng xuất</a></li>
                             </ul>
                         </div>
                     </div>
@@ -74,32 +74,7 @@
                             </div>
                             <div class="tab-pane fade" id="downloads">
                                 <h3>Downloads</h3>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Downloads</th>
-                                                <th>Expires</th>
-                                                <th>Download</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Shopnovilla - Free Real Estate PSD Template</td>
-                                                <td>May 10, 2018</td>
-                                                <td><span class="danger">Expired</span></td>
-                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Organic - ecommerce html template</td>
-                                                <td>Sep 11, 2018</td>
-                                                <td>Never</td>
-                                                <td><a href="#" class="view">Click Here To Download Your File</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                              
                             </div>
                             <div class="tab-pane" id="address">
                                 <p>The following addresses will be used on the checkout page by default.</p>

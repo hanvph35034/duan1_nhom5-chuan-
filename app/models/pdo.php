@@ -69,5 +69,5 @@ function pdo_query_one($sql){
         unset($conn);
     }
 }
-pdo_get_connection();
+// pdo_get_connection();
 ?>

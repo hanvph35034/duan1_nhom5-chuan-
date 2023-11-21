@@ -1,4 +1,6 @@
 <?php 
+session_start();
+include '../../models/pdo.php';
 include '../../models/taikhoan.php';
 include '../../models/banner.php';
 include '../../models/sanpham.php';
@@ -151,4 +153,6 @@ function updateq(){
 function deleteq(){
 
 }
+
+
 ?>

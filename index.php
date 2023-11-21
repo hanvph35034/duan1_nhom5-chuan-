@@ -1,4 +1,6 @@
 <?php
+// session_start();
+ob_start();
 include "app/models/pdo.php";
 include "app/views/Client/header.php";
 include "app/models/taikhoan.php";
@@ -8,20 +10,35 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
     switch ($act) {
         case 'login':
-            if(isset($_POST['btn']) && $_POST['btn']){
+            if (isset($_POST['btn']) && $_POST['btn']) {
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
+                echo $pass . $user;
                 $tk = dangnhap($user, $pass);
-                var_dump($tk);
-                if ($tk!= false) {
-                    $_SESSION['user'] = $tk['user'];
+                if ($tk != false) {
+                    $_SESSION['user'] = $tk['ten_dn'];
+                    if ($tk['quyen'] = 1) {
+                        header("Location: app/views/Admin/index.php");
+                    } else {
+                        header("Location: index.php");
+                    }
                 } else {
                     echo '<script>alert("Sai tai khoan hoac password")</script>';
                 }
-            break;
-        }
+            }
             include "app/views/Client/login.php";
             break;
+            case 'dangki':
+                if (isset($_POST['btn']) && $_POST['btn']){
+                $user = $_POST['user'];
+                $ten = $_POST['ten'];
+                $email = $_POST['email'];
+                $pass = $_POST['pass'];
+
+                insert_taikhoan($user,$ten,$email,$pass);
+                }
+                include "app/views/Client/dangki.php";
+                break;
         case 'baiviet1':
             include "app/views/Client/bai_viet1.php";
             break;
@@ -52,6 +69,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'trang_tk':
             include "app/views/Client/trang_tk.php";
             break;
+        case 'dangxuat':
+            session_unset();
+            header("location: index.php");
+            break;
         default:
             include "app/views/Client/404.php";
     }
@@ -60,3 +81,4 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 }
 
 include "app/views/Client/footer.php";
+ob_end_flush();

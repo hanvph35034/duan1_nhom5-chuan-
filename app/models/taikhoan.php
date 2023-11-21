@@ -1,8 +1,8 @@
 <?php
 // them tai khoan / dang ky
-function insert_taikhoan($email, $user, $pass)
+function insert_taikhoan( $user, $ten ,$email , $pass)
 {
-    $sql = "insert into taikhoan (email, user, pass) values ('$email', '$user', '$pass')";
+    $sql = "INSERT INTO `khachhang`( `ten_dn`, `ten`,`email`,`mat_khau`   ) VALUES ('$user','$ten','$email','$pass')";
     pdo_execute($sql);
 }
 
@@ -13,7 +13,7 @@ function insert_taikhoan($email, $user, $pass)
 // session_start();
 function dangnhap($user, $pass)
 {
-    $sql = "SELECT * from khachhang where user='$user' and pass='$pass'";
+    $sql = "SELECT * from khachhang where ten_dn='$user' and mat_khau='$pass'";
     return  pdo_query_one($sql);
 }
 

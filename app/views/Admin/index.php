@@ -1,11 +1,15 @@
 <?php
-include 'header.php';
-include '../../models/pdo.php';
+ob_start();
 include '../../controllers/AdminController.php';
+include 'header.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
     switch ($act) {
+        case 'dangxuat':
+            session_unset();
+            header("Location: ../../../index.php");
+            break;
             // quản trị bình luận
         case 'listbl':
             listbl();
@@ -384,4 +388,4 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 }
 
 include 'footer.php';
-// ob_end_flush();
+ob_end_flush();
