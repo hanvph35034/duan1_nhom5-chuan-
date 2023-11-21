@@ -1,7 +1,8 @@
 <?php
 // them tai khoan / dang ky
-function insert_taikhoan($email, $user, $pass){
-    $sql = "insert into taikhoan (email, user, pass) values ('$email', '$user', '$pass')";
+function insert_taikhoan($ten, $tendangnhap, $pass, $email, $sdt, $diachi)
+{
+    $sql = "INSERT INTO khachhang(ten_khach_hang, ten_dang_nhap, mat_khau, email_khach_hang, sdt_khach_hang, dia_chi_khach_hang) VALUES('$ten', '$tendangnhap', '$pass', '$email', '$sdt', '$diachi');";
     pdo_execute($sql);
 }
 
@@ -10,10 +11,11 @@ function insert_taikhoan($email, $user, $pass){
 
 // dang nhap
 // session_start();
-function dangnhap($user, $pass){
-    $sql = "SELECT * from taikhoan where user='$user' and pass='$pass'";
+function dangnhap($ten_dang_nhap, $mat_khau)
+{
+    $sql = "SELECT * from nguoidung where ten_dang_nhap='$ten_dang_nhap' and mat_khau='$mat_khau' and trang_thai = '0';";
     $taikhoan = pdo_query_one($sql);
-    
+
     // if($taikhoan != false){
     //     $_SESSION['user'] = $user;
     // }else{
@@ -22,13 +24,13 @@ function dangnhap($user, $pass){
     // }
     // // var_dump($taikhoan);
     return $taikhoan;
-
 }
 
 // dang xuat
-function dangxuat(){
-    if(isset($_SESSION['user'])){
-        unset($_SESSION['user']); 
+function dangxuat()
+{
+    if (isset($_SESSION['user'])) {
+        unset($_SESSION['user']);
     }
 }
 
@@ -39,48 +41,53 @@ function dangxuat(){
 // }
 
 // sua tai khoan
-function update_taikhoan($id, $user, $email, $sdt, $pass, $address, $img){
-    if($img != ''){
+function update_taikhoan($id, $user, $email, $sdt, $pass, $address, $img)
+{
+    if ($img != '') {
         $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', pass='$pass', address='$address', img='$img' where id='$id';";
-    }else{
+    } else {
         $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', pass='$pass', address='$address' where id='$id';";
     }
     pdo_execute($sql);
 }
 
-function suatk($id, $user, $email, $sdt, $pass, $address, $img){
-    if($pass != '' && $img != ''){
+function suatk($id, $user, $email, $sdt, $pass, $address, $img)
+{
+    if ($pass != '' && $img != '') {
         $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', pass='$pass', address='$address', img='$img' where id='$id';";
-    }else if($pass == '' && $img == ''){
+    } else if ($pass == '' && $img == '') {
         $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', address='$address' where id='$id';";
-    }else if($pass == '' && $img != ''){
+    } else if ($pass == '' && $img != '') {
         $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', address='$address', img='$img' where id='$id';";
-    }else if($pass != '' && $img == ''){
+    } else if ($pass != '' && $img == '') {
         $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', pass='$pass', address='$address' where id='$id';";
     }
     pdo_execute($sql);
 }
 
 // xoa tai khoan
-function delete_khachhang($id){
+function delete_khachhang1($id)
+{
     $sql = "delete from taikhoan where id = '$id'";
     pdo_execute($sql);
 }
 
 // gui email de lay lai mk
-function sendMail($email){
+function sendMail($email)
+{
     $sql = "select * from taikhoan where email = '$email'";
     $taikhoan = pdo_query_one($sql);
-    if($taikhoan != false){
+    if ($taikhoan != false) {
         sendMailPass($email, $taikhoan['user'], $taikhoan['pass']);
         return 'đúng email';
-    }else{
+    } else {
         return "sai email";
     }
 }
 
 // lay lai mk
-function sendMailPass($email, $username, $pass){
+function sendMailPass($email, $username, $pass)
+{
     require 'PHPMailer/src/Exception.php';
     require 'PHPMailer/src/PHPMailer.php';
     require 'PHPMailer/src/SMTP.php';
@@ -106,7 +113,7 @@ function sendMailPass($email, $username, $pass){
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Nguoi dung quen mat khau';
-        $mail->Body    = 'Mat khau cua ban la: '.$pass;
+        $mail->Body    = 'Mat khau cua ban la: ' . $pass;
 
         $mail->send();
         // echo 'Message has been sent';

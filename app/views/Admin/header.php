@@ -104,8 +104,14 @@
               <a href="?act=qtquyen" class="nav-link">Chức Vụ </a>
             </li>
             <li class="nav-item">
-              <a href="?act=bienthe" class="nav-link">Quản Lý biến thể </a>
+              <a href="?act=nguoidung" class="nav-link">người dùng </a>
             </li>
+            <li class="nav-item">
+                  <a href="index.php?act=dangxuat" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Đăng xuất</p>
+                  </a>
+                </li>
 
           </ul>
         </nav>
