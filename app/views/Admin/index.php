@@ -5,6 +5,8 @@ include '../../models/danhmuc.php';
 include '../../models/sanpham.php';
 include '../../models/banner.php';
 include '../../models/donhang.php';
+include '../../models/baiviet.php';
+include '../../models/quyen.php';
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
     switch ($act) {
@@ -292,36 +294,131 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $loadbanner = loadall_banner();
             echo '<script>alert("vui long quay ve trang chu");</script>';
             include 'QTBANER/list.php';
+            
+            
+            
+            
             // bài viết
-        case 'qtbv':
-            include 'QTBV/list.php';
-            break;
-        case 'addbv':
-            include 'QTBV/add.php';
-            break;
-        case 'updatebv':
-            include 'QTBV/update.php';
-            break;
+               //load
+   case 'qtbv':
+    $loadbaiviet = loadall_baiviet();
+    include 'QTBV/list.php';
+    break;
+    //thêm
+case 'addbaiviet':
+    if (isset($_POST['addbaiviet'])) {
+        $tieu_de = $_POST['tieu_de'];
+        $noi_dung = $_POST['noi_dung'];
+        $ngay_dang = $_POST['ngay_dang'];
+        $target_dir1 = '../../views/Admin/img/';
 
-        case 'qtquyen':
-            include 'quyen/list.php';
-            break;
-        case 'addquyen':
-            include 'quyen/add.php';
-            break;
-        case 'updatequyen':
-            include 'quyen/update.php';
-            break;
+        $img = $_FILES['img']['name'];
+        $target_file1 = $target_dir1 . basename($img);
+        move_uploaded_file($_FILES['img']['tmp_name'], $target_file1);
+        if ($tieu_de != '' && $noi_dung != '' && $ngay_dang != ''&& $ngay_dang != '') {
+            add_baiviet($tieu_de, $img, $noi_dung,$ngay_dang);
+            $thongbao = 'Thêm banner thành công';
+        } else {
+            $thongbao = 'Thất bại';
+        }
+    }
 
-        case 'bienthe':
-            include 'QTBT/list.php';
-            break;
-        case 'addbt':
-            include 'QTBT/add.php';
-            break;
-        case 'updatebt':
-            include 'QTBT/update.php';
-            break;
+    include 'QTBV/add.php';
+    break;
+    //sửa
+case 'suabv':
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $baiviet = loadone_baiviet($id);
+    }
+    include 'QTBV/update.php';
+    break;
+
+case 'updatebv':
+    if (isset($_POST['submit'])) {
+        $id = $_POST['id'];
+        $tieu_de = $_POST['tieu_de'];
+        $noi_dung = $_POST['noi_dung'];
+        $ngay_dang = $_POST['ngay_dang'];
+        $img = $_FILES['img']['name'];
+        $target_dir = '../../img/';
+        $target_file = $target_dir . basename($img);
+        move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
+        if ($tieu_de != "") {
+            update_baiviet($id, $tieu_de,$img, $noi_dung, $ngay_dang);
+            $loadbn = loadone_baiviet($id);
+            $thongbao = 'update bV thành công';
+        } else {
+            $baiviet = loadone_baiviet($id);
+            $thongbao = 'update thất bại';
+        }
+    }
+    $loadbaiviet = loadall_baiviet();
+    include 'QTBV/list.php';
+    break;
+    //xóa
+case 'deletebv':
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        delete_baiviet($id);
+    }
+    $loadbaiviet = loadall_baiviet();
+    echo '<script>alert("vui long quay ve trang chu");</script>';
+    include 'QTBV/list.php';
+
+
+
+
+
+
+// đơn hàng
+case 'quyen':
+    $loadquyen = loadall_quyen();
+    include 'quyen/list.php';
+    break;
+
+    //thêm
+case 'addq':
+    if (isset($_POST['addq'])) {
+        $ten = $_POST['ten'];
+        $trang_thai = $_POST['trang_thai'];
+
+        add_quyen($ten, $trang_thai);
+    }
+    $loadquyen = loadall_quyen();
+    include 'quyen/add.php';
+    break;
+
+    //sửa
+case 'suaq':
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $loadq = loadone_quyen($id);
+    }
+    include 'quyen/update.php';
+    break;
+case 'updateq':
+    if (isset($_POST['submit'])) {
+         $id = $_POST['id'];
+        $ten = $_POST['ten'];
+        $trang_thai = $_POST['trang_thai'];
+        fix_quyen($id, $ten, $trang_thai);
+    }
+    $loadquyen = loadall_quyen();
+    include 'quyen/list.php';
+    break;
+
+
+    //xóa
+case 'deleteq':
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        delete_quyen($id);
+    }
+    $loadquyen = loadall_quyen();
+    include 'quyen/list.php';
+    break;
+        
 
 
         default:

@@ -11,14 +11,14 @@
 
 
 //load tổng số đơn hàng
-function load_so_don_hang()
-{
-    $sql = "SELECT COUNT(*) AS tong_so_don_hang
-    FROM donhang
-    WHERE trang_thai = '1';";
-    $donhang = pdo_query($sql);
-    return $donhang;
-}
+// function load_so_don_hang()
+// {
+//     $sql = "SELECT COUNT(*) AS tong_so_don_hang
+//     FROM donhang
+//     WHERE trang_thai = '1';";
+//     $donhang = pdo_query($sql);
+//     return $donhang;
+// }
 // load so đơn hàng chưa hoàn thành
 function load_sdh_chua_ht()
 {
