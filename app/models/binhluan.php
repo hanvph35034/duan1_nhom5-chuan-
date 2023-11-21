@@ -7,6 +7,7 @@ function load_binhluan(){
     $binhluan = pdo_query($sql);
     return $binhluan;
 }
+
 // load so binh luan cua san pham
 function load_so_binh_luan(){
     $sql = "SELECT *,count(binhluan.id) as sobinhluan, sanpham.id, sanpham.ten, sanpham.iddm from sanpham join binhluan on sanpham.id=binhluan.idsp group by sanpham.id;";
@@ -18,8 +19,7 @@ function load_so_binh_luan(){
 function insert_binhluan($id_sp, $noidung,$id_kh){
     $date = date('Y-m-d');
     $sql = "
-        INSERT INTO `binhluan`(`noidung`, `id_kh`, `id_sp`, `ngaybinhluan`) 
-        VALUES ('$noidung','$id_kh','$id_sp','$date');
+    INSERT INTO `binhluan`(`id_kh`, `ngay`, `noidung`, `id_sp`) VALUES ('$id_kh','$date','$noidung','$id_sp');
     ";
     pdo_execute($sql);
 }
