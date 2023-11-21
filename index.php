@@ -1,11 +1,25 @@
 <?php
+include "app/models/pdo.php";
 include "app/views/Client/header.php";
+include "app/models/taikhoan.php";
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
 
     switch ($act) {
         case 'login':
+            if(isset($_POST['btn']) && $_POST['btn']){
+                $user = $_POST['user'];
+                $pass = $_POST['pass'];
+                $tk = dangnhap($user, $pass);
+                var_dump($tk);
+                if ($tk!= false) {
+                    $_SESSION['user'] = $tk['user'];
+                } else {
+                    echo '<script>alert("Sai tai khoan hoac password")</script>';
+                }
+            break;
+        }
             include "app/views/Client/login.php";
             break;
         case 'baiviet1':

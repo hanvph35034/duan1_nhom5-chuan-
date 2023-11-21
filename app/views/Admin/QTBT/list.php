@@ -25,14 +25,14 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Quản trị biến thể</h3>
+                  <h3 class="card-title">Quản trị </h3>
                 </div>
               </div>
               <!-- /.card -->
 
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Bảng danh sách biến thể</h3>
+                  <h3 class="card-title">Bảng danh sách </h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -40,24 +40,32 @@
                     <thead>
                       <tr>
                         <th>STT</th>
-                        <th>Màu </th>
-                        <th>Size</th> 
+                        <th>ID đơn hàng </th>
+                        <th>ID sản phẩm</th> 
+                        <th>Tên sản phẩm</th>
                         <th>Số lượng</th>
-                        <th>Trạng Thái</th>
-                        <th> Sửa </th>
-                        <th> Xóa </th>
+                        <th>Thành tiền </th>
+                        <th>Tổng thanh toán</th>
+                        <th>Trạng thái Đơn hàng </th>
+                        <th>Ghi chú </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                    <?php foreach ($loadd as $row) {
+                        extract($row);
+                        echo ' <tr>
                         <td>1</td>
-                        <td>đỏ </td>
-                        <td>XL</td>
-                          <td>100</td>
-                          <td>0</td>
-                        <td><a href="?act=updatebt"> Sửa  </a></td>
-                        <td><a href=""> Xóa </a> </td>
-                      </tr>
+                        <td>'.$iddh.'</td>
+                        <td>'. $idsp .'</td>
+                        <td>'. $ten.'</td>
+                          <td>'.$so_luong.'</td>
+                          <td>' .$thanh_tien.'</td>
+                          <td>' .$thanh_tien.'</td>
+                          <td>'.$trang_thai.'</td>
+                        <td> '.$ghi_chu.' </td>
+                        
+                      </tr> ';  }?>
+                     
                     </tbody>
                  
                   </table>

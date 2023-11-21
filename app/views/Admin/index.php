@@ -4,6 +4,7 @@ include '../../models/pdo.php';
 include '../../models/danhmuc.php';
 include '../../models/binhluan.php';
 include '../../models/khachhang.php';
+include '../../models/donhang.php';
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
     switch ($act) {
@@ -148,6 +149,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
 
         case 'bienthe':
+         
+                $loadd = chitietdh();
+            
             include 'QTBT/list.php';
             break;
         case 'addbt':

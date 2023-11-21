@@ -38,3 +38,9 @@ function delete_don_hang($id){
     $sql = "DELETE from donhang where id = '$id';";
     pdo_execute($sql);
 }
+function chitietdh(){
+    $sql = "SELECT donhang.id as iddh, sanpham.id as idsp,sanpham.ten,ctdh.so_luong,ctdh.thanh_tien, ctdh.ghi_chu, donhang.trang_thai  FROM 
+    donhang JOIN ctdh on donhang.id = ctdh.id_dh JOIN sanpham on ctdh.id_sp = sanpham.id";
+    $donhang = pdo_query($sql);
+    return $donhang;
+}

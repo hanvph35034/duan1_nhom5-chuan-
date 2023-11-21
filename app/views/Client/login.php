@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from htmldemo.net/autima/autima/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Nov 2023 03:19:34 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -12,9 +13,9 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-     <!-- CSS 
+    <!-- CSS 
     ========================= -->
-     <!--bootstrap min css-->
+    <!--bootstrap min css-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!--owl carousel min css-->
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -34,10 +35,10 @@
     <link rel="stylesheet" href="assets/css/slinky.menu.css">
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="assets/css/plugins.css">
-    
+
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
     <!--modernizr min js here-->
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
 
@@ -75,14 +76,14 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="account_form">
                         <h2>login</h2>
-                        <form action="#">
+                        <form action="?act=login" method="post">
                             <p>
                                 <label>Username or email <span>*</span></label>
-                                <input type="text">
+                                <input type="text" name="user">
                             </p>
                             <p>
                                 <label>Passwords <span>*</span></label>
-                                <input type="password">
+                                <input type="password" name="pass">
                             </p>
                             <div class="login_submit">
                                 <a href="#">Lost your password?</a>
@@ -90,7 +91,7 @@
                                     <input id="remember" type="checkbox">
                                     Remember me
                                 </label>
-                                <button type="submit">login</button>
+                                <button value="btn" name="btn" type="submit">login</button>
 
                             </div>
 
@@ -100,7 +101,7 @@
                 <!--login area start-->
 
                 <!--register area start-->
-                <div class="col-lg-6 col-md-6">
+                <!-- <div class="col-lg-6 col-md-6">
                     <div class="account_form register">
                         <h2>Register</h2>
                         <form action="#">
@@ -118,11 +119,10 @@
                         </form>
                     </div>
                 </div>
-                <!--register area end-->
+               
             </div>
         </div>
-    </div>
-    <!-- customer login end -->
+    </div> -->
+                <!-- customer login end -->
 
-    <!--call to action start-->
- 
+                <!--call to action start-->

@@ -104,7 +104,7 @@
               <a href="?act=qtquyen" class="nav-link">Chức Vụ </a>
             </li>
             <li class="nav-item">
-              <a href="?act=bienthe" class="nav-link">Quản Lý biến thể </a>
+              <a href="?act=bienthe" class="nav-link">Chi tiết đơn hàng  </a>
             </li>
 
           </ul>
