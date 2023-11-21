@@ -1,6 +1,6 @@
 
    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+   <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
@@ -40,40 +40,32 @@
                     <thead>
                       <tr>
                         <th>STT</th>
-                        <th>Tên banner</th>
                         <th>Ảnh BANNER</th>
+                        <th>Tên banner</th>
                         <th>link </th>
                         <th>Sửa</th>
                         <th>Xóa</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>BANNER 1</td>
-                        <td>Ảnh banner</td>
-                        <td> link </td>
-                        <td><a href="?act=updatebanner"> Sửa </a></td>
-                        <td> <a href=""> Xóa</a> </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>BANNER 1</td>
-                        <td>Ảnh banner</td>
-                        <td> link </td>
-                        <td><a href="?act=updatebanner"> Sửa </a></td>
-                        <td> <a href=""> Xóa</a> </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>BANNER 1</td>
-                        <td>Ảnh banner</td>
-                        <td> link </td>
-                        <td><a href="?act=updatebanner"> Sửa </a></td>
-                        <td> <a href=""> Xóa</a> </td>
-                      </tr>
+                 <tbody>
+                      <?php 
+                        foreach($loadbanner as $listbn){
+                          extract($listbn);
+                          $linkimg = '../../views/Admin/img/' . $img;
+                          echo'
+                          <tr>
+                          <td>'.$id.'</td>
+                          <td><img src="' . $linkimg . '" alt="product" width="100"></td>
+                          <td>'.$ten.'</td>
+                          <td>'.$link.'</td>
+                          <td><a href="?act=suabn&&id='.$id.'"> Sửa </a></td>
+                          <td> <a href="?act=deletebn&&id='.$id.'"> Xóa</a> </td>
+                        </tr>
+                          ';
+                        
+                        }
+                      ?>
                     </tbody>
-                 
                   </table>
                   <div class="card-footer">
                     <button type="submit" class="btn btn-sidebar"><a href="?act=addbanner">Thêm </a></button>

@@ -5,13 +5,7 @@ function loadall_danhmuc(){
     $listdanhmuc = pdo_query($sql);
     return $listdanhmuc;
 }
-// //load ten danh muc
-// function load_name_danhmuc($iddm){
-//     $sql = "select * from danhmuc where id=".$iddm;
-//     $danhmuc = pdo_query_one($sql);
-//     extract($danhmuc);
-//     return $name;
-// }
+
 
 // load danh muc xoa mem
 function loadall_danhmuc_xoamem(){

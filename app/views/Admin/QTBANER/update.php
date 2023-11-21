@@ -29,25 +29,52 @@
               <h3 class="card-title">UPDATE BANNER</h3>
             </div>
          
-            <form>
+            <form action="index.php?act=updatebn" method="post" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Tên banner</label>
-                  <input type="text" class="form-control"  placeholder="Thêm banner mới">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Ảnh banner</label>
-                  <input type="file" class="form-control"  >
-                </div>  <div class="form-group">
-                  <label for="exampleInputEmail1">Link</label>
-                  <input type="text" class="form-control"  placeholder="Thêm banner mới">
-                </div>
+                <?php
+                  if (is_array($banner)) {
+                    extract($banner);
+                    $linkimg = '../../views/Admin/img/' . $img;
+                  ?>
+                  <div class="form-group">
+                  
+                  <label for="exampleInputEmail1">Update</label>
+                  <input type="hidden" name="id" class="form-control" value="<?php if (isset($id) && ($id != '')) echo $id ?>">
+                        <label for="img">Ảnh banner</label><br>
+                        <?php if (isset($linkimg) && $linkimg != '') : ?>
+                          <img src="<?php echo $linkimg; ?>" alt="product" width="100">
+                        <?php endif; ?>
+                        <input type="file" name="img" id="img">
+                      </div>
+                    
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Tên</label>
+                        <input name="ten" type="text" class="form-control" value="<?php if (isset($ten) && ($ten != '')) echo $ten ?>">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">link</label>
+                        <input name="link" type="text" class="form-control" value="<?php if (isset($link) && ($link != '')) echo $link ?>">
+                      </div>
+                    </div>
                 </div>
               </div>
-        
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">UPDATE </button>
-              </div>
+          </div>
+
+        <?php
+                  }
+
+        ?>
+        <div class="card-footer">
+          <button type="submit" name="submit" class="btn btn-primary">UPDATE</button>
+        </div>
+        <?php
+                if (isset($thongbao) && ($thongbao) != "") {
+                    echo $thongbao;
+                }
+                ?>
             </form>
           </div>
         </div>

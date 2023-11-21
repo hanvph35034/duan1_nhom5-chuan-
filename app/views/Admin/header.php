@@ -101,7 +101,7 @@
               <a href="?act=qtbv" class="nav-link">Quản Lý bài viết </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtquyen" class="nav-link">Chức Vụ </a>
+              <a href="?act=quyen" class="nav-link">Chức Vụ </a>
             </li>
             <li class="nav-item">
               <a href="?act=bienthe" class="nav-link">Chi tiết đơn hàng  </a>

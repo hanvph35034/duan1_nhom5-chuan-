@@ -1,11 +1,11 @@
 
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản trị bài viết</h1>
+            <h1>Quản trị BANNER</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -26,42 +26,40 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Thêm bài viết</h3>
+                <h3 class="card-title">Thêm mới Bài viết</h3>
               </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form>
+           
+              <form action="index.php?act=addbaiviet" method="post" enctype="multipart/form-data">
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Tên bài viết</label>
-                    <input type="text" class="form-control"  placeholder="Thêm  mới">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Tiêu đề</label>
+                    <input type="text" name="tieu_de" id="tieu_de" class="form-control"  placeholder="Tiêu đề bài viết">
+                  </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Ảnh bài viết</label>
+                    <br>
+                    <input type="file" name="img" id="img">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Ngày Đăng</label>
-                    <input type="date" class="form-control"  >
+                    <label for="exampleInputEmail1">Nội Dung</label>
+                    <input type="text" name="noi_dung" id="noi_dung" class="form-control"  placeholder="Nội dung bài viết">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Ảnh</label>
-                    <input type="file" class="form-control"  >
+                    <label for="exampleInputEmail1">Ngày đăng</label>
+                    <input type="date" name="ngay_dang" id="ngay_dang" class="form-control"  placeholder="Nội dung bài viết">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Nội dung</label>
-                    <input type="text" class="form-control"  placeholder="Thêm nội dung mới">
-                  </div>
+                    
+                  
                   </div>
                 </div>
-                <!-- /.card-body -->
+          
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Thêm mới</button>
+                  <button type="submit" class="btn btn-primary" name="addbaiviet" >Thêm mới </button>
                 </div>
               </form>
             </div>
           </div>
-          <!--/.col (left) -->
-          <!-- right column -->
-          
-          <!--/.col (right) -->
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->

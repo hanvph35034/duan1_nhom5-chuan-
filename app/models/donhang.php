@@ -9,12 +9,34 @@ function load_donhang($id){
     return $donhang;
 }
 //load tổng số đơn hàng
-function load_so_don_hang(){
-    $sql = "SELECT COUNT(*) AS tong_so_don_hang
-    FROM donhang
-    WHERE trang_thai = '1';";
-    $donhang = pdo_query($sql);
-    return $donhang;
+
+function fix_donhang($id, $ngay_dat, $tong_gia, $trang_thai, $id_kh)
+{
+    // Assuming you have a PDO object named $pdo
+    $sql = "UPDATE `donhang` SET 
+                `ngay_dat` = '$ngay_dat', 
+                `tong_gia` = '$tong_gia', 
+                `trang_thai` = '$trang_thai', 
+                `id_kh` = '$id_kh' 
+            WHERE `id` = $id";
+    pdo_execute($sql);
+}
+// 
+function add_donhang($ngay_dat,$tong_gia,$trang_thai,$id_kh)
+{
+    $sql = "INSERT INTO `donhang` (`ngay_dat`, `tong_gia`, `trang_thai`, `id_kh`)
+                VALUES ('$ngay_dat', '$tong_gia', '$trang_thai', '$id_kh')";
+    pdo_execute($sql);
+}
+function loadone_donhang($id){
+    $sql = "select * from donhang where id = '$id'";
+    $dh = pdo_query_one($sql);
+    return $dh;
+}
+function loadall_donhang(){
+    $sql = "select * from donhang where 1";
+    $listdonhang = pdo_query($sql);
+    return $listdonhang;
 }
 // load so đơn hàng chưa hoàn thành
 function load_sdh_chua_ht(){
