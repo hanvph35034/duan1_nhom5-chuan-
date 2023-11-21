@@ -1,107 +1,46 @@
 <?php
 include 'header.php';
-
 include '../../models/pdo.php';
-include '../../models/banner.php';
-include '../../models/sanpham.php';
-include '../../models/baiviet.php';
-include '../../models/danhmuc.php';
-include '../../models/binhluan.php';
-include '../../models/khachhang.php';
-include '../../models/quyen.php';
-include '../../models/donhang.php';
+include '../../controllers/AdminController.php';
+
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
     switch ($act) {
             // quản trị bình luận
         case 'listbl':
-            $load_binhluan =  load_binhluan();
-            include 'listbl.php';
-            break;
+            listbl();
+            break;  
         case 'deletebl':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                delete_binhluan($id);
-            }
-            $load_binhluan = load_binhluan();
-            include 'listbl.php';
+            deletebl();
             break;
             //  danh mục
         case 'qtdm':
-            $loaddm = loadall_danhmuc();
-            include 'QTDM/list.php';
+          qtdm();
             break;
         case 'adddm':
-            if (isset($_POST['submit'])) {
-                $error = [];
-                if (empty($_POST['addm'])) {
-                    $error['addm'] = "Vui lòng nhập";
-                } else {
-                    $them = $_POST['addm'];
-                }
-                if (empty($error)) {
-                    insert_danhmuc($them);
-                }
-            }
-            include 'QTDM/add.php';
+           adddm();
             break;
         case 'suadm':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                $loadd = loadone_danhmuc($id);
-            }
-            include 'QTDM/update.php';
+            suadm();
             break;
         case 'updatedm':
-            if (isset($_POST['submit'])) {
-                $update = $_POST['tendm'];
-                $id = $_POST['iddm'];
-                fix_danhmuc($id, $update);
-            }
-            $loaddm = loadall_danhmuc();
-            include 'QTDM/list.php';
+            updatedm();
             break;
         case 'deletedm':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                delete_danhmuc($id);
-            }
-            $loaddm = loadall_danhmuc();
-            echo '<script>alert("vui long quay ve trang chu");</script>';
-            include 'QTDM/list.php';
+            deletedm();
             break;
-            // khách hàng
         case 'qtkh':
-            $loadkh = loadall_khachhang();
-            include 'QTKH/list.php';
-            break;
+               qtkh();
+               break; 
         case 'deletekh':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                delete_khachhang($id);
-            }
-            $loadkh = loadall_khachhang();
-            include 'QTKH/list.php';
+        deletekh();
             break;
         case 'updatekh':
             include 'QTKH/list.php';
             break;
         case 'addkh':
-            if (isset($_POST['submit'])) {
-                $user = $_POST['user'];
-                $pass = $_POST['pass'];
-                $ten_dn = $_POST['ten_dn'];
-                $diachi = $_POST['diachi'];
-                $sdt = $_POST['sdt'];
-                $email = $_POST['email'];
-                $date = $_POST['date'];
-                insert_khachhang($user, $pass, $ten_dn, $diachi, $sdt, $email, $date);
-            }
-            include 'QTKH/add.php';
+            addkh();
             break;
-
-
-
             // đơn hàng
         case 'qtdh':
             $loaddh = loadall_donhang();
