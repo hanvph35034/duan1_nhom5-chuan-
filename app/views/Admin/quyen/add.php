@@ -1,11 +1,13 @@
 
+
+  
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Quản trị Quyền</h1>
+            <h1>Quản trị chức vụ</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -26,32 +28,36 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Thêm mới Quyền</h3>
+                <h3 class="card-title">Thêm mới chức vụ</h3>
               </div>
-              <form>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="index.php?act=addq" method="post" enctype="multipart/form-data">
                 <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Tên Chức vụ</label>
+                    <input type="text" name="ten" id="ten" class="form-control"  placeholder="Chức Vụ">
+                  </div>
+                
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Thêm mới</label>
-                    <input type="text" class="form-control"  placeholder="Thêm quyền mới">
+                    <label for="exampleInputEmail1">Trạng Thái</label>
+                    <input type="text" name="trang_thai" id="trang_thai" class="form-control"  placeholder="Trạng thái">
                   </div>
                   </div>
                 </div>
-                <!-- /.card-body -->
+          
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Thêm mới</button>
+                  <button type="submit" class="btn btn-primary" name="addq" >Thêm mới </button>
                 </div>
               </form>
             </div>
           </div>
-          
-          
-          <!--/.col (right) -->
+         
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+       
+      </div>
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-  
+

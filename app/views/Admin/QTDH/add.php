@@ -32,24 +32,32 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form action="index.php?act=adddh" method="post" enctype="multipart/form-data">
                 <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Ngày lên đơn</label>
+                    <input type="date" name="ngay_dat" id="ngay_dat" class="form-control"  placeholder="Ngày lên đơn">
+                  </div>
+                
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Tên MÃ Đơn Hàng</label>
-                    <input type="text" class="form-control"  placeholder="Tên Đơn Hàng">
+                    <label for="exampleInputEmail1">Tổng Giá</label>
+                    <input type="text" name="tong_gia" id="tong_gia" class="form-control"  placeholder="Tổng Giá">
+                  </div>
+                    
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Trạng thái đơn hàng</label>
+                    <input type="text" name="trang_thai" id="trang_thai" class="form-control"  placeholder="Trạng thái đơn hàng">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">mô tả</label>
-                    <input type="text" class="form-control"  placeholder="Mô tả ">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Giá khuyến mại</label>
-                    <input type="text" class="form-control"  placeholder="Giá Khuyến mại">
+                    <label for="exampleInputEmail1">Trạng thái đơn hàng</label>
+                    <input type="text" name="id_kh" id="id_kh" class="form-control"  placeholder="ID khách hàng">
                   </div>
                   </div>
                 </div>
+          
+
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" name="adddh" >Thêm mới </button>
                 </div>
               </form>
             </div>

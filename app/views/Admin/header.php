@@ -52,14 +52,32 @@
 
       <!-- Sidebar -->
       <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <img src="../../../public/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-          </div>
-          <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
-          </div>
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <?php
+          if (isset($_SESSION['user'])) {
+            extract($_SESSION['user']);
+            $linkimg = '../../views/Admin/img/' . $img_nguoi_dung;
+          ?>
+            <div class="image">
+              <a href="index.php?act=suanguoidung&&id=<?= $id ?>">
+                <img src="<?= $linkimg ?>" class="img-circle elevation-2" alt="User Image">
+            </a>
+            </div>
+            <div class="info">
+              <a href="index.php?act=suanguoidung&&id=<?= $id ?>" class="d-block"><?= $ten_nguoi_dung ?></a>
+            </div>
+          <?php
+          } else {
+          ?>
+            <div class="image">
+              <img src="../../view/img/macdinh.png" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">Người dùng</a>
+            </div>
+          <?php
+          }
+          ?>
         </div>
 
         <!-- SidebarSearch Form -->
@@ -101,7 +119,7 @@
               <a href="?act=qtbv" class="nav-link">Quản Lý bài viết </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtquyen" class="nav-link">Chức Vụ </a>
+              <a href="?act=quyen" class="nav-link">Chức Vụ </a>
             </li>
             <li class="nav-item">
               <a href="?act=nguoidung" class="nav-link">người dùng </a>

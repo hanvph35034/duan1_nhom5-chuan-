@@ -1,7 +1,7 @@
 <?php
 // load danh muc
 function loadall_danhmuc(){
-    $sql = "SELECT `id`, `ten`, `trang_thai` FROM `danhmuc` WHERE 1";
+    $sql = "SELECT * FROM `danhmuc` WHERE 1";
     $listdanhmuc = pdo_query($sql);
     return $listdanhmuc;
 }

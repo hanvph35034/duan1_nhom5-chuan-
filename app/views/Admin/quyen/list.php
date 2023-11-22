@@ -1,17 +1,18 @@
 
    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+   <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Quản trị danh mục</h1>
+              <h1>Quản lý chức vụ</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">danh sách danh mục</li>
+                <li class="breadcrumb-item active">danh sách Chức vụ</li>
+         
               </ol>
             </div>
           </div>
@@ -25,14 +26,14 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Quản trị Quyền </h3>
+                  <h3 class="card-title">Quản lý chức vụ </h3>
                 </div>
               </div>
               <!-- /.card -->
 
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Bảng danh sách quyền</h3>
+                  <h3 class="card-title">Bảng danh sách chức vụ</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -40,36 +41,35 @@
                     <thead>
                       <tr>
                         <th>STT</th>
-                        <th>Tên Quyền</th>
-                        <th>Sửa </th>
-                        <th>Xóa  </th>
+                        <th>Tên chức vụ</th>
+                        <th>trạng thái</th>
+                        <th>Sửa chức vụ</th>
+                        <th>Xóa chức vụ (xóa mềm) </th>
+                        <th>Xóa chức vụ (xóa cứng) </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Admin</td>
-                        <td><a href="?act=updatequyen"> Sửa  </a></td>
-                        <td><a href=""> Xóa </a> </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Admin</td>
-                        <td><a href="?act=updatequyen"> Sửa  </a></td>
-                        <td><a href=""> Xóa </a> </td>
-                      </tr>
-                      <tr>
-                        <td>1</td>
-                        <td>Admin</td>
-                        <td><a href="?act=updatequyen"> Sửa  </a></td>
-                        <td><a href=""> Xóa  </a> </td>
-                      </tr>
-                      
+                      <?php 
+                        foreach($loadquyen as $lisdm){
+                          extract($lisdm);
+                          echo'
+                          <tr>
+                          <td>'.$id.'</td>
+                          <td>'.$ten.'</td>
+                          <td>'.$trang_thai.'</td>
+                          <td><a href="?act=suaq&&id='.$id.'"> Sửa chức vụ </a></td>
+                          <td> <a href="?act=deleteq&&id='.$id.'"> Xóa chức vụ <br> (xóa mềm)</a> </td>
+                          <td><a href=""> Xóa chức vụ <br> (xóa cứng)</a> </td>
+                        </tr>
+                          ';
+                        
+                        }
+                      ?>
                     </tbody>
                  
                   </table>
                   <div class="card-footer">
-                    <button type="submit" class="btn btn-sidebar"><a href="?act=addquyen">Thêm Quyền </a></button>
+                    <button type="submit" class="btn btn-sidebar"><a href="?act=addq">Thêm quyền</a></button>
                   </div>
                 </div>
                 <!-- /.card-body -->
