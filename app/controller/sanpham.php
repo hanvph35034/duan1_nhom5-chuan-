@@ -95,7 +95,7 @@ function updatesanpham()
     $loadsp = loadone_sanpham($_GET['id']);
     var_dump($loadsp);
     // $loadsanpham = loadall_sanpham();
-    include 'QTSP/list.php';
+    include 'QTSP/update.php';
 }
 
 function xoasanpham()
