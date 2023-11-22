@@ -43,8 +43,7 @@
                         <th>STT</th>
                         <th>Tên danh mục</th>
                         <th>Sửa danh mục</th>
-                        <th>Xóa danh mục (xóa mềm) </th>
-                        <th>Xóa danh mục (xóa cứng) </th>
+                        <th>Xóa danh mục  </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -54,10 +53,10 @@
                           echo'
                           <tr>
                           <td>'.$id.'</td>
-                          <td>'.$ten.'</td>
+                          <td>'.$Danhmuc.'</td>
                           <td><a href="?act=suadm&&id='.$id.'"> Sửa danh mục </a></td>
-                          <td> <a href="?act=deletedm&&id='.$id.'"> Xóa danh mục <br> (xóa mềm)</a> </td>
-                          <td><a href=""> Xóa danh mục <br> (xóa cứng)</a> </td>
+                          <td> <a href="?act=deletedm&&id='.$id.'"> Xóa danh mục</a> </td>
+                        
                         </tr>
                           ';
                         

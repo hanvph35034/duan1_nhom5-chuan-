@@ -1,12 +1,17 @@
 <?php
 // them tai khoan / dang ky
-function insert_taikhoan( $user, $ten ,$email , $pass)
+function insert_taikhoan( $user,  $pass,$ten_dn ,$Email ,$sdt,$dia_chi)
 {
-    $sql = "INSERT INTO `khachhang`( `ten_dn`, `ten`,`email`,`mat_khau`   ) VALUES ('$user','$ten','$email','$pass')";
+    $sql = "INSERT INTO `tai_khoan`( `User`, `pass`, `ten_dn`, `Email`, `sdt`, `dia_chi`, `id_quyen`)
+     VALUES ('$user','','$pass','$ten_dn','$Email','$sdt','$dia_chi')";
     pdo_execute($sql);
 }
 
-
+function loadall_taikhoan(){
+    $sql = "select * from tai_khoan where 1";
+    $listkh = pdo_query($sql);
+    return $listkh;
+}
 
 
 // dang nhap
@@ -57,9 +62,9 @@ function suatk($id, $user, $email, $sdt, $pass, $address, $img)
 }
 
 // xoa tai khoan
-function delete_khachhang($id)
+function delete_taikhoan($id)
 {
-    $sql = "delete from taikhoan where id = '$id'";
+    $sql = "delete from tai_khoan where id = '$id'";
     pdo_execute($sql);
 }
 

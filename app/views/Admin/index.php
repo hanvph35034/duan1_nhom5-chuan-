@@ -13,16 +13,16 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             // quản trị bình luận
         case 'listbl':
             listbl();
-            break;  
+            break;
         case 'deletebl':
             deletebl();
             break;
             //  danh mục
         case 'qtdm':
-          qtdm();
+            qtdm();
             break;
         case 'adddm':
-           adddm();
+            adddm();
             break;
         case 'suadm':
             suadm();
@@ -34,10 +34,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             deletedm();
             break;
         case 'qtkh':
-               qtkh();
-               break; 
+            qtkh();
+            break;
         case 'deletekh':
-        deletekh();
+            deletekh();
             break;
         case 'updatekh':
             include 'QTKH/list.php';
@@ -215,161 +215,133 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include 'QTBANER/add.php';
             break;
-            case 'suabn':
-                if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
+        case 'suabn':
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $banner = loadone_banner($id);
+            }
+            include 'QTBANER/update.php';
+            break;
+
+        case 'updatebn':
+            if (isset($_POST['submit'])) {
+                $id = $_POST['id'];
+                $ten = $_POST['ten'];
+                $link = $_POST['link'];
+                $img = $_FILES['img']['name'];
+                $target_dir = '../../view/Admin/img/';
+                $target_file = $target_dir . basename($img);
+                move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
+                if ($ten != "") {
+                    update_banner($id, $img, $ten, $link);
+                    $loadbn = loadone_banner($id);
+                    $thongbao = 'update banner thành công';
+                } else {
                     $banner = loadone_banner($id);
+                    $thongbao = 'update thất bại';
                 }
-                include 'QTBANER/update.php';
-                break;
-    
-            case 'updatebn':
-                if (isset($_POST['submit'])) {
-                    $id = $_POST['id'];
-                    $ten = $_POST['ten'];
-                    $link = $_POST['link'];
-                    $img = $_FILES['img']['name'];
-                    $target_dir = '../../view/Admin/img/';
-                    $target_file = $target_dir . basename($img);
-                    move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
-                    if ($ten != "") {
-                        update_banner($id, $img, $ten, $link);
-                        $loadbn = loadone_banner($id);
-                        $thongbao = 'update banner thành công';
-                    } else {
-                        $banner = loadone_banner($id);
-                        $thongbao = 'update thất bại';
-                    }
-                }
-                $loadbanner = loadall_banner();
-                include 'QTBANER/list.php';
-                break;
-                //xóa
-            case 'deletebn':
-                if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
-                    delete_banner($id);
-                }
-                $loadbanner = loadall_banner();
-                include 'QTBANER/list.php';
+            }
+            $loadbanner = loadall_banner();
+            include 'QTBANER/list.php';
+            break;
+            //xóa
+        case 'deletebn':
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                delete_banner($id);
+            }
+            $loadbanner = loadall_banner();
+            include 'QTBANER/list.php';
             // bài viết
-            case 'qtbv':
-                $loadbaiviet = loadall_baiviet();
-                include 'QTBV/list.php';
-                break;
-                //thêm
-            case 'addbaiviet':
-                if (isset($_POST['addbaiviet'])) {
-                    $tieu_de = $_POST['tieu_de'];
-                    $noi_dung = $_POST['noi_dung'];
-                    $ngay_dang = $_POST['ngay_dang'];
-                    $target_dir1 = '../../views/Admin/img/';
-            
-                    $img = $_FILES['img']['name'];
-                    $target_file1 = $target_dir1 . basename($img);
-                    move_uploaded_file($_FILES['img']['tmp_name'], $target_file1);
-                    if ($tieu_de != '' && $noi_dung != '' && $ngay_dang != ''&& $ngay_dang != '') {
-                        add_baiviet($tieu_de, $img, $noi_dung,$ngay_dang);
-                        $thongbao = 'Thêm banner thành công';
-                    } else {
-                        $thongbao = 'Thất bại';
-                    }
+        case 'qtbv':
+            $loadbaiviet = loadall_baiviet();
+            include 'QTBV/list.php';
+            break;
+            //thêm
+        case 'addbaiviet':
+            if (isset($_POST['addbaiviet'])) {
+                $tieu_de = $_POST['tieu_de'];
+                $noi_dung = $_POST['noi_dung'];
+                $ngay_dang = $_POST['ngay_dang'];
+                $target_dir1 = '../../views/Admin/img/';
+
+                $img = $_FILES['img']['name'];
+                $target_file1 = $target_dir1 . basename($img);
+                move_uploaded_file($_FILES['img']['tmp_name'], $target_file1);
+                if ($tieu_de != '' && $noi_dung != '' && $ngay_dang != '' && $ngay_dang != '') {
+                    add_baiviet($tieu_de, $img, $noi_dung, $ngay_dang);
+                    $thongbao = 'Thêm banner thành công';
+                } else {
+                    $thongbao = 'Thất bại';
                 }
-            
-                include 'QTBV/add.php';
-                break;
-                //sửa
-            case 'suabv':
-                if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
+            }
+
+            include 'QTBV/add.php';
+            break;
+            //sửa
+        case 'suabv':
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $baiviet = loadone_baiviet($id);
+            }
+            include 'QTBV/update.php';
+            break;
+
+        case 'updatebv':
+            if (isset($_POST['submit'])) {
+                $id = $_POST['id'];
+                $tieu_de = $_POST['tieu_de'];
+                $noi_dung = $_POST['noi_dung'];
+                $ngay_dang = $_POST['ngay_dang'];
+                $img = $_FILES['img']['name'];
+                $target_dir = '../../img/';
+                $target_file = $target_dir . basename($img);
+                move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
+                if ($tieu_de != "") {
+                    update_baiviet($id, $tieu_de, $img, $noi_dung, $ngay_dang);
+                    $loadbn = loadone_baiviet($id);
+                    $thongbao = 'update bV thành công';
+                } else {
                     $baiviet = loadone_baiviet($id);
+                    $thongbao = 'update thất bại';
                 }
-                include 'QTBV/update.php';
-                break;
-            
-            case 'updatebv':
-                if (isset($_POST['submit'])) {
-                    $id = $_POST['id'];
-                    $tieu_de = $_POST['tieu_de'];
-                    $noi_dung = $_POST['noi_dung'];
-                    $ngay_dang = $_POST['ngay_dang'];
-                    $img = $_FILES['img']['name'];
-                    $target_dir = '../../img/';
-                    $target_file = $target_dir . basename($img);
-                    move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
-                    if ($tieu_de != "") {
-                        update_baiviet($id, $tieu_de,$img, $noi_dung, $ngay_dang);
-                        $loadbn = loadone_baiviet($id);
-                        $thongbao = 'update bV thành công';
-                    } else {
-                        $baiviet = loadone_baiviet($id);
-                        $thongbao = 'update thất bại';
-                    }
+            }
+            $loadbaiviet = loadall_baiviet();
+            include 'QTBV/list.php';
+            break;
+            //xóa
+        case 'deletebv':
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                delete_baiviet($id);
+            }
+            $loadbaiviet = loadall_baiviet();
+            echo '<script>alert("vui long quay ve trang chu");</script>';
+            include 'QTBV/list.php';
+
+
+        case 'quyen':
+            $loadquyen = loadall_quyen();
+            include 'quyen/list.php';
+            break;
+
+            //thêm
+
+            //sửa
+        case 'suaq':
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (isset($_POST['btn'])) {
+                    $quyen = $_POST['quyen'];
+                     fix_quyen($_GET['id'], $quyen);                    
+                     header("Location: ?act=quyen");
                 }
-                $loadbaiviet = loadall_baiviet();
-                include 'QTBV/list.php';
-                break;
-                //xóa
-            case 'deletebv':
-                if (isset($_GET['id'])) {
-                    $id = $_GET['id'];
-                    delete_baiviet($id);
-                }
-                $loadbaiviet = loadall_baiviet();
-                echo '<script>alert("vui long quay ve trang chu");</script>';
-                include 'QTBV/list.php';
-            
-            
-                case 'quyen':
-                    $loadquyen = loadall_quyen();
-                    include 'quyen/list.php';
-                    break;
-                
-                    //thêm
-                case 'addq':
-                    if (isset($_POST['addq'])) {
-                        $ten = $_POST['ten'];
-                        $trang_thai = $_POST['trang_thai'];
-                
-                        add_quyen($ten, $trang_thai);
-                    }
-                    $loadquyen = loadall_quyen();
-                    include 'quyen/add.php';
-                    break;
-                
-                    //sửa
-                case 'suaq':
-                    if (isset($_GET['id'])) {
-                        $id = $_GET['id'];
-                        $loadq = loadone_quyen($id);
-                    }
-                    include 'quyen/update.php';
-                    break;
-                case 'updateq':
-                    if (isset($_POST['submit'])) {
-                         $id = $_POST['id'];
-                        $ten = $_POST['ten'];
-                        $trang_thai = $_POST['trang_thai'];
-                        fix_quyen($id, $ten, $trang_thai);
-                    }
-                    $loadquyen = loadall_quyen();
-                    include 'quyen/list.php';
-                    break;
-                
-                
-                    //xóa
-                case 'deleteq':
-                    if (isset($_GET['id'])) {
-                        $id = $_GET['id'];
-                        delete_quyen($id);
-                    }
-                    $loadquyen = loadall_quyen();
-                    include 'quyen/list.php';
-                    break;
+            }
+            $loada = loada_quyen();
+            $loadquyen = loadall_quyen();
+            include 'quyen/update.php';
+            break;
         case 'bienthe':
-
             $loadd = chitietdh();
-
             include 'QTBT/list.php';
             break;
         case 'addbt':

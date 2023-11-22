@@ -13,6 +13,11 @@ function load_so_don_hang()
 }
 
 function loadall_quyen(){
+    $sql = "SELECT tai_khoan.User ,tai_khoan.id,  quyen.id_quyen , quyen.quyen FROM tai_khoan, quyen WHERE tai_khoan.id_quyen = quyen.id_quyen";
+    $listquyen = pdo_query($sql);
+    return $listquyen;
+}
+function loada_quyen(){
     $sql = "SELECT * FROM `quyen` WHERE 1";
     $listquyen = pdo_query($sql);
     return $listquyen;
@@ -32,8 +37,8 @@ function loadone_quyen($id){
     $quyen = pdo_query_one($sql);
     return $quyen;
 }
-function fix_quyen($id, $ten,$trang_thai){
-    $sql = "UPDATE `quyen` SET `ten`='$ten',`trang_thai`='$trang_thai' WHERE  id = '$id'";
+function fix_quyen($id, $quyen){
+    $sql = "UPDATE tai_khoan SET `id_quyen` = $quyen WHERE id = '$id'";
     pdo_execute($sql);
 }
 

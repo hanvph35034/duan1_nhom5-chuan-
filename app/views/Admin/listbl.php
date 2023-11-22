@@ -57,7 +57,7 @@
                         extract($row);
                           echo '  <tr>
                           <td>'.$id.'</td>
-                          <td>'.$ten.' </td>
+                          <td>'.$ten_dn.' </td>
                           <td><a>'.$tensp. ' </a></td>
                           <td> '.$img_dai_dien.' </td>
                           <td>'.$ndbl.'</td>

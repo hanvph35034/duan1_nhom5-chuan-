@@ -86,7 +86,7 @@
               <a href="?act=qtdm" class="nav-link">Quản Lý danh mục </a>
             </li>
             <li class="nav-item">
-              <a href="?act=qtkh" class="nav-link">Quản Lý Khách hàng </a>
+              <a href="?act=qtkh" class="nav-link">Quản Lý Tài Khoản</a>
             </li>
             <li class="nav-item">
               <a href="?act=qtdh" class="nav-link">Quản Lý Đơn hàng </a>

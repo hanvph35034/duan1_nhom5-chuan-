@@ -57,17 +57,13 @@
                     <label for="exampleInputEmail1">email </label>
                     <input name ="email" type="text" class="form-control"  placeholder="Thêm  mới">
                   </div>
-                  <div class="form-group">
-                    <label  >Ngày Sinh </label>
-                    <input name="date" type="date" class="form-control"  placeholder="Thêm  mới">
-                  </div>
                   
                   </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button name="submit"  type="submit" class="btn btn-primary">Submit</button>
+                  <button name="submit"  type="submit" class="btn btn-primary">Gửi </button>
                 </div>
               </form>
             </div>

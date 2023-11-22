@@ -41,32 +41,29 @@
                     <thead>
                       <tr>
                         <th>STT</th>
+                        <th>Tên người dùng</th>
                         <th>Tên chức vụ</th>
-                        <th>trạng thái</th>
-                        <th>Sửa chức vụ</th>
-                        <th>Xóa chức vụ  </th>
                       
+                        <th>Sửa chức vụ</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php 
+                      $i =1;
                         foreach($loadquyen as $lisdm){
                           extract($lisdm);
                           echo'
                           <tr>
-                          <td>'.$id.'</td>
-                          <td>'.$ten_quyen.'</td>
-                          <td>'.$trang_thai.'</td>
-                          <td><a href="?act=suaq&&id='.$id.'"> Sửa chức vụ </a></td>
-                          <td> <a href="?act=deleteq&&id='.$id.'"> Xóa chức vụ  </td>
-                         
+                          <td>'.$i++.'</td>
+                          <td>'.$quyen.'</td>
+                          <td>'.$User.'</td>
+                          <td><a href="?act=suaq&id='.$id.'"> Sửa chức vụ </a></td>       
                         </tr>
                           ';
                         
                         }
                       ?>
                     </tbody>
-                 
                   </table>
                   <div class="card-footer">
                     <button type="submit" class="btn btn-sidebar"><a href="?act=addq">Thêm quyền</a></button>

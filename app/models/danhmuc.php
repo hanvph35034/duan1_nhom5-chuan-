@@ -1,7 +1,7 @@
 <?php
 // load danh muc
 function loadall_danhmuc(){
-    $sql = "SELECT `id`, `ten`, `trang_thai` FROM `danhmuc` WHERE 1";
+    $sql = "SELECT * FROM `Danhmuc`  WHERE 1";
     $listdanhmuc = pdo_query($sql);
     return $listdanhmuc;
 }
@@ -15,8 +15,8 @@ function loadall_danhmuc_xoamem(){
 }
 
 // them danh muc 
-function insert_danhmuc($ten){
-    $sql = "INSERT INTO `danhmuc`(`ten`) VALUES ('$ten')";
+function insert_danhmuc($Danhmuc){
+    $sql = "INSERT INTO `danhmuc`(`Danhmuc`) VALUES ('$Danhmuc')";
     pdo_execute($sql);
 }
 
@@ -47,7 +47,7 @@ function restore_danhmuc($id){
 
 // sua danh muc
 function fix_danhmuc($id, $ten){
-    $sql = "update danhmuc set ten = '$ten' where id = '$id'";
+    $sql = "update danhmuc set `Danhmuc`='$ten'  where id = '$id'";
     pdo_execute($sql);
 }
 

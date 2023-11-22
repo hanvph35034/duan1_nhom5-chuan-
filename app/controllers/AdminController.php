@@ -36,6 +36,7 @@ function adddm(){
     }
     include 'QTDM/add.php';
 }
+
 function qtdm(){
     $loaddm = loadall_danhmuc();
     include 'QTDM/list.php';
@@ -66,19 +67,16 @@ function deletedm(){
     include 'QTDM/list.php';
 }
 function qtkh(){
-    $loadkh = loadall_khachhang();
+    $loadkh = loadall_taikhoan();
     include 'QTKH/list.php';
 }
 function deletekh(){
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-        delete_khachhang($id);
+        delete_taikhoan($id);
     }
-    $loadkh = loadall_khachhang();
+    $loadkh = loadall_taikhoan();
     include 'QTKH/list.php';
-}
-function updatekh(){
-
 }
 function addkh(){
     if (isset($_POST['submit'])) {
@@ -88,8 +86,7 @@ function addkh(){
         $diachi = $_POST['diachi'];
         $sdt = $_POST['sdt'];
         $email = $_POST['email'];
-        $date = $_POST['date'];
-        insert_khachhang($user, $pass, $ten_dn, $diachi, $sdt, $email, $date);
+        insert_taikhoan($user, $pass, $ten_dn, $email, $sdt , $diachi);
     }
     include 'QTKH/add.php';
 }

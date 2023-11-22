@@ -4,12 +4,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Quản trị khách hàng</h1>
+          <h1>Quản trị tài khoản</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">danh sách khách hàng</li>
+            <li class="breadcrumb-item active">danh sách tài khoản</li>
           </ol>
         </div>
       </div>
@@ -23,9 +23,9 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Quản trị khách hàng </h3>
+              <h3 class="card-title">Quản trị tài khoản </h3>
               <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="?act=addkh">Thêm Khách hàng</a></li>
+            <li class="breadcrumb-item"><a href="?act=addkh">Thêm tài khoản</a></li>
           </ol>
             </div>
           </div>
@@ -33,7 +33,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Bảng danh sách khách hàng</h3>
+              <h3 class="card-title">Bảng danh sách tài khoản</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -42,7 +42,7 @@
              
                   <tr>
                     <th>STT</th>
-                    <th>Tên khách hàng</th>
+                    <th>Tên Tài Khoản</th>
                     <th>Email</th>
                     <th>Số điện thoại</th>
                     <th>Địa chỉ</th>
@@ -56,9 +56,9 @@
                     extract($khachhang);
                     echo' <tr>
                     <td>'.$id.'</td>
-                    <td>'.$ten.'</td>
-                    <td>'.$email.'</td>
-                    <td>'.$so_dien_thoai.'</td>
+                    <td>'.$User.'</td>
+                    <td>'.$Email.'</td>
+                    <td>'.$sdt.'</td>
                     <td>'.$dia_chi.'</td>
                     <td><a href="?act=deletekh&&id='.$id.'"> Xóa tài khoản </a> </td> ' ;}
                   ?>
