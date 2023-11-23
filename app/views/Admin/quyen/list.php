@@ -65,9 +65,7 @@
                       ?>
                     </tbody>
                   </table>
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-sidebar"><a href="?act=addq">Thêm quyền</a></button>
-                  </div>
+                 
                 </div>
                 <!-- /.card-body -->
               </div>

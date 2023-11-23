@@ -110,8 +110,8 @@
                             <div class="middel_right_info">
 
                                 <div class="header_wishlist">
-                                    <a href="wishlist.html"><span class="lnr lnr-heart"></span> Xin chào </a>
-                                    <span class="wishlist_quantity">3</span>
+                                    <a href="wishlist.html"> Xin chào  <?= (isset($_SESSION['user'])) ? $_SESSION['user']['ten_dn'] : ''?>  </a>
+                               
                                 </div>
                                 <div class="mini_cart_wrapper">
                                     <a href="javascript:void(0)"><span class="lnr lnr-cart"></span>Giỏ hàng </a>
