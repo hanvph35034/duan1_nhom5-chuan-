@@ -52,7 +52,7 @@
                       <?php 
                         foreach($loadbaiviet as $listbv){
                           extract($listbv);
-                          $linkimg1 = '../../views/Admin/img/' . $img;
+                          $linkimg1 = '../../views/Admin/img/' . $anh;
                           echo'
                           <tr>
                           <td>'.$id.'</td>
