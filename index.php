@@ -17,9 +17,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $pass = $_POST['pass'];
                 $tk = dangnhap($user, $pass);
                 if ($tk != false) {
-                    $_SESSION['user'] = $tk;  
-                    var_dump($_SESSION['user']);  
-                    header("Location: ?act");           
+                    $_SESSION['user'] = $tk;
+                    var_dump($_SESSION['user']);
+                    header("Location: ?act");
                 } else {
                     echo '<script>alert("Sai tai khoan hoac password")</script>';
                 }
@@ -32,7 +32,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $ten = $_POST['ten'];
                 $email = $_POST['email'];
                 $pass = $_POST['pass'];
-                insert_taikhoan($user, $ten, $email, $pass,$sdt,$dia_chi);
+                insert_taikhoan($user, $ten, $email, $pass, $sdt, $dia_chi);
             }
             include "app/views/Client/dangki.php";
             break;
@@ -42,9 +42,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'baiviet2':
             include "app/views/Client/bai_viet2.php";
             break;
-            // case 'blog':
-            //     include "app/views/Client/blog.php";
-            //     break;
+           
         case 'chitietsp':
             //chitietsp&idsp=1
             $loadd_bl = load_binhluan();
@@ -58,13 +56,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 // $id_sp = $_POST['id_sp'];
                 $noidung = $_POST['noidung'];
                 insert_binhluan(1, $ngay,  $noidung, 1);
-
             }
-            // include "app/views/Client/chitietsp.php";
             break;
-            // case 'danh_muc1':
-            //     include "app/views/Client/danh_sach1.php";
-            //     break;
         case 'danh_muc2':
             include "app/views/Client/danh_muc2.php";
             break;
@@ -80,6 +73,23 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/thanh_toan.php";
             break;
         case 'trang_tk':
+
+            include "app/views/Client/trang_tk.php";
+            break;
+        case 'suatk':
+            if (isset($_SESSION['user'])) {
+                $id = $_SESSION['user']['id'];
+                if (isset($_POST['btn']) && $_POST['btn'] != '') {
+                    $user = $_POST['user'];
+                    $pass = $_POST['pass'];
+                    $dia_chi = $_POST['diachi'];
+                    $sdt = $_POST['sdt'];
+                    $email = $_POST['email'];
+                    $tk =  loadone_tk($id);
+                    update_taikhoan($id, $user, $email, $sdt, $pass, $dia_chi);
+                }
+            }
+            $tk = loadone_tk($id);
             include "app/views/Client/trang_tk.php";
             break;
         case 'dangxuat':
