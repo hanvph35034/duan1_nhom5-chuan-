@@ -40,7 +40,7 @@
     function loadall_sanpham()
     {
         $sql = "SELECT * FROM `sanpham` where 1
-            ORDER BY id ASC, id_danh_muc ASC;";
+            ORDER BY id ASC, id_dm ASC;";
         $listsanpham = pdo_query($sql);
         return $listsanpham;
     }

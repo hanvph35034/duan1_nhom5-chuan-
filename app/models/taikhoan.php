@@ -18,7 +18,7 @@ function loadall_taikhoan(){
 // session_start();
 function dangnhap($user, $pass)
 {
-    $sql = "SELECT * from khachhang where ten_dn='$user' and mat_khau='$pass'";
+    $sql = "SELECT * from tai_khoan where User ='$user' and pass='$pass'";
     return  pdo_query_one($sql);
 }
 

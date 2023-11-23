@@ -65,8 +65,8 @@ foreach ($loadsanpham as $listsp) {
         <tr>
             <td>' . $id . '</td>
             <td>' . $ten . '</td>
-            <td>' . $mo_ta . '</td>
-            <td>' . $gia . '</td>
+            <td>' . $MoTa . '</td>
+            <td>' . $Gia . '</td>
             <td><img width="50px" height="50px" src="' . $linkimg_dai_dien . '" alt="product" width="100"></td>
             <td>' . $ngay_nhap . '</td>
             <td>' . $id_danh_muc . '</td>

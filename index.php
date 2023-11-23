@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 ob_start();
 include "app/models/pdo.php";
 include "app/views/Client/header.php";
@@ -15,15 +15,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             if (isset($_POST['btn']) && $_POST['btn']) {
                 $user = $_POST['user'];
                 $pass = $_POST['pass'];
-                echo $pass . $user;
                 $tk = dangnhap($user, $pass);
                 if ($tk != false) {
-                    $_SESSION['user'] = $tk['ten_dn'];
-                    if ($tk['quyen'] = 1) {
-                        header("Location: app/views/Admin/index.php");
-                    } else {
-                        header("Location: index.php");
-                    }
+                    $_SESSION['user'] = $tk;  
+                    var_dump($_SESSION['user']);  
+                    header("Location: ?act");           
                 } else {
                     echo '<script>alert("Sai tai khoan hoac password")</script>';
                 }
@@ -37,7 +33,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $email = $_POST['email'];
                 $pass = $_POST['pass'];
 
-                insert_taikhoan($user, $ten, $email, $pass);
+                insert_taikhoan($user, $ten, $email, $pass,$sdt,$dia_chi);
             }
             include "app/views/Client/dangki.php";
             break;

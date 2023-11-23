@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,9 +10,9 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="public/img/favicon.ico">
 
-     <!-- CSS 
+    <!-- CSS 
     ========================= -->
-     <!--bootstrap min css-->
+    <!--bootstrap min css-->
     <link rel="stylesheet" href="public/css/bootstrap.min.css">
     <!--owl carousel min css-->
     <link rel="stylesheet" href="public/css/owl.carousel.min.css">
@@ -31,10 +32,10 @@
     <link rel="stylesheet" href="public/css/slinky.menu.css">
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="public/css/plugins.css">
-    
+
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="public/css/style.css">
-    
+
     <!--modernizr min js here-->
     <script src="public/js/vendor/modernizr-3.7.1.min.js"></script>
 
@@ -70,7 +71,12 @@
                                             <li><a href="?act=login">Đăng nhập</a></li>
                                             <li><a href="?act=trang_tk">Tài khoản của tôi</a></li>
                                             <li><a href="cart.html">Giỏ hàng</a></li>
-                                           
+                                            <?php
+                                            if (isset($_SESSION['user']) && $_SESSION['user']['id_quyen'] == "1") {
+                                            ?>
+                                                <li><a href="app/views/Admin/index.php">Quản trị viên</a></li>
+                                            <?php }  ?>
+
                                         </ul>
                                     </li>
                                 </ul>
@@ -104,7 +110,7 @@
                             <div class="middel_right_info">
 
                                 <div class="header_wishlist">
-                                    <a href="wishlist.html"><span class="lnr lnr-heart"></span> Yêu thích </a>
+                                    <a href="wishlist.html"><span class="lnr lnr-heart"></span> Xin chào </a>
                                     <span class="wishlist_quantity">3</span>
                                 </div>
                                 <div class="mini_cart_wrapper">
@@ -119,7 +125,7 @@
             </div>
         </div>
         <!--header middel end-->
-        
+
         <!--mini cart-->
         <!-- menu con -->
         <div class="mini_cart">
@@ -192,14 +198,14 @@
                             <nav>
                                 <ul>
                                     <li><a href="index-4.html">home</i></a>
-                                        
+
                                     </li>
                                     <li class="mega_items"><a href="shop.html">shop<i class="fa fa-angle-down"></i></a>
                                         <div class="mega_menu">
                                             <ul class="mega_menu_inner">
                                                 <li><a href="#">Shop Layouts</a>
                                                     <ul>
-                                                  
+
                                                         <li><a href="danh_sach1.html">List View</a></li>
                                                     </ul>
                                                 </li>
@@ -214,7 +220,7 @@
                                                 <li><a href="#">Product Types</a>
                                                     <ul>
                                                         <li><a href="chitietsp.html">Chi tiet san pham</a></li>
-                                                        
+
 
                                                     </ul>
                                                 </li>
@@ -238,7 +244,7 @@
                                             <li><a href="sosach.html">compare</a></li>
                                         </ul>
                                     </li>
-                                 
+
                                     <li><a href="lienhe.html"> Liên hệ với chúng tôi</a></li>
                                 </ul>
                             </nav>
@@ -380,4 +386,3 @@
         </div>
 
     </div>
-   
