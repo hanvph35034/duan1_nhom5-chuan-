@@ -44,7 +44,8 @@
                     <th>Giá</th>
                     <th>Hình ảnh</th>
                     <th>Ngày nhập</th>
-                    <th>Loại hàng</th>
+                    <th>Số lượng </th>
+                    <th>Giá sale</th>
                     <th>Hình ảnh 1</th>
                     <th>Hình ảnh 2</th>
                     <th>Hình ảnh 3</th>
@@ -56,25 +57,26 @@
                 <?php
 foreach ($loadsanpham as $listsp) {
     extract($listsp);
-    $linkimg_dai_dien = './img/' . $img_dai_dien;
-    $linkimg_1 = './img/' . $img_1;
-    $linkimg_2 = './img/' . $img_2;
-    $linkimg_3 = './img/' . $img_3;
+    $linkimg_dai_dien = '../../../public/img/product/' . $img_dai_dien;
+    $linkimg_1 = '../../../public/img/product/' . $img_1;
+    $linkimg_2 = '../../../public/img/product/' . $img_2;
+    $linkimg_3 = '../../../public/img/product/' . $img_3;
 
     echo '
         <tr>
-            <td>' . $id . '</td>
+            <td>' . $Idsp . '</td>
             <td>' . $ten . '</td>
             <td>' . $MoTa . '</td>
             <td>' . $Gia . '</td>
             <td><img width="50px" height="50px" src="' . $linkimg_dai_dien . '" alt="product" width="100"></td>
             <td>' . $ngay_nhap . '</td>
-            <td>' . $id_danh_muc . '</td>
+            <td>' . $so_luong . '</td>
+            <td>' . $gia_sale . '</td>
             <td><img src="' . $linkimg_1 . '" alt="product" width="100"></td>
             <td><img src="' . $linkimg_2 . '" alt="product" width="100"></td>
             <td><img src="' . $linkimg_3 . '" alt="product" width="100"></td>
-            <td><a href="?act=suasp&&id='.$id.'"> Sửa danh mục </a></td>
-            <td><a href="?act=deletesp&&id=' . $id . '"> Xóa danh mục </a></td>
+            <td><a href="?act=suasp&&id='.$Idsp.'"> Sửa  </a></td>
+            <td><a href="?act=deletesp&&id=' .$Idsp . '"> Xóa  </a></td>
         </tr>
     ';
 }

@@ -63,15 +63,14 @@
                     foreach ($loaddm as $listdm) {
                       extract($listdm);
                     ?>
-                      <option value="<?php echo $id ?>"><?php echo $ten ?></option>
+                      <option value="<?php echo $id ?>"><?php echo $Danhmuc ?></option>
                     <?php
                   }
                     ?>
                   </select>
-
                 </div>
-
                 <div class="form-group">
+              
                   <label for="img_1">Ảnh 1</label><br>
                   <input type="file" name="img_1" id="img_1">
                 </div>
@@ -86,6 +85,15 @@
                   <input type="file" name="img_3" id="img_3">
                 </div>
 
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Số lương </label>
+                  <input name="soluong" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Giá Sale</label>
+                  <input name="giasale" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm">
+                </div>
 
               </div>
               <!-- /.card-body -->

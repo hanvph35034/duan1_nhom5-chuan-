@@ -1,7 +1,7 @@
 <?php
 ob_start();
 include '../../controllers/AdminController.php';
-include 'header.php';
+ //include 'header.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
@@ -103,8 +103,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $gia = $_POST['gia'];
                 $ngay_nhap = $_POST['ngay_nhap'];
                 $id_danh_muc = $_POST['id_danh_muc'];
+                $so_luong = $_POST['soluong'];
+                $gia_sale = $_POST['giasale'];
 
-                $target_dir = 'img/';
+                $target_dir = '../../../public/img/product/';
 
                 $img_dai_dien = $_FILES['img_dai_dien']['name'];
                 $target_file = $target_dir . basename($img_dai_dien);
@@ -123,8 +125,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 move_uploaded_file($_FILES['img_3']['tmp_name'], $target_file3);
 
                 if ($ten != '' && $mo_ta != '' && $gia > 0 && $img_dai_dien != '' && $ngay_nhap != '' && $img_1 != '' && $img_2 != '' && $img_3 != '') {
-                    add_sanpham($ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3);
-                    //    header('location: ?act=qtsp');
+                    add_sanpham($ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $so_luong, $gia_sale, $img_1, $img_2, $img_3);
+
+                    header("Location: ?act=qtsp");
                 } else {
                     $thongbao = 'Thất bại';
                 }
@@ -150,8 +153,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $gia = $_POST['gia'];
                 $ngay_nhap = $_POST['ngay_nhap'];
                 $id_danh_muc = $_POST['id_danh_muc'];
+                $so_luong = $_POST['soluong'];
+                $gia_sale = $_POST['giasale'];
 
-                $target_dir = 'img/';
+                $target_dir = '../../../public/img/product/';
                 $img_dai_dien = $_FILES['img_dai_dien']['name'];
                 $target_file = $target_dir . basename($img_dai_dien);
                 move_uploaded_file($_FILES['img_dai_dien']['tmp_name'], $target_file);
@@ -168,15 +173,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $target_file3 = $target_dir . basename($img_3);
                 move_uploaded_file($_FILES['img_3']['tmp_name'], $target_file3);
 
-                update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $img_1, $img_2, $img_3);
-                // header("location: index.php?act=suasp&&id=$id");
-                // $loadsp = loadone_sanpham($id);
+                update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $so_luong, $gia_sale, $img_1, $img_2, $img_3);
+
                 $loaddm = loadall_danhmuc();
-                // $loadsanpham = loadall_sanpham();
-                // header("location: " . $_SERVER['HTTP_REFERER']);
-                // } else {
-                //     $thongbao = 'sua san pham that bai';
-                // }
             }
             $loadsp = loadone_sanpham($_GET['id']);
             // $loadsanpham = loadall_sanpham();
@@ -199,15 +198,15 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'addbanner':
             if (isset($_POST['addbanner'])) {
                 $ten = $_POST['ten'];
-                $link = $_POST['link'];
-
-                $target_dir = '../../views/Admin/img/';
+                $limk = $_POST['link'];
+                $tieu_de1 = $_POST['tieu_de'];
+                $target_dir = '../../../public/img/bg/';
 
                 $img = $_FILES['img']['name'];
                 $target_file = $target_dir . basename($img);
                 move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
-                if ($ten != '' && $link != '' && $img != '') {
-                    add_banner($img, $ten, $link);
+                if ($ten != '' && $limk != '' && $img != '') {
+                    add_banner($img, $ten, $tieu_de1, $limk);
                     $thongbao = 'Thêm banner thành công';
                 } else {
                     $thongbao = 'Thất bại';
@@ -227,13 +226,14 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             if (isset($_POST['submit'])) {
                 $id = $_POST['id'];
                 $ten = $_POST['ten'];
-                $link = $_POST['link'];
+                $limk = $_POST['link'];
+                $tieu_de1 = $_POST['tieu_de1'];
                 $img = $_FILES['img']['name'];
-                $target_dir = '../../view/Admin/img/';
+                $target_dir = '../../../public/img/bg/';
                 $target_file = $target_dir . basename($img);
                 move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
                 if ($ten != "") {
-                    update_banner($id, $img, $ten, $link);
+                    update_banner($id, $img, $ten, $tieu_de1,$limk);
                     $loadbn = loadone_banner($id);
                     $thongbao = 'update banner thành công';
                 } else {
@@ -332,8 +332,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (isset($_POST['btn'])) {
                     $quyen = $_POST['quyen'];
-                     fix_quyen($_GET['id'], $quyen);                    
-                     header("Location: ?act=quyen");
+                    fix_quyen($_GET['id'], $quyen);
+                    header("Location: ?act=quyen");
                 }
             }
             $loada = loada_quyen();

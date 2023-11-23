@@ -51,15 +51,15 @@
                       <?php 
                         foreach($loadbanner as $listbn){
                           extract($listbn);
-                          $linkimg = '../../views/Admin/img/' . $img;
+                          $linkimg = '../../../public/img/bg/'. $img;
                           echo'
                           <tr>
-                          <td>'.$id.'</td>
+                          <td>'.$id_bner.'</td>
                           <td><img src="' . $linkimg . '" alt="product" width="100"></td>
-                          <td>'.$ten.'</td>
-                          <td>'.$link.'</td>
-                          <td><a href="?act=suabn&&id='.$id.'"> Sửa </a></td>
-                          <td> <a href="?act=deletebn&&id='.$id.'"> Xóa</a> </td>
+                          <td>'.$tieu_de.'</td>
+                          <td>'.$limk.'</td>
+                          <td><a href="?act=suabn&&id='.$id_bner.'"> Sửa </a></td>
+                          <td> <a href="?act=deletebn&&id='.$id_bner.'"> Xóa</a> </td>
                         </tr>
                           ';
                         

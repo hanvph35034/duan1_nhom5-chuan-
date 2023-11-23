@@ -32,7 +32,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $ten = $_POST['ten'];
                 $email = $_POST['email'];
                 $pass = $_POST['pass'];
-
                 insert_taikhoan($user, $ten, $email, $pass,$sdt,$dia_chi);
             }
             include "app/views/Client/dangki.php";
