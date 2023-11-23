@@ -1,7 +1,23 @@
 <?php
+session_start();
 ob_start();
+include '../../models/pdo.php';
+include '../../models/taikhoan.php';
+include '../../models/banner.php';
+include '../../models/sanpham.php';
+include '../../models/baiviet.php';
+include '../../models/danhmuc.php';
+include '../../models/binhluan.php';
+include '../../models/khachhang.php';
+include '../../models/quyen.php';
+include '../../models/donhang.php';
 include '../../controllers/AdminController.php';
- //include 'header.php';
+include '../../controllers/danhmuc.php';
+include '../../controllers/taikhoan.php';
+include '../../controllers/sanpham.php';
+include '../../controllers/banner.php';
+include '../../controllers/binhluan.php';
+ include 'header.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
@@ -12,17 +28,17 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
             // quản trị bình luận
         case 'listbl':
-            listbl();
+            danhsachbl();
             break;
         case 'deletebl':
-            deletebl();
+            xoabl();
             break;
             //  danh mục
         case 'qtdm':
-            qtdm();
+            danhsachdm();
             break;
         case 'adddm':
-            adddm();
+            themdanhmuc();
             break;
         case 'suadm':
             suadm();
@@ -34,16 +50,13 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             deletedm();
             break;
         case 'qtkh':
-            qtkh();
+            dstaikhoan();
             break;
         case 'deletekh':
-            deletekh();
-            break;
-        case 'updatekh':
-            include 'QTKH/list.php';
+            soataikhoan();
             break;
         case 'addkh':
-            addkh();
+            themtaikhoan();
             break;
             // đơn hàng
         case 'qtdh':
@@ -92,165 +105,40 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
 
         case 'qtsp':
-            $loadsanpham = loadall_sanpham();
-            include 'QTSP/list.php';
+            dssnanpham();
             break;
             //thêm sản phẩm
         case 'addsp':
-            if (isset($_POST['addsp'])) {
-                $ten = $_POST['ten'];
-                $mo_ta = $_POST['mo_ta'];
-                $gia = $_POST['gia'];
-                $ngay_nhap = $_POST['ngay_nhap'];
-                $id_danh_muc = $_POST['id_danh_muc'];
-                $so_luong = $_POST['soluong'];
-                $gia_sale = $_POST['giasale'];
-
-                $target_dir = '../../../public/img/product/';
-
-                $img_dai_dien = $_FILES['img_dai_dien']['name'];
-                $target_file = $target_dir . basename($img_dai_dien);
-                move_uploaded_file($_FILES['img_dai_dien']['tmp_name'], $target_file);
-
-                $img_1 = $_FILES['img_1']['name'];
-                $target_file1 = $target_dir . basename($img_1);
-                move_uploaded_file($_FILES['img_1']['tmp_name'], $target_file1);
-
-                $img_2 = $_FILES['img_2']['name'];
-                $target_file2 = $target_dir . basename($img_2);
-                move_uploaded_file($_FILES['img_2']['tmp_name'], $target_file2);
-
-                $img_3 = $_FILES['img_3']['name'];
-                $target_file3 = $target_dir . basename($img_3);
-                move_uploaded_file($_FILES['img_3']['tmp_name'], $target_file3);
-
-                if ($ten != '' && $mo_ta != '' && $gia > 0 && $img_dai_dien != '' && $ngay_nhap != '' && $img_1 != '' && $img_2 != '' && $img_3 != '') {
-                    add_sanpham($ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $so_luong, $gia_sale, $img_1, $img_2, $img_3);
-
-                    header("Location: ?act=qtsp");
-                } else {
-                    $thongbao = 'Thất bại';
-                }
-            }
-            $loaddm = loadall_danhmuc();
-            include 'QTSP/add.php';
+        themsp();
             break;
 
             //sửa
         case 'suasp':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                $loadsp = loadone_sanpham($id);
-                $loaddm = loadall_danhmuc();
-            }
-            include 'QTSP/update.php';
+          suasp();
             break;
         case 'updatesp':
-            if (isset($_POST['submit']) && ($_POST['submit'])) {
-                $id = $_POST['id'];
-                $ten = $_POST['ten'];
-                $mo_ta = $_POST['mo_ta'];
-                $gia = $_POST['gia'];
-                $ngay_nhap = $_POST['ngay_nhap'];
-                $id_danh_muc = $_POST['id_danh_muc'];
-                $so_luong = $_POST['soluong'];
-                $gia_sale = $_POST['giasale'];
-
-                $target_dir = '../../../public/img/product/';
-                $img_dai_dien = $_FILES['img_dai_dien']['name'];
-                $target_file = $target_dir . basename($img_dai_dien);
-                move_uploaded_file($_FILES['img_dai_dien']['tmp_name'], $target_file);
-
-                $img_1 = $_FILES['img_1']['name'];
-                $target_file1 = $target_dir . basename($img_1);
-                move_uploaded_file($_FILES['img_1']['tmp_name'], $target_file1);
-
-                $img_2 = $_FILES['img_2']['name'];
-                $target_file2 = $target_dir . basename($img_2);
-                move_uploaded_file($_FILES['img_2']['tmp_name'], $target_file2);
-
-                $img_3 = $_FILES['img_3']['name'];
-                $target_file3 = $target_dir . basename($img_3);
-                move_uploaded_file($_FILES['img_3']['tmp_name'], $target_file3);
-
-                update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $so_luong, $gia_sale, $img_1, $img_2, $img_3);
-
-                $loaddm = loadall_danhmuc();
-            }
-            $loadsp = loadone_sanpham($_GET['id']);
-            // $loadsanpham = loadall_sanpham();
-            include 'QTSP/update.php';
+            updatesp();
             break;
             //xóa
         case 'deletesp':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                delete_sanpham($id);
-            }
-            $loadsanpham = loadall_sanpham();
-            include 'QTSP/list.php';
+          xoasp();
             break;
             // banner
         case 'qtbanner':
-            $loadbanner = loadall_banner();
-            include 'QTBANER/list.php';
+            dsbanner();
             break;
         case 'addbanner':
-            if (isset($_POST['addbanner'])) {
-                $ten = $_POST['ten'];
-                $limk = $_POST['link'];
-                $tieu_de1 = $_POST['tieu_de'];
-                $target_dir = '../../../public/img/bg/';
-
-                $img = $_FILES['img']['name'];
-                $target_file = $target_dir . basename($img);
-                move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
-                if ($ten != '' && $limk != '' && $img != '') {
-                    add_banner($img, $ten, $tieu_de1, $limk);
-                    $thongbao = 'Thêm banner thành công';
-                } else {
-                    $thongbao = 'Thất bại';
-                }
-            }
-            include 'QTBANER/add.php';
+            thembanner();
             break;
         case 'suabn':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                $banner = loadone_banner($id);
-            }
-            include 'QTBANER/update.php';
+            suabanner();
             break;
 
         case 'updatebn':
-            if (isset($_POST['submit'])) {
-                $id = $_POST['id'];
-                $ten = $_POST['ten'];
-                $limk = $_POST['link'];
-                $tieu_de1 = $_POST['tieu_de1'];
-                $img = $_FILES['img']['name'];
-                $target_dir = '../../../public/img/bg/';
-                $target_file = $target_dir . basename($img);
-                move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
-                if ($ten != "") {
-                    update_banner($id, $img, $ten, $tieu_de1,$limk);
-                    $loadbn = loadone_banner($id);
-                    $thongbao = 'update banner thành công';
-                } else {
-                    $banner = loadone_banner($id);
-                    $thongbao = 'update thất bại';
-                }
-            }
-            $loadbanner = loadall_banner();
-            include 'QTBANER/list.php';
+            updatebanner();
             break;
-            //xóa
         case 'deletebn':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                delete_banner($id);
-            }
-            $loadbanner = loadall_banner();
+            xoabanner();
             include 'QTBANER/list.php';
             // bài viết
         case 'qtbv':
@@ -321,24 +209,14 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
 
         case 'quyen':
-            $loadquyen = loadall_quyen();
-            include 'quyen/list.php';
+            quyen();
             break;
 
             //thêm
 
             //sửa
         case 'suaq':
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (isset($_POST['btn'])) {
-                    $quyen = $_POST['quyen'];
-                    fix_quyen($_GET['id'], $quyen);
-                    header("Location: ?act=quyen");
-                }
-            }
-            $loada = loada_quyen();
-            $loadquyen = loadall_quyen();
-            include 'quyen/update.php';
+           suaquyen();
             break;
         case 'bienthe':
             $loadd = chitietdh();
