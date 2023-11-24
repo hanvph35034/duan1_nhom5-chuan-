@@ -1,13 +1,14 @@
 <?php
 // them tai khoan / dang ky
-function insert_taikhoan( $user,  $pass,$ten_dn ,$Email ,$sdt,$dia_chi)
+function insert_taikhoan($user,  $pass, $ten_dn, $Email, $sdt, $dia_chi)
 {
     $sql = "INSERT INTO `tai_khoan`( `User`, `pass`, `ten_dn`, `Email`, `sdt`, `dia_chi`, `id_quyen`)
      VALUES ('$user','','$pass','$ten_dn','$Email','$sdt','$dia_chi')";
     pdo_execute($sql);
 }
 
-function loadall_taikhoan(){
+function loadall_taikhoan()
+{
     $sql = "select * from tai_khoan where 1";
     $listkh = pdo_query($sql);
     return $listkh;
@@ -20,6 +21,12 @@ function dangnhap($user, $pass)
 {
     $sql = "SELECT * from tai_khoan where User ='$user' and pass='$pass'";
     return  pdo_query_one($sql);
+}
+
+function loadone_tk($id)
+{
+    $sql = "SELECT * from tai_khoan where id = '$id'";
+    return pdo_query_one($sql);
 }
 
 // dang xuat
@@ -37,13 +44,9 @@ function dangxuat()
 // }
 
 // sua tai khoan
-function update_taikhoan($id, $user, $email, $sdt, $pass, $address, $img)
+function update_taikhoan($id, $user, $email, $sdt, $pass, $diachi)
 {
-    if ($img != '') {
-        $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', pass='$pass', address='$address', img='$img' where id='$id';";
-    } else {
-        $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', pass='$pass', address='$address' where id='$id';";
-    }
+    $sql = "UPDATE `tai_khoan` SET `pass`='$pass',`ten_dn`='$user',`Email`='$email',`sdt`='$sdt',`dia_chi`='$diachi' WHERE id = $id;";
     pdo_execute($sql);
 }
 

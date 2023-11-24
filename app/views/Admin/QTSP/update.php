@@ -48,21 +48,31 @@
 
                       <div class="form-group">
                         <label for="exampleInputEmail1">Mô tả sản phẩm</label>
-                        <input name="mo_ta" type="text" class="form-control" id="exampleInputEmail1" placeholder="Mô tả sản phẩm" value="<?php if (isset($mo_ta) && ($mo_ta != '')) echo $mo_ta ?>">
+                        <input name="mo_ta" type="text" class="form-control" id="exampleInputEmail1" placeholder="Mô tả sản phẩm" value="<?php if (isset($MoTa) && ($MoTa != '')) echo $MoTa ?>">
                       </div>
 
                       <div class="form-group">
                         <label for="exampleInputEmail1">Giá sản phẩm</label>
-                        <input name="gia" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm" value="<?php if (isset($gia) && ($gia != '')) echo $gia ?>">
+                        <input name="gia" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm" value="<?php if (isset($Gia) && ($Gia != '')) echo $Gia ?>">
                       </div>
 
                       <div class="form-group">
                         <label for="img_dai_dien">Ảnh đại diện sản phẩm</label><br>
-                        <?php if (isset($linkimg_dai_dien) && $linkimg_dai_dien != '') : ?>
-                          <img src="<?php echo $linkimg_dai_dien; ?>" alt="product" width="100">
-                        <?php endif; ?>
+                        
+                          <img src="../../../public/img/product/<?=$img_dai_dien?>" alt="product" width="100">
+  
                         <input type="file" name="img_dai_dien" id="img_dai_dien">
                       </div>
+                      <div class="form-group">
+                  <label for="exampleInputEmail1">Số lương </label>
+                  <input name="soluong" type="text" value="<?= $so_luong?>" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm">
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Giá Sale</label>
+                  <input name="giasale" value="<?= $gia_sale?>" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm">
+                </div>
+
 
                       <div class="form-group">
                         <label for="exampleInputEmail1">Ngày nhập</label>
@@ -76,7 +86,7 @@
                           foreach ($loaddm as $listdm) {
                             extract($listdm);
                           ?>
-                            <option value="<?php echo $id ?>"><?php echo $ten ?></option>
+                            <option value="<?php echo $id ?>"><?php echo $Danhmuc ?></option>
                           <?php
                           }
                           ?>
@@ -85,23 +95,21 @@
                       </div>
                       <div class="form-group">
                         <label for="img_1">Ảnh đại diện 1</label><br>
-                        <?php if (isset($linkimg_1) && $linkimg_1 != '') : ?>
-                          <img src="<?php echo $linkimg_1; ?>" alt="product" width="100">
-                        <?php endif; ?>
+              
+                          <img src="../../../public/img/product/<?=$img_1?>" alt="product" width="100">
+                      
                         <input type="file" name="img_1" id="img_1">
                       </div>
                       <div class="form-group">
                         <label for="img_2">Ảnh đại diện 2</label><br>
-                        <?php if (isset($linkimg_2) && $linkimg_2 != '') : ?>
-                          <img src="<?php echo $linkimg_2; ?>" alt="product" width="100">
-                        <?php endif; ?>
+                     
+                        <img src="../../../public/img/product/<?=$img_2?>" alt="product" width="100">
+                   
                         <input type="file" name="img_2" id="img_1">
                       </div>
                       <div class="form-group">
                         <label for="img_3">Ảnh đại diện 3</label><br>
-                        <?php if (isset($linkimg_3) && $linkimg_3 != '') : ?>
-                          <img src="<?php echo $linkimg_3; ?>" alt="product" width="100">
-                        <?php endif; ?>
+                          <img src="../../../public/img/product/<?=$img_3?>" alt="product" width="100">
                         <input type="file" name="img_3" id="img_3">
                       </div>
 

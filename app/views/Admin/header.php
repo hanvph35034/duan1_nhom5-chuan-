@@ -103,11 +103,8 @@
             <li class="nav-item">
               <a href="?act=quyen" class="nav-link">Chức Vụ </a>
             </li>
-            <li class="nav-item">
-              <a href="?act=bienthe" class="nav-link">Chi tiết đơn hàng  </a>
-            </li>
-
           </ul>
+          
         </nav>
         <!-- /.sidebar-menu -->
       </div>

@@ -1,7 +1,26 @@
 <?php
+session_start();
 ob_start();
+include '../../models/pdo.php';
+include '../../models/taikhoan.php';
+include '../../models/banner.php';
+include '../../models/sanpham.php';
+include '../../models/baiviet.php';
+include '../../models/danhmuc.php';
+include '../../models/binhluan.php';
+include '../../models/khachhang.php';
+include '../../models/quyen.php';
+include '../../models/donhang.php';
+
 include '../../controllers/AdminController.php';
-include 'header.php';
+include '../../controllers/danhmuc.php';
+include '../../controllers/taikhoan.php';
+include '../../controllers/sanpham.php';
+include '../../controllers/banner.php';
+include '../../controllers/binhluan.php';
+include '../../controllers/baibviet.php';
+include '../../controllers/donhang.php';
+ include 'header.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
@@ -12,17 +31,17 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
             // quản trị bình luận
         case 'listbl':
-            listbl();
+            danhsachbl();
             break;
         case 'deletebl':
-            deletebl();
+            xoabl();
             break;
             //  danh mục
         case 'qtdm':
-            qtdm();
+            danhsachdm();
             break;
         case 'adddm':
-            adddm();
+            themdanhmuc();
             break;
         case 'suadm':
             suadm();
@@ -34,16 +53,13 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             deletedm();
             break;
         case 'qtkh':
-            qtkh();
+            dstaikhoan();
             break;
         case 'deletekh':
-            deletekh();
-            break;
-        case 'updatekh':
-            include 'QTKH/list.php';
+            soataikhoan();
             break;
         case 'addkh':
-            addkh();
+            themtaikhoan();
             break;
             // đơn hàng
         case 'qtdh':
@@ -64,41 +80,41 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
 
         case 'qtsp':
-            qtsp();
+            dssnanpham();
             break;
             //thêm sản phẩm
         case 'addsp':
-            addsp();
+        themsp();
             break;
 
             //sửa
         case 'suasp':
-            suasp();
+          suasp();
             break;
         case 'updatesp':
             updatesp();
             break;
             //xóa
         case 'deletesp':
-            deletesp();
+          xoasp();
             break;
             // banner
         case 'qtbanner':
-            qtbanner();
+            dsbanner();
             break;
         case 'addbanner':
-            addbanner();
+            thembanner();
             break;
         case 'suabn':
-            suabn();
+            suabanner();
             break;
 
         case 'updatebn':
-            updatebn();
+            updatebanner();
             break;
-            //xóa
         case 'deletebn':
-            deletebn();
+            xoabanner();
+            include 'QTBANER/list.php';
             // bài viết
         case 'qtbv':
             qtbv();
@@ -128,7 +144,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
             //sửa
         case 'suaq':
-            suaq();
+           suaquyen();
             break;
         case 'bienthe':
             $loadd = chitietdh();
