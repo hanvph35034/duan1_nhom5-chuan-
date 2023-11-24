@@ -19,7 +19,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 if ($tk != false) {
                     $_SESSION['user'] = $tk;
                     var_dump($_SESSION['user']);
-                    header("Location: ?act");
+                     header("Location: ?act");
                 } else {
                     echo '<script>alert("Sai tai khoan hoac password")</script>';
                 }
@@ -73,13 +73,12 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/thanh_toan.php";
             break;
         case 'trang_tk':
-
             include "app/views/Client/trang_tk.php";
             break;
         case 'suatk':
             if (isset($_SESSION['user'])) {
                 $id = $_SESSION['user']['id'];
-                if (isset($_POST['btn']) && $_POST['btn'] != '') {
+                if (isset($_POST['btn']) && $_POST['btn']) {
                     $user = $_POST['user'];
                     $pass = $_POST['pass'];
                     $dia_chi = $_POST['diachi'];
