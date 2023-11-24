@@ -11,12 +11,15 @@ include '../../models/binhluan.php';
 include '../../models/khachhang.php';
 include '../../models/quyen.php';
 include '../../models/donhang.php';
+
 include '../../controllers/AdminController.php';
 include '../../controllers/danhmuc.php';
 include '../../controllers/taikhoan.php';
 include '../../controllers/sanpham.php';
 include '../../controllers/banner.php';
 include '../../controllers/binhluan.php';
+include '../../controllers/baibviet.php';
+include '../../controllers/donhang.php';
  include 'header.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
@@ -60,48 +63,20 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
             // đơn hàng
         case 'qtdh':
-            $loaddh = loadall_donhang();
-            include 'QTDH/list.php';
+            qtdh();
             break;
         case 'adddh':
-            if (isset($_POST['adddh'])) {
-                $ngay_dat = $_POST['ngay_dat'];
-                $tong_gia = $_POST['tong_gia'];
-                $trang_thai = $_POST['trang_thai'];
-                $id_kh = $_POST['id_kh'];
-
-                add_donhang($ngay_dat, $tong_gia, $trang_thai, $id_kh);
-            }
-            $loaddh = loadall_donhang();
-            include 'QTDH/add.php';
+            adddh();
             break;
 
         case 'suadh':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                $loadd1 = loadone_donhang($id);
-            }
-            include 'QTDH/update.php';
+            suadh();
             break;
         case 'updatedh':
-            if (isset($_POST['submit'])) {
-                $id = $_POST['id'];
-                $ngay_dat = $_POST['ngay_dat'];
-                $tong_gia = $_POST['tong_gia'];
-                $trang_thai = $_POST['trang_thai'];
-                $id_kh = $_POST['id_kh'];
-                fix_donhang($id, $ngay_dat, $tong_gia, $trang_thai, $id_kh);
-            }
-            $loaddh = loadall_donhang();
-            include 'QTDH/list.php';
+            updatedh();
             break;
         case 'deletedh':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                delete_don_hang($id);
-            }
-            $loaddh = loadall_donhang();
-            include 'QTDH/list.php';
+            deletedh();
             break;
 
         case 'qtsp':
@@ -142,71 +117,24 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include 'QTBANER/list.php';
             // bài viết
         case 'qtbv':
-            $loadbaiviet = loadall_baiviet();
-            include 'QTBV/list.php';
+            qtbv();
             break;
             //thêm
         case 'addbaiviet':
-            if (isset($_POST['addbaiviet'])) {
-                $tieu_de = $_POST['tieu_de'];
-                $noi_dung = $_POST['noi_dung'];
-                $ngay_dang = $_POST['ngay_dang'];
-                $target_dir1 = '../../views/Admin/img/';
-
-                $img = $_FILES['img']['name'];
-                $target_file1 = $target_dir1 . basename($img);
-                move_uploaded_file($_FILES['img']['tmp_name'], $target_file1);
-                if ($tieu_de != '' && $noi_dung != '' && $ngay_dang != '' && $ngay_dang != '') {
-                    add_baiviet($tieu_de, $img, $noi_dung, $ngay_dang);
-                    $thongbao = 'Thêm banner thành công';
-                } else {
-                    $thongbao = 'Thất bại';
-                }
-            }
-
-            include 'QTBV/add.php';
+            addbaiviet();
             break;
             //sửa
         case 'suabv':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                $baiviet = loadone_baiviet($id);
-            }
-            include 'QTBV/update.php';
+            suabv();
             break;
 
         case 'updatebv':
-            if (isset($_POST['submit'])) {
-                $id = $_POST['id'];
-                $tieu_de = $_POST['tieu_de'];
-                $noi_dung = $_POST['noi_dung'];
-                $ngay_dang = $_POST['ngay_dang'];
-                $img = $_FILES['img']['name'];
-                $target_dir = '../../img/';
-                $target_file = $target_dir . basename($img);
-                move_uploaded_file($_FILES['img']['tmp_name'], $target_file);
-                if ($tieu_de != "") {
-                    update_baiviet($id, $tieu_de, $img, $noi_dung, $ngay_dang);
-                    $loadbn = loadone_baiviet($id);
-                    $thongbao = 'update bV thành công';
-                } else {
-                    $baiviet = loadone_baiviet($id);
-                    $thongbao = 'update thất bại';
-                }
-            }
-            $loadbaiviet = loadall_baiviet();
-            include 'QTBV/list.php';
+            updatebv();
             break;
             //xóa
         case 'deletebv':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                delete_baiviet($id);
-            }
-            $loadbaiviet = loadall_baiviet();
-            echo '<script>alert("vui long quay ve trang chu");</script>';
-            include 'QTBV/list.php';
-
+            deletebv();
+            break;
 
         case 'quyen':
             quyen();

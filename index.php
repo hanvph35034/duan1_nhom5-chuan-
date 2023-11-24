@@ -72,6 +72,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'thanh_toan':
             include "app/views/Client/thanh_toan.php";
             break;
+        case 'trang_tk':
+
+            include "app/views/Client/trang_tk.php";
+            break;
         case 'suatk':
             if (isset($_SESSION['user'])) {
                 $id = $_SESSION['user']['id'];
