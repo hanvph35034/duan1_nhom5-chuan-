@@ -78,12 +78,12 @@
 
                         </div>
                         <div class="price_box">
-                            <span class="current_price"><?= ''.'$'. $loadone_sp['gia']  ?></span>
+                            <span class="current_price"><?= ''.'$'. $loadone_sp['Gia']  ?></span>
                             <span class="old_price">$80.00</span>
 
                         </div>
                         <div class="product_desc">
-                            <p><?= $loadone_sp['mo_ta']?> </p>
+                            <p><?= $loadone_sp['MoTa']?> </p>
                         </div>
                         <div class="product_variant color">
                             <h3>Tùy chọn có sẵn</h3>
@@ -203,7 +203,7 @@
                                                     <li><a href="#"><i class="ion-ios-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <p><strong>'.$ten.'</strong>- September 12, 2018 '.$ngaybl.'</p>
+                                            <p><strong>'.$ten_dn.'</strong>- September 12, 2018 '.$ngaybl.'</p>
                                             <span>'.$ndbl.'</span>
                                         </div>
                                     </div>
@@ -213,7 +213,9 @@
                                     <h2>Thêm 1 bài đánh giá </h2>
                                    
                                 </div>
-                                <div class="product_ratting mb-10">
+                              
+                                    '; }?>
+                                      <div class="product_ratting mb-10">
                                     <h3>Your rating</h3>
                                     <ul>
                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -224,11 +226,12 @@
                                     </ul>
                                 </div>
                                 <div class="product_review_form">
-                                    <form action="?act=thembl" method="post">
+                                    <form action="?act=chitietsp" method="post">
                                         <div class="row">
                                             <div class="col-12">
+                                            <input type="hidden" value="<?= $loadone_sp['Idsp']?>">
                                                 <label for="review_comment">Đánh giá của bạn </label>
-                                                <textarea name="noidung" id="review_comment"></textarea>
+                                                <textarea name="noidung" name="binhluan" id="review_comment"></textarea>
                                             </div>
                                             <!-- <div class="col-lg-6 col-md-6">
                                                 <label for="author">Name</label>
@@ -241,7 +244,6 @@
                                             </div> -->
                                         </div>
                                         <button value="btn" name="btn" type="submit">Gửi bình luận</button>
-                                    '; }?>
                                     </form>
                                 </div>
                             </div>

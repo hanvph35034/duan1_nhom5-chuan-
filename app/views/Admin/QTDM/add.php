@@ -37,12 +37,15 @@
                     <input name="addm" type="text" class="form-control"  placeholder="Thêm danh mục mới">
                   </div>
                   </div>
+                 
                 </div>
+              
                 <!-- /.card-body -->
 
                 <div class="card-footer">
                   <button name="submit" type="submit" class="btn btn-primary">Submit</button>
                 </div>
+                <span style="color: red;"> <?= is_error('addm') ?></span>
               </form>
             </div>
           </div>

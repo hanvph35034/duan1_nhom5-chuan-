@@ -16,11 +16,10 @@ function load_so_binh_luan(){
     return $binhluan;
 }
 //  ADD COMMENTS
-function insert_binhluan($id_sp, $noidung,$id_kh){
+function insert_binhluan($noidung,$id_tk,$id_sp){
     $date = date('Y-m-d');
     $sql = "
-    INSERT INTO `binhluan`(`id_kh`, `ngay`, `noidung`, `id_sp`) VALUES ('$id_kh','$date','$noidung','$id_sp');
-    ";
+    INSERT INTO `binhluan`( `date`, `NoiDung`, `id_tk`, `Id_sp`) VALUES ('$noidung','','$id_tk','$id_sp',)";
     pdo_execute($sql);
 }
 

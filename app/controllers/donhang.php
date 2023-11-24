@@ -43,7 +43,7 @@ function deletedh(){
     // $loaddh = loadall_donhang();
     include 'QTDH/list.php';
 }
-function chitietdh(){
+// function chitietdh(){
 
-}
+// }
 ?>
