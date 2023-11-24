@@ -69,7 +69,7 @@
                                         <ul class="dropdown_links">
                                             <li><a href="?act=dangki">Đăng kí </a></li>
                                             <li><a href="?act=login">Đăng nhập</a></li>
-                                            <li><a href="?act=trang_tk">Tài khoản của tôi</a></li>
+                                            <li><a href="?act=suatk">Tài khoản của tôi</a></li>
                                             <li><a href="cart.html">Giỏ hàng</a></li>
                                             <?php
                                             if (isset($_SESSION['user']) && $_SESSION['user']['id_quyen'] == "1") {
