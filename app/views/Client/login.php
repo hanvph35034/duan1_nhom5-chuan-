@@ -11,7 +11,7 @@
                     <div class="breadcrumb_content">
                         <ul>
                             <li><a href="index.html">home</a></li>
-                            <li>Login</li>
+                            <li>Đăng nhập</li>
                         </ul>
                     </div>
                 </div>

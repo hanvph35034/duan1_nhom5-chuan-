@@ -42,7 +42,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 if (strlen($_POST['ten']) < 5) {
                     $error['ten'] = "Tên người dùng ít nhất 5 kí tự ";
                 } else {
-                    $ten = $_POST['ten'];
+                    $ten_dn = $_POST['ten'];
                 }
 
                 if (empty($_POST['pass'])) {
@@ -67,18 +67,21 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $error['sdt'] = "Vui lòng nhập số điện thoại";
                 } else {
                     if (!is_numeric($_POST['sdt'])) {
-                    $error['sdt'] = "Số điện thoại phải là số ";
-                }else{
-                    $sdt = $_POST['sdt'];
+                        $error['sdt'] = "Số điện thoại phải là số ";
+                    } else {
+                        $sdt = $_POST['sdt'];
+                    }
                 }
-            }
                 if (empty($_POST['diachi'])) {
                     $error['diachi'] = "Vui lòng nhập địa chỉ";
                 } else {
                     $dia_chi = $_POST['diachi'];
+
                 }
-                    if (empty($error)) {
-                        insert_taikhoan($user, $ten, $email, $pass, $sdt, $dia_chi);
+                $quyen = 1;
+                if (empty($error)) {
+                    insert_taikhoan($user, $ten_dn, $email, $pass, $sdt, $dia_chi, $quyen);
+                    // echo '<script>alert("Đăng ký thành công")</script>';
                 }
             }
             include "app/views/Client/dangki.php";
