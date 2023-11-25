@@ -14,6 +14,7 @@ include '../../models/donhang.php';
 include '../../models/validate.php';
 
 
+
 include '../../controllers/AdminController.php';
 include '../../controllers/danhmuc.php';
 include '../../controllers/taikhoan.php';
@@ -119,25 +120,26 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             xoabanner();
             include 'QTBANER/list.php';
             // bài viết
-        case 'qtbv':
-            qtbv();
-            break;
-            //thêm
-        case 'addbaiviet':
-            addbaiviet();
-            break;
-            //sửa
-        case 'suabv':
-            suabv();
-            break;
 
-        case 'updatebv':
-            updatebv();
-            break;
-            //xóa
-        case 'deletebv':
-            deletebv();
-            break;
+            case 'qtbv':
+                qtbv();
+                break;
+                //thêm
+            case 'addbaiviet':
+                addbaiviet();
+                break;
+                //sửa
+            case 'suabv':
+                suabv();
+                break;
+    
+            case 'updatebv':
+                updatebv();
+                break;
+                //xóa
+            case 'deletebv':
+                deletebv();
+                break;
 
         case 'quyen':
             quyen();

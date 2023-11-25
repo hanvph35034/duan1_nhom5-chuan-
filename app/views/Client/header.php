@@ -208,37 +208,23 @@
                                     <li><a href="?act">Trang chủ</i></a>
 
                                     </li>
-                                    <li class="mega_items"><a href="shop.html">Danh mục<i class="fa fa-angle-down"></i></a>
-                                        <div class="mega_menu">
-                                            <ul class="mega_menu_inner">
-                                                <li><a href="#">Shop Layouts</a>
-                                                    <ul>
 
-                                                        <li><a href="danh_sach1.html">List View</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">other Pages</a>
+                                    <li><a href="blog.html">Sản phẩm<i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub_menu pages">
+                                        <ul class="mega_menu_inner">
+                                                <li>
                                                     <ul>
-                                                        <li><a href="gio_hang.html">cart</a></li>
-                                                        <li><a href="thanh_toan.html">Checkout</a></li>
-                                                        <li><a href="trang_tk.html">my account</a></li>
-                                                        <li><a href="404.html">Error 404</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Product Types</a>
-                                                    <ul>
-                                                        <li><a href="chitietsp.html">Chi tiet san pham</a></li>
-
-
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Concrete Tools</a>
-                                                    <ul>
-                                                        <li><a href="danh_muc2.html">danh muc 2</a></li>
+                                                        <?php 
+                                                        foreach ($loaddm as $dm) {
+                                                        ?>
+                                                        <li><a href="danh_muc2.html"><?=$dm['Danhmuc']?></a></li>
+                                                        <?php
+                                                    }
+                                                        ?>
                                                     </ul>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </ul>
                                     </li>
                                     <li><a href="blog.html">Bài Viết<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">

@@ -52,12 +52,13 @@
                       <?php 
                         foreach($loadbaiviet as $listbv){
                           extract($listbv);
-                          $linkimg1 = '../../views/Admin/img/' . $anh;
+                          $linkimg1 = '../../../public/img/bai_viet/' . $anh;
+
                           echo'
                           <tr>
                           <td>'.$id.'</td>
                           <td>'.$tieu_de.'</td>
-                          <td><img src="' . $linkimg1 . '" alt="product" width="100"></td>
+                          <td><img src="'.$linkimg1.'" alt="" width="100"></td>
                           <td>'.$noi_dung.'</td>
                           <td>'.$ngay_dang.'</td>
                           <td><a href="?act=suabv&&id='.$id.'"> Sửa </a></td>
