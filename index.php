@@ -133,6 +133,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/trang_tk.php";
             break;
         case 'suatk':
+            
             if (isset($_SESSION['user'])) {
                 $id = $_SESSION['user']['id'];
                 if (isset($_POST['btn']) && $_POST['btn'] != '') {
