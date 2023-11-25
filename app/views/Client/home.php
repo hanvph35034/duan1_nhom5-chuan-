@@ -101,7 +101,8 @@ foreach ($loadsanpham as $sanpham) {
                 
                 <div class="single_product">
                         <div class="product_name">
-                            <h3><a href="product-details.html"><?= $sanpham['ten'] ?> </a></h3>
+                            
+                            <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><?= $sanpham['ten'] ?> </a></h3>
                             <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
                         </div>
                         <div class="product_thumb">

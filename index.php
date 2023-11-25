@@ -116,6 +116,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'danh_muc2':
             include "app/views/Client/danh_muc2.php";
             break;
+            case 'danhmuc1':
+                include "app/views/Client/danh_sach1.php";
+                break;
         case 'lienhe':
             include "app/views/Client/lienhe.php";
             break;
