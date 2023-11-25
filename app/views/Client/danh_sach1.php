@@ -148,9 +148,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="shop_sidebar_banner">
-                            <a href="#"><img src="public/img/bg/banner9.jpg" alt=""></a>
-                        </div>
+                       
                     </aside>
                     <!--sidebar widget end-->
                 </div>
