@@ -67,8 +67,14 @@
                                 <ul>
                                     <li class="top_links"><a href="#"><i class="ion-android-person"></i>Tài khoản của tôi<i class="ion-ios-arrow-down"></i></a>
                                         <ul class="dropdown_links">
-                                            <li><a href="?act=dangki">Đăng kí </a></li>
-                                            <li><a href="?act=login">Đăng nhập</a></li>
+                                            <?php if (!isset($_SESSION['user']))  { ?>
+                                                <li><a href="?act=dangki">Đăng kí </a></li>
+                                                <li><a href="?act=login">Đăng nhập</a></li>
+
+                                            <?php } else { ?>
+                                                <li><a href="?act=dangxuat">Đăng xuất</a></li>
+                                            <?php } ?>
+
                                             <li><a href="?act=suatk">Tài khoản của tôi</a></li>
                                             <li><a href="cart.html">Giỏ hàng</a></li>
                                             <?php
@@ -110,8 +116,10 @@
                             <div class="middel_right_info">
 
                                 <div class="header_wishlist">
-                                    <a href="wishlist.html"> Xin chào  <?= (isset($_SESSION['user'])) ? $_SESSION['user']['ten_dn'] : ''?>  </a>
-                               
+                                    <a href="wishlist.html"> <?php echo  'Xin chào' ;
+                                    echo  '<br>' ;
+                                    echo (isset($_SESSION['user'])) ? $_SESSION['user']['ten_dn'] : '' ;?> </a>
+
                                 </div>
                                 <div class="mini_cart_wrapper">
                                     <a href="javascript:void(0)"><span class="lnr lnr-cart"></span>Giỏ hàng </a>
@@ -197,9 +205,10 @@
                         <div class="main_menu header_position">
                             <nav>
                                 <ul>
-                                    <li><a href="index-4.html">home</i></a>
+                                    <li><a href="?act">Trang chủ</i></a>
 
                                     </li>
+
                                     <li><a href="blog.html">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                         <ul class="mega_menu_inner">

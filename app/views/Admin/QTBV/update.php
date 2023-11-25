@@ -33,6 +33,7 @@
               <?php
               extract($baiviet);
               $linkimg = '../../../public/img/bai_viet/' . $anh;
+
               ?>
               <div class="card-body">
                 <label for="exampleInputEmail1">Update</label>

@@ -36,26 +36,36 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tên tài khoản</label>
                     <input name="user" type="text" class="form-control"  placeholder="Thêm  mới">
+                    <span style="color: red;"> <?= is_error('user') ?></span>
                   </div>
                   <div class="form-group">
                     <label >Mật khẩu</label>
                     <input name="pass" type="password" class="form-control"  placeholder="Thêm  mới">
+                    <span style="color: red;">  <?= is_error('pass') ?></span>
+
                   </div>
                   <div class="form-group">
                     <label >Họ và Tên</label>
                     <input name="ten_dn"  type="text" class="form-control"  placeholder="Thêm  mới">
+                    <span style="color: red;"> <?= is_error('ten') ?></span>
                   </div>
                   <div class="form-group">
                     <label >Địa chỉ </label>
                     <input name="diachi" type="text" class="form-control"  placeholder="Thêm  mới">
+                    <span style="color: red;">  <?= is_error('diachi') ?></span>
+
                   </div>
                   <div class="form-group">
                     <label>Số điện thoại</label>
                     <input name="sdt" type="text" class="form-control"  placeholder="Thêm  mới">
+                    <span style="color: red;">  <?= is_error('sdt') ?></span>
+
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">email </label>
                     <input name ="email" type="text" class="form-control"  placeholder="Thêm  mới">
+                    <span style="color: red;"> <?= is_error('email') ?></span>
+
                   </div>
                   
                   </div>

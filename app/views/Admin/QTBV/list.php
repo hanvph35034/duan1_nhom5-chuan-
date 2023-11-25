@@ -53,6 +53,7 @@
                         foreach($loadbaiviet as $listbv){
                           extract($listbv);
                           $linkimg1 = '../../../public/img/bai_viet/' . $anh;
+
                           echo'
                           <tr>
                           <td>'.$id.'</td>

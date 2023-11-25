@@ -11,6 +11,9 @@ include '../../models/binhluan.php';
 include '../../models/khachhang.php';
 include '../../models/quyen.php';
 include '../../models/donhang.php';
+include '../../models/validate.php';
+
+
 
 include '../../controllers/AdminController.php';
 include '../../controllers/danhmuc.php';
@@ -18,7 +21,9 @@ include '../../controllers/taikhoan.php';
 include '../../controllers/sanpham.php';
 include '../../controllers/banner.php';
 include '../../controllers/binhluan.php';
-include '../../controllers/baiviet.php';
+include '../../controllers/baibviet.php';
+include '../../controllers/donhang.php';
+
  include 'header.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
@@ -62,48 +67,20 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
             // đơn hàng
         case 'qtdh':
-            $loaddh = loadall_donhang();
-            include 'QTDH/list.php';
+            qtdh();
             break;
         case 'adddh':
-            if (isset($_POST['adddh'])) {
-                $ngay_dat = $_POST['ngay_dat'];
-                $tong_gia = $_POST['tong_gia'];
-                $trang_thai = $_POST['trang_thai'];
-                $id_kh = $_POST['id_kh'];
-
-                add_donhang($ngay_dat, $tong_gia, $trang_thai, $id_kh);
-            }
-            $loaddh = loadall_donhang();
-            include 'QTDH/add.php';
+            adddh();
             break;
 
         case 'suadh':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                $loadd1 = loadone_donhang($id);
-            }
-            include 'QTDH/update.php';
+            suadh();
             break;
         case 'updatedh':
-            if (isset($_POST['submit'])) {
-                $id = $_POST['id'];
-                $ngay_dat = $_POST['ngay_dat'];
-                $tong_gia = $_POST['tong_gia'];
-                $trang_thai = $_POST['trang_thai'];
-                $id_kh = $_POST['id_kh'];
-                fix_donhang($id, $ngay_dat, $tong_gia, $trang_thai, $id_kh);
-            }
-            $loaddh = loadall_donhang();
-            include 'QTDH/list.php';
+            updatedh();
             break;
         case 'deletedh':
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                delete_don_hang($id);
-            }
-            $loaddh = loadall_donhang();
-            include 'QTDH/list.php';
+            deletedh();
             break;
 
         case 'qtsp':
@@ -143,6 +120,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             xoabanner();
             include 'QTBANER/list.php';
             // bài viết
+
             case 'qtbv':
                 qtbv();
                 break;
@@ -174,7 +152,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
            suaquyen();
             break;
         case 'bienthe':
-            $loadd = chitietdh();
+            // $loadd = chitietdh();
             include 'QTBT/list.php';
             break;
         case 'addbt':
