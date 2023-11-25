@@ -79,7 +79,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 }
                     if (empty($error)) {
                         insert_taikhoan($user, $ten, $email, $pass, $sdt, $dia_chi);
-                    
                 }
             }
             include "app/views/Client/dangki.php";
