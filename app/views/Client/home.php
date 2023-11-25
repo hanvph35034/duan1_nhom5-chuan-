@@ -106,8 +106,8 @@ foreach ($loadsanpham as $sanpham) {
                             <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
                         </div>
                         <div class="product_thumb">
-                            <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien?>" alt=""></a>
-                            <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1?>" alt=""></a>
+                            <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien?>" alt=""></a>
+                            <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_1?>" alt=""></a>
                             <div class="label_product">
                                 <span class="label_sale">-47%</span>
                             </div>

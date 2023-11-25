@@ -22,9 +22,14 @@ include '../../controllers/banner.php';
 include '../../controllers/binhluan.php';
 include '../../controllers/baibviet.php';
 include '../../controllers/donhang.php';
-// $tkkk = dangnhap($user = "a", $pass = "b");
-// if (empty($tkkk)  || $tkkk['id_quyen'] > 1) {
-//     header("Location: ../../../index.php");
+
+// if (isset($_SESSION['user']) || !isset($_SESSION['user'])) {
+//     if (isset($_SESSION['user']['id_quyen']) && $_SESSION['user']['id_quyen'] > 1) {
+//         // header("Location: ../../../index.php");
+//         echo "
+//         <script>alert('111')</script>
+//         ";
+//     }
 // } else {
     include 'header.php';
     if (isset($_GET['act']) && $_GET['act'] != '') {

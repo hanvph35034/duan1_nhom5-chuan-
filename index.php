@@ -81,7 +81,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $error['diachi'] = "Vui lòng nhập địa chỉ";
                 } else {
                     $dia_chi = $_POST['diachi'];
-
                 }
                 $quyen = 1;
                 if (empty($error)) {
@@ -91,11 +90,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include "app/views/Client/dangki.php";
             break;
-            case 'home':
-                $loadsanpham = loadall_sanpham();
-                $loadbaiviet = loadall_baiviet();
-                include "app/views/Client/home.php";
-                break;
+        case 'home':
+            $loadsanpham = loadall_sanpham();
+            $loadbaiviet = loadall_baiviet();
+            include "app/views/Client/home.php";
+            break;
         case 'baiviet1':
             include "app/views/Client/bai_viet1.php";
             break;
@@ -116,12 +115,37 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'thembl':
 
             break;
-        case 'danh_muc2':
-            include "app/views/Client/danh_muc2.php";
+            // case 'danh_muc2':
+            //     include "app/views/Client/danh_muc2.php";
+            //     break;
+        case 'danhmuc1':
+
+            if (isset($_POST['btn']) && $_POST['btn']) {
+                if(isset($_POST['danhmuc']) ){
+                    $danhmuc = $_POST['danhmuc'];
+                }else{
+                    $danhmuc = '';
+                }
+                if(isset($_POST['gia']) ){
+                    $gia = $_POST['gia'];
+                }else{
+                    $gia = '';
+                }
+                if(isset($_POST['key']) ){
+                    $key = $_POST['key'];
+                    echo $key;
+                }else{
+                    $key = '';
+                }
+               
+              
+
+            }
+            $loadsp = loadsp($key, $danhmuc, $gia);
+            $loadall_sp =  loadall_sanpham();
+
+            include "app/views/Client/danh_sach1.php";
             break;
-            case 'danhmuc1':
-                include "app/views/Client/danh_sach1.php";
-                break;
         case 'lienhe':
             include "app/views/Client/lienhe.php";
             break;
@@ -136,7 +160,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/trang_tk.php";
             break;
         case 'suatk':
-            
+
             if (isset($_SESSION['user'])) {
                 $id = $_SESSION['user']['id'];
                 if (isset($_POST['btn']) && $_POST['btn'] != '') {

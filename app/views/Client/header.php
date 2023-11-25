@@ -108,10 +108,10 @@
                     <div class="col-lg-9 col-md-9">
                         <div class="middel_right">
                             <div class="search-container">
-                                <form action="#">
+                                <form action="?act=danhmuc1" method="post">
                                     <div class="search_box">
-                                        <input placeholder="Search entire store here ..." type="text">
-                                        <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                                        <input name="key" placeholder="Tìm kiếm ..." type="text">
+                                        <button name="btn" value="btn" type="submit"><i class="ion-ios-search-strong"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -211,7 +211,7 @@
 
                                     </li>
 
-                                    <li><a href="blog.html">Sản phẩm<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="?act=danhmuc1">Danh mục<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                         <ul class="mega_menu_inner">
                                                 <li>
