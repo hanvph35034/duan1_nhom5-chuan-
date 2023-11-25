@@ -226,11 +226,11 @@
                                             </ul>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">Bài Viết<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
+                                    <li><a href="blog.html">Bài Viết</a>
+                                        <!-- <ul class="sub_menu pages">
                                             <li><a href="bai_viet1.html">bài viết 1</a></li>
                                             <li><a href="bai_viet2.html">bài viết 2</a></li>
-                                        </ul>
+                                        </ul> -->
                                     </li>
                                     <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">

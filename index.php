@@ -5,11 +5,10 @@ include "app/models/pdo.php";
 include "app/models/taikhoan.php";
 include "app/models/sanpham.php";
 include "app/models/binhluan.php";
-
 include "app/models/baiviet.php";
 include "app/models/danhmuc.php";
-
 include "app/models/validate.php";
+include "app/models/banner.php";
 
 $loaddm = loadall_danhmuc();
 include "app/views/Client/header.php";
@@ -89,6 +88,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/dangki.php";
             break;
             case 'home':
+                
                 $loadsanpham = loadall_sanpham();
                 $loadbaiviet = loadall_baiviet();
                 include "app/views/Client/home.php";
@@ -153,6 +153,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/404.php";
     }
 } else {
+    $loadbanner = loadall_banner();
+    $loadspre =load7spre();
+    $loadsp_sale=loadsp_sale();
     $loadbaiviet = loadall_baiviet();
     $loadsanpham = loadall_sanpham();
     include "app/views/Client/home.php";
