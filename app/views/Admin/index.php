@@ -11,6 +11,8 @@ include '../../models/binhluan.php';
 include '../../models/khachhang.php';
 include '../../models/quyen.php';
 include '../../models/donhang.php';
+include '../../models/validate.php';
+
 
 include '../../controllers/AdminController.php';
 include '../../controllers/danhmuc.php';
@@ -20,6 +22,7 @@ include '../../controllers/banner.php';
 include '../../controllers/binhluan.php';
 include '../../controllers/baibviet.php';
 include '../../controllers/donhang.php';
+
  include 'header.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
@@ -147,7 +150,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
            suaquyen();
             break;
         case 'bienthe':
-            $loadd = chitietdh();
+            // $loadd = chitietdh();
             include 'QTBT/list.php';
             break;
         case 'addbt':
