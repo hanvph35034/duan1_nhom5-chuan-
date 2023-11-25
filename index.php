@@ -2,11 +2,14 @@
 session_start();
 ob_start();
 include "app/models/pdo.php";
-include "app/views/Client/header.php";
 include "app/models/taikhoan.php";
 include "app/models/sanpham.php";
 include "app/models/binhluan.php";
+include "app/models/baiviet.php";
+include "app/models/danhmuc.php";
 
+$loaddm = loadall_danhmuc();
+include "app/views/Client/header.php";
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
 
@@ -36,6 +39,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include "app/views/Client/dangki.php";
             break;
+            case 'home':
+                $loadsanpham = loadall_sanpham();
+                $loadbaiviet = loadall_baiviet();
+                include "app/views/Client/home.php";
+                break;
         case 'baiviet1':
             include "app/views/Client/bai_viet1.php";
             break;
@@ -96,6 +104,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/404.php";
     }
 } else {
+    $loadbaiviet = loadall_baiviet();
+    $loadsanpham = loadall_sanpham();
     include "app/views/Client/home.php";
 }
 

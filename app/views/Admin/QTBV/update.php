@@ -1,89 +1,83 @@
-
-   <!-- Content Wrapper. Contains page content -->
-   <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1>Quản trị Bài Viết</h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">danh sách </li>
-              </ol>
-            </div>
-          </div>
-        </div><!-- /.container-fluid -->
-      </section>
-
-      <!-- Main content -->
-      <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Quản trị bài viết </h3>
-                </div>
-              </div>
-              <!-- /.card -->
-
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Bảng danh sách bài viết</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th>STT</th>
-                        <th>Tiêu đề</th>
-                        <th>Ảnh</th>
-                        <th>Nội dung </th>
-                        <th>Ngày đăng </th>
-                        <th>Sửa</th>
-                        <th>Xóa</th>
-                      </tr>
-                    </thead>
-                 <tbody>
-                      <?php 
-                        foreach($loadbaiviet as $listbv){
-                          extract($listbv);
-                          $linkimg1 = '../../views/Admin/img/' . $img;
-                          echo'
-                          <tr>
-                          <td>'.$id.'</td>
-                          <td>'.$tieu_de.'</td>
-                          <td><img src="' . $linkimg1 . '" alt="product" width="100"></td>
-                          <td>'.$noi_dung.'</td>
-                          <td>'.$ngay_dang.'</td>
-                          <td><a href="?act=suabv&&id='.$id.'"> Sửa </a></td>
-                          <td> <a href="?act=deletebv&&id='.$id.'"> Xóa</a> </td>
-                        </tr>
-                          ';
-                        
-                        }
-                      ?>
-                    </tbody>
-                  </table>
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-sidebar"><a href="?act=addbaiviet">Thêm </a></button>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Quản trị Bài viết</h1>
         </div>
-        <!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-  
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item active">General Form</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">UPDATE Bài viết</h3>
+            </div>
+
+            <form action="index.php?act=updatebv" method="post" enctype="multipart/form-data">
+
+              <?php
+              extract($baiviet);
+              $linkimg = '../../../public/img/bai_viet/' . $anh;
+              ?>
+              <div class="card-body">
+                <label for="exampleInputEmail1">Update</label>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Tiêu đề</label>
+                  <input type="hidden" name="id" class="form-control" value="<?php if (isset($id) && ($id != '')) echo $id ?>">
+                  <input name="tieu_de" id="tieu_de" type="text" class="form-control" value="<?php if (isset($tieu_de) && ($tieu_de != '')) echo $tieu_de ?>">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Ảnh bài viết</label>
+                  <img src="<?= $linkimg ?>" alt="" width="100px">
+                  <input type="file" name="anh" id="anh">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Nội Dung</label>
+                  <input type="text" name="noi_dung" id="noi_dung" class="form-control" value="<?php if (isset($noi_dung) && ($noi_dung != '')) echo $noi_dung ?>">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Ngày đăng</label>
+                  <input type="date" name="ngay_dang" id="ngay_dang" class="form-control" value="<?php if (isset($ngay_dang) && ($ngay_dang != '')) echo $ngay_dang ?>">
+                </div>
+
+
+              </div>
+
+
+              <?php
+
+
+              ?>
+              <div class="card-footer">
+                <button type="submit" name="submit" class="btn btn-primary">UPDATE</button>
+              </div>
+              <?php
+              if (isset($thongbao) && ($thongbao) != "") {
+                echo $thongbao;
+              }
+              ?>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
