@@ -515,8 +515,8 @@ foreach ($loadsp_sale as $sanpham) {
                             </div>
                             <div class="product_footer d-flex align-items-center">
                                 <div class="price_box">
-                                    <span class="current_price"><?= $sanpham['GiaSale'] ?>VND</span>
-                                    <span class="old_price"><?= $sanpham['Gia'] ?></span>
+                                    <span class="current_price"><?= number_format($sanpham['GiaSale'] ) ?>VND</span>
+                                    <span class="old_price"><?= number_format($sanpham['GiaSale'] )?></span>
                                 </div>
                                 <div class="add_to_cart">
                                     <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
@@ -846,7 +846,7 @@ foreach ($loadspre as $sanpham) {
 
                             <div class="action_links">
                                 <ul>
-                                    <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
+                                    <li class="quick_button"><a href="#" data-bs-toggle="" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
                                     <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
                                     <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                 </ul>
@@ -941,16 +941,17 @@ foreach ($loadspre as $sanpham) {
                     <?php
                     foreach ($loadbaiviet as $baiviet) {
                         $linkimg1 = 'public/img/bai_viet/' . $baiviet['anh'];
+                        $linkbv = 'index.php?act=baiviet1&&id=' . $baiviet['id'];
                     ?>
                     <div class="single_blog">
                             <div class="blog_thumb">
-                                <a href="blog-details.html"><img style="height: 150px;" src="<?= $linkimg1 ?>" alt=""></a>
+                            <a href="<?=$linkbv?>"> <img style="height: 150px;" src="<?= $linkimg1 ?>" alt=""></a>
                             </div>
                             <div class="blog_content">
                                 <div class="date_post">
                                     <span><?= $baiviet['ngay_dang'] ?></span>
                                 </div>
-                                <h3><a href="blog-details.html"><?= $baiviet['tieu_de'] ?></a></h3>
+                                <h3><a href="<?=$linkbv?>"><?= $baiviet['tieu_de'] ?></a></h3>
                                 <div class="blog_desc">
                                     <p>Virtual reality and 3-D technology are already well-established in the entertainment...</p>
                                 </div>

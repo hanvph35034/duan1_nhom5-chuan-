@@ -94,6 +94,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 include "app/views/Client/home.php";
                 break;
         case 'baiviet1':
+            if (isset($_GET['id']) && ($_GET['id']) != 0) {
+                $id = $_GET['id'];
+            }
+            $load4bv=load4_baiviet();
+            $loadctbv=loadctbv($id);
             include "app/views/Client/bai_viet1.php";
             break;
         case 'baiviet2':
