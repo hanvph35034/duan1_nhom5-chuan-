@@ -19,7 +19,7 @@ function load_so_binh_luan(){
 function insert_binhluan($noidung,$id_tk,$id_sp){
     $date = date('Y-m-d');
     $sql = "
-    INSERT INTO `binhluan`( `date`, `NoiDung`, `id_tk`, `Id_sp`) VALUES ('$noidung','','$id_tk','$id_sp',)";
+    INSERT INTO `binhluan` ( `date`, `NoiDung`, `id_tk`, `Id_sp`) VALUES ('$date','$noidung','$id_tk','$id_sp')";
     pdo_execute($sql);
 }
 
