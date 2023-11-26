@@ -24,7 +24,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Quản trị Đơn hàng  </h3>
+                  <h3 class="card-title">Quản lý Đơn hàng  </h3>
                 </div>
               </div>
 
@@ -38,12 +38,14 @@
                     <thead>
                       <tr>
                         <th>STT</th>
-                        <th>Ngày đặt </th>
-                       <th>Tổng giá </th>
+                       
+                       <th>Mã đơn hàng </th>
                         <th>Trạng thái </th>   
-                        <th>ID_khách Hàng </th>                       
+                        <th>Thông tin người nhận</th>
+                        <th>Địa chỉ</th>
+                        <th>Tổng tiền </th>
+                        <th>Xem đơn hàng</th>                       
                         <th>Xóa Đơn hàng </th>
-                        <th>Sửa Đơn hàng </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -52,13 +54,14 @@
                           extract($lisdh);
                           echo'
                           <tr>
-                          <td>'.$id.'</td>
-                          <td>'.$ngay_dat.'</td>
-                          <td>'.$tong_gia.'</td>
-                          <td>'.$trang_thai.'</td>
-                          <td>'.$id_kh.'</td>
-                          <td><a href="?act=suadh&&id='.$id.'"> Sửa danh mục </a></td>
-                          <td> <a href="?act=deletedh&&id='.$id.'"> Xóa danh mục</a> </td>
+                          <td>'.$id_don_hang.'</td>
+                          <td>'.$ma_don_hang.'</td>
+                          <td>'.$trang_thai_don_hang.'</td>
+                          <td>'.$nguoi_nhan.'</td>
+                          <td>'.$dia_chi_nhan.'</td>
+                          <td>'.$tong_tien.'</td>
+                         <td><a href="?act=suadh&&id='.$id_don_hang.'"> xem đơn hàng </a></td>
+                          <td> <a href="?act=deletedh&&id='.$id_don_hang.'"> Xóa đơn hàng</a> </td>
                         </tr>
                           ';
                         

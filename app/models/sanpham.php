@@ -134,7 +134,7 @@ function loadall_sanpham_soft($keyw = "", $iddm = 0)
     return $listsanpham;
 }
 // luot xem ++
-//   function update_view($idsp)
+// function update_view($idsp)
 // {
 //     $sql = "update sanpham set luot_xem = luot_xem+1 where id='$idsp'";
 //     pdo_execute($sql);
