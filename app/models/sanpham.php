@@ -40,15 +40,44 @@ function loadallsp_cungdanhmuc($iddm)
     return $sanpham;
 }
 
-// load tất cả các sản phẩm
-function loadall_sanpham()
-{
-    $sql = "SELECT * FROM `sanpham` WHERE 1";
-    $listsanpham = pdo_query($sql);
-    return $listsanpham;
-}
-// sửa sản phẩm
-function update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $so_luong, $gia_sale, $img_1, $img_2, $img_3)
+
+    // load tất cả các sản phẩm
+    function loadall_sanpham()
+    {
+        $sql = "SELECT * FROM `sanpham` WHERE 1";
+        $listsanpham = pdo_query($sql);
+        return $listsanpham;
+    }
+      // sản phẩm giá rẻ
+      function load7spre(){
+        $sql = "SELECT * FROM `sanpham`
+        ORDER BY Gia ASC
+        LIMIT 7;";
+         $listspre = pdo_query($sql);
+         return $listspre;
+    }
+    function loadsp_sale(){
+        $sql="SELECT 
+        s.ten AS TenSanPham,
+        s.Gia AS Gia,
+        s.img_dai_dien AS HinhDaiDien,
+        d.Danhmuc AS TenDanhMuc,
+        s.so_luong AS SoLuong,
+        s.gia_sale AS GiaSale,
+        s.img_1 AS Hinh1,
+        ROUND(((CAST(s.Gia AS DECIMAL) - CAST(s.gia_sale AS DECIMAL)) / CAST(s.Gia AS DECIMAL)) * 100) AS PhanTramGiamGia
+    FROM 
+        sanpham s
+    JOIN 
+        danhmuc d ON s.id_dm = d.id
+    ORDER BY PhanTramGiamGia DESC LIMIT 10; -- Sắp xếp giảm dần theo PhanTramGiamGia
+    ;
+    ";
+    $listspre = pdo_query($sql);
+    return $listspre;
+    }
+    // sửa sản phẩm
+    function update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc,$so_luong,$gia_sale, $img_1, $img_2, $img_3)
 {
     $sql = "UPDATE `sanpham` SET `ten`='$ten',`Mota`='$mo_ta',`gia`='$gia',`img_dai_dien`='$img_dai_dien',
             `ngay_nhap`='$ngay_nhap',`id_dm`='$id_danh_muc', `so_luong` = '$so_luong' ,`gia_sale` = '$gia_sale' ,`img_1`='$img_1',`img_2`='$img_2',`img_3`='$img_3' WHERE `Idsp`='$id'";
@@ -68,15 +97,15 @@ function add_sanpham1($tensanpham, $giasanpham, $anhdaidien, $mota, $soluongsanp
     $sql = "insert into 
         sanpham(ten_san_pham, gia_san_pham, img_dai_dien, mo_ta_san_pham, so_luong, iddm) 
         VALUES($tensanpham, $giasanpham, $anhdaidien, $mota, $soluongsanpham, $iddm);";
-    pdo_execute($sql);
-}
-
-// xóa cứng
-function hard_delete_sanpham($id)
-{
-    $sql = "delete from sanpham where id = '$id'";
-    pdo_execute($sql);
-}
+        pdo_execute($sql);
+    }
+    
+  
+    // luot xem ++
+    function update_view($idsp){
+        $sql = "update sanpham set luot_xem = luot_xem+1 where id='$idsp'";
+        pdo_execute($sql);
+    }
 
 // xóa mềm
 function soft_delete_sanpham($id)
@@ -105,7 +134,7 @@ function loadall_sanpham_soft($keyw = "", $iddm = 0)
     return $listsanpham;
 }
 // luot xem ++
-function update_view($idsp)
+  function update_view($idsp)
 {
     $sql = "update sanpham set luot_xem = luot_xem+1 where id='$idsp'";
     pdo_execute($sql);

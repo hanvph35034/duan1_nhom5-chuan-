@@ -1,4 +1,5 @@
 
+
  
     <!--Offcanvas menu area end-->
 
@@ -9,9 +10,9 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li><a href="#">fashion</a></li>
-                            <li>blog details</li>
+                            <li><a href="index.php">home</a></li>
+                            <li><a href="#">Bài Viết</a></li>
+                            <li>Chi tiết bài viết</li>
                         </ul>
                     </div>
                 </div>
@@ -28,25 +29,31 @@
                 <div class="col-lg-9 col-md-12">
                     <!--blog grid area start-->
                     <div class="blog_details_wrapper">
+                    <?php
+if (isset($loadctbv) && is_array($loadctbv)) {
+    // Lấy thông tin từ mảng $loadctbv
+    $tieu_de = $loadctbv['tieu_de'];
+    $anh = $loadctbv['anh'];
+    $noi_dung = $loadctbv['noi_dung'];
+    $ngay_dang = $loadctbv['ngay_dang'];
+    // Tạo đường dẫn ảnh
+    $linkimg1 = 'public/img/bai_viet/' . $anh;
+    extract($loadctbv);
+}
+?>
+                    
                         <div class="blog_thumb">
-                            <a href="#"><img src="public/img/blog/blog-big1.jpg" alt=""></a>
+                            <a href="#"><img src="<?=$linkimg1?>" alt=""></a>
                         </div>
                         <div class="blog_content">
-                            <h3 class="post_title">Blog image post</h3>
+                            <h3 class="post_title"><?=$tieu_de?></h3>
                             <div class="post_meta">
-                                <span><i class="ion-person"></i> Posted by </span>
-                                <span><a href="#">admin</a></span>
                                 <span>|</span>
-                                <span><i class="fa fa-calendar" aria-hidden="true"></i>  Posted on  March 10, 2019	</span>
+                                <span><i class="fa fa-calendar" aria-hidden="true"></i>  <?=$ngay_dang?></span>
 
                             </div>
                             <div class="post_content">
-                                <p>Aenean et tempor eros, vitae sollicitudin velit. Etiam varius enim nec quam tempor, sed efficitur ex ultrices. Phasellus pretium est vel dui vestibulum condimentum. Aenean nec suscipit nibh. Phasellus nec lacus id arcu facilisis elementum. Curabitur lobortis, elit ut elementum congue, erat ex bibendum odio, nec iaculis lacus sem non lorem. Duis suscipit metus ante, sed convallis quam posuere quis. Ut tincidunt eleifend odio, ac fringilla mi vehicula nec. Nunc vitae lacus eget lectus imperdiet tempus sed in dui. Nam molestie magna at risus consectetur, placerat suscipit justo dignissim. Sed vitae fringilla enim, nec ullamcorper arcu.</p>
-                                <blockquote>
-                                    <p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur. In venenatis elit ac ultrices convallis. Duis est nisi, tincidunt ac urna sed, cursus blandit lectus. In ullamcorper sit amet ligula ut eleifend. Proin dictum tempor ligula, ac feugiat metus. Sed finibus tortor eu scelerisque scelerisque.</p>
-                                </blockquote>
-                                <p>Aenean et tempor eros, vitae sollicitudin velit. Etiam varius enim nec quam tempor, sed efficitur ex ultrices. Phasellus pretium est vel dui vestibulum condimentum. Aenean nec suscipit nibh. Phasellus nec lacus id arcu facilisis elementum. Curabitur lobortis, elit ut elementum congue, erat ex bibendum odio, nec iaculis lacus sem non lorem. Duis suscipit metus ante, sed convallis quam posuere quis. Ut tincidunt eleifend odio, ac fringilla mi vehicula nec. Nunc vitae lacus eget lectus imperdiet tempus sed in dui. Nam molestie magna at risus consectetur, placerat suscipit justo dignissim. Sed vitae fringilla enim, nec ullamcorper arcu.</p>
-                                <p>Suspendisse turpis ipsum, tempus in nulla eu, posuere pharetra nibh. In dignissim vitae lorem non mollis. Praesent pretium tellus in tortor viverra condimentum. Nullam dignissim facilisis nisl, accumsan placerat justo ultricies vel. Vivamus finibus mi a neque pretium, ut convallis dui lacinia. Morbi a rutrum velit. Curabitur sagittis quam quis consectetur mattis. Aenean sit amet quam vel turpis interdum sagittis et eget neque. Nunc ante quam, luctus et neque a, interdum iaculis metus. Aliquam vel ante mattis, placerat orci id, vehicula quam. Suspendisse quis eros cursus, viverra urna sed, commodo mauris. Cras diam arcu, fringilla a sem condimentum, viverra facilisis nunc. Curabitur vitae orci id nulla maximus maximus. Nunc pulvinar sollicitudin molestie.</p>
+                            <?=$noi_dung?>
                             </div>
                             <div class="entry_content">
                                 <div class="post_meta">
@@ -68,6 +75,15 @@
                                 </div>
                             </div>
                         </div>
+
+
+
+
+
+
+
+
+
                         <div class="related_posts">
                             <h3>Related posts</h3>
                             <div class="row">
@@ -212,7 +228,24 @@
                         </div>
                         <div class="widget_list widget_post">
                             <h3>Recent Posts</h3>
-                            <div class="post_wrapper">
+                            <?php
+                            foreach ($load4bv as $bv) {
+                                $linkimg1 = 'public/img/bai_viet/' . $bv['anh'];
+                        $linkbv = 'index.php?act=baiviet1&&id=' . $bv['id'];
+                               ?>
+                               <div class="post_wrapper">
+                                <div class="post_thumb">
+                                    <a href="<?= $linkbv?>"><img style=" width: 80px; height: 50px; " src="<?= $linkimg1?>" alt=""></a>
+                                </div>
+                                <div class="post_info">
+                                    <h3><a href="blog-details.html"><?= $bv['tieu_de'] ?></a></h3>
+                                    <span><?= $bv['ngay_dang'] ?></span>
+                                </div>
+                            </div>
+                               <?php
+                            }
+                            ?>
+                            <!-- <div class="post_wrapper">
                                 <div class="post_thumb">
                                     <a href="blog-details.html"><img src="assets/img/blog/blog12.jpg" alt=""></a>
                                 </div>
@@ -247,7 +280,7 @@
                                     <h3><a href="blog-details.html">Post with Video</a></h3>
                                     <span>March 16, 2018 </span>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="widget_list comments_post">
