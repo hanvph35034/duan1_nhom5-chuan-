@@ -115,15 +115,15 @@ foreach ($loadsanpham as $sanpham) {
                             <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
                         </div>
                         <div class="product_thumb">
-                            <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien?>" alt=""></a>
-                            <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1?>" alt=""></a>
+                            <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien?>" alt=""></a>
+                            <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_1?>" alt=""></a>
                             <div class="label_product">
                                 <span class="label_sale">-47%</span>
                             </div>
 
                             <div class="action_links">
                                 <ul>
-                                    <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
+                                    <li class="quick_button"><a href="" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
                                     <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
                                     <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                 </ul>

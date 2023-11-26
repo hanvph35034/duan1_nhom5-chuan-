@@ -72,9 +72,9 @@ function themtaikhoan()
                 $email = $_POST['email'];
             }
         }
-
+$quyen =1;
         if (empty($error)) {
-            insert_taikhoan($user, $pass, $ten_dn, $email, $sdt, $diachi);
+            insert_taikhoan($user, $pass, $ten_dn, $email, $sdt, $dia_chi,$quyen);
         }
     }
     include 'QTKH/add.php';

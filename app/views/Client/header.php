@@ -70,12 +70,14 @@
                                             <?php if (!isset($_SESSION['user']))  { ?>
                                                 <li><a href="?act=dangki">Đăng kí </a></li>
                                                 <li><a href="?act=login">Đăng nhập</a></li>
+                                                
 
                                             <?php } else { ?>
+                                                <li><a href="?act=suatk">Tài khoản của tôi</a></li>
                                                 <li><a href="?act=dangxuat">Đăng xuất</a></li>
                                             <?php } ?>
 
-                                            <li><a href="?act=suatk">Tài khoản của tôi</a></li>
+                                       
                                             <li><a href="cart.html">Giỏ hàng</a></li>
                                             <?php
                                             if (isset($_SESSION['user']) && $_SESSION['user']['id_quyen'] == "1") {
@@ -106,10 +108,10 @@
                     <div class="col-lg-9 col-md-9">
                         <div class="middel_right">
                             <div class="search-container">
-                                <form action="#">
+                                <form action="?act=danhmuc1" method="post">
                                     <div class="search_box">
-                                        <input placeholder="Search entire store here ..." type="text">
-                                        <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                                        <input name="key" placeholder="Tìm kiếm ..." type="text">
+                                        <button name="btn" value="btn" type="submit"><i class="ion-ios-search-strong"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -118,7 +120,7 @@
                                 <div class="header_wishlist">
                                     <a href="wishlist.html"> <?php echo  'Xin chào' ;
                                     echo  '<br>' ;
-                                    echo (isset($_SESSION['user'])) ? $_SESSION['user']['ten_dn'] : '' ;?> </a>
+                                    echo (isset($_SESSION['user']['ten_dn'])) ? $_SESSION['user']['ten_dn'] : '' ;?> </a>
 
                                 </div>
                                 <div class="mini_cart_wrapper">
@@ -209,7 +211,7 @@
 
                                     </li>
 
-                                    <li><a href="blog.html">Sản phẩm<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="?act=danhmuc1">Danh mục<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                         <ul class="mega_menu_inner">
                                                 <li>
