@@ -20,7 +20,7 @@ include '../../controllers/taikhoan.php';
 include '../../controllers/sanpham.php';
 include '../../controllers/banner.php';
 include '../../controllers/binhluan.php';
-include '../../controllers/baibviet.php';
+include '../../controllers/baiviet.php';
 include '../../controllers/donhang.php';
 
 // if (isset($_SESSION['user']) || !isset($_SESSION['user'])) {

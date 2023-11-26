@@ -5,11 +5,10 @@ include "app/models/pdo.php";
 include "app/models/taikhoan.php";
 include "app/models/sanpham.php";
 include "app/models/binhluan.php";
-
 include "app/models/baiviet.php";
 include "app/models/danhmuc.php";
-
 include "app/models/validate.php";
+include "app/models/banner.php";
 
 $loaddm = loadall_danhmuc();
 include "app/views/Client/header.php";
@@ -47,7 +46,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 if (strlen($_POST['ten']) < 5) {
                     $error['ten'] = "Tên người dùng ít nhất 5 kí tự ";
                 } else {
-                    $ten_dn = $_POST['ten'];
+                    $ten = $_POST['ten'];
                 }
 
                 if (empty($_POST['pass'])) {
@@ -72,30 +71,35 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $error['sdt'] = "Vui lòng nhập số điện thoại";
                 } else {
                     if (!is_numeric($_POST['sdt'])) {
-                        $error['sdt'] = "Số điện thoại phải là số ";
-                    } else {
-                        $sdt = $_POST['sdt'];
-                    }
+                    $error['sdt'] = "Số điện thoại phải là số ";
+                }else{
+                    $sdt = $_POST['sdt'];
                 }
+            }
                 if (empty($_POST['diachi'])) {
                     $error['diachi'] = "Vui lòng nhập địa chỉ";
                 } else {
                     $dia_chi = $_POST['diachi'];
+                    $quyen=2;
                 }
-                $quyen = 1;
-                if (empty($error)) {
-                    insert_taikhoan($user, $ten_dn, $email, $pass, $sdt, $dia_chi, $quyen);
-                    // echo '<script>alert("Đăng ký thành công")</script>';
+                    if (empty($error)) {
+                        insert_taikhoan($user, $ten, $email, $pass, $sdt, $dia_chi,$quyen);
                 }
             }
             include "app/views/Client/dangki.php";
             break;
-        case 'home':
-            $loadsanpham = loadall_sanpham();
-            $loadbaiviet = loadall_baiviet();
-            include "app/views/Client/home.php";
-            break;
+            case 'home':
+                
+                $loadsanpham = loadall_sanpham();
+                $loadbaiviet = loadall_baiviet();
+                include "app/views/Client/home.php";
+                break;
         case 'baiviet1':
+            if (isset($_GET['id']) && ($_GET['id']) != 0) {
+                $id = $_GET['id'];
+            }
+            $load4bv=load4_baiviet();
+            $loadctbv=loadctbv($id);
             include "app/views/Client/bai_viet1.php";
             break;
         case 'baiviet2':
@@ -142,6 +146,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
             include "app/views/Client/danh_sach1.php";
             break;
+          
         case 'lienhe':
             include "app/views/Client/lienhe.php";
             break;
@@ -156,7 +161,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/trang_tk.php";
             break;
         case 'suatk':
-
             if (isset($_SESSION['user'])) {
                 $id = $_SESSION['user']['id'];
                 if (isset($_POST['btn']) && $_POST['btn'] != '') {
@@ -180,6 +184,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/404.php";
     }
 } else {
+    $loadbanner = loadall_banner();
+    $loadspre =load7spre();
+    $loadsp_sale=loadsp_sale();
     $loadbaiviet = loadall_baiviet();
     $loadsanpham = loadall_sanpham();
     include "app/views/Client/home.php";
