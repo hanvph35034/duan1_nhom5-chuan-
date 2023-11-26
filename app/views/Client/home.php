@@ -132,8 +132,8 @@ foreach ($loadsanpham as $sanpham) {
                             </div>
                             <div class="product_footer d-flex align-items-center">
                                 <div class="price_box">
-                                    <span class="current_price"><?= $sanpham['gia_sale'] ?>VND</span>
-                                    <span class="old_price"><?= $sanpham['Gia'] ?></span>
+                                    <span class="current_price"><?= number_format($sanpham['gia_sale']) ?>VND</span>
+                                    <span class="old_price"><?= number_format($sanpham['Gia']) ?></span>
                                 </div>
                                 <div class="add_to_cart">
                                     <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>

@@ -5,6 +5,7 @@
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1>Quản trị sản phẩm</h1>
+          
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -27,6 +28,7 @@
             <div class="card-header">
               <h3 class="card-title">Thêm mới sản phẩm</h3>
             </div>
+            
             <!-- /.card-header -->
             <!-- form start -->
             <form action="index.php?act=addsp" method="post" enctype="multipart/form-data">

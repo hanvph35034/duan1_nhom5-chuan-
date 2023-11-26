@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Quản trị Khuyến mại</h1>
+          <h1>Quản lý đơn hàng </h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -21,56 +21,65 @@
     <div class="container-fluid">
       <div class="row">
         <!-- left column -->
-        <div class="col-md-6">
+        <div class="col-md-7">
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Update khuyến mại</h3>
+              <h3 class="card-title">Thông tin chi tiết đơn hàng</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
             <form action="index.php?act=updatedh" method="POST">
               <div class="card-body">
                 <div class="form-group">
-                  <?php
-                  if (is_array($loadd1)) {
-                    extract($loadd1);
-                  ?>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Ngày đặt</label>
-                      <input type="hidden" name="id" class="form-control" value="<?php if (isset($id) && ($id != '')) echo $id ?>">
-                      <input type="date" name="ngay_dat" class="form-control" value="<?php if (isset($ngay_dat) && ($ngay_dat != '')) echo $ngay_dat ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Tổng giá</label>
-                      <input type="text" name="tong_gia" class="form-control" value="<?php if (isset($tong_gia) && ($tong_gia != '')) echo $tong_gia ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Trạng Thái</label>
-                      <input type="text" name="trang_thai" class="form-control" value="<?php if (isset($trang_thai) && ($trang_thai != '')) echo $trang_thai ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">ID_khách hàng</label>
-                      <input type="text" name="id_kh" class="form-control" value="<?php if (isset($id_kh) && ($id_kh != '')) echo $id_kh ?>">
-                    </div>
-
+                  <label>Tên người nhận</label>
+                  <input type="hidden" name="iddm" class="form-control" value="">
+                  <input type="text" name="tendm" class="form-control" value="<?= $loadd1['ten_khach_hang']?>">
                 </div>
+                <div class="form-group">
+                  <label>Địa chỉ</label>
+                  <input type="text" value="<?= $loadd1['dia_chi_nguoi_nhan']?>" name="tendm" class="form-control" value="">
+                </div>
+             
+              <div class="form-group">
+                <label>Số điện thoại</label>
+                <input type="text" value="<?= $loadd1['so_dien_thoai']?>" name="tendm" class="form-control" value="">
               </div>
+
+              <div class="form-group">
+                <label>Tên Sản phẩm </label>
+                <input type="text" value="<?= $loadd1['ten_san_pham']?>" name="tendm" class="form-control" value="">
+              </div>
+
+              <div class="form-group">
+                <label>Số lượng</label>
+                <input type="text" value="<?= $loadd1['so_luong']?>" name="tendm" class="form-control" value="">
+              </div>
+
+              <div class="form-group">
+                <label>Giá tiền</label>
+                <input type="text" value="<?= $loadd1['don_gia']?>" name="tendm" class="form-control" value="">
+              </div>
+
+              <div class="form-group">
+                <label>Trạng thái đơn hàng</label>
+                <input type="text" value="<?= $loadd1['trang_thai_don_hang']?>" name="tendm" class="form-control" value="">
+              </div>
+              <div class="form-group">
+                <label>ghi trú</label><br>
+                <textarea value="<?= $loadd1['ghi_chu']?>" name="" id="" cols="40" rows="5"></textarea>
+              </div>
+
+              <div class="card-footer">
+                <button type="submit" name="submit" class="btn btn-primary">Lưu</button>
+              </div>
+            </form>
           </div>
-
-        <?php
-                  }
-        ?>
-
-        <div class="card-footer">
-          <button type="submit" name="submit" class="btn btn-primary">UPDATE</button>
-        </div>
-        </form>
         </div>
       </div>
-
     </div>
-    <!-- /.row -->
+</div>
+<!-- /.row -->
 </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->

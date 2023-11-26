@@ -28,6 +28,9 @@
                 <div class="card-header">
                   <h3 class="card-title">Quản trị danh mục </h3>
                 </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-sidebar"><a href="?act=adddm">Thêm danh mục</a></button>
+                  </div>
               </div>
               <!-- /.card -->
 

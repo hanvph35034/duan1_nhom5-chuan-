@@ -26,6 +26,9 @@
             <div class="card-header">
               <h3 class="card-title">Quản trị sản phẩm </h3>
             </div>
+            <div class="card-footer">
+                <button name="submit" type="submit" class="btn btn-sidebar"><a href="?act=addsp">Thêm sản phẩm</a></button>
+              </div>
           </div>
           <!-- /.card -->
 
