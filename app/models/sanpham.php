@@ -43,6 +43,34 @@
         $listsanpham = pdo_query($sql);
         return $listsanpham;
     }
+      // sản phẩm giá rẻ
+      function load7spre(){
+        $sql = "SELECT * FROM `sanpham`
+        ORDER BY Gia ASC
+        LIMIT 7;";
+         $listspre = pdo_query($sql);
+         return $listspre;
+    }
+    function loadsp_sale(){
+        $sql="SELECT 
+        s.ten AS TenSanPham,
+        s.Gia AS Gia,
+        s.img_dai_dien AS HinhDaiDien,
+        d.Danhmuc AS TenDanhMuc,
+        s.so_luong AS SoLuong,
+        s.gia_sale AS GiaSale,
+        s.img_1 AS Hinh1,
+        ROUND(((CAST(s.Gia AS DECIMAL) - CAST(s.gia_sale AS DECIMAL)) / CAST(s.Gia AS DECIMAL)) * 100) AS PhanTramGiamGia
+    FROM 
+        sanpham s
+    JOIN 
+        danhmuc d ON s.id_dm = d.id
+    ORDER BY PhanTramGiamGia DESC LIMIT 10; -- Sắp xếp giảm dần theo PhanTramGiamGia
+    ;
+    ";
+    $listspre = pdo_query($sql);
+    return $listspre;
+    }
     // sửa sản phẩm
     function update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc,$so_luong,$gia_sale, $img_1, $img_2, $img_3)
 {
@@ -66,35 +94,7 @@
         pdo_execute($sql);
     }
     
-    // xóa cứng
-    function hard_delete_sanpham($id){
-        $sql = "delete from sanpham where id = '$id'";
-        pdo_execute($sql);
-    }
-
-    // xóa mềm
-    function soft_delete_sanpham($id){
-        $sql = "update sanpham set trangthai='1' where id = '$id'";
-        pdo_execute($sql);
-    }
-    // khôi phục sản phẩm xóa mềm
-    function restore_sanpham($id){
-        $sql = "update sanpham set trangthai='0' where id = '$id'";
-        pdo_execute($sql);
-    }
-    // loadall các sản phẩm xóa mềm
-    function loadall_sanpham_soft($keyw="", $iddm=0){
-        $sql = "select * from sanpham where trangthai!='0' ";
-        if($keyw!=""){
-            $sql.="and name like '%".$keyw."%'";
-        }
-        if($iddm>0){
-            $sql.="and iddm = '".$iddm."'";
-        }
-        $sql.= "order by id desc";
-        $listsanpham = pdo_query($sql);
-        return $listsanpham;
-    }
+  
     // luot xem ++
     function update_view($idsp){
         $sql = "update sanpham set luot_xem = luot_xem+1 where id='$idsp'";

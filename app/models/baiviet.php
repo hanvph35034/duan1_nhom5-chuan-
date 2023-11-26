@@ -12,6 +12,23 @@ function loadone_baiviet($id)
     $baiviet = pdo_query_one($sql);
     return $baiviet;
 }
+function loadctbv($id){
+    $sql = "SELECT bai_viet.tieu_de, bai_viet.anh, bai_viet.noi_dung, bai_viet.ngay_dang, tai_khoan.User
+            FROM bai_viet
+            INNER JOIN tai_khoan ON bai_viet.id_tk = tai_khoan.id
+            WHERE bai_viet.id = '$id'"; 
+    $baiviet = pdo_query_one($sql);
+    return $baiviet;
+}
+//4baivietnew
+function load4_baiviet()
+{
+    $sql = "SELECT * FROM bai_viet
+    ORDER BY id DESC
+    LIMIT 4";
+    $list = pdo_query($sql);
+    return $list;
+}
 //sửa bài viết
 // function update_baiviet($id, $tieu_de, $anh, $noi_dung, $ngay_dang)
 // {
