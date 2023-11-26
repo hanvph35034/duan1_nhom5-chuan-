@@ -40,7 +40,7 @@ function loadallsp_cungdanhmuc($iddm)
     return $sanpham;
 }
 
-<<<<<<< HEAD
+
     // load tất cả các sản phẩm
     function loadall_sanpham()
     {
@@ -78,17 +78,6 @@ function loadallsp_cungdanhmuc($iddm)
     }
     // sửa sản phẩm
     function update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc,$so_luong,$gia_sale, $img_1, $img_2, $img_3)
-=======
-// load tất cả các sản phẩm
-function loadall_sanpham()
-{
-    $sql = "SELECT * FROM `sanpham` WHERE 1";
-    $listsanpham = pdo_query($sql);
-    return $listsanpham;
-}
-// sửa sản phẩm
-function update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $so_luong, $gia_sale, $img_1, $img_2, $img_3)
->>>>>>> mater
 {
     $sql = "UPDATE `sanpham` SET `ten`='$ten',`Mota`='$mo_ta',`gia`='$gia',`img_dai_dien`='$img_dai_dien',
             `ngay_nhap`='$ngay_nhap',`id_dm`='$id_danh_muc', `so_luong` = '$so_luong' ,`gia_sale` = '$gia_sale' ,`img_1`='$img_1',`img_2`='$img_2',`img_3`='$img_3' WHERE `Idsp`='$id'";
@@ -145,7 +134,7 @@ function loadall_sanpham_soft($keyw = "", $iddm = 0)
     return $listsanpham;
 }
 // luot xem ++
-function update_view($idsp)
+  function update_view($idsp)
 {
     $sql = "update sanpham set luot_xem = luot_xem+1 where id='$idsp'";
     pdo_execute($sql);
