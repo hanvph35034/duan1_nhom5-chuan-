@@ -78,28 +78,16 @@
 
                         </div>
                         <div class="price_box">
-                            <span class="current_price"><?= ''.'$'. number_format($loadone_sp['gia_sale'])  ?></span>
-                            <span class="old_price"><?= ''.'$'. number_format($loadone_sp['Gia'])  ?></span>
+                            <span class="current_price"><?= '' . '$' . number_format($loadone_sp['gia_sale'])  ?></span>
+                            <span class="old_price"><?= '' . '$' . number_format($loadone_sp['Gia'])  ?></span>
 
                         </div>
                         <div class="product_desc">
-                            <p><?= $loadone_sp['MoTa']?> </p>
+                            <p><?= $loadone_sp['MoTa'] ?> </p>
                         </div>
-<!--                       
-                        <div class="product_variant color">
-                            <h3>Tùy chọn có sẵn</h3>
-                            <label>Màu</label>
-                           
-                            <ul>
-                                <li class="color1"><a href="#"></a></li>
-                                <li class="color2"><a href="#"></a></li>
-                                <li class="color3"><a href="#"></a></li>
-                                <li class="color4"><a href="#"></a></li>
-                            </ul>
-                        </div> -->
                         <div class="product_variant quantity">
                             <label>Số lượng</label>
-                            <input min="1" max="<?= $loadone_sp['so_luong']?>" value="1" type="number">
+                            <input min="1" max="<?= $loadone_sp['so_luong'] ?>" value="1" type="number">
                             <button class="button" type="submit">Thêm vào giỏ hàng</button>
 
                         </div>
@@ -142,16 +130,16 @@
                             <li>
                                 <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Bình Luận</a>
                             </li>
-                          
+
                         </ul>
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="info" role="tabpanel">
-                        <div class="reviews_wrapper">
-                                <?php foreach($loadd_bl as $row) {
-                                extract($row);
-                                    
-                                echo '
+                            <div class="reviews_wrapper">
+                                <?php foreach ($loadd_bl as $row) {
+                                    extract($row);
+
+                                    echo '
                                 <h2>1 bình luận cho sản phẩm</h2>
                                 <div class="reviews_comment_box">
                                     <div class="comment_thmb">
@@ -168,8 +156,8 @@
                                                     <li><a href="#"><i class="ion-ios-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <p><strong>'.$ten_nguoi_dung.'</strong>  '.$ngay_binh_luan.'</p>
-                                            <span>'.$noi_dung_binh_luan.'</span>
+                                            <p><strong>' . $ten_nguoi_dung . '</strong>  ' . $ngay_binh_luan . '</p>
+                                            <span>' . $noi_dung_binh_luan . '</span>
                                         </div>
                                     </div>
 
@@ -179,8 +167,9 @@
                                    
                                 </div>
                               
-                                    '; }?>
-                                      <div class="product_ratting mb-10">
+                                    ';
+                                } ?>
+                                <div class="product_ratting mb-10">
                                     <h3>Your rating</h3>
                                     <ul>
                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -194,16 +183,21 @@
                                     <form action="" method="post">
                                         <div class="row">
                                             <div class="col-12">
-                                            <input type="hidden" value="<?= $loadone_sp['Idsp']?>">
+                                                <input type="hidden" value="<?= $loadone_sp['Idsp'] ?>">
+                                                <?php if(isset($_SESSION['user']['ten_dn'])){?>
                                                 <label for="review_comment">Đánh giá của bạn </label>
                                                 <textarea name="noidung" name="binhluan" id="review_comment"></textarea>
                                             </div>
                                         </div>
+                                       
                                         <button value="btn" name="btn" type="submit">Gửi bình luận</button>
+                                        <?php }else{?>
+                                            <h5 style="color:red;">bạn phải đăng nhập để comment</h5>
+                                            <?php }?>
                                     </form>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -213,27 +207,27 @@
 <!--product info end-->
 
 <!--product area start-->
+
 <section class="product_area mb-50">
     <div class="container">
+        <div class="section_title">
+            <h2><span> <strong>Sản phẩm</strong>cùng loại</span></h2>
+        </div>
         <div class="row">
-            <div class="col-12">
-                <div class="section_title">
-                    <h2><span> <strong>Sản phẩm</strong>liên quan</span></h2>
-                </div>
-                <?php foreach($load_sp_dm as $row){
-                    ?>
-                <div class="product_carousel product_column5 owl-carousel">
+            <?php foreach ($load_sp_dm as $row) {
+               
+            ?>
+                <div class="col-md-3">
                     <div class="single_product">
                         <div class="product_name">
-                            <h3><a href=""><?= $load_sp_dm['ten'] ?></a></h3>
-                         
-                            <p class="manufacture_product"><a href="#">Accessories</a></p>
+                            <h3><a href="product-details.html"><?= $row['ten'] ?></a></h3>
+                            <p class="manufacture_product"><a href="#">Quần áo</a></p>
                         </div>
                         <div class="product_thumb">
-                            <a class="primary_img" href="product-details.html"><img src="public/img/product/product19.jpg" alt=""></a>
-                            <a class="secondary_img" href="product-details.html"><img src="public/img/product/product11.jpg" alt=""></a>
+                            <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 230px" src="public/img/product/<?= $row['img_dai_dien'] ?>" alt=""></a>
+                            <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 230px" src="public/img/product/<?= $row['img_1'] ?>" alt=""></a>
                             <div class="label_product">
-                                <span class="label_sale">-57%</span>
+                                <span class="label_sale"><a href="#">50%</span>
                             </div>
 
                             <div class="action_links">
@@ -256,134 +250,30 @@
                             </div>
                             <div class="product_footer d-flex align-items-center">
                                 <div class="price_box">
-                                    <span class="regular_price">$180.00</span>
+                                    <span class="current_price"><?= number_format($row['gia_sale'])?></span>
+                                    <span class="old_price"><?= number_format($row['Gia'])?></span>
                                 </div>
                                 <div class="add_to_cart">
                                     <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                 </div>
                             </div>
+                            <div class="quantity_progress">
+                                <p class="product_sold">Đã bán: <span>199</span></p>
+                                <p class="product_available">Số lượng: <span><?= $row['so_luong']?></span></p>
+                            </div>
+                            <div class="bar_percent">
+                            </div>
                         </div>
                     </div>
-                   
                 </div>
-            </div>
+                <?php } ?>
         </div>
-
+    
     </div>
-                <?php }?>
 </section>
 
 
 
-<div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="modal_body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-12">
-                            <div class="modal_tab">
-                                <div class="tab-content product-details-large">
-                                    <div class="tab-pane fade show active" id="tab1" role="tabpanel">
-                                        <div class="modal_tab_img">
-                                            <a href="#"><img src="public/img/product/product1.jpg" alt=""></a>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tab2" role="tabpanel">
-                                        <div class="modal_tab_img">
-                                            <a href="#"><img src="public/img/product/product2.jpg" alt=""></a>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tab3" role="tabpanel">
-                                        <div class="modal_tab_img">
-                                            <a href="#"><img src="public/img/product/product3.jpg" alt=""></a>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tab4" role="tabpanel">
-                                        <div class="modal_tab_img">
-                                            <a href="#"><img src="public/img/product/product5.jpg" alt=""></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal_tab_button">
-                                    <ul class="nav product_navactive owl-carousel" role="tablist">
-                                        <li>
-                                            <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false"><img src="public/img/product/product1.jpg" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"><img src="public/img/product/product2.jpg" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link button_three" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false"><img src="public/img/product/product3.jpg" alt=""></a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false"><img src="public/img/product/product5.jpg" alt=""></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-7 col-sm-12">
-                            <div class="modal_right">
-                                <div class="modal_title mb-10">
-                                    <h2>Handbag feugiat</h2>
-                                </div>
-                                <div class="modal_price mb-10">
-                                    <span class="new_price">$64.99</span>
-                                    <span class="old_price">$78.99</span>
-                                </div>
-                                <div class="modal_description mb-15">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam, reiciendis maiores quidem aperiam, rerum vel recusandae </p>
-                                </div>
-                                <div class="variants_selects">
-                                    <div class="variants_size">
-                                        <h2>size</h2>
-                                        <select class="select_option">
-                                            <option selected value="1">s</option>
-                                            <option value="1">m</option>
-                                            <option value="1">l</option>
-                                            <option value="1">xl</option>
-                                            <option value="1">xxl</option>
-                                        </select>
-                                    </div>
-                                    <div class="variants_color">
-                                        <h2>color</h2>
-                                        <select class="select_option">
-                                            <option selected value="1">purple</option>
-                                            <option value="1">violet</option>
-                                            <option value="1">black</option>
-                                            <option value="1">pink</option>
-                                            <option value="1">orange</option>
-                                        </select>
-                                    </div>
-                                    <div class="modal_add_to_cart">
-                                        <form action="#">
-                                            <input min="1" max="100" step="2" value="1" type="number">
-                                            <button type="submit">add to cart</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="modal_social">
-                                    <h2>Share this product</h2>
-                                    <ul>
-                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- modal area end-->
 
