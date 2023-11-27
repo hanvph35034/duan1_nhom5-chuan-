@@ -35,7 +35,7 @@ function loadallsp_cungloai($id, $iddm)
 // load all san pham cung danh muc
 function loadallsp_cungdanhmuc($danhmuc)
 {
-    $sql = "select * from sanpham where id_dm = '$danhmuc'";
+    $sql = "select * from `sanpham` where id_dm = '$danhmuc'";
     $sanpham = pdo_query($sql);
     return $sanpham;
 }
@@ -186,4 +186,14 @@ function loadsp($key = "", $danhmuc = 0, $gia = "")
         $sql .= " AND gia_sale BETWEEN $gia";
     }
     return pdo_query($sql);
+}
+function listcart($idtk)
+{
+    $sql = "SELECT sanpham.ten ,sanpham.img_dai_dien , sanpham.gia_sale , sanpham.Idsp , giohang.soluong FROM sanpham JOIN giohang ON sanpham.Idsp = giohang.id_sp Where id_tk = $idtk ";
+    return pdo_query($sql);
+}
+function themcart($idsp,$idtk,$soluong)
+{
+    $sql = "INSERT INTO `giohang`(`id_tk`, `id_sp`, `soluong`) VALUES ('$idtk','$idsp','$soluong')";
+    pdo_execute($sql);
 }

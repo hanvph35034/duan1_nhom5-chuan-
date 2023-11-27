@@ -4,7 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Autima Dự án của nhóm 5</title>
+
+    <title>Autima Dự án 1 nhóm 5</title>
+
+
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -76,9 +79,7 @@
                                                 <li><a href="?act=suatk">Tài khoản của tôi</a></li>
                                                 <li><a href="?act=dangxuat">Đăng xuất</a></li>
                                             <?php } ?>
-
-                                       
-                                            <li><a href="?act=thanh_toan">Giỏ hàng</a></li>
+                                            <li><a href="?act=giohang">Giỏ hàng</a></li>
                                             <?php
                                             if (isset($_SESSION['user']) && $_SESSION['user']['id_quyen'] == "1") {
                                             ?>

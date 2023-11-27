@@ -23,8 +23,7 @@
             <div class="row">
               
                 <div class="col-lg-12 col-md-12">
-                    <!--shop wrapper start-->
-                    <!--shop toolbar start-->
+                  
                    
                     <div class="shop_title">
                         <h1>Shop</h1>
