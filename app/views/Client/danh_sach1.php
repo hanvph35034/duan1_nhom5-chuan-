@@ -143,8 +143,8 @@
                                             <p>Số lượng <span><?= $sanpham['so_luong'] ?></span></p>
                                         </div>
                                         <div class="price_box">
-                                            <span class="current_price"><?= $sanpham['Gia'] ?></span>
-                                            <span class="old_price"><?= $sanpham['gia_sale'] ?>VND</span>
+                                            <span class="current_price"><?= number_format($sanpham['gia_sale']) ?></span>
+                                            <span class="old_price"><?= number_format($sanpham['gia_sale']) ?>VND</span>
                                         </div>
                                         <div class="cart_links_btn">
                                             <a href="#" title="add to cart">Thêm vào giỏ hàng</a>
@@ -161,89 +161,7 @@
                             </div>
                         </div>
                         <?php }?>
-                        <div class="col-12 ">
-                            <div class="single_product">
-                                <div class="product_name grid_name">
-                                    <h3><a href="product-details.html">Accusantium dolorem Security Camera</a></h3>
-                                    <p class="manufacture_product"><a href="#">Accessories</a></p>
-                                </div>
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img src="public/img/product/product1.jpg" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img src="public/img/product/product2.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">-47%</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                            <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <div class="content_inner">
-                                        <div class="product_ratings">
-                                            <ul>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product_footer d-flex align-items-center">
-                                            <div class="price_box">
-                                                <span class="current_price">$150.00</span>
-                                                <span class="old_price">$3200.00</span>
-                                            </div>
-                                            <div class="add_to_cart">
-                                                <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <div class="left_caption">
-                                        <div class="product_name">
-                                            <h3><a href="product-details.html">Accusantium dolorem Security Camera</a></h3>
-                                        </div>
-                                        <div class="product_ratings">
-                                            <ul>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="product_desc">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad, iure incidunt. Ab consequatur temporibus non eveniet inventore doloremque necessitatibus sed, ducimus quisquam, ad asperiores </p>
-                                        </div>
-                                    </div>
-                                    <div class="right_caption">
-                                        <div class="text_available">
-                                            <p>availabe: <span>99 in stock</span></p>
-                                        </div>
-                                        <div class="price_box">
-                                            <span class="current_price">$150.00</span>
-                                            <span class="old_price">$420.00</span>
-                                        </div>
-                                        <div class="cart_links_btn">
-                                            <a href="#" title="add to cart">add to cart</a>
-                                        </div>
-                                        <div class="action_links_btn">
-                                            <ul>
-                                                <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                                <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
+                      
                     </div>
 
                     <div class="shop_toolbar t_bottom">
