@@ -102,6 +102,9 @@
             <li class="nav-item">
               <a href="?act=quyen" class="nav-link">Chức Vụ </a>
             </li>
+            <li class="nav-item">
+              <a href="?act=thongke" class="nav-link">Thống kê</a>
+            </li>
           </ul>
           
         </nav>
