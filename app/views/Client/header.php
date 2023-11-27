@@ -78,7 +78,7 @@
                                             <?php } ?>
 
                                        
-                                            <li><a href="cart.html">Giỏ hàng</a></li>
+                                            <li><a href="?act=thanh_toan">Giỏ hàng</a></li>
                                             <?php
                                             if (isset($_SESSION['user']) && $_SESSION['user']['id_quyen'] == "1") {
                                             ?>

@@ -107,15 +107,17 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
 
         case 'chitietsp':
-            $loadd_bl = load_binhluan();
+            $id = $_GET['idsp'];
+            $loadd_bl = load_binhluan_sp($id);
             $loadone_sp =  loadone_sanpham($_GET['idsp']);
+            // $danhmuc = $_POST['danhmuc'];
+            $load_sp_dm = loadallsp_cungdanhmuc($danhmuc);
             if (isset($_POST['btn']) && $_POST['btn'] != '') {
                 $noidung = $_POST['noidung'];
                 $id_tk = $_SESSION['user']['id'];
                 $id_sp = $_GET['idsp'];
                 insert_binhluan($noidung,$id_tk,$id_sp);
                 header("Location: ".$_SERVER['HTTP_REFERER']);
-     
             }
             include "app/views/Client/chitietsp.php";
             break;

@@ -10,10 +10,10 @@
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="index.html">home</a></li>
-                        <li><a href="shop.html">shop</a></li>
-                        <li><a href="shop.html">Clothing</a></li>
-                        <li>product details</li>
+                        <li><a href="?act">Trang chủ</a></li>
+                        <li><a href="">Cửa hàng</a></li>
+                        <li><a href="">Quần áo</a></li>
+                        <li>Chi tiết sản phẩm</li>
                     </ul>
                 </div>
             </div>
@@ -78,37 +78,39 @@
 
                         </div>
                         <div class="price_box">
-                            <span class="current_price"><?= ''.'$'. $loadone_sp['Gia']  ?></span>
-                            <span class="old_price">$80.00</span>
+                            <span class="current_price"><?= ''.'$'. number_format($loadone_sp['gia_sale'])  ?></span>
+                            <span class="old_price"><?= ''.'$'. number_format($loadone_sp['Gia'])  ?></span>
 
                         </div>
                         <div class="product_desc">
                             <p><?= $loadone_sp['MoTa']?> </p>
                         </div>
+<!--                       
                         <div class="product_variant color">
                             <h3>Tùy chọn có sẵn</h3>
                             <label>Màu</label>
+                           
                             <ul>
                                 <li class="color1"><a href="#"></a></li>
                                 <li class="color2"><a href="#"></a></li>
                                 <li class="color3"><a href="#"></a></li>
                                 <li class="color4"><a href="#"></a></li>
                             </ul>
-                        </div>
+                        </div> -->
                         <div class="product_variant quantity">
-                            <label>quantity</label>
-                            <input min="1" max="100" value="1" type="number">
-                            <button class="button" type="submit">add to cart</button>
+                            <label>Số lượng</label>
+                            <input min="1" max="<?= $loadone_sp['so_luong']?>" value="1" type="number">
+                            <button class="button" type="submit">Thêm vào giỏ hàng</button>
 
                         </div>
                         <div class=" product_d_action">
                             <ul>
-                                <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li>
-                                <li><a href="#" title="Add to wishlist">+ Compare</a></li>
+                                <li><a href="#" title="Add to wishlist">+ Thêm vào danh sách yêu thích</a></li>
+                                <li><a href="#" title="Add to wishlist">+ So sách sản phẩm</a></li>
                             </ul>
                         </div>
                         <div class="product_meta">
-                            <span>Category: <a href="#">Clothing</a></span>
+                            <span>Danh mục: <a href="#">Quần áo</a></span>
                         </div>
 
                     </form>
@@ -166,8 +168,8 @@
                                                     <li><a href="#"><i class="ion-ios-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <p><strong>'.$ten_dn.'</strong>- September 12, 2018 '.$ngaybl.'</p>
-                                            <span>'.$ndbl.'</span>
+                                            <p><strong>'.$ten_nguoi_dung.'</strong>  '.$ngay_binh_luan.'</p>
+                                            <span>'.$noi_dung_binh_luan.'</span>
                                         </div>
                                     </div>
 
@@ -218,10 +220,13 @@
                 <div class="section_title">
                     <h2><span> <strong>Sản phẩm</strong>liên quan</span></h2>
                 </div>
+                <?php foreach($load_sp_dm as $row){
+                    ?>
                 <div class="product_carousel product_column5 owl-carousel">
                     <div class="single_product">
                         <div class="product_name">
-                            <h3><a href="product-details.html">JBL Flip 3 Splasroof Portable Bluetooth 2</a></h3>
+                            <h3><a href=""><?= $load_sp_dm['ten'] ?></a></h3>
+                         
                             <p class="manufacture_product"><a href="#">Accessories</a></p>
                         </div>
                         <div class="product_thumb">
@@ -259,12 +264,13 @@
                             </div>
                         </div>
                     </div>
-                   >
+                   
                 </div>
             </div>
         </div>
 
     </div>
+                <?php }?>
 </section>
 
 
