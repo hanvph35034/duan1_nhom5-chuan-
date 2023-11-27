@@ -67,17 +67,17 @@
                                 <ul>
                                     <li class="top_links"><a href="#"><i class="ion-android-person"></i>Tài khoản của tôi<i class="ion-ios-arrow-down"></i></a>
                                         <ul class="dropdown_links">
-                                            <?php if (!isset($_SESSION['user']))  { ?>
+                                            <?php if (!isset($_SESSION['user'])) { ?>
                                                 <li><a href="?act=dangki">Đăng kí </a></li>
                                                 <li><a href="?act=login">Đăng nhập</a></li>
-                                                
+
 
                                             <?php } else { ?>
                                                 <li><a href="?act=suatk">Tài khoản của tôi</a></li>
                                                 <li><a href="?act=dangxuat">Đăng xuất</a></li>
                                             <?php } ?>
 
-                                       
+
                                             <li><a href="cart.html">Giỏ hàng</a></li>
                                             <?php
                                             if (isset($_SESSION['user']) && $_SESSION['user']['id_quyen'] == "1") {
@@ -118,14 +118,22 @@
                             <div class="middel_right_info">
 
                                 <div class="header_wishlist">
-                                    <a href="wishlist.html"> <?php echo  'Xin chào' ;
-                                    echo  '<br>' ;
-                                    echo (isset($_SESSION['user']['ten_dn'])) ? $_SESSION['user']['ten_dn'] : '' ;?> </a>
+                                    <a href="wishlist.html"> <?php echo  'Xin chào';
+                                                                echo  '<br>';
+                                                                echo (isset($_SESSION['user']['ten_dn'])) ? $_SESSION['user']['ten_dn'] : ''; ?> </a>
 
                                 </div>
                                 <div class="mini_cart_wrapper">
                                     <a href="javascript:void(0)"><span class="lnr lnr-cart"></span>Giỏ hàng </a>
-                                    <span class="cart_quantity">2</span>
+                                    <span class="cart_quantity">
+                                        <?php
+                                        if (isset($_SESSION['giohang']) && count($_SESSION['giohang']) > 0) {
+                                            echo count($_SESSION['giohang']);
+                                        } else {
+                                            echo '0';
+                                        }
+                                        ?>
+                                    </span>
                                 </div>
                             </div>
 
@@ -147,43 +155,57 @@
                     <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                 </div>
             </div>
-            <div class="cart_item">
-                <div class="cart_img">
-                    <a href="#"><img src="public/img/s-product/product.jpg" alt=""></a>
-                </div>
-                <div class="cart_info">
-                    <a href="#">sản phẩm 1</a>
+            
+                <?php
+                $tonggia = 0;
+                $tonggiasale=0;
+                if (isset($_SESSION['giohang']) && count($_SESSION['giohang']) > 0) {
+                    for ($i = 0; $i < count($_SESSION['giohang']); $i++) {
+                        $linksp = "index.php?act=chitietsp&&idsp=" . $_SESSION['giohang'][$i][0] . "&&id_dm=" . $_SESSION['giohang'][$i][5];
+                        $linkimg = 'public/img/product/' . $_SESSION['giohang'][$i][2];
+                        $link_del_pro_cart = "index.php?act=delprocart&&id=$i";
+                        $Gia = $_SESSION['giohang'][$i][3] * $_SESSION['giohang'][$i][4];
+                        $gia_sale = $_SESSION['giohang'][$i][6] * $_SESSION['giohang'][$i][4];
+                ?>
+                <div class="cart_item">
+                        <div class="cart_img">
+                            <a href="<?= $linksp ?>"><img src="<?= $linkimg ?>" alt=""></a>
+                        </div>
+                        <div class="cart_info">
+                            <a href="<?= $linksp ?>"><?= $_SESSION['giohang'][$i][1] ?></a>
 
-                    <span class="quantity">Số lượng: 1</span>
-                    <span class="price_cart">$60.00</span>
+                            <span class="quantity"><?= $_SESSION['giohang'][$i][4] ?></span>
+                            <span class="price_cart" style=" color: red; text-decoration: line-through; " ><?= $Gia?></span>
+                            <span class="price_cart"><?= $gia_sale?></span>
 
-                </div>
-                <div class="cart_remove">
-                    <a href="#"><i class="ion-android-close"></i></a>
-                </div>
-            </div>
-            <div class="cart_item">
-                <div class="cart_img">
-                    <a href="#"><img src="public/img/s-product/product2.jpg" alt=""></a>
-                </div>
-                <div class="cart_info">
-                    <a href="#">sản phẩm 2 </a>
-                    <span class="quantity">Số lượng: 1</span>
-                    <span class="price_cart">$69.00</span>
-                </div>
-                <div class="cart_remove">
-                    <a href="#"><i class="ion-android-close"></i></a>
-                </div>
-            </div>
+                        </div>
+                        <div class="cart_remove">
+                            <a  onclick="return confirm('xóa sản phẩm khỏi giỏ hàng')" href="<?= $link_del_pro_cart ?>"><i class="ion-android-close"></i></a>
+                        </div>
+                        </div>
+                <?php
+                        $tonggia += $Gia;
+                        $tonggiasale += $gia_sale;
+                    }
+                }
+
+
+                ?>
             <div class="mini_cart_table">
+            <?php
+                if (isset($_SESSION['giohang'])) {
+                ?>
                 <div class="cart_total">
                     <span>Tổng tiền phụ :</span>
-                    <span class="price">$138.00</span>
+                    <span class="price" style=" color: red; text-decoration: line-through; " ><?= $tonggia ?></span>
                 </div>
                 <div class="cart_total mt-10">
                     <span>Tổng hóa đơn </span>
-                    <span class="price">$138.00</span>
+                    <span class="price"><?= $tonggiasale ?></span>
                 </div>
+                <?php
+                    }
+                ?>
             </div>
 
             <div class="mini_cart_footer">
@@ -211,24 +233,26 @@
 
                                     </li>
 
-                                    <li><a href="?act=danhmuc1">Danh mục<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="?act=sanpham">Danh mục<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
-                                        <ul class="mega_menu_inner">
+                                            <ul class="mega_menu_inner">
                                                 <li>
                                                     <ul>
-                                                        <?php 
-                                                        foreach ($loaddm as $dm) {
-                                                        ?>
-                                                        <li><a href="danh_muc2.html"><?=$dm['Danhmuc']?></a></li>
                                                         <?php
-                                                    }
+                                                        foreach ($loaddm as $dm) {
+                                                            extract($dm);
+                                                            $linkdm = 'index.php?act=danhmuc1&&id=' . $id;
+                                                        ?>
+                                                            <li><a href="<?= $linkdm ?>"><?= $Danhmuc ?></a></li>
+                                                        <?php
+                                                        }
                                                         ?>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">Bài Viết</a>
+                                    <li><a href="?act=baiviet2">Bài Viết</a>
                                         <!-- <ul class="sub_menu pages">
                                             <li><a href="bai_viet1.html">bài viết 1</a></li>
                                             <li><a href="bai_viet2.html">bài viết 2</a></li>

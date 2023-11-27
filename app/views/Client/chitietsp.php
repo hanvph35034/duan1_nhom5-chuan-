@@ -1,9 +1,26 @@
-<!-- Main Wrapper Start -->
-<!--header area start-->
+<?php
+if (isset($loadone_sp) && is_array($loadone_sp)) {
+    // Lấy thông tin từ mảng $loadctbv
+    
+    $img_dai_dien = $loadone_sp['img_dai_dien'];
+    $img_1 = $loadone_sp['img_1'];
+    $img_2 = $loadone_sp['img_2'];
+    $img_3 = $loadone_sp['img_3'];
+    $gia_sale = $loadone_sp['gia_sale'];
+    $Gia = $loadone_sp['Gia'];
+    $ten = $loadone_sp['ten'];
+    $MoTa = $loadone_sp['MoTa'];
+    $so_luong = $loadone_sp['so_luong'];
+    
+    // Tạo đường dẫn ảnh
+    $linkimg1 = 'public/img/product/' . $img_1;
+    $linkimg2 = 'public/img/product/' . $img_2;
+    $linkimg3 = 'public/img/product/' . $img_3;
+    $linkimg = 'public/img/product/' . $img_dai_dien;
 
-<!--Offcanvas menu area end-->
-
-<!--breadcrumbs area start-->
+    extract($loadone_sp);
+}
+?>
 <div class="breadcrumbs_area">
     <div class="container">
         <div class="row">
@@ -30,26 +47,26 @@
                 <div class="product-details-tab">
                     <div id="img-1" class="zoomWrapper single-zoom">
                         <a href="#">
-                            <img id="zoom1" src="public/img/product/<?= $loadone_sp['img_dai_dien'] ?>" data-zoom-image="public/img/product/<?= $loadone_sp['img_dai_dien'] ?>" alt="big-1">
+                            <img id="zoom1" src="<?= $linkimg?>" data-zoom-image="<?= $linkimg?>" alt="big-1">
                         </a>
                     </div>
 
                     <div class="single-zoom-thumb">
                         <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
                             <li>
-                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="public/img/product/<?= $loadone_sp['img_1'] ?>" data-zoom-image="public/img/product/<?= $loadone_sp['img_1'] ?>">
-                                    <img src="public/img/product/<?= $loadone_sp['img_1'] ?>" alt="zo-th-1" />
+                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="<?= $linkimg1?>" data-zoom-image="<?= $linkimg1?>">
+                                    <img src="<?= $linkimg1?>" alt="zo-th-1" />
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="public/img/product/<?= $loadone_sp['img_2'] ?>" data-zoom-image="public/img/product/<?= $loadone_sp['img_2'] ?>">
-                                    <img src="public/img/product/<?= $loadone_sp['img_2'] ?>" alt="zo-th-1" />
+                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="<?= $linkimg2?>" data-zoom-image="<?= $linkimg2?>">
+                                    <img src="<?= $linkimg2?>" alt="zo-th-1" />
                                 </a>
 
                             </li>
                             <li>
-                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="public/img/product/<?= $loadone_sp['img_3'] ?>" data-zoom-image="public/img/product/<?= $loadone_sp['img_3'] ?>">
-                                    <img src="public/img/product/<?= $loadone_sp['img_3'] ?>" alt="zo-th-1" />
+                                <a href="#" class="elevatezoom-gallery active" data-update="<?= $linkimg3?>" data-image="<?= $linkimg3?>" data-zoom-image="">
+                                    <img src="<?= $linkimg3?>" alt="zo-th-1" />
                                 </a>
                             </li>
                         </ul>
@@ -58,13 +75,16 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product_d_right">
-                    <form action="#">
-                        <h1> <?= $loadone_sp['ten'] ?> </h1>
+                    <form action="index.php?act=addcart" method="post">
+
+                        <input type="hidden" name="Idsp" id="" value="<?= $Idsp ?>">
+                        <input type="hidden" name="ten" id="" value="<?= $ten ?>">
+                        <input type="hidden" name="Gia" id="" value="<?= $Gia ?>">
+                        <input type="hidden" name="img_dai_dien" id="" value="<?= $img_dai_dien ?>">
+                        <input type="hidden" name="id_dm" id="" value="<?= $id_dm ?>">
+
+                        <h1> <?= $ten ?> </h1>
                         <div class="product_nav">
-                            <ul>
-                                <li class="prev"><a href="product-details.html"><i class="fa fa-angle-left"></i></a></li>
-                                <li class="next"><a href="variable-product.html"><i class="fa fa-angle-right"></i></a></li>
-                            </ul>
                         </div>
                         <div class=" product_ratting">
                             <ul>
@@ -78,12 +98,12 @@
 
                         </div>
                         <div class="price_box">
-                            <span class="current_price"><?= ''.'$'. $loadone_sp['Gia']  ?></span>
-                            <span class="old_price">$80.00</span>
+                            <span class="current_price"><?= number_format($gia_sale)  ?>₫</span>
+                            <span class="old_price"><?= number_format($Gia)  ?>₫</span>
 
                         </div>
                         <div class="product_desc">
-                            <p><?= $loadone_sp['MoTa']?> </p>
+                            <p><?= $MoTa?> </p>
                         </div>
                         <div class="product_variant color">
                             <h3>Tùy chọn có sẵn</h3>
@@ -94,11 +114,12 @@
                                 <li class="color3"><a href="#"></a></li>
                                 <li class="color4"><a href="#"></a></li>
                             </ul>
+                            <label>Số lượng: <?= $so_luong ?></label>
                         </div>
                         <div class="product_variant quantity">
                             <label>quantity</label>
-                            <input min="1" max="100" value="1" type="number">
-                            <button class="button" type="submit">add to cart</button>
+                            <input type="number" class="cart-plus-minus-box input-text qty text" name="soluong" value="1" min="1" max="<?= $so_luong ?>">
+                            <input type="submit" name="addtocart" class="" title="Add To Cart" value="Thêm vào giỏ hàng" style="width: 150px; height: 41px; background-color:goldenrod; color: white; ">
 
                         </div>
                         <div class=" product_d_action">
@@ -140,16 +161,16 @@
                             <li>
                                 <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Bình Luận</a>
                             </li>
-                          
+
                         </ul>
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="info" role="tabpanel">
-                        <div class="reviews_wrapper">
-                                <?php foreach($loadd_bl as $row) {
-                                extract($row);
-                                    
-                                echo '
+                            <div class="reviews_wrapper">
+                                <?php foreach ($loadd_bl as $row) {
+                                    extract($row);
+
+                                    echo '
                                 <h2>1 bình luận cho sản phẩm</h2>
                                 <div class="reviews_comment_box">
                                     <div class="comment_thmb">
@@ -166,8 +187,8 @@
                                                     <li><a href="#"><i class="ion-ios-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <p><strong>'.$ten_dn.'</strong>- September 12, 2018 '.$ngaybl.'</p>
-                                            <span>'.$ndbl.'</span>
+                                            <p><strong>' . $ten_dn . '</strong>- September 12, 2018 ' . $ngaybl . '</p>
+                                            <span>' . $ndbl . '</span>
                                         </div>
                                     </div>
 
@@ -177,8 +198,9 @@
                                    
                                 </div>
                               
-                                    '; }?>
-                                      <div class="product_ratting mb-10">
+                                    ';
+                                } ?>
+                                <div class="product_ratting mb-10">
                                     <h3>Your rating</h3>
                                     <ul>
                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -192,7 +214,7 @@
                                     <form action="?act=chitietsp" method="post">
                                         <div class="row">
                                             <div class="col-12">
-                                            <input type="hidden" value="<?= $loadone_sp['Idsp']?>">
+                                                <input type="hidden" value="<?= $loadone_sp['Idsp'] ?>">
                                                 <label for="review_comment">Đánh giá của bạn </label>
                                                 <textarea name="noidung" name="binhluan" id="review_comment"></textarea>
                                             </div>
@@ -210,7 +232,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>

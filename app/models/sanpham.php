@@ -35,12 +35,12 @@ function loadallsp_cungloai($id, $iddm)
 // load all san pham cung danh muc
 function loadallsp_cungdanhmuc($iddm)
 {
-    $sql = "select * from sanpham where iddm = $iddm && trang_thai='0'";
+    $sql = "SELECT * FROM sanpham WHERE id_dm = $iddm && trangthai='1'";
     $sanpham = pdo_query($sql);
     return $sanpham;
 }
 
-<<<<<<< HEAD
+
     // load tất cả các sản phẩm
     function loadall_sanpham()
     {
@@ -58,6 +58,7 @@ function loadallsp_cungdanhmuc($iddm)
     }
     function loadsp_sale(){
         $sql="SELECT 
+        s.Idsp as Idsp,
         s.ten AS TenSanPham,
         s.Gia AS Gia,
         s.img_dai_dien AS HinhDaiDien,
@@ -78,21 +79,28 @@ function loadallsp_cungdanhmuc($iddm)
     }
     // sửa sản phẩm
     function update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc,$so_luong,$gia_sale, $img_1, $img_2, $img_3)
-=======
-// load tất cả các sản phẩm
-function loadall_sanpham()
-{
-    $sql = "SELECT * FROM `sanpham` WHERE 1";
-    $listsanpham = pdo_query($sql);
-    return $listsanpham;
-}
-// sửa sản phẩm
-function update_sanpham($id, $ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $so_luong, $gia_sale, $img_1, $img_2, $img_3)
->>>>>>> mater
 {
     $sql = "UPDATE `sanpham` SET `ten`='$ten',`Mota`='$mo_ta',`gia`='$gia',`img_dai_dien`='$img_dai_dien',
             `ngay_nhap`='$ngay_nhap',`id_dm`='$id_danh_muc', `so_luong` = '$so_luong' ,`gia_sale` = '$gia_sale' ,`img_1`='$img_1',`img_2`='$img_2',`img_3`='$img_3' WHERE `Idsp`='$id'";
     pdo_execute($sql);
+}
+//lọc sp
+function loc_san_pham($tk, $id){
+    $sql = "SELECT * FROM sanpham 
+              JOIN danhmuc ON sanpham.id_dm = danhmuc.id 
+              WHERE sanpham.trangthai = '1' AND danhmuc.trangthai = '1' AND sanpham.id_dm = '$id' ";
+
+if ($tk == 2) {
+    $sql .= " ORDER BY sanpham.gia_sale DESC;";
+}
+
+// tăng
+if ($tk == 1) {
+    $sql .= " ORDER BY sanpham.gia_sale ASC;";
+}
+
+return pdo_query($sql);
+
 }
 
 // thêm sản phẩm
@@ -111,12 +119,7 @@ function add_sanpham1($tensanpham, $giasanpham, $anhdaidien, $mota, $soluongsanp
         pdo_execute($sql);
     }
     
-  
-    // luot xem ++
-    function update_view($idsp){
-        $sql = "update sanpham set luot_xem = luot_xem+1 where id='$idsp'";
-        pdo_execute($sql);
-    }
+
 
 // xóa mềm
 function soft_delete_sanpham($id)
@@ -152,11 +155,11 @@ function update_view($idsp)
 }
 
 // check trùng sản phẩm
-function checktrungsp($id)
+function checktrungsp($Idsp)
 {
     $vitri = -1;
     for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
-        if ($_SESSION['giohang'][$i][0] == $id) {
+        if ($_SESSION['giohang'][$i][0] == $Idsp) {
             $vitri = $i;
         }
     }

@@ -82,7 +82,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $dia_chi = $_POST['diachi'];
                 }
                     if (empty($error)) {
-                        insert_taikhoan($user, $ten, $email, $pass, $sdt, $dia_chi);
+                        insert_taikhoan($user,  $pass, $ten_dn, $Email, $sdt, $dia_chi, $quyen);
                 }
             }
             include "app/views/Client/dangki.php";
@@ -102,6 +102,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/bai_viet1.php";
             break;
         case 'baiviet2':
+            $loaddm = loadall_danhmuc();
+            $load4bv=load4_baiviet();
+            $loadbaiviet = loadall_baiviet();
             include "app/views/Client/bai_viet2.php";
             break;
 
@@ -115,15 +118,63 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include "app/views/Client/chitietsp.php";
             break;
-        case 'thembl':
 
+        case 'thembl':
             break;
         case 'danh_muc2':
+            
             include "app/views/Client/danh_muc2.php";
             break;
-            case 'danhmuc1':
+
+//sản phẩm
+            case 'sanpham':
+                $sanpham = loadall_sanpham();
                 include "app/views/Client/danh_sach1.php";
                 break;
+            case 'danhmuc1':
+                if (isset($_GET['id']) && ($_GET['id']) > 0) {
+                    $iddm = $_GET['id'];
+                    $sanpham = loadallsp_cungdanhmuc($iddm);
+                }
+                if (isset($_POST['loc'])) {
+                    $tk = $_POST['tk'];
+                    $iddm = $_POST['id'];
+                    $sanpham = loc_san_pham($tk, $iddm);
+                }
+                include "app/views/Client/danh_sach1.php";
+                break;
+
+
+                case 'addcart':
+                    if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
+                        $Idsp = $_POST['Idsp'];
+                        $ten = $_POST['ten'];
+                        $Gia = $_POST['Gia'];
+                        $img_dai_dien = $_POST['img_dai_dien'];
+                        $id_dm = $_POST['id_dm'];
+        
+                        if (isset($_POST['soluong']) && ($_POST['soluong']) > 0) {
+                            $soluong = $_POST['soluong'];
+                        } else {
+                            $soluong = 1;
+                        }
+        
+                        if (checktrungsp($Idsp) >= 0) {
+                            $vitrisptrung = checktrungsp($Idsp);
+                            updateslsp($vitrisptrung, $soluong);
+                        } else {
+                            $item = array($Idsp, $ten, $img_dai_dien, $Gia, $soluong, $id_dm,$gia_sale);
+                            array_push($_SESSION['giohang'], $item);
+                        }
+                        // header("location: " . $_SERVER['HTTP_REFERER']);
+                        // $thongbao = 'them vao gio hang';
+                        // header('location: index.php?act=cart');
+                    }
+                    header("location: " . $_SERVER['HTTP_REFERER']);
+                    break;
+
+
+
         case 'lienhe':
             include "app/views/Client/lienhe.php";
             break;
