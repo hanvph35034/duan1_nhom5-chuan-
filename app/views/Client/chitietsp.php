@@ -214,8 +214,11 @@
             <h2><span> <strong>Sản phẩm</strong>cùng loại</span></h2>
         </div>
         <div class="row">
-            <?php foreach ($load_sp_dm as $row) {
-               
+            
+            <?php
+            if (isset($load_sp_dm))
+             foreach ($load_sp_dm as $row) {
+               extract($row)
             ?>
                 <div class="col-md-3">
                     <div class="single_product">

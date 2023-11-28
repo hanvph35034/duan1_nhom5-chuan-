@@ -154,25 +154,27 @@
                                     <li><a href="?act">Trang chủ</i></a>
 
                                     </li>
-                                    <li><a href="?act=danhmuc1">Sản phẩm</a>
-                                    <li><a href="?act=danhmuc2">Danh mục<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                        <ul class="mega_menu_inner">
+                                    <li><a href="?act=sanpham">Sản phẩm</a>
+                                    <li><a href="?act=sanpham">Danh mục<i class="fa fa-angle-down"></i></a>
+                                    <ul class="sub_menu pages">
+                                            <ul class="mega_menu_inner">
                                                 <li>
                                                     <ul>
-                                                        <?php 
-                                                        foreach ($loaddm as $dm) {
-                                                        ?>
-                                                        <li><a href="?act=danhmuc2&iddm=<?= $dm['id'] ?>"><?=$dm['Danhmuc']?></a></li>
                                                         <?php
-                                                    }
+                                                        foreach ($loaddm as $dm) {
+                                                            extract($dm);
+                                                            $linkdm = 'index.php?act=danhmuc1&&id=' . $id;
+                                                        ?>
+                                                            <li><a href="<?= $linkdm ?>"><?= $Danhmuc ?></a></li>
+                                                        <?php
+                                                        }
                                                         ?>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">Bài Viết</a>
+                                    <li><a href="?act=baiviet2">Bài Viết</a>
                                         <!-- <ul class="sub_menu pages">
                                             <li><a href="bai_viet1.html">bài viết 1</a></li>
                                             <li><a href="bai_viet2.html">bài viết 2</a></li>

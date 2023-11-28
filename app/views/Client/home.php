@@ -188,12 +188,12 @@ foreach ($loadsp_sale as $sanpham) {
                 
                 <div class="single_product">
                         <div class="product_name">
-                            <h3><a href="product-details.html"><?= $sanpham['TenSanPham'] ?> </a></h3>
+                            <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><?= $sanpham['TenSanPham'] ?> </a></h3>
                             <p class="manufacture_product"><a href="#"><?= $sanpham['TenDanhMuc'] ?></a></p>
                         </div>
                         <div class="product_thumb">
-                            <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien?>" alt=""></a>
-                            <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1?>" alt=""></a>
+                            <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien?>" alt=""></a>
+                            <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_1?>" alt=""></a>
                             <div class="label_product">
                                 <span class="label_sale"><a href="#"><?= $sanpham['PhanTramGiamGia'] ?>%</span>
                             </div>
@@ -201,8 +201,8 @@ foreach ($loadsp_sale as $sanpham) {
                             <div class="action_links">
                                 <ul>
                                     <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                    <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
+                                    <li class="wishlist"><a href="#" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                    <li class="compare"><a href="#" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -289,12 +289,12 @@ foreach ($loadspre as $sanpham) {
                 
                 <div class="single_product">
                         <div class="product_name">
-                            <h3><a href="product-details.html"><?= $sanpham['ten'] ?> </a></h3>
+                            <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><?= $sanpham['ten'] ?> </a></h3>
                             <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
                         </div>
                         <div class="product_thumb">
-                            <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien?>" alt=""></a>
-                            <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1?>" alt=""></a>
+                            <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien?>" alt=""></a>
+                            <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_1?>" alt=""></a>
                             <div class="label_product">
                                 <span class="label_sale">-47%</span>
                             </div>
