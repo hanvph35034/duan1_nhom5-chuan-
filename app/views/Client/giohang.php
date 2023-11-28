@@ -53,11 +53,11 @@
                                             <td class="product_thumb"><a href="#"><img src="public/img/product/<?= $img_dai_dien ?>" alt="act"></a></td>
                                             <td class="product_name"><a href="#"><?= $ten ?> </a></td>
                                             <td class="product-price">£<?= number_format($gia_sale) ?></td>
-                                            <td class="product_quantity"><label>Số lượng</label> <input min="1" max="100" value="<?= $soluong ?>" type="number"></td>
+                                            <td class="product_quantity"><label>Số lượng</label>  <input min="1" max="100" value="<?= $soluong ?>" type="number"></td>
                                             <td>Màu</td>
                                             <td>S</td>
 
-                                            <td class="product_total">£<?= number_format($sum) ?></td>
+                                            <td class="product_total"><?= number_format($sum) ?>VND</td>
 
                                         </tr>
 
@@ -99,13 +99,13 @@
                                 </div>
                                 <div class="cart_subtotal ">
                                     <p>Đang chuyển hàng</p>
-                                    <p class="cart_amount"><span>Tổng cộng:</span> £<?= number_format($tong) ?></p>
+                                    <p class="cart_amount"><span>Tổng cộng:</span> <?= number_format($tong) ?>  VND</p>
                                 </div>
                                 <a href="#">Tính toán vận chuyển</a>
 
                                 <div class="cart_subtotal">
                                     <p>Tộng cộng</p>
-                                    <p class="cart_amount">£<?= number_format($tong) ?></p>
+                                    <p class="cart_amount"><?= number_format($tong) ?>   VND</p>
                                 </div>
                                 <div class="checkout_btn">
                                     <a href="?act=thanh_toan">Tiến hành kiểm tra</a>
