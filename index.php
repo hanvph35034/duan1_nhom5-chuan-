@@ -170,15 +170,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/danh_muc2.php";
             break;
         case 'giohang':
-            if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
 
-                themcart($_GET['idsp'], $_SESSION['user']['id'], 1);
-                header("Location:?act=giohang");
-            }
 
-            $load_cart = listcart($_SESSION['user']['id']);
-
-            include "app/views/Client/giohang.php";
+            include "app/views/Client/themgh.php";
             break;
 
         case 'datelegiohang':

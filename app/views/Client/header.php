@@ -126,11 +126,12 @@
 
                                 </div>
                                 <div class="mini_cart_wrapper">
-                                    <a href="javascript:void(0)"><span class="lnr lnr-cart"></span>Giỏ hàng </a>
-                                    <span class="cart_quantity">2</span>
-                                </div>
-                            </div>
+                                    <a href="?act=giohang"><span class="lnr lnr-cart"></span>Giỏ hàng </a>
 
+                                    <span id="sohang" class="cart_quantity"><?= !empty($_SESSION['cart']) ? count($_SESSION['cart']) : 0 ?></span>
+                                
+                                    <?php var_dump($_SESSION['cart']); ?></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -140,65 +141,7 @@
 
         <!--mini cart-->
         <!-- menu con -->
-        <div class="mini_cart">
-            <div class="cart_close">
-                <div class="cart_text">
-                    <h3>Giỏ hàng</h3>
-                </div>
-                <div class="mini_cart_close">
-                    <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
-                </div>
-            </div>
-            <div class="cart_item">
-                <div class="cart_img">
-                    <a href="#"><img src="public/img/s-product/product.jpg" alt=""></a>
-                </div>
-                <div class="cart_info">
-                    <a href="#">sản phẩm 1</a>
-
-                    <span class="quantity">Số lượng: 1</span>
-                    <span class="price_cart">$60.00</span>
-
-                </div>
-                <div class="cart_remove">
-                    <a href="#"><i class="ion-android-close"></i></a>
-                </div>
-            </div>
-            <div class="cart_item">
-                <div class="cart_img">
-                    <a href="#"><img src="public/img/s-product/product2.jpg" alt=""></a>
-                </div>
-                <div class="cart_info">
-                    <a href="#">sản phẩm 2 </a>
-                    <span class="quantity">Số lượng: 1</span>
-                    <span class="price_cart">$69.00</span>
-                </div>
-                <div class="cart_remove">
-                    <a href="#"><i class="ion-android-close"></i></a>
-                </div>
-            </div>
-            <div class="mini_cart_table">
-                <div class="cart_total">
-                    <span>Tổng tiền phụ :</span>
-                    <span class="price">$138.00</span>
-                </div>
-                <div class="cart_total mt-10">
-                    <span>Tổng hóa đơn </span>
-                    <span class="price">$138.00</span>
-                </div>
-            </div>
-
-            <div class="mini_cart_footer">
-                <div class="cart_button">
-                    <a href="cart.html">Xem giỏ hàng</a>
-                </div>
-                <div class="cart_button">
-                    <a class="active" href="checkout.html">Thủ tục thanh toán</a>
-                </div>
-
-            </div>
-
-        </div>
+       
         <!--mini cart end-->
 
         <!--header bottom satrt-->

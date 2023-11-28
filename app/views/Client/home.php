@@ -23,40 +23,8 @@
         }
 
         ?>
-        <!-- <div class="single_slider d-flex align-items-center" data-bgimg="public/img/slider/2.png">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="slider_content">
-                            <h2>Special Offer</h2>
-                            <h1>Get &250 In Total Discount On A New Set Of Tries</h1>
-                            <a class="button" href="shop.html">shopping now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="single_slider d-flex align-items-center" data-bgimg="public/img/slider/3.png">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="slider_content">
-                            <h2>HP Racer Skutex</h2>
-                            <h1>Feel The Greatest Oil Power With Best One Oil</h1>
-                            <a class="button" href="shop.html">shopping now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div> -->
     </div>
 </section>
-<!--slider area end-->
-
-<!--banner area start-->
-<!-- banner dưới -->
 <section class="banner_area mb-50">
     <div class="container">
         <div class="row">
@@ -93,7 +61,6 @@
 <section class="product_area mb-50">
     <div class="container">
         <div class="row">
-            <!-- Sản phẩm bán chạy-->
             <div class="col-12">
                 <div class="section_title">
                     <h2><span> <strong>Sản phẩm </strong>bán chạy</span></h2>
@@ -102,21 +69,21 @@
 
                     <?php
                     foreach ($loadsanpham as $sanpham) {
-                        $linkimg_dai_dien = 'public/img/product/' .  $sanpham['img_dai_dien'];
-                        $linkimg_1 = 'public/img/product/' .  $sanpham['img_1'];
-                        $linkimg_2 = 'public/img/product/' .  $sanpham['img_2'];
-                        $linkimg_3 = 'public/img/product/' .  $sanpham['img_3'];
+                        // $linkimg_dai_dien = 'public/img/product/' .  $sanpham['img_dai_dien'];
+                        // $linkimg_1 = 'public/img/product/' .  $sanpham['img_1'];
+                        // $linkimg_2 = 'public/img/product/' .  $sanpham['img_2'];
+                        // $linkimg_3 = 'public/img/product/' .  $sanpham['img_3'];
+                        extract($sanpham);
                     ?>
-
                         <div class="single_product">
                             <div class="product_name">
 
-                                <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm'] ?>"><?= $sanpham['ten'] ?> </a></h3>
+                                <h3><a href="?act=chitietsp&idsp=<?= $Idsp ?>&iddm=<?= $id_dm ?>"><?= $ten ?> </a></h3>
                                 <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
                             </div>
                             <div class="product_thumb">
-                                <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm'] ?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien ?>" alt=""></a>
-                                <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm'] ?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_1 ?>" alt=""></a>
+                                <a class="primary_img" href="?act=chitietsp&idsp=<?= $Idsp ?>&iddm=<?= $id_dm ?>"><img style="height: 250px; width: 250px" src="public/img/product/<?= $img_dai_dien ?>" alt=""></a>
+                                <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm'] ?>"><img style="height: 250px; width: 250px" src="public/img/product/<?= $img_1 ?>" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">-47%</span>
                                 </div>
@@ -141,19 +108,18 @@
                                 </div>
                                 <div class="product_footer d-flex align-items-center">
                                     <div class="price_box">
-                                        <span class="current_price"><?= number_format($sanpham['gia_sale']) ?>VND</span>
-                                        <span class="old_price"><?= number_format($sanpham['Gia']) ?></span>
+                                        <span class="current_price"><?= number_format($gia_sale) ?>VND</span>
+                                        <span class="old_price"><?= number_format($Gia) ?>VND</span>
                                     </div>
                                     <div class="add_to_cart">
-                                        <a href="?act=giohang&idsp=<?= $sanpham['Idsp'] ?>" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                        <button data-id="<?= $Idsp ?>"  class="btncart" onclick="addtocart(<?= $Idsp ?>,'<?= $ten ?>',<?= $gia_sale ?> )" title="add to cart"><span class="lnr lnr-cart"></span></button>
                                     </div>
                                 </div>
                                 <div class="quantity_progress">
                                     <p class="product_sold">Đã bán: <span>199</span></p>
-                                    <p class="product_available">Số lượng: <span><?= $sanpham['so_luong'] ?></span></p>
+                                    <p class="product_available">Số lượng: <span><?= $so_luong ?></span></p>
                                 </div>
                                 <div class="bar_percent">
-
                                 </div>
                             </div>
                         </div>
@@ -200,35 +166,36 @@
                                         <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
                                         <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                     </ul>
-                                <div class="add_to_cart">
-                                    <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
-                                </div>
-                            </div>
-                            <div class="product_content">
-                                <div class="product_ratings">
-                                    <ul>
-                                        <li><a href="#"><i class="ion-star"></i></a></li>
-                                        <li><a href="#"><i class="ion-star"></i></a></li>
-                                        <li><a href="#"><i class="ion-star"></i></a></li>
-                                        <li><a href="#"><i class="ion-star"></i></a></li>
-                                        <li><a href="#"><i class="ion-star"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product_footer d-flex align-items-center">
-                                    <div class="price_box">
-                                        <span class="current_price"><?= number_format($sanpham['GiaSale']) ?>VND</span>
-                                        <span class="old_price"><?= number_format($sanpham['GiaSale']) ?></span>
-                                    </div>
                                     <div class="add_to_cart">
-                                        <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                        <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                     </div>
                                 </div>
-                                <div class="quantity_progress">
-                                    <p class="product_sold">Đã bán: <span>199</span></p>
-                                    <p class="product_available">Số lượng: <span><?= $sanpham['SoLuong'] ?></span></p>
-                                </div>
-                                <div class="bar_percent">
+                                <div class="product_content">
+                                    <div class="product_ratings">
+                                        <ul>
+                                            <li><a href="#"><i class="ion-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-star"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product_footer d-flex align-items-center">
+                                        <div class="price_box">
+                                            <span class="current_price"><?= number_format($sanpham['GiaSale']) ?>VND</span>
+                                            <span class="old_price"><?= number_format($sanpham['GiaSale']) ?></span>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="quantity_progress">
+                                        <p class="product_sold">Đã bán: <span>199</span></p>
+                                        <p class="product_available">Số lượng: <span><?= $sanpham['SoLuong'] ?></span></p>
+                                    </div>
+                                    <div class="bar_percent">
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -238,13 +205,9 @@
 
                     ?>
 
-
-
-
                 </div>
             </div>
         </div>
-    </div>
 </section>
 
 
@@ -303,35 +266,36 @@
                                         <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
                                         <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                     </ul>
-                                <div class="add_to_cart">
-                                    <a href="?act=giohang&idsp=<?=  $sanpham['Idsp']?>" title="add to cart"><span class="lnr lnr-cart"></span></a>
-                                </div>
-                            </div>
-                            <div class="product_content">
-                                <div class="product_ratings">
-                                    <ul>
-                                        <li><a href="#"><i class="ion-star"></i></a></li>
-                                        <li><a href="#"><i class="ion-star"></i></a></li>
-                                        <li><a href="#"><i class="ion-star"></i></a></li>
-                                        <li><a href="#"><i class="ion-star"></i></a></li>
-                                        <li><a href="#"><i class="ion-star"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product_footer d-flex align-items-center">
-                                    <div class="price_box">
-                                        <span class="current_price"><?= $sanpham['gia_sale'] ?>VND</span>
-                                        <span class="old_price"><?= $sanpham['Gia'] ?></span>
-                                    </div>
                                     <div class="add_to_cart">
-                                        <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                        <a href="?act=giohang&idsp=<?= $sanpham['Idsp'] ?>" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                     </div>
                                 </div>
-                                <div class="quantity_progress">
-                                    <p class="product_sold">Đã bán: <span>199</span></p>
-                                    <p class="product_available">Số lượng: <span><?= $sanpham['so_luong'] ?></span></p>
-                                </div>
-                                <div class="bar_percent">
+                                <div class="product_content">
+                                    <div class="product_ratings">
+                                        <ul>
+                                            <li><a href="#"><i class="ion-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-star"></i></a></li>
+                                            <li><a href="#"><i class="ion-star"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product_footer d-flex align-items-center">
+                                        <div class="price_box">
+                                            <span class="current_price"><?= $sanpham['gia_sale'] ?>VND</span>
+                                            <span class="old_price"><?= $sanpham['Gia'] ?></span>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                        </div>
+                                    </div>
+                                    <div class="quantity_progress">
+                                        <p class="product_sold">Đã bán: <span>199</span></p>
+                                        <p class="product_available">Số lượng: <span><?= $sanpham['so_luong'] ?></span></p>
+                                    </div>
+                                    <div class="bar_percent">
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -340,20 +304,15 @@
                     }
 
                     ?>
-
-
-
-
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
 </section>
 <!--product area end-->
 
 <!--brand area start thương hiệu-->
-<div class="brand_area mb-42">
+<!-- <div class="brand_area mb-42">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -380,7 +339,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!--brand area end-->
 
 <!--blog area start-->
@@ -421,3 +380,28 @@
         </div>
     </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    let sohang =document.getElementById('sohang');
+    function addtocart(sanphamid, sanphamten, sanphamgia) {
+        console.log(sanphamid, sanphamten, sanphamgia);
+        // sudung 
+        $.ajax({
+            type: 'POST',
+            url: 'app/views/Client/themgh.php',
+            data : {
+            id : sanphamid ,
+            ten :sanphamten ,
+            gia :sanphamgia 
+            },
+            success: function(response){
+                sohang.innerText= response;
+            alert('bạn đã thêm sản phẩm thành công');
+            },
+            error : function(error){
+            console.log(error);
+            }
+        });
+
+    }
+</script>
