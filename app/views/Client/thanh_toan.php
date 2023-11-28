@@ -8,8 +8,8 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li>Checkout</li>
+                            <li><a href="index.html">Trang chủ</a></li>
+                            <li>thanh toán</li>
                         </ul>
                     </div>
                 </div>
@@ -27,13 +27,13 @@
                     <div class="user-actions">
                         <h3> 
                             <i class="fa fa-file-o" aria-hidden="true"></i>
-                            Returning customer?
-                            <a class="Returning" href="#checkout_login" data-bs-toggle="collapse" aria-expanded="true">Click here to login</a>     
+                            Khách Hàng quay trở lại?
+                            <a class="Returning" href="#checkout_login" data-bs-toggle="collapse" aria-expanded="true">Bấm vào đây để đăng nhập</a>     
 
                         </h3>
                          <div id="checkout_login" class="collapse" data-parent="#accordion">
                             <div class="checkout_info">
-                                <p>If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing & Shipping section.</p>  
+                                <p>Khách hàng quay trở lạiNhấp vào đây để nhập mã của bạn.</p>  
                                 <form action="#">  
                                     <div class="form_group">
                                         <label>Username or email <span>*</span></label>
@@ -77,15 +77,15 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <form action="#">
-                            <h3>Billing Details</h3>
+                            <h3>CHI TIẾT THANH TOÁN</h3>
                             <div class="row">
 
                                 <div class="col-lg-6 mb-20">
-                                    <label>First Name <span>*</span></label>
+                                    <label>Họ và tên <span>*</span></label>
                                     <input type="text">
                                 </div>
                                 <div class="col-lg-6 mb-20">
-                                    <label>Last Name <span>*</span></label>
+                                    <label>Họ và tên <span>*</span></label>
                                     <input type="text">
                                 </div>
                                 <div class="col-12 mb-20">
@@ -108,27 +108,20 @@
                                 </div>
 
                                 <div class="col-12 mb-20">
-                                    <label>Street address <span>*</span></label>
+                                    <label>Địa chỉ nhận hàng <span>*</span></label>
                                     <input placeholder="House number and street name" type="text">
                                 </div>
                                 <div class="col-12 mb-20">
                                     <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
                                 </div>
-                                <div class="col-12 mb-20">
-                                    <label>Town / City <span>*</span></label>
-                                    <input type="text">
-                                </div>
-                                <div class="col-12 mb-20">
-                                    <label>State / County <span>*</span></label>
-                                    <input type="text">
-                                </div>
+                             
                                 <div class="col-lg-6 mb-20">
-                                    <label>Phone<span>*</span></label>
+                                    <label>nhập Số điện thoại<span>*</span></label>
                                     <input type="text">
 
                                 </div>
                                 <div class="col-lg-6 mb-20">
-                                    <label> Email Address <span>*</span></label>
+                                    <label> Nhập Email <span>*</span></label>
                                     <input type="text">
 
                                 </div>
@@ -216,13 +209,13 @@
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <form action="#">
-                            <h3>Your order</h3>
+                            <h3>Đơn Đặt hàng của bạn </h3>
                             <div class="order_table table-responsive">
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Product</th>
-                                            <th>Total</th>
+                                            <th>Sản phẩm </th>
+                                            <th>Giá tiền</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -245,15 +238,15 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Cart Subtotal</th>
+                                            <th>Tổng phụ giỏ hàng</th>
                                             <td>$215.00</td>
                                         </tr>
                                         <tr>
-                                            <th>Shipping</th>
+                                            <th>Phí ship </th>
                                             <td><strong>$5.00</strong></td>
                                         </tr>
                                         <tr class="order_total">
-                                            <th>Order Total</th>
+                                            <th>Tổng số đơn hàng</th>
                                             <td><strong>$220.00</strong></td>
                                         </tr>
                                     </tfoot>
@@ -262,7 +255,7 @@
                             <div class="payment_method">
                                 <div class="panel-default">
                                     <input id="payment" name="check_method" type="radio" data-target="createp_account" />
-                                    <label for="payment" data-bs-toggle="collapse" href="#method" aria-controls="method">Create an account?</label>
+                                    <label for="payment" data-bs-toggle="collapse" href="#method" aria-controls="method">Tạo một tài khoản?</label>
 
                                     <div id="method" class="collapse one" data-parent="#accordion">
                                         <div class="card-body1">
@@ -281,7 +274,7 @@
                                     </div>
                                 </div>
                                 <div class="order_button">
-                                    <button type="submit">Proceed to PayPal</button>
+                                    <button type="submit">Tiến hành thanh toán</button>
                                 </div>
                             </div>
                         </form>

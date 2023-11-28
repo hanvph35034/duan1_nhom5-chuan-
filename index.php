@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-
+if (!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
 include "app/models/pdo.php";
 include "app/models/taikhoan.php";
 include "app/models/sanpham.php";
@@ -170,35 +170,65 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/danh_muc2.php";
             break;
         case 'giohang':
-            if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
+            if (isset($_POST['btn']) && $_POST['btn']) {
+                $id = $_POST['id'];
+                $ten = $_POST['ten'];
+                $img = $_POST['img'];
+                $gia = $_POST['gia'];
 
-                themcart($_GET['idsp'], $_SESSION['user']['id'], 1);
-                header("Location:?act=giohang");
+                if (isset($_POST['soluong']) && ($_POST['soluong'] > 0)) {
+                    $soluong = $_POST['soluong'];
+                } else {
+                    $soluong = 1;
+                }
+                $fg = false;
+                $i = 0;
+                foreach ($_SESSION['giohang'] as $item) {
+                    if ($item['0'] === $id) {
+                        $slnew = $soluong + $item[4];
+                        $_SESSION['giohang'][$i][4] = $slnew;
+                        $fg = true;
+                        break;
+                    }
+                    $i++;
+                }
+                //khởi tạo mag con 
+                if ($fg == false) {
+                    $item = array($id, $ten, $img, $gia, $soluong);
+                    $_SESSION['giohang'][] = ($item);
+                }
+                // header('Location : index.php?act=giohang');
             }
-
-            $load_cart = listcart($_SESSION['user']['id']);
 
             include "app/views/Client/giohang.php";
             break;
 
         case 'datelegiohang':
-            if (isset($_GET['idgh']) && $_GET['idgh']) {
-                $id = $_GET['idgh'];
-                xoagiohang($id);
+            if (isset($_GET['i']) && ($_GET['i'] > 0)) {
+                if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0 ))
+                array_splice($_SESSION['giohang'], $_GET['i'],1);
+            } else {
+                if (isset($_SESSION['giohang'])) unset($_SESSION['giohang']);
             }
-            $load_cart = listcart($_SESSION['user']['id']);
+
+            if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
+                header('Location: ?act=giohang');
+            } else {
+                header('Location: ?act');
+            }
             include "app/views/Client/giohang.php";
             break;
-
+            case 'thanh_toan':
+                
+                include "app/views/Client/thanh_toan.php";
+                break;
         case 'lienhe':
             include "app/views/Client/lienhe.php";
             break;
         case 'sosach':
             include "app/views/Client/sosach.php";
             break;
-        case 'thanh_toan':
-            include "app/views/Client/thanh_toan.php";
-            break;
+        
         case 'trang_tk':
             include "app/views/Client/trang_tk.php";
             break;

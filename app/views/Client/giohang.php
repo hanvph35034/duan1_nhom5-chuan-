@@ -26,6 +26,7 @@
                                 <thead>
 
                                     <tr>
+                                        <th class="product_remove"> STT </th>
                                         <th class="product_remove">Xóa sản phẩm </th>
                                         <th class="product_thumb">Ảnh</th>
                                         <th class="product_name">Sản phẩm</th>
@@ -37,45 +38,48 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                    $sum = 0;
-                                    $tong = 0;
-                                    foreach ($load_cart as $row) {
-
-                                        extract($row);
-                                        $sum = ($soluong * $gia_sale);
-                                        $tong += $sum;
-                                    ?>
-
-                                        <tr>
-
-                                            <td class="product_remove"><a href="?act=datelegiohang&idgh=<?= $idcart ?>"><i class="fa fa-trash-o"></i></a></td>
-                                            <td class="product_thumb"><a href="#"><img src="public/img/product/<?= $img_dai_dien ?>" alt="act"></a></td>
-                                            <td class="product_name"><a href="#"><?= $ten ?> </a></td>
-                                            <td class="product-price">£<?= number_format($gia_sale) ?></td>
-                                            <td class="product_quantity"><label>Số lượng</label>  <input min="1" max="100" value="<?= $soluong ?>" type="number"></td>
-                                            <td>Màu</td>
-                                            <td>S</td>
-
-                                            <td class="product_total"><?= number_format($sum) ?>VND</td>
-
-                                        </tr>
-
-                                    <?php  }
-                                    ?>
 
 
+                                    <tr>
+                                        <?php if ((isset($_SESSION['giohang'])) && (count($_SESSION['giohang']) > 0)) {
+                                            echo '<pre>';
+                                            $i = 0;
 
+                                            $tong = 0;
+                                            print_r($_SESSION['giohang']);
+                                            foreach ($_SESSION['giohang'] as $row) {
+                                                $sum = $row['3'] * $row['4'];
+                                                $tong += $sum;
 
+                                        ?><td><?= ($i + 1) ?></td>
+                                                <td class="product_remove"><a href="?act=datelegiohang&<?= $i ?>"><i class="fa fa-trash-o"></i></a></td>
+                                                <td class="product_thumb"><a href="#"><img src="public/img/product/<?= $row['2'] ?>" alt="act"></a></td>
+                                                <td class="product_name"><a href="#"><?= $row['2'] ?> </a></td>
+                                                <td class="product-price">£<?= number_format($row['3']) ?></td>
+                                                <td class="product_quantity"><label>Số lượng</label> <input min="1" max="100" value="<?= $row[4] ?>" type="number"></td>
+                                                <td>Màu</td>
+                                                <td>S</td>
+
+                                                <td class="product_total"><?= number_format($sum) ?>VND</td>
+                                    </tr>
+                            <?php $i++;
+                                            }
+                                        } ?>
                                 </tbody>
+
+
                             </table>
                         </div>
                         <div class="cart_submit">
-                            <button type="submit">Cập nhật giỏ hàng</button>
+                            <button type="submit">Tiếp tục mua hàng</button>
+                        </div>
+                        <div class="cart_submit">
+                            <button type="submit"><a href="?act=datelegiohang">Xóa toàn bộ giỏ hàng </a> </button>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!--coupon code area start-->
             <div class="coupon_area">
                 <div class="row">
@@ -99,13 +103,13 @@
                                 </div>
                                 <div class="cart_subtotal ">
                                     <p>Đang chuyển hàng</p>
-                                    <p class="cart_amount"><span>Tổng cộng:</span> <?= number_format($tong) ?>  VND</p>
+                                    <p class="cart_amount"><span>Tổng cộng:</span> <?= number_format($tong) ?> VND</p>
                                 </div>
                                 <a href="#">Tính toán vận chuyển</a>
 
                                 <div class="cart_subtotal">
                                     <p>Tộng cộng</p>
-                                    <p class="cart_amount"><?= number_format($tong) ?>   VND</p>
+                                    <p class="cart_amount"><?= number_format($tong) ?> VND</p>
                                 </div>
                                 <div class="checkout_btn">
                                     <a href="?act=thanh_toan">Tiến hành kiểm tra</a>
