@@ -1,9 +1,9 @@
 <?php
 // them tai khoan / dang ky
-function insert_taikhoan($user,  $pass, $ten_dn, $Email, $sdt, $dia_chi)
+function insert_taikhoan($user,  $pass, $ten_dn, $Email, $sdt, $dia_chi, $quyen)
 {
     $sql = "INSERT INTO `tai_khoan`( `User`, `pass`, `ten_dn`, `Email`, `sdt`, `dia_chi`, `id_quyen`)
-     VALUES ('$user','','$pass','$ten_dn','$Email','$sdt','$dia_chi')";
+     VALUES ('$user','$pass','$ten_dn','$Email','$sdt','$dia_chi','$quyen')";
     pdo_execute($sql);
 }
 

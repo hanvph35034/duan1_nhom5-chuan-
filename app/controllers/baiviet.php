@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 function qtbv(){
     $loadbaiviet = loadall_baiviet();
     include 'QTBV/list.php';
@@ -9,7 +8,8 @@ function addbaiviet(){
         $tieu_de = $_POST['tieu_de'];
         $noi_dung = $_POST['noi_dung'];
         $ngay_dang = $_POST['ngay_dang'];
-        $target_dir1 = '../../views/Admin/img/';
+
+        $target_dir1 = '../../../public/img/bai_viet/';
 
         $anh = $_FILES['anh']['name'];
         $target_file1 = $target_dir1 . basename($anh);
@@ -38,7 +38,7 @@ function updatebv(){
         $noi_dung = $_POST['noi_dung'];
         $ngay_dang = $_POST['ngay_dang'];
         
-        $target_dir1 = '../../views/Admin/img/';
+        $target_dir1 = '../../../public/img/bai_viet/';
 
         $anh = $_FILES['anh']['name'];
         $target_file1 = $target_dir1 . basename($anh);

@@ -1,13 +1,18 @@
 <?php
 session_start();
 ob_start();
+
 include "app/models/pdo.php";
-include "app/views/Client/header.php";
 include "app/models/taikhoan.php";
 include "app/models/sanpham.php";
 include "app/models/binhluan.php";
+include "app/models/baiviet.php";
+include "app/models/danhmuc.php";
 include "app/models/validate.php";
+include "app/models/banner.php";
 
+$loaddm = loadall_danhmuc();
+include "app/views/Client/header.php";
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
 
@@ -67,23 +72,35 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $error['sdt'] = "Vui lòng nhập số điện thoại";
                 } else {
                     if (!is_numeric($_POST['sdt'])) {
-                    $error['sdt'] = "Số điện thoại phải là số ";
-                }else{
-                    $sdt = $_POST['sdt'];
+                        $error['sdt'] = "Số điện thoại phải là số ";
+                    } else {
+                        $sdt = $_POST['sdt'];
+                    }
                 }
-            }
                 if (empty($_POST['diachi'])) {
                     $error['diachi'] = "Vui lòng nhập địa chỉ";
                 } else {
                     $dia_chi = $_POST['diachi'];
+                    $quyen = 2;
                 }
-                    if (empty($error)) {
-                        insert_taikhoan($user, $ten, $email, $pass, $sdt, $dia_chi);
+                if (empty($error)) {
+                    insert_taikhoan($user, $ten, $email, $pass, $sdt, $dia_chi, $quyen);
                 }
             }
             include "app/views/Client/dangki.php";
             break;
+        case 'home':
+
+            $loadsanpham = loadall_sanpham();
+            $loadbaiviet = loadall_baiviet();
+            include "app/views/Client/home.php";
+            break;
         case 'baiviet1':
+            if (isset($_GET['id']) && ($_GET['id']) != 0) {
+                $id = $_GET['id'];
+            }
+            $load4bv = load4_baiviet();
+            $loadctbv = loadctbv($id);
             include "app/views/Client/bai_viet1.php";
             break;
         case 'baiviet2':
@@ -91,20 +108,59 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
 
         case 'chitietsp':
-            //chitietsp&idsp=1
-            $loadd_bl = load_binhluan();
+            $id = $_GET['idsp'];
+            $loadd_bl = load_binhluan_sp($id);
             $loadone_sp =  loadone_sanpham($_GET['idsp']);
+            $danhmuc = $_GET['iddm'];
+            $load_sp_dm = loadallsp_cungdanhmuc($danhmuc);
             if (isset($_POST['btn']) && $_POST['btn'] != '') {
                 $noidung = $_POST['noidung'];
-                insert_binhluan($_GET['idsp'], $noidung, $_SESSION['user']['id']);
+                $id_tk = $_SESSION['user']['id'];
+                $id_sp = $_GET['idsp'];
+                insert_binhluan($noidung, $id_tk, $id_sp);
+                header("Location: " . $_SERVER['HTTP_REFERER']);
             }
             include "app/views/Client/chitietsp.php";
             break;
-        case 'thembl':
+        case 'danhmuc1':
+            if (isset($_POST['btn']) && $_POST['btn']) {
+                if (isset($_POST['danhmuc'])) {
+                    $danhmuc = $_POST['danhmuc'];
+                } else {
+                    $danhmuc = '';
+                }
+                if (isset($_POST['gia'])) {
+                    $gia = $_POST['gia'];
+                } else {
+                    $gia = '';
+                }
+                if (isset($_POST['key'])) {
+                    $key = $_POST['key'];
+                    echo $key;
+                } else {
+                    $key = '';
+                }
+            } else {
+                $key = $gia = $danhmuc = '';
+            }
+            $loadsp = loadsp($key, $danhmuc, $gia);
+            $loadall_sp =  loadall_sanpham();
 
+            include "app/views/Client/danh_sach1.php";
             break;
-        case 'danh_muc2':
-            include "app/views/Client/danh_muc2.php";
+        case 'giohang':
+            if(isset($_GET['idsp'])&& $_GET['idsp']>0){
+            
+                themcart($_GET['idsp'],$_SESSION['user']['id'],1);
+                header("Location:?act=giohang");
+            }
+
+            $load_cart = listcart($_SESSION['user']['id']);
+            
+            include "app/views/Client/giohang.php";
+            break;
+        case 'addgiohang':
+            include "app/views/Client/giohang.php";
             break;
         case 'lienhe':
             include "app/views/Client/lienhe.php";
@@ -116,7 +172,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/thanh_toan.php";
             break;
         case 'trang_tk':
-
             include "app/views/Client/trang_tk.php";
             break;
         case 'suatk':
@@ -143,6 +198,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/404.php";
     }
 } else {
+    $loadbanner = loadall_banner();
+    $loadspre = load7spre();
+    $loadsp_sale = loadsp_sale();
+    $loadbaiviet = loadall_baiviet();
+    $loadsanpham = loadall_sanpham();
     include "app/views/Client/home.php";
 }
 

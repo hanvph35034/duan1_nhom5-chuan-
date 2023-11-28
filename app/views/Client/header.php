@@ -4,7 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Autima - Car Accessories Shop HTML Template</title>
+
+    <title>Autima Dự án 1 nhóm 5</title>
+
+
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -70,13 +73,13 @@
                                             <?php if (!isset($_SESSION['user']))  { ?>
                                                 <li><a href="?act=dangki">Đăng kí </a></li>
                                                 <li><a href="?act=login">Đăng nhập</a></li>
+                                                
 
                                             <?php } else { ?>
+                                                <li><a href="?act=suatk">Tài khoản của tôi</a></li>
                                                 <li><a href="?act=dangxuat">Đăng xuất</a></li>
                                             <?php } ?>
-
-                                            <li><a href="?act=suatk">Tài khoản của tôi</a></li>
-                                            <li><a href="cart.html">Giỏ hàng</a></li>
+                                            <li><a href="?act=giohang">Giỏ hàng</a></li>
                                             <?php
                                             if (isset($_SESSION['user']) && $_SESSION['user']['id_quyen'] == "1") {
                                             ?>
@@ -100,16 +103,16 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-3">
                         <div class="logo">
-                            <a href="index.html"><img src="public/img/logo/logo.png" alt=""></a>
+                            <a href="index.php"><img src="public/img/logo/logo.png" alt=""></a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
                         <div class="middel_right">
                             <div class="search-container">
-                                <form action="#">
+                                <form action="?act=danhmuc1" method="post">
                                     <div class="search_box">
-                                        <input placeholder="Search entire store here ..." type="text">
-                                        <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                                        <input name="key" placeholder="Tìm kiếm ..." type="text">
+                                        <button name="btn" value="btn" type="submit"><i class="ion-ios-search-strong"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -118,7 +121,7 @@
                                 <div class="header_wishlist">
                                     <a href="wishlist.html"> <?php echo  'Xin chào' ;
                                     echo  '<br>' ;
-                                    echo (isset($_SESSION['user'])) ? $_SESSION['user']['ten_dn'] : '' ;?> </a>
+                                    echo (isset($_SESSION['user']['ten_dn'])) ? $_SESSION['user']['ten_dn'] : '' ;?> </a>
 
                                 </div>
                                 <div class="mini_cart_wrapper">
@@ -208,43 +211,29 @@
                                     <li><a href="?act">Trang chủ</i></a>
 
                                     </li>
-                                    <li class="mega_items"><a href="shop.html">Danh mục<i class="fa fa-angle-down"></i></a>
-                                        <div class="mega_menu">
-                                            <ul class="mega_menu_inner">
-                                                <li><a href="#">Shop Layouts</a>
-                                                    <ul>
 
-                                                        <li><a href="danh_sach1.html">List View</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">other Pages</a>
+                                    <li><a href="?act=danhmuc1">Danh mục<i class="fa fa-angle-down"></i></a>
+                                        <ul class="sub_menu pages">
+                                        <ul class="mega_menu_inner">
+                                                <li>
                                                     <ul>
-                                                        <li><a href="gio_hang.html">cart</a></li>
-                                                        <li><a href="thanh_toan.html">Checkout</a></li>
-                                                        <li><a href="trang_tk.html">my account</a></li>
-                                                        <li><a href="404.html">Error 404</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Product Types</a>
-                                                    <ul>
-                                                        <li><a href="chitietsp.html">Chi tiet san pham</a></li>
-
-
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">Concrete Tools</a>
-                                                    <ul>
-                                                        <li><a href="danh_muc2.html">danh muc 2</a></li>
+                                                        <?php 
+                                                        foreach ($loaddm as $dm) {
+                                                        ?>
+                                                        <li><a href="danh_muc2.html"><?=$dm['Danhmuc']?></a></li>
+                                                        <?php
+                                                    }
+                                                        ?>
                                                     </ul>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </ul>
                                     </li>
-                                    <li><a href="blog.html">Bài Viết<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
+                                    <li><a href="blog.html">Bài Viết</a>
+                                        <!-- <ul class="sub_menu pages">
                                             <li><a href="bai_viet1.html">bài viết 1</a></li>
                                             <li><a href="bai_viet2.html">bài viết 2</a></li>
-                                        </ul>
+                                        </ul> -->
                                     </li>
                                     <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
