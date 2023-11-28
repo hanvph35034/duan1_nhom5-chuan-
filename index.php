@@ -148,26 +148,48 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
             include "app/views/Client/danh_sach1.php";
             break;
+        case "danhmuc2":
+            if (isset($_POST['btn']) && $_POST['btn']) {
+                if (isset($_POST['gia'])) {
+                    $gia = $_POST['gia'];
+                } else {
+                    $gia =  '';
+                }
+                if (isset($_GET['iddm']) && $_GET['iddm'] > 0) {
+                    $danhmuc = $_GET['iddm'];
+                } else {
+                    $danhmuc = '';
+                }
+            } else {
+                $danhmuc = $_GET['iddm'];
+                $gia = "";
+            }
+            echo $danhmuc . $gia;
+            $loadsp = loadsp($key = "", $danhmuc, $gia);
+            $loadall_sp =  loadall_sanpham();
+            include "app/views/Client/danh_muc2.php";
+            break;
         case 'giohang':
-            if(isset($_GET['idsp'])&& $_GET['idsp']>0){
-            
-                themcart($_GET['idsp'],$_SESSION['user']['id'],1);
+            if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
+
+                themcart($_GET['idsp'], $_SESSION['user']['id'], 1);
                 header("Location:?act=giohang");
             }
 
             $load_cart = listcart($_SESSION['user']['id']);
-            
+
             include "app/views/Client/giohang.php";
             break;
 
         case 'datelegiohang':
-            if(isset($_GET['idgh']) && $_GET['idgh']){
-            $id = $_GET['idgh'];
-            xoagiohang($id);
+            if (isset($_GET['idgh']) && $_GET['idgh']) {
+                $id = $_GET['idgh'];
+                xoagiohang($id);
             }
             $load_cart = listcart($_SESSION['user']['id']);
             include "app/views/Client/giohang.php";
             break;
+
         case 'lienhe':
             include "app/views/Client/lienhe.php";
             break;

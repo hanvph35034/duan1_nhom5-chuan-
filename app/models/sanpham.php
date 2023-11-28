@@ -172,18 +172,27 @@ function delete_sanpham($id)
 }
 function loadsp($key = "", $danhmuc = 0, $gia = "")
 {
-    $sql = "SELECT * FROM `sanpham` WHERE 1";
-    if ($danhmuc > 0 && $gia != "") {
-        $sql .= " and gia_sale >= $gia and id_dm = '$danhmuc'";
+    $sql = "SELECT * FROM `sanpham` WHERE 1 ";
+    // if ($danhmuc > 0 && $gia != "") {
+    //     $sql .= " and gia_sale >= $gia and id_dm = '$danhmuc'";
+    // }
+    // if ($danhmuc > 0) {
+    //     $sql .= " AND id_dm = '$danhmuc'";
+    // }
+    // if ($key != "") {
+    //     $sql .= " and ten like '%$key%'";
+    // }
+    // if ($gia != "") {
+    //     $sql .= " AND gia_sale BETWEEN $gia";
+    // }
+    if ($gia == "newsp") {
+        $sql .= " AND id_dm = '$danhmuc' ORDER BY Idsp DESC ";
     }
-    if ($danhmuc  > 0) {
-        $sql .= " AND id_dm = '$danhmuc'";
+    if ($gia == "max"  && $danhmuc > 0) {
+        $sql .= " AND id_dm = '$danhmuc' ORDER BY gia_sale DESC";
     }
-    if ($key != "") {
-        $sql .= " and ten like '%$key%'";
-    }
-    if ($gia != "") {
-        $sql .= " AND gia_sale BETWEEN $gia";
+    if ($gia == "min"  && $danhmuc > 0) {
+        $sql .= " AND id_dm = '$danhmuc' ORDER BY gia_sale ASC";
     }
     return pdo_query($sql);
 }
@@ -192,7 +201,7 @@ function listcart($idtk)
     $sql = "SELECT giohang.id as idcart , sanpham.ten ,sanpham.img_dai_dien , sanpham.gia_sale , sanpham.Idsp , giohang.soluong FROM sanpham JOIN giohang ON sanpham.Idsp = giohang.id_sp Where id_tk = $idtk ";
     return pdo_query($sql);
 }
-function themcart($idsp,$idtk,$soluong)
+function themcart($idsp, $idtk, $soluong)
 {
     $sql = "INSERT INTO `giohang`(`id_tk`, `id_sp`, `soluong`) VALUES ('$idtk','$idsp','$soluong')";
     pdo_execute($sql);

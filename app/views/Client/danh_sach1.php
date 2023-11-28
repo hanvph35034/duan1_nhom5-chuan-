@@ -42,7 +42,7 @@
                             <form class="" action="" method="post">
                                 
                                 <select name="danhmuc" id="short">
-                                <option hidden value="">Chọn danh mục</option>
+                                <option hidden value="">Mục lục</option>
                                 <?php foreach($loaddm as $row){
                                     extract($row);
                                     ?>  
