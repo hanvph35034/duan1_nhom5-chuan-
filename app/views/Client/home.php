@@ -177,32 +177,31 @@
                 <div class="product_carousel product_column5 owl-carousel">
 
                     <?php
-                    foreach ($loadsp_sale as $sanpham) {
-                        $linkimg_dai_dien = 'public/img/product/' .  $sanpham['HinhDaiDien'];
-                        $linkimg_1 = 'public/img/product/' .  $sanpham['Hinh1'];
-                    ?>
 
-                        <div class="single_product">
-                            <div class="product_name">
-                                <h3><a href="product-details.html"><?= $sanpham['TenSanPham'] ?> </a></h3>
-                                <p class="manufacture_product"><a href="#"><?= $sanpham['TenDanhMuc'] ?></a></p>
+foreach ($loadsp_sale as $sanpham) {
+    $linkimg_dai_dien = 'public/img/product/' .  $sanpham['HinhDaiDien'];
+    $linkimg_1 = 'public/img/product/' .  $sanpham['Hinh1'];
+?>
+                
+                <div class="single_product">
+                        <div class="product_name">
+                            <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><?= $sanpham['TenSanPham'] ?> </a></h3>
+                            <p class="manufacture_product"><a href="#"><?= $sanpham['TenDanhMuc'] ?></a></p>
+                        </div>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien?>" alt=""></a>
+                            <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_1?>" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale"><a href="#"><?= $sanpham['PhanTramGiamGia'] ?>%</span>
                             </div>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien ?>" alt=""></a>
-                                <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1 ?>" alt=""></a>
-                                <div class="label_product">
-                                    <span class="label_sale"><a href="#"><?= $sanpham['PhanTramGiamGia'] ?>%</span>
-                                </div>
 
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                        <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
-                                    </ul>
-                                <div class="add_to_cart">
-                                    <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
-                                </div>
+                            <div class="action_links">
+                                <ul>
+                                    <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
+                                    <li class="wishlist"><a href="#" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                    <li class="compare"><a href="#" title="compare"><span class="lnr lnr-sync"></span></a></li>
+                                </ul>
+
                             </div>
                             <div class="product_content">
                                 <div class="product_ratings">
@@ -274,28 +273,25 @@
                     <h2> <strong>Sản phẩm</strong> <span>giá rẻ</span></h2>
                 </div>
                 <div class="product_carousel product_column5 owl-carousel">
-
-
-
-                    <?php
-                    foreach ($loadspre as $sanpham) {
-                        $linkimg_dai_dien = 'public/img/product/' .  $sanpham['img_dai_dien'];
-                        $linkimg_1 = 'public/img/product/' .  $sanpham['img_1'];
-                        $linkimg_2 = 'public/img/product/' .  $sanpham['img_2'];
-                        $linkimg_3 = 'public/img/product/' .  $sanpham['img_3'];
-                    ?>
-
-                        <div class="single_product">
-                            <div class="product_name">
-                                <h3><a href="product-details.html"><?= $sanpham['ten'] ?> </a></h3>
-                                <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
+                <?php
+foreach ($loadspre as $sanpham) {
+    $linkimg_dai_dien = 'public/img/product/' .  $sanpham['img_dai_dien'];
+    $linkimg_1 = 'public/img/product/' .  $sanpham['img_1'];
+    $linkimg_2 = 'public/img/product/' .  $sanpham['img_2'];
+    $linkimg_3 = 'public/img/product/' .  $sanpham['img_3'];
+?>
+                
+                <div class="single_product">
+                        <div class="product_name">
+                            <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><?= $sanpham['ten'] ?> </a></h3>
+                            <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
+                        </div>
+                        <div class="product_thumb">
+                            <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien?>" alt=""></a>
+                            <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_1?>" alt=""></a>
+                            <div class="label_product">
+                                <span class="label_sale">-47%</span>
                             </div>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien ?>" alt=""></a>
-                                <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1 ?>" alt=""></a>
-                                <div class="label_product">
-                                    <span class="label_sale">-47%</span>
-                                </div>
 
                                 <div class="action_links">
                                     <ul>

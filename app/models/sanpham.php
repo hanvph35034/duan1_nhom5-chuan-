@@ -15,7 +15,27 @@ function loadall_sanpham_top10()
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
+//lọc sp
+function loc_san_pham($tk, $id){
+    $sql = "SELECT * FROM sanpham 
+              JOIN danhmuc ON sanpham.id_dm = danhmuc.id 
+              WHERE sanpham.trangthai = '1' AND danhmuc.trangthai = '1' AND sanpham.id_dm = '$id' ";
+if ($tk == 3) {
+    $sql .= " ORDER BY sanpham.Idsp DESC limit 0,4;";
+}
 
+if ($tk == 2) {
+    $sql .= " ORDER BY sanpham.gia_sale DESC;";
+}
+
+// tăng
+if ($tk == 1) {
+    $sql .= " ORDER BY sanpham.gia_sale ASC;";
+}
+
+return pdo_query($sql);
+
+}
 // load 1 sản phẩm cùng loại
 function loadone_sanpham($id)
 {
@@ -25,9 +45,9 @@ function loadone_sanpham($id)
 }
 
 // load các sản phẩm cùng loại trừ sản phẩm đang xem
-function loadallsp_cungloai($id, $iddm)
+function loadallsp_cungloai($Idsp, $id_dm)
 {
-    $sql = "select * from sanpham where id!=$id and iddm = $iddm && trangthai='0' order by view desc limit 0,4";
+    $sql = "select * from sanpham where Idsp!=$Idsp and id_dm = $id_dm limit 0,4";
     $sanpham = pdo_query($sql);
     return $sanpham;
 }
@@ -60,6 +80,8 @@ function load7spre()
 function loadsp_sale()
 {
     $sql = "SELECT 
+    s.Idsp AS Idsp,
+        s.id_dm AS id_dm,
         s.ten AS TenSanPham,
         s.Gia AS Gia,
         s.img_dai_dien AS HinhDaiDien,
