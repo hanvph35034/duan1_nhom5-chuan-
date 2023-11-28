@@ -170,9 +170,15 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/danh_muc2.php";
             break;
         case 'giohang':
+          if(!empty($_SESSION['cart'])){
+        $cart = $_SESSION['cart'];
 
+$mangid = array_column($cart,'id');
+var_dump($mangid);
+        // tạo mang 
+        }
 
-            include "app/views/Client/themgh.php";
+            include "app/views/Client/giohang.php";
             break;
 
         case 'datelegiohang':

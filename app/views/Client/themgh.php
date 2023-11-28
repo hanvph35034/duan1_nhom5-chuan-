@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
 
     if ($index !== false) {
-        $_SESSION['cart'][$index]['sol_uong'] += 1;
+        $_SESSION['cart'][$index]['soluong'] += 1;
     } else {
         $sampham = [
             'id' => $sanphamid,
