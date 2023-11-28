@@ -66,8 +66,8 @@ foreach ($loadbanner as $banner) {
                         <div class="banner_thumb">
                             <a href="shop.html"><img src="public/img/bg/44.png" alt=""></a>
                             <div class="banner_text">
-                                <h3>Mô tả 1</h3>
-                                <h2>Mô tả 2</h2>
+                                <h3>Dành cho 100 khách hàng đầu tiên</h3>
+                                <h2>Ưu đại lớn khi mua 1 tặng 2</h2>
                                 <a href="shop.html">Mua ngay</a>
                             </div>
                         </div>
@@ -76,8 +76,8 @@ foreach ($loadbanner as $banner) {
                         <div class="banner_thumb">
                             <a href="shop.html"><img src="public/img/bg/44.png" alt=""></a>
                             <div class="banner_text">
-                                <h3>Mô tả 1</h3>
-                                <h2>Mô tả 2</h2>
+                                <h3>20/10 Giảm 20% toàn bộ sản phẩm</h3>
+                                <h2>Mua sản phẩm có ưa đại lớn </h2>
                                 <a href="shop.html">Mua ngay</a>
                             </div>
                         </div>
@@ -222,7 +222,7 @@ foreach ($loadsp_sale as $sanpham) {
                                     <span class="old_price"><?= number_format($sanpham['GiaSale'] )?></span>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                    <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                 </div>
                             </div>
                             <div class="quantity_progress">
@@ -323,7 +323,7 @@ foreach ($loadspre as $sanpham) {
                                     <span class="old_price"><?= $sanpham['Gia'] ?></span>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                    <a href="?act=giohang&idsp=<?=  $sanpham['Idsp']?>" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                 </div>
                             </div>
                             <div class="quantity_progress">

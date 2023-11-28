@@ -79,12 +79,12 @@
                             <div class="single_product">
                                 <div class="product_name grid_name">
                                    
-                                    <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp']?>"><?= $sanpham['ten'] ?></a></h3>
+                                    <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?></a></h3>
                                     <p class="manufacture_product"><a href="#">Accessories</a></p>
                                 </div>
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><img src="<?= $linkimg_dai_dien?>" alt=""></a>
-                                    <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><img src="<?= $linkimg_1?>" alt=""></a>
+                                    <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><img src="<?= $linkimg_dai_dien?>" alt=""></a>
+                                    <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm']?>"><img src="<?= $linkimg_1?>" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">50 %</span>
                                     </div>
