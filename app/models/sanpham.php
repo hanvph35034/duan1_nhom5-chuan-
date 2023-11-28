@@ -189,11 +189,16 @@ function loadsp($key = "", $danhmuc = 0, $gia = "")
 }
 function listcart($idtk)
 {
-    $sql = "SELECT sanpham.ten ,sanpham.img_dai_dien , sanpham.gia_sale , sanpham.Idsp , giohang.soluong FROM sanpham JOIN giohang ON sanpham.Idsp = giohang.id_sp Where id_tk = $idtk ";
+    $sql = "SELECT giohang.id as idcart , sanpham.ten ,sanpham.img_dai_dien , sanpham.gia_sale , sanpham.Idsp , giohang.soluong FROM sanpham JOIN giohang ON sanpham.Idsp = giohang.id_sp Where id_tk = $idtk ";
     return pdo_query($sql);
 }
 function themcart($idsp,$idtk,$soluong)
 {
     $sql = "INSERT INTO `giohang`(`id_tk`, `id_sp`, `soluong`) VALUES ('$idtk','$idsp','$soluong')";
+    pdo_execute($sql);
+}
+function xoagiohang($id)
+{
+    $sql = "delete from `giohang` where id = '$id'";
     pdo_execute($sql);
 }

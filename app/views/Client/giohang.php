@@ -47,7 +47,7 @@
 
                                         <tr>
                                             
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                            <td class="product_remove"><a href="?act=datelegiohang&idgh=<?= $idcart?>"><i class="fa fa-trash-o"></i></a></td>
                                             <td class="product_thumb"><a href="#"><img src="public/img/product/<?= $img_dai_dien?>" alt="act"></a></td>
                                             <td class="product_name"><a href="#"><?= $ten?> </a></td>
                                             <td class="product-price">£<?= number_format($gia_sale)?></td>

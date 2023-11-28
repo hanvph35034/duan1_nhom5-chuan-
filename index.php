@@ -159,7 +159,13 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             
             include "app/views/Client/giohang.php";
             break;
-        case 'addgiohang':
+
+        case 'datelegiohang':
+            if(isset($_GET['idgh']) && $_GET['idgh']){
+            $id = $_GET['idgh'];
+            xoagiohang($id);
+            }
+            $load_cart = listcart($_SESSION['user']['id']);
             include "app/views/Client/giohang.php";
             break;
         case 'lienhe':
