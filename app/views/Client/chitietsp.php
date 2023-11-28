@@ -58,7 +58,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product_d_right">
-                    <form action="#">
+                    <form action="?act=giohang&idsp=<?=  $sanpham['Idsp']?> "method="post" >
                         <h1> <?= $loadone_sp['ten'] ?> </h1>
                         <div class="product_nav">
                             <ul>
@@ -88,7 +88,7 @@
                         <div class="product_variant quantity">
                             <label>Số lượng</label>
                             <input min="1" max="<?= $loadone_sp['so_luong'] ?>" value="1" type="number">
-                            <button class="button" type="submit">Thêm vào giỏ hàng</button>
+                            <button class="button" type="submit">Thêm vào giỏ hàng </button>
 
                         </div>
                         <div class=" product_d_action">
@@ -254,7 +254,7 @@
                                     <span class="old_price"><?= number_format($row['Gia'])?></span>
                                 </div>
                                 <div class="add_to_cart">
-                                    <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                    <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                 </div>
                             </div>
                             <div class="quantity_progress">

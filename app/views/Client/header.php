@@ -78,8 +78,9 @@
                                             <?php } else { ?>
                                                 <li><a href="?act=suatk">Tài khoản của tôi</a></li>
                                                 <li><a href="?act=dangxuat">Đăng xuất</a></li>
+                                                <li><a href="?act=giohang">Giỏ hàng</a></li>
                                             <?php } ?>
-                                            <li><a href="?act=giohang">Giỏ hàng</a></li>
+                                           
                                             <?php
                                             if (isset($_SESSION['user']) && $_SESSION['user']['id_quyen'] == "1") {
                                             ?>
@@ -211,8 +212,8 @@
                                     <li><a href="?act">Trang chủ</i></a>
 
                                     </li>
-
-                                    <li><a href="?act=danhmuc1">Danh mục<i class="fa fa-angle-down"></i></a>
+                                    <li><a href="?act=danhmuc1">Sản phẩm</a>
+                                    <li><a href="?act=danhmuc2">Danh mục<i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                         <ul class="mega_menu_inner">
                                                 <li>
@@ -220,7 +221,7 @@
                                                         <?php 
                                                         foreach ($loaddm as $dm) {
                                                         ?>
-                                                        <li><a href="danh_muc2.html"><?=$dm['Danhmuc']?></a></li>
+                                                        <li><a href="?act=danhmuc2&iddm=<?= $dm['id'] ?>"><?=$dm['Danhmuc']?></a></li>
                                                         <?php
                                                     }
                                                         ?>
@@ -235,14 +236,9 @@
                                             <li><a href="bai_viet2.html">bài viết 2</a></li>
                                         </ul> -->
                                     </li>
-                                    <li><a href="#">pages <i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="sosach.html">compare</a></li>
-                                        </ul>
-                                    </li>
+                                
 
-                                    <li><a href="lienhe.html"> Liên hệ với chúng tôi</a></li>
+                                    <li><a href="?act=lienhe"> Liên hệ với chúng tôi</a></li>
                                 </ul>
                             </nav>
                         </div>

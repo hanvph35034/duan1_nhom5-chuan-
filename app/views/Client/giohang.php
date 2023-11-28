@@ -39,29 +39,30 @@
                                 <tbody>
                                     <?php
                                     $sum = 0;
-                                   
+                                    $tong = 0;
                                     foreach ($load_cart as $row) {
-                                        
+
                                         extract($row);
-                                        $sum = ($soluong * $gia_sale) ; ?>
+                                        $sum = ($soluong * $gia_sale);
+                                        $tong += $sum;
+                                    ?>
 
                                         <tr>
-                                            
-                                            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                            <td class="product_thumb"><a href="#"><img src="public/img/product/<?= $img_dai_dien?>" alt="act"></a></td>
-                                            <td class="product_name"><a href="#"><?= $ten?> </a></td>
-                                            <td class="product-price">£<?= number_format($gia_sale)?></td>
+
+                                            <td class="product_remove"><a href="?act=datelegiohang&idgh=<?= $idcart ?>"><i class="fa fa-trash-o"></i></a></td>
+                                            <td class="product_thumb"><a href="#"><img src="public/img/product/<?= $img_dai_dien ?>" alt="act"></a></td>
+                                            <td class="product_name"><a href="#"><?= $ten ?> </a></td>
+                                            <td class="product-price">£<?= number_format($gia_sale) ?></td>
                                             <td class="product_quantity"><label>Số lượng</label> <input min="1" max="100" value="<?= $soluong ?>" type="number"></td>
                                             <td>Màu</td>
                                             <td>S</td>
 
-                                            <td class="product_total">£<?= number_format($sum)?></td>
-                                           
+                                            <td class="product_total">£<?= number_format($sum) ?></td>
+
                                         </tr>
 
                                     <?php  }
                                     ?>
-
 
 
 
@@ -94,17 +95,17 @@
                             <div class="coupon_inner">
                                 <div class="cart_subtotal">
                                     <p>Tổng phụ</p>
-                                    <p class="cart_amount">£215.00</p>
+                                    <p class="cart_amount">£</p>
                                 </div>
                                 <div class="cart_subtotal ">
                                     <p>Đang chuyển hàng</p>
-                                    <p class="cart_amount"><span>Tổng cộng:</span> £255.00</p>
+                                    <p class="cart_amount"><span>Tổng cộng:</span> £<?= number_format($tong) ?></p>
                                 </div>
                                 <a href="#">Tính toán vận chuyển</a>
 
                                 <div class="cart_subtotal">
                                     <p>Tộng cộng</p>
-                                    <p class="cart_amount">£215.00</p>
+                                    <p class="cart_amount">£<?= number_format($tong) ?></p>
                                 </div>
                                 <div class="checkout_btn">
                                     <a href="?act=thanh_toan">Tiến hành kiểm tra</a>

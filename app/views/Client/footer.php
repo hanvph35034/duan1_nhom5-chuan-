@@ -102,7 +102,7 @@
 <!-- Chi tiet sản phẩm tìm kiếm -->
 <?php
 foreach ($loadsanpham as $row) { ?>
-    <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
 
@@ -217,7 +217,7 @@ foreach ($loadsanpham as $row) { ?>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 <?php  }
 ?>
 <!-- modal area end-->

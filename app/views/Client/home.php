@@ -66,8 +66,8 @@
                         <div class="banner_thumb">
                             <a href="shop.html"><img src="public/img/bg/44.png" alt=""></a>
                             <div class="banner_text">
-                                <h3>Mô tả 1</h3>
-                                <h2>Mô tả 2</h2>
+                                <h3>Dành cho 100 khách hàng đầu tiên</h3>
+                                <h2>Ưu đại lớn khi mua 1 tặng 2</h2>
                                 <a href="shop.html">Mua ngay</a>
                             </div>
                         </div>
@@ -76,8 +76,8 @@
                         <div class="banner_thumb">
                             <a href="shop.html"><img src="public/img/bg/44.png" alt=""></a>
                             <div class="banner_text">
-                                <h3>Mô tả 1</h3>
-                                <h2>Mô tả 2</h2>
+                                <h3>20/10 Giảm 20% toàn bộ sản phẩm</h3>
+                                <h2>Mua sản phẩm có ưa đại lớn </h2>
                                 <a href="shop.html">Mua ngay</a>
                             </div>
                         </div>
@@ -159,9 +159,7 @@
                         </div>
                     <?php
 
-                    }
-
-                    ?>
+                    }  ?>
                 </div>
             </div>
         </div>
@@ -202,6 +200,8 @@
                                         <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
                                         <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                     </ul>
+                                <div class="add_to_cart">
+                                    <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                 </div>
                             </div>
                             <div class="product_content">
@@ -237,6 +237,9 @@
                     }
 
                     ?>
+
+
+
 
                 </div>
             </div>
@@ -300,6 +303,8 @@
                                         <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
                                         <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                     </ul>
+                                <div class="add_to_cart">
+                                    <a href="?act=giohang&idsp=<?=  $sanpham['Idsp']?>" title="add to cart"><span class="lnr lnr-cart"></span></a>
                                 </div>
                             </div>
                             <div class="product_content">
