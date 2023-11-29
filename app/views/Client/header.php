@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="mini_cart_wrapper">
                                     <a href="?act=giohang"><span class="lnr lnr-cart"></span>Giỏ hàng </a>
-                                    <span class="cart_quantity">0</span>
+                                    <span class="cart_quantity"><?= count($_SESSION['giohang'])?></span>
                                 </div>
                             </div>
 

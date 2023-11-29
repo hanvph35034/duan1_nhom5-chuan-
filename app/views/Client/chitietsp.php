@@ -1,9 +1,4 @@
-<!-- Main Wrapper Start -->
-<!--header area start-->
 
-<!--Offcanvas menu area end-->
-
-<!--breadcrumbs area start-->
 <div class="breadcrumbs_area">
     <div class="container">
         <div class="row">
@@ -58,7 +53,7 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="product_d_right">
-                    <form action="?act=giohang&idsp=<?=  $sanpham['Idsp']?> "method="post" >
+                    <form action="index.php?act=giohang" method="post">
                         <h1> <?= $loadone_sp['ten'] ?> </h1>
                         <div class="product_nav">
                             <ul>
@@ -87,8 +82,13 @@
                         </div>
                         <div class="product_variant quantity">
                             <label>Số lượng</label>
-                            <input min="1" max="<?= $loadone_sp['so_luong'] ?>" value="1" type="number">
-                            <button class="button" type="submit">Thêm vào giỏ hàng </button>
+                            <input min="1" max="<?= $loadone_sp['so_luong']?>" value="1" name="soluong" type="number">
+                            <input type="hidden" value="<?= $loadone_sp['Idsp'] ?>" name="id">
+                           
+                            <input type="hidden" value="<?= $loadone_sp['ten']  ?>" name="ten">
+                            <input type="hidden" value="<?= $loadone_sp['img_dai_dien'] ?>" name="img">
+                            <input type="hidden" value="<?= $loadone_sp['gia_sale'] ?>" name="gia">
+                            <button class="button" name="btn" value="btn" type="submit">Thêm vào giỏ hàng </button>
 
                         </div>
                         <div class=" product_d_action">
@@ -184,16 +184,16 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <input type="hidden" value="<?= $loadone_sp['Idsp'] ?>">
-                                                <?php if(isset($_SESSION['user']['ten_dn'])){?>
-                                                <label for="review_comment">Đánh giá của bạn </label>
-                                                <textarea name="noidung" name="binhluan" id="review_comment"></textarea>
+                                                <?php if (isset($_SESSION['user']['ten_dn'])) { ?>
+                                                    <label for="review_comment">Đánh giá của bạn </label>
+                                                    <textarea name="noidung" name="binhluan" id="review_comment"></textarea>
                                             </div>
                                         </div>
-                                       
+
                                         <button value="btn" name="btn" type="submit">Gửi bình luận</button>
-                                        <?php }else{?>
-                                            <h5 style="color:red;">bạn phải đăng nhập để comment</h5>
-                                            <?php }?>
+                                    <?php } else { ?>
+                                        <h5 style="color:red;">bạn phải đăng nhập để comment</h5>
+                                    <?php } ?>
                                     </form>
                                 </div>
                             </div>
@@ -213,12 +213,10 @@
         <div class="section_title">
             <h2><span> <strong>Sản phẩm</strong>cùng loại</span></h2>
         </div>
-        <div class="row">
-            
-            <?php
-            if (isset($load_sp_dm))
-             foreach ($load_sp_dm as $row) {
-               extract($row)
+
+            <?php foreach ($load_sp_dm as $row) {
+
+
             ?>
                 <div class="col-md-3">
                     <div class="single_product">
@@ -253,8 +251,8 @@
                             </div>
                             <div class="product_footer d-flex align-items-center">
                                 <div class="price_box">
-                                    <span class="current_price"><?= number_format($row['gia_sale'])?></span>
-                                    <span class="old_price"><?= number_format($row['Gia'])?></span>
+                                    <span class="current_price"><?= number_format($row['gia_sale']) ?></span>
+                                    <span class="old_price"><?= number_format($row['Gia']) ?></span>
                                 </div>
                                 <div class="add_to_cart">
                                     <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
@@ -262,16 +260,16 @@
                             </div>
                             <div class="quantity_progress">
                                 <p class="product_sold">Đã bán: <span>199</span></p>
-                                <p class="product_available">Số lượng: <span><?= $row['so_luong']?></span></p>
+                                <p class="product_available">Số lượng: <span><?= $row['so_luong'] ?></span></p>
                             </div>
                             <div class="bar_percent">
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php } ?>
+            <?php } ?>
         </div>
-    
+
     </div>
 </section>
 

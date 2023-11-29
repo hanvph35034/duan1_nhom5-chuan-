@@ -40,7 +40,7 @@
                         <th>STT</th>
                        
                        <th>Mã đơn hàng </th>
-                        <th>Trạng thái </th>   
+                        <th>Ngày đặt </th>   
                         <th>Thông tin người nhận</th>
                         <th>Địa chỉ</th>
                         <th>Tổng tiền </th>
@@ -50,18 +50,19 @@
                     </thead>
                     <tbody>
                       <?php 
+                      $i=1;
                         foreach($loaddh as $lisdh){
                           extract($lisdh);
                           echo'
                           <tr>
-                          <td>'.$id_don_hang.'</td>
-                          <td>'.$ma_don_hang.'</td>
-                          <td>'.$trang_thai_don_hang.'</td>
-                          <td>'.$nguoi_nhan.'</td>
-                          <td>'.$dia_chi_nhan.'</td>
-                          <td>'.$tong_tien.'</td>
-                         <td><a href="?act=suadh&&id='.$id_don_hang.'"> xem đơn hàng </a></td>
-                          <td> <a href="?act=deletedh&&id='.$id_don_hang.'"> Xóa đơn hàng</a> </td>
+                          <td>'.$i++.'</td>
+                          <td>'.$ma_dh.'</td>
+                          <td>'.$ngay_dat.'</td>
+                          <td>'.$ten.'</td>
+                          <td>'.$diachi.'</td>
+                          <td>'.number_format($tong_gia).' VND</td>
+                         <td><a href="?act=suadh&id='.$id.'"> xem đơn hàng </a></td>
+                          <td> <a href="?act=deletedh&id='.$id.'"> Xóa đơn hàng</a> </td>
                         </tr>
                           ';
                         
