@@ -157,7 +157,7 @@
                 </div>
                 <div class="product_carousel product_column5 owl-carousel">
 
-                    <?php
+    
                     foreach ($loadsp_sale as $sanpham) {
                         $linkimg_dai_dien = 'public/img/product/' .  $sanpham['HinhDaiDien'];
                         $linkimg_1 = 'public/img/product/' .  $sanpham['Hinh1'];
@@ -173,6 +173,7 @@
                                 <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1 ?>" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale"><a href="#"><?= $sanpham['PhanTramGiamGia'] ?>%</span>
+
                                 </div>
 
                                 <div class="action_links">
@@ -266,16 +267,18 @@
                         $linkimg_3 = 'public/img/product/' .  $sanpham['img_3'];
                     ?>
 
+
                         <div class="single_product">
                             <div class="product_name">
                                 <h3><a href="product-details.html"><?= $sanpham['ten'] ?> </a></h3>
                                 <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
-                            </div>
+       
                             <div class="product_thumb">
                                 <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien ?>" alt=""></a>
                                 <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1 ?>" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">-47%</span>
+
 
                                 </div>
 

@@ -1,9 +1,4 @@
-<!-- Main Wrapper Start -->
-<!--header area start-->
 
-<!--Offcanvas menu area end-->
-
-<!--breadcrumbs area start-->
 <div class="breadcrumbs_area">
     <div class="container">
         <div class="row">
@@ -218,8 +213,9 @@
         <div class="section_title">
             <h2><span> <strong>Sản phẩm</strong>cùng loại</span></h2>
         </div>
-        <div class="row">
+
             <?php foreach ($load_sp_dm as $row) {
+
 
             ?>
                 <div class="col-md-3">

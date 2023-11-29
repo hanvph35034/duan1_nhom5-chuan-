@@ -110,10 +110,10 @@
                     <div class="col-lg-9 col-md-9">
                         <div class="middel_right">
                             <div class="search-container">
-                                <form action="?act=danhmuc1" method="post">
+                                <form action="index.php?act=timkiem" method="post">
                                     <div class="search_box">
-                                        <input name="key" placeholder="Tìm kiếm ..." type="text">
-                                        <button name="btn" value="btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+                                        <input name="keyw" placeholder="Tìm kiếm ..." type="text">
+                                        <button name="timkiem" value="btn" type="submit"><i class="ion-ios-search-strong"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -154,25 +154,27 @@
                                     <li><a href="?act">Trang chủ</i></a>
 
                                     </li>
-                                    <li><a href="?act=danhmuc1">Sản phẩm</a>
-                                    <li><a href="?act=danhmuc2">Danh mục<i class="fa fa-angle-down"></i></a>
-                                        <ul class="sub_menu pages">
-                                        <ul class="mega_menu_inner">
+                                    <li><a href="?act=sanpham">Sản phẩm</a>
+                                    <li><a href="?act=sanpham">Danh mục<i class="fa fa-angle-down"></i></a>
+                                    <ul class="sub_menu pages">
+                                            <ul class="mega_menu_inner">
                                                 <li>
                                                     <ul>
-                                                        <?php 
-                                                        foreach ($loaddm as $dm) {
-                                                        ?>
-                                                        <li><a href="?act=danhmuc2&iddm=<?= $dm['id'] ?>"><?=$dm['Danhmuc']?></a></li>
                                                         <?php
-                                                    }
+                                                        foreach ($loaddm as $dm) {
+                                                            extract($dm);
+                                                            $linkdm = 'index.php?act=danhmuc1&&id=' . $id;
+                                                        ?>
+                                                            <li><a href="<?= $linkdm ?>"><?= $Danhmuc ?></a></li>
+                                                        <?php
+                                                        }
                                                         ?>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">Bài Viết</a>
+                                    <li><a href="?act=baiviet2">Bài Viết</a>
                                         <!-- <ul class="sub_menu pages">
                                             <li><a href="bai_viet1.html">bài viết 1</a></li>
                                             <li><a href="bai_viet2.html">bài viết 2</a></li>
