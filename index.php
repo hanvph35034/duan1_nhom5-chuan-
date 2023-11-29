@@ -130,14 +130,24 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
 
             case 'sanpham':
-                if (isset($_POST['loc'])) {
-                    $tk = $_POST['tk'];
-                    $iddm = $_POST['id'];
-                    $sanpham = loc_san_pham($tk, $iddm);
-                    
+                if (isset($_POST['btn']) && $_POST['btn']) {
+                    if (isset($_POST['gia'])) {
+                        $gia = $_POST['gia'];
+                    } else {
+                        $gia = '';
+                    }
+                    if (isset($_POST['key'])) {
+                        $key = $_POST['key'];
+                        echo $key;
+                    } else {
+                        $key = '';
+                    }
+                } else {
+                    $key = $gia = '';
                 }
-                $sanpham = loadall_sanpham();
-                include "app/views/Client/danh_sach1.php";
+                $loadsp = loadsp($key, $gia);
+                $loadall_sp =  loadall_sanpham();
+                include "app/views/Client/danh_muc2.php";
                 break;
             case 'danhmuc1':
                 if (isset($_GET['id']) && ($_GET['id']) > 0) {
@@ -149,10 +159,21 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $iddm = $_POST['id'];
                     $sanpham = loc_san_pham($tk, $iddm);
                 }
+                
                 include "app/views/Client/danh_sach1.php";
                 break;
+        
 
-
+                case 'timkiem':
+                    if (isset($_POST['timkiem'])) {
+                        $key = $_POST['keyw'];
+                        $iddm = 0;
+                        
+                    }
+                    $sanpham = loadsp_timkiem($key, $iddm);
+            $danhmuc = loadall_danhmuc();
+                    include "app/views/Client/danh_sach1.php";
+                    break;
 
         case 'giohang':
             if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {

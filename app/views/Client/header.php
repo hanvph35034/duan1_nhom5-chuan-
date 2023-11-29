@@ -110,10 +110,10 @@
                     <div class="col-lg-9 col-md-9">
                         <div class="middel_right">
                             <div class="search-container">
-                                <form action="?act=danhmuc1" method="post">
+                                <form action="index.php?act=timkiem" method="post">
                                     <div class="search_box">
-                                        <input name="key" placeholder="Tìm kiếm ..." type="text">
-                                        <button name="btn" value="btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+                                        <input name="keyw" placeholder="Tìm kiếm ..." type="text">
+                                        <button name="timkiem" value="btn" type="submit"><i class="ion-ios-search-strong"></i></button>
                                     </div>
                                 </form>
                             </div>

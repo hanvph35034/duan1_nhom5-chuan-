@@ -62,9 +62,15 @@ function loadallsp_cungdanhmuc($danhmuc)
 
 
 // load tất cả các sản phẩm
-function loadall_sanpham()
+function loadall_sanpham($keyw = "", $iddm = 0)
 {
-    $sql = "SELECT * FROM `sanpham` WHERE 1";
+    $sql = "SELECT * FROM sanpham where trangthai='1' ";
+    if ($keyw != "") {
+        $sql.= "and ten like '%" . $keyw . "%'";
+    }
+    if ($iddm > 0) {
+        $sql.= "and id_dm = '" . $iddm . "'";
+    }
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
@@ -192,7 +198,7 @@ function delete_sanpham($id)
     $sql = "delete from sanpham where Idsp = '$id'";
     pdo_execute($sql);
 }
-function loadsp($key = "", $danhmuc = 0, $gia = "")
+function loadsp($key = "", $gia = "")
 {
     $sql = "SELECT * FROM `sanpham` WHERE 1 ";
     // if ($danhmuc > 0 && $gia != "") {
@@ -208,15 +214,28 @@ function loadsp($key = "", $danhmuc = 0, $gia = "")
     //     $sql .= " AND gia_sale BETWEEN $gia";
     // }
     if ($gia == "newsp") {
-        $sql .= " AND id_dm = '$danhmuc' ORDER BY Idsp DESC ";
+        $sql .= " ORDER BY Idsp DESC ";
     }
-    if ($gia == "max"  && $danhmuc > 0) {
-        $sql .= " AND id_dm = '$danhmuc' ORDER BY gia_sale DESC";
+    if ($gia == "max") {
+        $sql .= " ORDER BY gia_sale DESC";
     }
-    if ($gia == "min"  && $danhmuc > 0) {
-        $sql .= " AND id_dm = '$danhmuc' ORDER BY gia_sale ASC";
+    if ($gia == "min" ) {
+        $sql .= " ORDER BY gia_sale ASC";
     }
     return pdo_query($sql);
+}
+function loadsp_timkiem($keyw = "", $iddm = 0)
+{
+    $sql = "SELECT * FROM sanpham where trangthai='1' ";
+    if ($keyw != "") {
+        $sql.= "and ten like '%" . $keyw . "%'";
+    }
+    if ($iddm > 0) {
+        $sql.= "and id_dm = '" . $iddm . "'";
+    }
+    $sql.= "order by Idsp desc";
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
 }
 function listcart($idtk)
 {
