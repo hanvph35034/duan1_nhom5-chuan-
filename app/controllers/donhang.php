@@ -10,7 +10,6 @@ function adddh(){
         $tong_gia = $_POST['tong_gia'];
         $trang_thai = $_POST['trang_thai'];
         $id_kh = $_POST['id_kh'];
-
         // add_donhang($ngay_dat, $tong_gia, $trang_thai, $id_kh);
     }
     // $loaddh = loadall_donhang();
@@ -19,7 +18,7 @@ function adddh(){
 function suadh(){
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-        $loadd1 = loadone_donhang($id);
+        $loadd1 = loadone_ctdonhang($id);
     }
     include 'QTDH/update.php';
 
@@ -38,10 +37,10 @@ function updatedh(){
 function deletedh(){
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
-        // delete_don_hang($id);
+        delete_don_hang($id);
     }
-    // $loaddh = loadall_donhang();
-    include 'QTDH/list.php';
+    
+    // include 'QTDH/list.php';
 }
 // function chitietdh(){
 

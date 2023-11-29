@@ -18,65 +18,91 @@
 
   <!-- Main content -->
   <section class="content">
-    <div class="container-fluid">
+    <div style="text-align: center;" class="container-fluid">
       <div class="row">
-        <!-- left column -->
-        <div class="col-md-7">
+        <div class="col-md-14">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Thông tin đơn hàng</h3>
+            </div>
+            <table id="" class="table table-bordered table-striped">
+              <thead>
+
+                <tr>
+                  <th>STT</th>
+                  <th>Tên sản phẩm</th>
+                  <th>Hình ảnh</th>
+                  <th>Số lượng</th>
+                  <th>Giá</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                // echo '<pre>';
+                // print_r($loadd1);
+                foreach ($loadd1 as $row) {
+                  extract($row);
+                  $tong = $so_luong * $gia_sale;
+                ?>
+                  <tr>
+                    <td></td>
+                    <td><?= $tensp ?></td>
+                    <td><?= $img_dai_dien ?></td>
+                    <td><?= $so_luong ?></td>
+                    <td><?= number_format($tong) ?>VND</td>
+                  </tr>
+              </tbody>
+            <?php } ?>
+            </table>
+            <label>Tổng giá : <?= number_format($tong_gia) ?>VND</label>
+            <br>
+
+          </div>
+
           <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Thông tin chi tiết đơn hàng</h3>
+              <h3 class="card-title">Thông tin người mua </h3>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
+
             <form action="index.php?act=updatedh" method="POST">
               <div class="card-body">
                 <div class="form-group">
                   <label>Tên người nhận</label>
-                  <input type="hidden" name="iddm" class="form-control" value="">
-                  <input type="text" name="tendm" class="form-control" value="<?= $loadd1['ten_khach_hang']?>">
-                </div>
-                <div class="form-group">
+
+                  <input type="text" name="tendm" class="" value="<?= $ten ?>">
+
                   <label>Địa chỉ</label>
-                  <input type="text" value="<?= $loadd1['dia_chi_nguoi_nhan']?>" name="tendm" class="form-control" value="">
+                  <input type="text" value="<?= $diachi?>" name="tendm" class=""  >
+
+                  <label>Số điện thoại</label>
+                  <input type="text"  name="tendm" class="" value="<?= $sdt ?>">
                 </div>
-             
-              <div class="form-group">
-                <label>Số điện thoại</label>
-                <input type="text" value="<?= $loadd1['so_dien_thoai']?>" name="tendm" class="form-control" value="">
-              </div>
 
-              <div class="form-group">
-                <label>Tên Sản phẩm </label>
-                <input type="text" value="<?= $loadd1['ten_san_pham']?>" name="tendm" class="form-control" value="">
-              </div>
 
-              <div class="form-group">
-                <label>Số lượng</label>
-                <input type="text" value="<?= $loadd1['so_luong']?>" name="tendm" class="form-control" value="">
-              </div>
 
-              <div class="form-group">
-                <label>Giá tiền</label>
-                <input type="text" value="<?= $loadd1['don_gia']?>" name="tendm" class="form-control" value="">
-              </div>
+                <div class="form-group">
+                  <label>Trạng thái đơn hàng</label>
+                  <select name="quyen" id="">
+                    <option value=""> Đang vận chuyển</option>
+                    <option value=""> Chờ xác nhận </option>
+                    <option value=""> Đã giao thành công</option>
 
-              <div class="form-group">
-                <label>Trạng thái đơn hàng</label>
-                <input type="text" value="<?= $loadd1['trang_thai_don_hang']?>" name="tendm" class="form-control" value="">
-              </div>
-              <div class="form-group">
-                <label>ghi trú</label><br>
-                <textarea value="<?= $loadd1['ghi_chu']?>" name="" id="" cols="40" rows="5"></textarea>
-              </div>
 
-              <div class="card-footer">
-                <button type="submit" name="submit" class="btn btn-primary">Lưu</button>
-              </div>
+                  </select>
+                  <label>ghi trú</label>
+                  <input type="text" value="" name="tendm" class="" value="<?= $ghi_chu ?>">
+                </div>
+
+                <div class="card-footer">
+                  <button type="submit" name="submit" class="btn btn-primary">Thực hiện</button>
+                  <button type="submit" name="submit" class="btn btn-primary">Danh sách đơn hàng</button>
+                </div>
             </form>
           </div>
         </div>
       </div>
+
     </div>
 </div>
 <!-- /.row -->
