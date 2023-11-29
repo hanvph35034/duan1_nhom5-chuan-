@@ -117,17 +117,26 @@
                             <div class="coupon_inner">
                                 <div class="cart_subtotal">
                                     <p>Tổng phụ</p>
-                                    <p class="cart_amount">100.000VND</p>
+                                    <p class="cart_amount">0</p>
                                 </div>
                                 <div class="cart_subtotal ">
                                     <p>Đang chuyển hàng</p>
-                                    <p class="cart_amount"><span>Tổng cộng:</span> <?= number_format($tong) ?> VND</p>
+                                    <p>Tộng cộng</p>
+                                    <?php if(!isset($_SESSION['giohang']) &$_SESSION['giohang'] != ''){?>
+                                    <p class="cart_amount"><?= number_format($tong) ?> VND</p>
+                                    <?php }else{?>
+                                        <p class="cart_amount">0 VND</p>
+                                        <?php }?>
                                 </div>
                                 <a href="#">Tính toán vận chuyển</a>
 
                                 <div class="cart_subtotal">
                                     <p>Tộng cộng</p>
+                                    <?php if(!isset($_SESSION['giohang']) &$_SESSION['giohang'] != ''){?>
                                     <p class="cart_amount"><?= number_format($tong) ?> VND</p>
+                                    <?php }else{?>
+                                        <p class="cart_amount">0 VND</p>
+                                        <?php }?>
                                 </div>
 
                                 <div class="payment_method">

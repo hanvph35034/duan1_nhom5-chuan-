@@ -237,12 +237,16 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $ma_dh =  "AMTIMA" . rand(0, 999999);
 
                 $iddh =  taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt);
-                if (isset($_SESSION['giohang'])) {
-                    for ($i = 0; $i < count($_SESSION['giohang']); $i++) {
-                        insert_ctdh($iddh, $_SESSION['giohang'][$i][0], $_SESSION['giohang'][$i][4]);
-                        unset($_SESSION['giohang']);
-                    }
-                }
+                foreach($_SESSION['giohang'] as $key){
+                    insert_ctdh($iddh, $key[0], $key[4]);
+                    unset($_SESSION['giohang']);
+                }   
+                // if (isset($_SESSION['giohang'])) {
+                //     for ($i = 0; $i < count($_SESSION['giohang']); $i++) {
+                //         insert_ctdh($iddh, $_SESSION['giohang'][$i][0], $_SESSION['giohang'][$i][4]);
+                //         unset($_SESSION['giohang']);
+                //     }
+                // }
             }
             include "app/views/Client/giohang.php";
             break;
