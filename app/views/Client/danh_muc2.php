@@ -128,8 +128,8 @@
                                             <p>Số lượng <span><?= $sanpham['so_luong'] ?></span></p>
                                         </div>
                                         <div class="price_box">
-                                            <span class="current_price"><?= number_format($sanpham['gia_sale']) ?></span>
-                                            <span class="old_price"><?= number_format($sanpham['Gia']) ?>VND</span>
+                                        <span class="current_price"> <?= number_format($sanpham['gia_sale'] )?>VND</span>
+                                                <span class="old_price"><?= number_format($sanpham['Gia']) ?>VND</span>
                                         </div>
                                         <div class="cart_links_btn">
                                             <a href="#" title="add to cart">Thêm vào giỏ hàng</a>

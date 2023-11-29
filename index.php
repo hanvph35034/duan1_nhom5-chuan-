@@ -235,8 +235,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $sdt = $_POST['sdt'];
                 $pttt = $_POST['pttt'];
                 $ma_dh =  "AMTIMA" . rand(0, 999999);
+                $id_tk = $_SESSION['user']['id'];
 
-                $iddh =  taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt);
+                $iddh =  taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt,$id_tk);
                 foreach($_SESSION['giohang'] as $key){
                     insert_ctdh($iddh, $key[0], $key[4]);
                     unset($_SESSION['giohang']);
@@ -256,10 +257,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'sosach':
             include "app/views/Client/sosach.php";
             break;
-
-        case 'trang_tk':
-            include "app/views/Client/trang_tk.php";
-            break;
         case 'suatk':
             if (isset($_SESSION['user'])) {
                 $id = $_SESSION['user']['id'];
@@ -274,6 +271,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 }
             }
             $tk = loadone_tk($id);
+
+            $load_donhang = load_dh_ng($_SESSION['user']['id']);
             include "app/views/Client/trang_tk.php";
             break;
         case 'dangxuat':
