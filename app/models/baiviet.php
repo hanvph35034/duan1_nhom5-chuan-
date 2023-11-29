@@ -1,7 +1,8 @@
 <?php
 //load tất cả bài viêt
 function loadall_baiviet(){
-    $sql = 'SELECT * FROM `bai_viet` WHERE 1';
+    $sql = 'SELECT * FROM `bai_viet` ORDER BY id DESC
+    LIMIT 10';
     $list = pdo_query($sql);
     return $list;
 }

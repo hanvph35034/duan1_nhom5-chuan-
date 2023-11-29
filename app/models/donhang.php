@@ -29,37 +29,18 @@ function add_donhang($ngay_dat, $tong_gia, $trang_thai, $id_kh)
                 VALUES ('$ngay_dat', '$tong_gia', '$trang_thai', '$id_kh')";
     pdo_execute($sql);
 }
-function loadone_donhang($id)
+function loadone_ctdonhang($id)
 {
-    $sql = "SELECT 
-    tk.ten_dn AS ten_khach_hang,
-    tk.dia_chi AS dia_chi_nguoi_nhan,
-    tk.sdt AS so_dien_thoai,
-    sp.ten AS ten_san_pham,
-    ctdh.so_luong,
-    ctdh.don_gia,
-    dh.trangthai AS trang_thai_don_hang,
-    ctdh.ghi_chu
-FROM donhang dh
-JOIN ct_don_hang ctdh ON dh.id = ctdh.id_dh
-JOIN sanpham sp ON ctdh.id_bt = sp.Idsp
-JOIN tai_khoan tk ON dh.id_tk = tk.id
-WHERE dh.id = '$id' ;
+    $sql = "SELECT sanpham.ten as tensp,sanpham.img_dai_dien,ct_don_hang.so_luong,sanpham.gia_sale,donhang.ten,donhang.diachi ,donhang.sdt,donhang.email ,donhang.ghi_chu ,donhang.tong_gia
+     FROM sanpham,ct_don_hang,donhang WHERE ct_don_hang.id_dh = donhang.id AND ct_don_hang.id_sp = sanpham.Idsp AND donhang.id = '$id' ;
 ;
 ";
-    $dh = pdo_query_one($sql);
+    $dh = pdo_query($sql);
     return $dh;
 }
 function loadall_donhang()
 {
-    $sql = "SELECT dh.`id` AS id_don_hang,
-    dh.`ma_dh` AS ma_don_hang,
-    dh.`trangthai` AS trang_thai_don_hang,
-    tk.`ten_dn` AS nguoi_nhan,
-    tk.`dia_chi` AS dia_chi_nhan,
-    dh.`tong_gia` AS tong_tien
-FROM `donhang` dh
-JOIN `tai_khoan` tk ON dh.`id_tk` = tk.`id`;";
+    $sql = "SELECT * FROM `donhang` WHERE 1";
     $listdonhang = pdo_query($sql);
     return $listdonhang;
 }
@@ -85,7 +66,7 @@ function load_sdh_ht()
 // xoa don hang
 function delete_don_hang($id)
 {
-    $sql = "DELETE from donhang where id = '$id';";
+    $sql = "DELETE FROM `donhang` WHERE id = '$id'";
     pdo_execute($sql);
 }
 function chitietdh()
@@ -94,4 +75,18 @@ function chitietdh()
     donhang JOIN ctdh on donhang.id = ctdh.id_dh JOIN sanpham on ctdh.id_sp = sanpham.id";
     $donhang = pdo_query($sql);
     return $donhang;
+}
+function taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt)
+
+{
+   $date = date('Y-m-d');
+  $conn = pdo_get_connection();
+  $sql = $conn -> prepare("INSERT INTO `donhang`(`ma_dh`,`ngay_dat`, `tong_gia`, `phuongthucthanhtoan`, `ten`, `sdt`, `email`, `diachi`) VALUES ('$ma_dh','$date', '$tong' ,'$pttt' , '$ten', '$diachi', '$email', '$sdt')");
+   $sql -> execute();
+   $id = $conn -> lastInsertId();
+   return $id;
+}
+function insert_ctdh($iddh,$id_sp,$soluong){
+$sql = "INSERT INTO `ct_don_hang`(`id_dh`,`id_sp`, `so_luong`) VALUES ('$iddh','$id_sp','$soluong')" ;
+pdo_execute($sql);
 }

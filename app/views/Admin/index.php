@@ -11,6 +11,7 @@ include '../../models/binhluan.php';
 include '../../models/khachhang.php';
 include '../../models/quyen.php';
 include '../../models/donhang.php';
+include '../../models/thongke.php';
 include '../../models/validate.php';
 
 
@@ -167,6 +168,10 @@ include '../../controllers/donhang.php';
             case 'updatebt':
                 include 'QTBT/update.php';
                 break;
+                case 'thongke':
+                    $load_thongke =  loadall_sanpham_thongke();
+                    include 'thongke.php';
+                    break;
 
 
             default:

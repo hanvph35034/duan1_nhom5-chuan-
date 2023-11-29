@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-
+if (!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
 include "app/models/pdo.php";
 include "app/models/taikhoan.php";
 include "app/models/sanpham.php";
@@ -10,6 +10,7 @@ include "app/models/baiviet.php";
 include "app/models/danhmuc.php";
 include "app/models/validate.php";
 include "app/models/banner.php";
+include "app/models/donhang.php";
 
 $loaddm = loadall_danhmuc();
 include "app/views/Client/header.php";
@@ -104,6 +105,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/bai_viet1.php";
             break;
         case 'baiviet2':
+            $loaddm = loadall_danhmuc();
+            $load4bv=load4_baiviet();
+            $loadbaiviet = loadall_baiviet();
             include "app/views/Client/bai_viet2.php";
             break;
 
@@ -111,8 +115,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $id = $_GET['idsp'];
             $loadd_bl = load_binhluan_sp($id);
             $loadone_sp =  loadone_sanpham($_GET['idsp']);
-            $danhmuc = $_GET['iddm'];
+            if (isset($_GET['iddm']) && ($_GET['iddm']) > 0) {
+                $danhmuc = $_GET['iddm'];
             $load_sp_dm = loadallsp_cungdanhmuc($danhmuc);
+            }
+            
             if (isset($_POST['btn']) && $_POST['btn'] != '') {
                 $noidung = $_POST['noidung'];
                 $id_tk = $_SESSION['user']['id'];
@@ -122,83 +129,132 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include "app/views/Client/chitietsp.php";
             break;
-        case 'danhmuc1':
-            if (isset($_POST['btn']) && $_POST['btn']) {
-                if (isset($_POST['danhmuc'])) {
-                    $danhmuc = $_POST['danhmuc'];
-                } else {
-                    $danhmuc = '';
-                }
-                if (isset($_POST['gia'])) {
-                    $gia = $_POST['gia'];
-                } else {
-                    $gia = '';
-                }
-                if (isset($_POST['key'])) {
-                    $key = $_POST['key'];
-                    echo $key;
-                } else {
-                    $key = '';
-                }
-            } else {
-                $key = $gia = $danhmuc = '';
-            }
-            $loadsp = loadsp($key, $danhmuc, $gia);
-            $loadall_sp =  loadall_sanpham();
 
-            include "app/views/Client/danh_sach1.php";
-            break;
-        case "danhmuc2":
-            if (isset($_POST['btn']) && $_POST['btn']) {
-                if (isset($_POST['gia'])) {
-                    $gia = $_POST['gia'];
+            case 'sanpham':
+                if (isset($_POST['btn']) && $_POST['btn']) {
+                    if (isset($_POST['gia'])) {
+                        $gia = $_POST['gia'];
+                    } else {
+                        $gia = '';
+                    }
+                    if (isset($_POST['key'])) {
+                        $key = $_POST['key'];
+                        echo $key;
+                    } else {
+                        $key = '';
+                    }
                 } else {
-                    $gia =  '';
+                    $key = $gia = '';
                 }
-                if (isset($_GET['iddm']) && $_GET['iddm'] > 0) {
-                    $danhmuc = $_GET['iddm'];
-                } else {
-                    $danhmuc = '';
+                $loadsp = loadsp($key, $gia);
+                $loadall_sp =  loadall_sanpham();
+                include "app/views/Client/danh_muc2.php";
+                break;
+            case 'danhmuc1':
+                if (isset($_GET['id']) && ($_GET['id']) > 0) {
+                    $iddm = $_GET['id'];
+                    $sanpham = loadallsp_cungdanhmuc($iddm);
                 }
-            } else {
-                $danhmuc = $_GET['iddm'];
-                $gia = "";
-            }
-            echo $danhmuc . $gia;
-            $loadsp = loadsp($key = "", $danhmuc, $gia);
-            $loadall_sp =  loadall_sanpham();
-            include "app/views/Client/danh_muc2.php";
-            break;
+                if (isset($_POST['loc'])) {
+                    $tk = $_POST['tk'];
+                    $iddm = $_POST['id'];
+                    $sanpham = loc_san_pham($tk, $iddm);
+                }
+                
+                include "app/views/Client/danh_sach1.php";
+                break;
+        
+
+                case 'timkiem':
+                    if (isset($_POST['timkiem'])) {
+                        $key = $_POST['keyw'];
+                        $iddm = 0;
+                        
+                    }
+                    $sanpham = loadsp_timkiem($key, $iddm);
+            $danhmuc = loadall_danhmuc();
+                    include "app/views/Client/danh_sach1.php";
+                    break;
+
         case 'giohang':
-            if (isset($_GET['idsp']) && $_GET['idsp'] > 0) {
+            if (isset($_POST['btn']) && $_POST['btn']) {
+                $id = $_POST['id'];
+                $ten = $_POST['ten'];
+                $img = $_POST['img'];
+                $gia = $_POST['gia'];
 
-                themcart($_GET['idsp'], $_SESSION['user']['id'], 1);
-                header("Location:?act=giohang");
+                if (isset($_POST['soluong']) && ($_POST['soluong'] > 0)) {
+                    $soluong = $_POST['soluong'];
+                } else {
+                    $soluong = 1;
+                }
+                $fg = false;
+                $i = 0;
+                foreach ($_SESSION['giohang'] as $item) {
+                    if ($item['0'] === $id) {
+                        $slnew = $soluong + $item[4];
+                        $_SESSION['giohang'][$i][4] = $slnew;
+                        $fg = true;
+                        break;
+                    }
+                    $i++;
+                }
+                //khởi tạo mag con 
+                if ($fg == false) {
+                    $item = array($id, $ten, $img, $gia, $soluong);
+                    $_SESSION['giohang'][] = ($item);
+                }
+                // header('Location : index.php?act=giohang');
+                header("Location: ".$_SERVER['HTTP_REFERER']);
             }
-
-            $load_cart = listcart($_SESSION['user']['id']);
 
             include "app/views/Client/giohang.php";
             break;
 
         case 'datelegiohang':
-            if (isset($_GET['idgh']) && $_GET['idgh']) {
-                $id = $_GET['idgh'];
-                xoagiohang($id);
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0))
+                    array_splice($_SESSION['giohang'], $_GET['id'], 1);
+            } else {
+                if (isset($_SESSION['giohang'])) unset($_SESSION['giohang']);
             }
-            $load_cart = listcart($_SESSION['user']['id']);
+
+            if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
+                header('Location: ?act=giohang');
+            } else {
+                header('Location: ?act');
+            }
             include "app/views/Client/giohang.php";
             break;
+        case 'thanh_toan':
+            if ((isset($_POST['btn'])) && ($_POST['btn'])) {
+                // \\ lay du lieu
+                $tong = $_POST['tong'];
+                $ten = $_POST['ten'];
+                $diachi = $_POST['diachi'];
+                $email = $_POST['email'];
+                $sdt = $_POST['sdt'];
+                $pttt = $_POST['pttt'];
+                $ma_dh =  "AMTIMA" . rand(0, 999999);
 
+                $iddh =  taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt);
+               
+                for ($i = 0; $i < count($_SESSION['giohang']); $i++) {
+                    insert_ctdh($iddh, $_SESSION['giohang'][$i][0], $_SESSION['giohang'][$i][4]);
+                    unset($_SESSION['giohang']);
+                }
+            }
+
+
+            include "app/views/Client/giohang.php";
+            break;
         case 'lienhe':
             include "app/views/Client/lienhe.php";
             break;
         case 'sosach':
             include "app/views/Client/sosach.php";
             break;
-        case 'thanh_toan':
-            include "app/views/Client/thanh_toan.php";
-            break;
+
         case 'trang_tk':
             include "app/views/Client/trang_tk.php";
             break;

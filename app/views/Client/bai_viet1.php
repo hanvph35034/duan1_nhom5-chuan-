@@ -1,5 +1,5 @@
 
-
+sản
  
     <!--Offcanvas menu area end-->
 
@@ -122,7 +122,7 @@ if (isset($loadctbv) && is_array($loadctbv)) {
                                 </div>
                             </div>
                         </div>
-                        <div class="comments_box">
+                        <!-- <div class="comments_box">
                             <h3>3 Comments </h3>
                             <div class="comment_list">
                                 <div class="comment_thumb">
@@ -170,8 +170,8 @@ if (isset($loadctbv) && is_array($loadctbv)) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="comments_form">
+                        </div> -->
+                        <!-- <div class="comments_form">
                             <h3>Leave a Reply </h3>
                             <p>Your email address will not be published. Required fields are marked *</p>
                             <form action="#">
@@ -196,7 +196,7 @@ if (isset($loadctbv) && is_array($loadctbv)) {
                                 </div>
                                 <button class="button" type="submit">Post Comment</button>
                             </form>
-                        </div>
+                        </div> -->
 
                     </div>
                     <!--blog grid area start-->
@@ -283,7 +283,7 @@ if (isset($loadctbv) && is_array($loadctbv)) {
                             </div> -->
                         </div>
 
-                        <div class="widget_list comments_post">
+                        <!-- <div class="widget_list comments_post">
                             <h3>Comments</h3>
                             <div class="post_wrapper">
                                 <div class="post_thumb">
@@ -321,7 +321,7 @@ if (isset($loadctbv) && is_array($loadctbv)) {
                                     <a href="blog-details.html">Quisque semper nunc</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="widget_list widget_categories">
                             <h3>Categories</h3>
                             <ul>

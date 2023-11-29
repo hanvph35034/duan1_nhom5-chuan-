@@ -15,7 +15,27 @@ function loadall_sanpham_top10()
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
+//lọc sp
+function loc_san_pham($tk, $id){
+    $sql = "SELECT * FROM sanpham 
+              JOIN danhmuc ON sanpham.id_dm = danhmuc.id 
+              WHERE sanpham.trangthai = '1' AND danhmuc.trangthai = '1' AND sanpham.id_dm = '$id' ";
+if ($tk == 3) {
+    $sql .= " ORDER BY sanpham.Idsp DESC limit 0,4;";
+}
 
+if ($tk == 2) {
+    $sql .= " ORDER BY sanpham.gia_sale DESC;";
+}
+
+// tăng
+if ($tk == 1) {
+    $sql .= " ORDER BY sanpham.gia_sale ASC;";
+}
+
+return pdo_query($sql);
+
+}
 // load 1 sản phẩm cùng loại
 function loadone_sanpham($id)
 {
@@ -25,9 +45,9 @@ function loadone_sanpham($id)
 }
 
 // load các sản phẩm cùng loại trừ sản phẩm đang xem
-function loadallsp_cungloai($id, $iddm)
+function loadallsp_cungloai($Idsp, $id_dm)
 {
-    $sql = "select * from sanpham where id!=$id and iddm = $iddm && trangthai='0' order by view desc limit 0,4";
+    $sql = "select * from sanpham where Idsp!=$Idsp and id_dm = $id_dm limit 0,4";
     $sanpham = pdo_query($sql);
     return $sanpham;
 }
@@ -42,9 +62,15 @@ function loadallsp_cungdanhmuc($danhmuc)
 
 
 // load tất cả các sản phẩm
-function loadall_sanpham()
+function loadall_sanpham($keyw = "", $iddm = 0)
 {
-    $sql = "SELECT * FROM `sanpham` WHERE 1";
+    $sql = "SELECT * FROM sanpham where trangthai='1' ";
+    if ($keyw != "") {
+        $sql.= "and ten like '%" . $keyw . "%'";
+    }
+    if ($iddm > 0) {
+        $sql.= "and id_dm = '" . $iddm . "'";
+    }
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
@@ -60,6 +86,8 @@ function load7spre()
 function loadsp_sale()
 {
     $sql = "SELECT 
+    s.Idsp AS Idsp,
+        s.id_dm AS id_dm,
         s.ten AS TenSanPham,
         s.Gia AS Gia,
         s.img_dai_dien AS HinhDaiDien,
@@ -170,7 +198,7 @@ function delete_sanpham($id)
     $sql = "delete from sanpham where Idsp = '$id'";
     pdo_execute($sql);
 }
-function loadsp($key = "", $danhmuc = 0, $gia = "")
+function loadsp($key = "", $gia = "")
 {
     $sql = "SELECT * FROM `sanpham` WHERE 1 ";
     // if ($danhmuc > 0 && $gia != "") {
@@ -186,15 +214,28 @@ function loadsp($key = "", $danhmuc = 0, $gia = "")
     //     $sql .= " AND gia_sale BETWEEN $gia";
     // }
     if ($gia == "newsp") {
-        $sql .= " AND id_dm = '$danhmuc' ORDER BY Idsp DESC ";
+        $sql .= " ORDER BY Idsp DESC ";
     }
-    if ($gia == "max"  && $danhmuc > 0) {
-        $sql .= " AND id_dm = '$danhmuc' ORDER BY gia_sale DESC";
+    if ($gia == "max") {
+        $sql .= " ORDER BY gia_sale DESC";
     }
-    if ($gia == "min"  && $danhmuc > 0) {
-        $sql .= " AND id_dm = '$danhmuc' ORDER BY gia_sale ASC";
+    if ($gia == "min" ) {
+        $sql .= " ORDER BY gia_sale ASC";
     }
     return pdo_query($sql);
+}
+function loadsp_timkiem($keyw = "", $iddm = 0)
+{
+    $sql = "SELECT * FROM sanpham where trangthai='1' ";
+    if ($keyw != "") {
+        $sql.= "and ten like '%" . $keyw . "%'";
+    }
+    if ($iddm > 0) {
+        $sql.= "and id_dm = '" . $iddm . "'";
+    }
+    $sql.= "order by Idsp desc";
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
 }
 function listcart($idtk)
 {
