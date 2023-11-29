@@ -59,43 +59,37 @@
 
           </div>
 
-          <!-- general form elements -->
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Thông tin người mua </h3>
             </div>
 
-            <form action="index.php?act=updatedh" method="POST">
+            <form action="index.php?act=updatedh&id=<?=$id?>" method="POST">
               <div class="card-body">
                 <div class="form-group">
                   <label>Tên người nhận</label>
 
-                  <input type="text" name="tendm" class="" value="<?= $ten ?>">
+                  <input type="text" name="ten" class="" value="<?= $ten ?>">
 
                   <label>Địa chỉ</label>
-                  <input type="text" value="<?= $diachi?>" name="tendm" class=""  >
+                  <input type="text" value="<?= $diachi?>" name="diachi" class=""  >
 
                   <label>Số điện thoại</label>
-                  <input type="text"  name="tendm" class="" value="<?= $sdt ?>">
+                  <input type="text"  name="sdt" class="" value="<?= $sdt ?>">
                 </div>
-
-
-
                 <div class="form-group">
                   <label>Trạng thái đơn hàng</label>
-                  <select name="quyen" id="">
-                    <option value=""> Đang vận chuyển</option>
-                    <option value=""> Chờ xác nhận </option>
-                    <option value=""> Đã giao thành công</option>
-
-
+                  <select name="trangthai" id="">
+                  <option value="1"> Chờ xác nhận </option>
+                    <option value="2"> Đang vận chuyển</option>
+                    <option value="3"> Đã giao thành công</option>
                   </select>
                   <label>ghi trú</label>
-                  <input type="text" value="" name="tendm" class="" value="<?= $ghi_chu ?>">
+                  <input type="text" value="" name="ghichu" class="" value="<?= $ghi_chu ?>">
                 </div>
 
                 <div class="card-footer">
-                  <button type="submit" name="submit" class="btn btn-primary">Thực hiện</button>
+                  <button type="submit" name="btn" value="btn" class="btn btn-primary">Thực hiện</button>
                   <button type="submit" name="submit" class="btn btn-primary">Danh sách đơn hàng</button>
                 </div>
             </form>

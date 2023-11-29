@@ -54,7 +54,7 @@
                                     ?><td><?= ($id + 1) ?></td>
                                             <td class="product_remove"><a href="?act=datelegiohang&id=<?= $id ?>"><i class="fa fa-trash-o"></i></a></td>
                                             <td class="product_thumb"><a href="#"><img src="public/img/product/<?= $row['2'] ?>" alt="act"></a></td>
-                                            <td class="product_name"><a href="#"><?= $row['2'] ?> </a></td>
+                                            <td class="product_name"><a href="#"><?= $row['1'] ?> </a></td>
                                             <td class="product-price">£<?= number_format($row['3']) ?></td>
                                             <td class="product_quantity"><label>Số lượng</label> <input min="1" max="100" value="<?= $row[4] ?>" type="number"></td>
                                             <td>Màu</td>
@@ -122,7 +122,7 @@
                                 <div class="cart_subtotal ">
                                     <p>Đang chuyển hàng</p>
                                     <p>Tộng cộng</p>
-                                    <?php if(!isset($_SESSION['giohang']) &$_SESSION['giohang'] != ''){?>
+                                    <?php if(isset($_SESSION['giohang'])){?>
                                     <p class="cart_amount"><?= number_format($tong) ?> VND</p>
                                     <?php }else{?>
                                         <p class="cart_amount">0 VND</p>
@@ -132,7 +132,7 @@
 
                                 <div class="cart_subtotal">
                                     <p>Tộng cộng</p>
-                                    <?php if(!isset($_SESSION['giohang']) &$_SESSION['giohang'] != ''){?>
+                                    <?php if(isset($_SESSION['giohang']) ){?>
                                     <p class="cart_amount"><?= number_format($tong) ?> VND</p>
                                     <?php }else{?>
                                         <p class="cart_amount">0 VND</p>

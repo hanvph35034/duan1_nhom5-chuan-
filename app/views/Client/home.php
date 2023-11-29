@@ -131,8 +131,7 @@
                                     <div class="bar_percent">
                                     </div>
                             </form>
-                        </div>
-                        
+                        </div>                      
                 </div>
                 <?php } ?>
             </div>
@@ -158,6 +157,7 @@
                     ?>
 
                         <div class="single_product">
+                        <form action="index.php?act=giohang" method="POST">
                             <div class="product_name">
                                 <h3><a href="product-details.html"><?= $sanpham['TenSanPham'] ?> </a></h3>
                                 <p class="manufacture_product"><a href="#"><?= $sanpham['TenDanhMuc'] ?></a></p>
@@ -195,17 +195,22 @@
                                         <span class="old_price"><?= number_format($sanpham['GiaSale']) ?></span>
                                     </div>
                                     <div class="add_to_cart">
-                                        <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
-                                    </div>
+                                            <button type="submit" value="btn" name="btn"><span class="lnr lnr-cart"></span></button>
+                                        </div>
                                 </div>
                                 <div class="quantity_progress">
                                     <p class="product_sold">Đã bán: <span>199</span></p>
                                     <p class="product_available">Số lượng: <span><?= $sanpham['SoLuong'] ?></span></p>
                                 </div>
+                                <input type="hidden" value="<?= $Idsp ?>" name="id">
+                                    <input type="hidden" value="<?= $ten ?>" name="ten">
+                                    <input type="hidden" value="<?= $img_dai_dien ?>" name="img">
+                                    <input type="hidden" value="<?= $gia_sale ?>" name="gia">
                                 <div class="bar_percent">
-
                                 </div>
+                                </form>
                             </div>
+                         
                         </div>
                     <?php }?>
                 </div>
@@ -248,6 +253,7 @@
                         $linkimg_3 = 'public/img/product/' .  $sanpham['img_3'];
                     ?>
                         <div class="single_product">
+                        <form action="index.php?act=giohang" method="POST">
                             <div class="product_name">
                                 <h3><a href="product-details.html"><?= $sanpham['ten'] ?> </a></h3>
                                 <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
@@ -285,17 +291,22 @@
                                             <span class="old_price"><?= $sanpham['Gia'] ?></span>
                                         </div>
                                         <div class="add_to_cart">
-                                            <a href="?act=giohang&idsp=<?= $sanpham['Idsp'] ?>" title="add to cart"><span class="lnr lnr-cart"></span></a>
+                                            <button type="submit" value="btn" name="btn"><span class="lnr lnr-cart"></span></button>
                                         </div>
                                     </div>
                                     <div class="quantity_progress">
                                         <p class="product_sold">Đã bán: <span>199</span></p>
                                         <p class="product_available">Số lượng: <span><?= $sanpham['so_luong'] ?></span></p>
                                     </div>
+                                    <input type="hidden" value="<?= $Idsp ?>" name="id">
+                                    <input type="hidden" value="<?= $ten ?>" name="ten">
+                                    <input type="hidden" value="<?= $img_dai_dien ?>" name="img">
+                                    <input type="hidden" value="<?= $gia_sale ?>" name="gia">
                                     <div class="bar_percent">
 
                                     
                                 </div>
+                                </form>
                             </div>
                            
                 </div>
