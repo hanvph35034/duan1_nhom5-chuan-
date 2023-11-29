@@ -106,7 +106,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
         case 'baiviet2':
             $loaddm = loadall_danhmuc();
-            $load4bv=load4_baiviet();
+            $load4bv = load4_baiviet();
             $loadbaiviet = loadall_baiviet();
             include "app/views/Client/bai_viet2.php";
             break;
@@ -117,9 +117,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             $loadone_sp =  loadone_sanpham($_GET['idsp']);
             if (isset($_GET['iddm']) && ($_GET['iddm']) > 0) {
                 $danhmuc = $_GET['iddm'];
-            $load_sp_dm = loadallsp_cungdanhmuc($danhmuc);
+                $load_sp_dm = loadallsp_cungdanhmuc($danhmuc);
             }
-            
+
             if (isset($_POST['btn']) && $_POST['btn'] != '') {
                 $noidung = $_POST['noidung'];
                 $id_tk = $_SESSION['user']['id'];
@@ -130,51 +130,50 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/chitietsp.php";
             break;
 
-            case 'sanpham':
-                if (isset($_POST['btn']) && $_POST['btn']) {
-                    if (isset($_POST['gia'])) {
-                        $gia = $_POST['gia'];
-                    } else {
-                        $gia = '';
-                    }
-                    if (isset($_POST['key'])) {
-                        $key = $_POST['key'];
-                        echo $key;
-                    } else {
-                        $key = '';
-                    }
+        case 'sanpham':
+            if (isset($_POST['btn']) && $_POST['btn']) {
+                if (isset($_POST['gia'])) {
+                    $gia = $_POST['gia'];
                 } else {
-                    $key = $gia = '';
+                    $gia = '';
                 }
-                $loadsp = loadsp($key, $gia);
-                $loadall_sp =  loadall_sanpham();
-                include "app/views/Client/danh_muc2.php";
-                break;
-            case 'danhmuc1':
-                if (isset($_GET['id']) && ($_GET['id']) > 0) {
-                    $iddm = $_GET['id'];
-                    $sanpham = loadallsp_cungdanhmuc($iddm);
+                if (isset($_POST['key'])) {
+                    $key = $_POST['key'];
+                    echo $key;
+                } else {
+                    $key = '';
                 }
-                if (isset($_POST['loc'])) {
-                    $tk = $_POST['tk'];
-                    $iddm = $_POST['id'];
-                    $sanpham = loc_san_pham($tk, $iddm);
-                }
-                
-                include "app/views/Client/danh_sach1.php";
-                break;
-        
+            } else {
+                $key = $gia = '';
+            }
+            $loadsp = loadsp($key, $gia);
+            $loadall_sp =  loadall_sanpham();
+            include "app/views/Client/danh_muc2.php";
+            break;
+        case 'danhmuc1':
+            if (isset($_GET['id']) && ($_GET['id']) > 0) {
+                $iddm = $_GET['id'];
+                $sanpham = loadallsp_cungdanhmuc($iddm);
+            }
+            if (isset($_POST['loc'])) {
+                $tk = $_POST['tk'];
+                $iddm = $_POST['id'];
+                $sanpham = loc_san_pham($tk, $iddm);
+            }
 
-                case 'timkiem':
-                    if (isset($_POST['timkiem'])) {
-                        $key = $_POST['keyw'];
-                        $iddm = 0;
-                        
-                    }
-                    $sanpham = loadsp_timkiem($key, $iddm);
+            include "app/views/Client/danh_sach1.php";
+            break;
+
+
+        case 'timkiem':
+            if (isset($_POST['timkiem'])) {
+                $key = $_POST['keyw'];
+                $iddm = 0;
+            }
+            $sanpham = loadsp_timkiem($key, $iddm);
             $danhmuc = loadall_danhmuc();
-                    include "app/views/Client/danh_sach1.php";
-                    break;
+            include "app/views/Client/danh_sach1.php";
+            break;
 
         case 'giohang':
             if (isset($_POST['btn']) && $_POST['btn']) {
@@ -205,7 +204,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $_SESSION['giohang'][] = ($item);
                 }
                 // header('Location : index.php?act=giohang');
-                header("Location: ".$_SERVER['HTTP_REFERER']);
+                header("Location: " . $_SERVER['HTTP_REFERER']);
             }
 
             include "app/views/Client/giohang.php";
@@ -238,14 +237,13 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $ma_dh =  "AMTIMA" . rand(0, 999999);
 
                 $iddh =  taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt);
-               
-                for ($i = 0; $i < count($_SESSION['giohang']); $i++) {
-                    insert_ctdh($iddh, $_SESSION['giohang'][$i][0], $_SESSION['giohang'][$i][4]);
-                    unset($_SESSION['giohang']);
+                if (isset($_SESSION['giohang'])) {
+                    for ($i = 0; $i < count($_SESSION['giohang']); $i++) {
+                        insert_ctdh($iddh, $_SESSION['giohang'][$i][0], $_SESSION['giohang'][$i][4]);
+                        unset($_SESSION['giohang']);
+                    }
                 }
             }
-
-
             include "app/views/Client/giohang.php";
             break;
         case 'lienhe':
