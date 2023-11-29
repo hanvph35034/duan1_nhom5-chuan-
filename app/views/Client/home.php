@@ -72,6 +72,7 @@
 
                     <?php
                     foreach ($loadsanpham as $sanpham) {
+
                         // $linkimg_dai_dien = 'public/img/product/' .  $sanpham['img_dai_dien'];
                         // $linkimg_1 = 'public/img/product/' .  $sanpham['img_1'];
                         // $linkimg_2 = 'public/img/product/' .  $sanpham['img_2'];
@@ -180,6 +181,7 @@
                                         <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
                                         <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
                                     </ul>
+
                                 </div>
                             </div>
                             <div class="product_content">
@@ -214,17 +216,18 @@
 
                     }
 
+
                     ?>
 
 
 
 
+                    ?>
                 </div>
             </div>
         </div>
-    </div>
 </section>
-<!--product area end-->
+
 
 <!--banner area start baner dưới-->
 <section class="banner_area banner_static mb-50 d-flex align-items-center" data-bgimg="public/img/bg/banner-1.jpg">
@@ -273,6 +276,7 @@
                                 <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1 ?>" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale">-47%</span>
+
                                 </div>
 
                                 <div class="action_links">
@@ -322,9 +326,13 @@
 
                 </div>
             </div>
+
         </div>
 
     </div>
+
+    </div>
+
 </section>
 <!--product area end-->
 
