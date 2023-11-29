@@ -10,6 +10,7 @@ include "app/models/baiviet.php";
 include "app/models/danhmuc.php";
 include "app/models/validate.php";
 include "app/models/banner.php";
+include "app/models/donhang.php";
 
 $loaddm = loadall_danhmuc();
 include "app/views/Client/header.php";
@@ -198,15 +199,16 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $_SESSION['giohang'][] = ($item);
                 }
                 // header('Location : index.php?act=giohang');
+                header("Location: ".$_SERVER['HTTP_REFERER']);
             }
 
             include "app/views/Client/giohang.php";
             break;
 
         case 'datelegiohang':
-            if (isset($_GET['i']) && ($_GET['i'] > 0)) {
-                if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0 ))
-                array_splice($_SESSION['giohang'], $_GET['i'],1);
+            if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0))
+                    array_splice($_SESSION['giohang'], $_GET['id'], 1);
             } else {
                 if (isset($_SESSION['giohang'])) unset($_SESSION['giohang']);
             }
@@ -218,17 +220,35 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             include "app/views/Client/giohang.php";
             break;
-            case 'thanh_toan':
-                
-                include "app/views/Client/thanh_toan.php";
-                break;
+        case 'thanh_toan':
+            if ((isset($_POST['btn'])) && ($_POST['btn'])) {
+                // \\ lay du lieu
+                $tong = $_POST['tong'];
+                $ten = $_POST['ten'];
+                $diachi = $_POST['diachi'];
+                $email = $_POST['email'];
+                $sdt = $_POST['sdt'];
+                $pttt = $_POST['pttt'];
+                $ma_dh =  "AMTIMA" . rand(0, 999999);
+
+                $iddh =  taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt);
+               
+                for ($i = 0; $i < count($_SESSION['giohang']); $i++) {
+                    insert_ctdh($iddh, $_SESSION['giohang'][$i][0], $_SESSION['giohang'][$i][4]);
+                    unset($_SESSION['giohang']);
+                }
+            }
+
+
+            include "app/views/Client/giohang.php";
+            break;
         case 'lienhe':
             include "app/views/Client/lienhe.php";
             break;
         case 'sosach':
             include "app/views/Client/sosach.php";
             break;
-        
+
         case 'trang_tk':
             include "app/views/Client/trang_tk.php";
             break;

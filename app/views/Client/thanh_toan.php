@@ -66,7 +66,7 @@
                             <div class="checkout_info coupon_info">
                                 <form action="#">
                                     <input placeholder="Coupon code" type="text">
-                                    <button type="submit">Apply coupon</button>
+                                    <button name ="" type="submit">Apply coupon</button>
                                 </form>
                             </div>
                         </div>    
@@ -208,7 +208,7 @@
                         </form>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <form action="#">
+                        <form action="?act=thanh_toan" method="POST">
                             <h3>Đơn Đặt hàng của bạn </h3>
                             <div class="order_table table-responsive">
                                 <table>
@@ -274,7 +274,7 @@
                                     </div>
                                 </div>
                                 <div class="order_button">
-                                    <button type="submit">Tiến hành thanh toán</button>
+                                    <button name="btn" value="submit" type="submit">Tiến hành thanh toán</button>
                                 </div>
                             </div>
                         </form>
