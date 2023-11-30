@@ -65,6 +65,4 @@
             </div>
         </div>
     </div>
-                <!-- customer login end -->
-
-                <!--call to action start -->
+               
