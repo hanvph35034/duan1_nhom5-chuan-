@@ -20,14 +20,13 @@
   <section class="content">
     <div style="text-align: center;" class="container-fluid">
       <div class="row">
-        <div class="col-md-14">
+        <div class="col-md-12">
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Thông tin đơn hàng</h3>
             </div>
             <table id="" class="table table-bordered table-striped">
               <thead>
-
                 <tr>
                   <th>STT</th>
                   <th>Tên sản phẩm</th>
@@ -38,8 +37,6 @@
               </thead>
               <tbody>
                 <?php
-                // echo '<pre>';
-                // print_r($loadd1);
                 foreach ($loadd1 as $row) {
                   extract($row);
                   $tong = $so_luong * $gia_sale;
@@ -51,15 +48,14 @@
                     <td><?= $so_luong ?></td>
                     <td><?= number_format($tong) ?>VND</td>
                   </tr>
+                <?php } ?>
               </tbody>
-            <?php } ?>
             </table>
             <label>Tổng giá : <?= number_format($tong_gia) ?>VND</label>
             <br>
-
           </div>
 
-          <!-- general form elements -->
+          <!-- General form elements -->
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Thông tin người mua </h3>
@@ -69,44 +65,69 @@
               <div class="card-body">
                 <div class="form-group">
                   <label>Tên người nhận</label>
-
-                  <input type="text" name="tendm" class="" value="<?= $ten ?>">
+                  <input type="hidden" name="id" class="" value="<?= $id ?>">
+                  <input type="text" name="ten" class="" value="<?= $ten ?>">
 
                   <label>Địa chỉ</label>
-                  <input type="text" value="<?= $diachi?>" name="tendm" class=""  >
+                  <input type="text" value="<?= $diachi ?>" name="diachi" class="">
 
                   <label>Số điện thoại</label>
-                  <input type="text"  name="tendm" class="" value="<?= $sdt ?>">
+                  <input type="text" name="sdt" class="" value="<?= $sdt ?>">
                 </div>
-
-
 
                 <div class="form-group">
                   <label>Trạng thái đơn hàng</label>
-                  <select name="quyen" id="">
-                    <option value=""> Đang vận chuyển</option>
-                    <option value=""> Chờ xác nhận </option>
-                    <option value=""> Đã giao thành công</option>
-
-
+                  <select name="trangthai" id="trangthai">
+                    <?php if ($trangthai == 0) : ?>
+                      <option value="0">Chờ xác nhận</option>
+                      <option value="1">xác nhận</option>
+                      <option value="2">Đang vận chuyển</option>
+                      <option value="3">Đã giao thành công</option>
+                    <?php elseif ($trangthai == 1) : ?>
+                      <option value="1">xác nhận</option>
+                      <option value="2">Đang vận chuyển</option>
+                      <option value="3">Đã giao thành công</option>
+                      <?php elseif ($trangthai == 2) : ?>
+                      <option value="2">Đang vận chuyển</option>
+                      <option value="3">Đã giao thành công</option>
+                    <?php else : ?>
+                      <option value="3">Đã giao thành công</option>
+                    <?php endif; ?>
                   </select>
+
                   <label>ghi trú</label>
-                  <input type="text" value="" name="tendm" class="" value="<?= $ghi_chu ?>">
+                  <input type="text" value="<?= $ghi_chu ?>" name="ghi_chu" class="">
                 </div>
 
                 <div class="card-footer">
                   <button type="submit" name="submit" class="btn btn-primary">Thực hiện</button>
                   <button type="submit" name="submit" class="btn btn-primary">Danh sách đơn hàng</button>
                 </div>
+              </div>
             </form>
           </div>
         </div>
       </div>
-
     </div>
-</div>
-<!-- /.row -->
-</div><!-- /.container-fluid -->
-</section>
-<!-- /.content -->
+  </section>
+  <script>
+    document.getElementById('trangthai').onchange = function() {
+      var selectedValue = <?= $trangthai ?>;
+      // Xóa các giá trị trước đó
+      if (selectedValue == 2) {
+        // Nếu chọn Đang vận chuyển, mất đi Chờ xác nhận
+        document.querySelector('option[value="1"]').style.display = 'none';
+      } else if (selectedValue == 3) {
+        // Nếu chọn Đã giao thành công, mất đi Chờ xác nhận và Đang vận chuyển
+        document.querySelector('option[value="1"]').style.display = 'none';
+        document.querySelector('option[value="2"]').style.display = 'none';
+      } else {
+        // Nếu chọn lại Chờ xác nhận, hiển thị lại tất cả các giá trị
+        document.querySelectorAll('option').forEach(function(option) {
+          option.style.display = 'block';
+        });
+      }
+    };
+  </script>
+  <!-- /.content -->
 </div>

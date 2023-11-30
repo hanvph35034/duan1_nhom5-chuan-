@@ -31,8 +31,15 @@ function add_donhang($ngay_dat, $tong_gia, $trang_thai, $id_kh)
 }
 function loadone_ctdonhang($id)
 {
-    $sql = "SELECT sanpham.ten as tensp,sanpham.img_dai_dien,ct_don_hang.so_luong,sanpham.gia_sale,donhang.ten,donhang.diachi ,donhang.sdt,donhang.email ,donhang.ghi_chu ,donhang.tong_gia
-     FROM sanpham,ct_don_hang,donhang WHERE ct_don_hang.id_dh = donhang.id AND ct_don_hang.id_sp = sanpham.Idsp AND donhang.id = '$id' ;
+    $sql = "SELECT sanpham.ten as tensp,sanpham.img_dai_dien,
+    ct_don_hang.so_luong,sanpham.gia_sale,donhang.ten,
+    donhang.diachi ,donhang.sdt,donhang.email
+    ,donhang.trangthai ,
+    donhang.ghi_chu ,donhang.tong_gia
+     FROM sanpham,ct_don_hang,donhang 
+     WHERE ct_don_hang.id_dh = donhang.id 
+     AND ct_don_hang.id_sp = sanpham.Idsp
+      AND donhang.id = '$id' ;
 ;
 ";
     $dh = pdo_query($sql);
@@ -89,4 +96,24 @@ function taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt)
 function insert_ctdh($iddh,$id_sp,$soluong){
 $sql = "INSERT INTO `ct_don_hang`(`id_dh`,`id_sp`, `so_luong`) VALUES ('$iddh','$id_sp','$soluong')" ;
 pdo_execute($sql);
+}function loadone_dh($id)
+{
+    $sql = "select * from donhang where id = '$id'";
+    $sanpham = pdo_query_one($sql);
+    return $sanpham;
+}
+function update_dh($id, $trangthai, $ten, $sdt, $diachi, $ghi_chu)
+{
+    // Assuming you have a PDO object named $pdo
+    $sql = "UPDATE donhang
+    SET trangthai = '$trangthai',
+        ten = '$ten',
+        sdt = '$sdt',
+        diachi = '$diachi',
+        ghi_chu = '$ghi_chu'
+    WHERE id = $id;
+    ;"
+            
+            ;
+    pdo_execute($sql);
 }

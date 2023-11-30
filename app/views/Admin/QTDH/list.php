@@ -60,7 +60,7 @@
                           <td>'.$ngay_dat.'</td>
                           <td>'.$ten.'</td>
                           <td>'.$diachi.'</td>
-                          <td>'.number_format($tong_gia).' VND</td>
+                          <td>'.number_format(($tong_gia)).' VND</td>
                          <td><a href="?act=suadh&id='.$id.'"> xem đơn hàng </a></td>
                           <td> <a href="?act=deletedh&id='.$id.'"> Xóa đơn hàng</a> </td>
                         </tr>
