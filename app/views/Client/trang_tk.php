@@ -101,7 +101,7 @@
                                         
                                         <tr>
                                             <th>Đặt hàng</th>
-                                            <th>Mã đơn hàng</th>
+                                            <th>Tên sản phẩm</th>
                                             <th>Trạng thái</th>
                                             <th>Tổng cộng</th>
                                             <th>Xem đơn hàng</th>

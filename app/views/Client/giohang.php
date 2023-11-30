@@ -56,7 +56,7 @@
                                             <td class="product_thumb"><a href="#"><img src="public/img/product/<?= $row['2'] ?>" alt="act"></a></td>
                                             <td class="product_name"><a href="#"><?= $row['1'] ?> </a></td>
                                             <td class="product-price">£<?= number_format($row['3']) ?></td>
-                                            <td class="product_quantity"><label>Số lượng</label> <input min="1" max="100" value="<?= $row[4] ?>" type="number"></td>
+                                            <td class="product_quantity"><label><?= $row[4] ?></label> </td>
                                             <td>Màu</td>
                                             <td>S</td>
 
@@ -101,18 +101,27 @@
                             <div class="coupon_inner">
                                 <p>Họ và tên</p>
                                 <input placeholder="Họ và tên" type="text" name="ten" >
+                                <br>
+                                <span style="color: red;"> <?= is_error('ten') ?></span>
                             </div>
                             <div class="coupon_inner">
                                 <p>Địa chỉ </p>
                                 <input placeholder="Nhập Địa chỉ " type="text" name="diachi">
+                                <br>
+                                <span style="color: red;"> <?= is_error('diachi') ?></span>
                             </div>
                             <div class="coupon_inner">
                                 <p>Email</p>
                                 <input placeholder="Nhập email" type="text" name="email">
+                                <br>
+                                <span style="color: red;"> <?= is_error('email') ?></span>
+                                <br>
                             </div>
                             <div class="coupon_inner">
                                 <p>Nhập Số điện thoại</p>
                                 <input placeholder="Nhập số điện thoại" type="text" name="sdt">
+                                <br>
+                                <span style="color: red;"> <?= is_error('sdt') ?></span>
                             </div>
                             <div class="coupon_inner">
                                 <div class="cart_subtotal">
@@ -158,6 +167,8 @@
                                                 <p>Thanh toán qua PayPal; Bạn có thể thanh toán bằng thẻ tín dụng nếu bạn không có tài khoản PayPal.</p>
                                             </div>
                                         </div>
+                                        <br>
+                                        <span style="color: red;"> <?= is_error('pttt') ?></span>
                                     </div>
 
                                 </div>
@@ -168,7 +179,7 @@
                                 <div class="checkout_btn">
                                     <input type="hidden" value="<?= $tong ?>" name="tong">
 
-                                    <button name="btn" value="btn">Tiến hành kiểm tra</button>
+                                    <button name="btn" value="btn">Thanh toán</button>
                                 </div>
                             </div>
                         </form>
