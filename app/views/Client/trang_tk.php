@@ -94,7 +94,7 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="orders">
-                            <h3>Đơn hàng của bạn</h3>
+                            <h3>Lịch sử đơn hàng </h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -104,17 +104,21 @@
                                             <th>Tên sản phẩm</th>
                                             <th>Trạng thái</th>
                                             <th>Tổng cộng</th>
-                                            <th>Xem đơn hàng</th>
+                                            <th>Hủy đơn hàng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <?php foreach($load_ct_dh as $row){
+                                            extract($row);
+                                            ?>
+                                        <tr>    
                                             <td>1</td>
-                                            <td></td>
-                                            <td><span class="success">Completed</span></td>
-                                            <td>$25.00 for 1 item </td>
+                                            <td><?= $tensp ?></td>
+                                            <td><span class="success"><?= $trangthai ?></span></td>
+                                            <td><?= number_format($gia_sale)?> VND Với <?= $so_luong?> Sản phẩm  </td>
                                             <td><a href="cart.html" class="view">view</a></td>
                                         </tr>
+                                        <?php }?>
                                     </tbody>
                                 </table>
                             </div>

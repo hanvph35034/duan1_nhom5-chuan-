@@ -303,9 +303,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     update_taikhoan($id, $user, $email, $sdt, $pass, $dia_chi);
                 }
             }
-            $tk = loadone_tk($id);
-
-               
+            $tk = loadone_tk($id);   
+           $load_ct_dh = load_dh_ng($_SESSION['user']['id']);
+        //    var_dump($load_ct_dh);
             include "app/views/Client/trang_tk.php";
             break;
         case 'dangxuat':
