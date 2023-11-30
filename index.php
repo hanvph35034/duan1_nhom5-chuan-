@@ -266,6 +266,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $diachi = $_POST['diachi'];
                     $ma_dh =  "AMTIMA" . rand(0, 999999);
                     $id_tk = $_SESSION['user']['id'];
+                 
                 }
                 if (empty($error)) {
                     $iddh =  taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt, $id_tk);

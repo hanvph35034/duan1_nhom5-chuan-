@@ -117,4 +117,10 @@ function update_dh($id, $trangthai, $ten, $sdt, $diachi, $ghi_chu)
             ;
     pdo_execute($sql);
 }
+function load_dh_ng($id){
+    $sql = "SELECT sanpham.ten as tensp,sanpham.img_dai_dien,ct_don_hang.so_luong,sanpham.gia_sale,donhang.ten,donhang.diachi ,donhang.sdt,donhang.email ,donhang.ghi_chu ,donhang.tong_gia,donhang.trangthai
+    FROM sanpham,ct_don_hang,donhang WHERE ct_don_hang.id_dh = donhang.id AND ct_don_hang.id_sp = sanpham.Idsp AND donhang.id_tk = '$id'";
+      return   pdo_query($sql);
+    
+    }
 
