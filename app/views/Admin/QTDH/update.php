@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="card-footer">
-                  <button type="submit" name="btn" value="btn" class="btn btn-primary">Thực hiện</button>
+                  <button type="submit" name="submit" value="btn" class="btn btn-primary">Thực hiện</button>
                   <button type="submit" name="submit" class="btn btn-primary">Danh sách đơn hàng</button>
                 </div>
               </div>
