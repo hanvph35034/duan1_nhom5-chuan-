@@ -31,11 +31,17 @@ function add_donhang($ngay_dat, $tong_gia, $trang_thai, $id_kh)
 }
 function loadone_ctdonhang($id)
 {
-    $sql = "SELECT sanpham.ten as tensp,sanpham.img_dai_dien,
-    ct_don_hang.so_luong,sanpham.gia_sale,donhang.ten,
-    donhang.diachi ,donhang.sdt,donhang.email
-    ,donhang.trangthai ,
-    donhang.ghi_chu ,donhang.tong_gia
+    $sql = "SELECT sanpham.ten as tensp,
+    sanpham.img_dai_dien,
+    ct_don_hang.so_luong,
+    sanpham.gia_sale,
+    donhang.ten,
+    donhang.diachi as diachi ,
+    donhang.sdt,
+    donhang.email,
+    donhang.trangthai ,
+    donhang.ghi_chu ,
+    donhang.tong_gia
      FROM sanpham,ct_don_hang,donhang 
      WHERE ct_don_hang.id_dh = donhang.id 
      AND ct_don_hang.id_sp = sanpham.Idsp
@@ -88,7 +94,8 @@ function taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt,$id_tk)
 {
    $date = date('Y-m-d');
   $conn = pdo_get_connection();
-  $sql = $conn -> prepare("INSERT INTO `donhang`(`ma_dh`,`ngay_dat`, `tong_gia`, `phuongthucthanhtoan`, `ten`, `sdt`, `email`, `diachi` ,`id_tk`) VALUES ('$ma_dh','$date', '$tong' ,'$pttt' , '$ten', '$diachi', '$email', '$sdt','$id_tk')");
+  $sql = $conn -> prepare("INSERT INTO `donhang`(`ma_dh`,`ngay_dat`, `tong_gia`, `phuongthucthanhtoan`, `ten`, `sdt`, `email`, `diachi` ,`id_tk`)
+                                         VALUES ('$ma_dh','$date', '$tong' ,'$pttt' , '$ten', '$sdt', '$email', '$diachi','$id_tk')");
    $sql -> execute();
    $id = $conn -> lastInsertId();
    return $id;
@@ -123,4 +130,11 @@ function load_dh_ng($id){
       return   pdo_query($sql);
     
     }
-
+    function load_dh_ng1($id){
+        $sql = "select * from donhang
+    WHERE 
+        donhang.id_tk = '$id';
+    ";
+          return   pdo_query($sql);
+        
+        }
