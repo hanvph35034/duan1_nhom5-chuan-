@@ -56,12 +56,13 @@
           </div>
 
           <!-- General form elements -->
+
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Thông tin người mua </h3>
             </div>
 
-            <form action="index.php?act=updatedh" method="POST">
+            <form action="index.php?act=updatedh&id=<?=$id?>" method="POST">
               <div class="card-body">
                 <div class="form-group">
                   <label>Tên người nhận</label>
@@ -93,6 +94,7 @@
                     <?php else : ?>
                       <option value="3">Đã giao thành công</option>
                     <?php endif; ?>
+
                   </select>
 
                   <label>ghi trú</label>
@@ -100,7 +102,7 @@
                 </div>
 
                 <div class="card-footer">
-                  <button type="submit" name="submit" class="btn btn-primary">Thực hiện</button>
+                  <button type="submit" name="btn" value="btn" class="btn btn-primary">Thực hiện</button>
                   <button type="submit" name="submit" class="btn btn-primary">Danh sách đơn hàng</button>
                 </div>
               </div>

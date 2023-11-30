@@ -83,12 +83,12 @@ function chitietdh()
     $donhang = pdo_query($sql);
     return $donhang;
 }
-function taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt)
+function taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt,$id_tk)
 
 {
    $date = date('Y-m-d');
   $conn = pdo_get_connection();
-  $sql = $conn -> prepare("INSERT INTO `donhang`(`ma_dh`,`ngay_dat`, `tong_gia`, `phuongthucthanhtoan`, `ten`, `sdt`, `email`, `diachi`) VALUES ('$ma_dh','$date', '$tong' ,'$pttt' , '$ten', '$diachi', '$email', '$sdt')");
+  $sql = $conn -> prepare("INSERT INTO `donhang`(`ma_dh`,`ngay_dat`, `tong_gia`, `phuongthucthanhtoan`, `ten`, `sdt`, `email`, `diachi` ,`id_tk`) VALUES ('$ma_dh','$date', '$tong' ,'$pttt' , '$ten', '$diachi', '$email', '$sdt','$id_tk')");
    $sql -> execute();
    $id = $conn -> lastInsertId();
    return $id;
@@ -117,3 +117,4 @@ function update_dh($id, $trangthai, $ten, $sdt, $diachi, $ghi_chu)
             ;
     pdo_execute($sql);
 }
+

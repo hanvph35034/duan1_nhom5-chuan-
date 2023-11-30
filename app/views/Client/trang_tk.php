@@ -25,10 +25,8 @@
                         <ul role="tablist" class="nav flex-column dashboard-list" id="nav-tab">
                             <li><a href="#dashboard" data-toggle="tab" class="nav-link active">Trang Tài Khoản</a></li>
                             <li> <a href="#orders" data-toggle="tab" class="nav-link">Đơn đặt hàng</a></li>
-                            <li><a href="#downloads" data-toggle="tab" class="nav-link">Downloads</a></li>
-                            <li><a href="#address" data-toggle="tab" class="nav-link">Địa chỉ</a></li>
-                            <li><a href="#account-details" data-toggle="tab" class="nav-link">Chi tiết tài khoản</a></li>
-                            <li><a href="?act=dangxuat" class="nav-link">Đăng xuất</a></li>
+                            <li><a href="#address" data-toggle="tab" class="nav-link">Quên mật khẩu</a></li>
+                           
                         </ul>
                     </div>
                 </div>
@@ -96,41 +94,36 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="orders">
-                            <h3>Orders</h3>
+                            <h3>Lịch sử đơn hàng </h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
+                                        
                                         <tr>
-                                            <th>Order</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                            <th>Total</th>
-                                            <th>Actions</th>
+                                            <th>Đặt hàng</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Trạng thái</th>
+                                            <th>Tổng cộng</th>
+                                            <th>Hủy đơn hàng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <?php foreach($load_ct_dh as $row){
+                                            extract($row);
+                                            ?>
+                                        <tr>    
                                             <td>1</td>
-                                            <td>May 10, 2018</td>
-                                            <td><span class="success">Completed</span></td>
-                                            <td>$25.00 for 1 item </td>
+                                            <td><?= $tensp ?></td>
+                                            <td><span class="success"><?= $trangthai ?></span></td>
+                                            <td><?= number_format($gia_sale)?> VND Với <?= $so_luong?> Sản phẩm  </td>
                                             <td><a href="cart.html" class="view">view</a></td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>May 10, 2018</td>
-                                            <td>Processing</td>
-                                            <td>$17.00 for 1 item </td>
-                                            <td><a href="cart.html" class="view">view</a></td>
-                                        </tr>
+                                        <?php }?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="downloads">
-                            <h3>Downloads</h3>
-
-                        </div>
+                     
                         <div class="tab-pane" id="address">
                             <p>The following addresses will be used on the checkout page by default.</p>
                             <h4 class="billing-address">Billing address</h4>
@@ -146,10 +139,7 @@
                             </address>
                             <p>Bangladesh</p>
                         </div>
-                        <div class="tab-pane fade" id="account-details">
-                            <h3>Account details </h3>
-
-                        </div>
+                       
                     </div>
                 </div>
             </div>

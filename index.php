@@ -12,6 +12,8 @@ include "app/models/validate.php";
 include "app/models/banner.php";
 include "app/models/donhang.php";
 
+include "app/controllers/taikhoan.php";
+
 $loaddm = loadall_danhmuc();
 include "app/views/Client/header.php";
 if (isset($_GET['act']) && $_GET['act'] != '') {
@@ -91,7 +93,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/dangki.php";
             break;
         case 'home':
-
             $loadsanpham = loadall_sanpham();
             $loadbaiviet = loadall_baiviet();
             include "app/views/Client/home.php";
@@ -229,36 +230,65 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             if ((isset($_POST['btn'])) && ($_POST['btn'])) {
                 // \\ lay du lieu
                 $tong = $_POST['tong'];
-                $ten = $_POST['ten'];
-                $diachi = $_POST['diachi'];
-                $email = $_POST['email'];
-                $sdt = $_POST['sdt'];
-                $pttt = $_POST['pttt'];
-                $ma_dh =  "AMTIMA" . rand(0, 999999);
+                $error = [];
+                if (strlen($_POST['ten']) < 5) {
+                    $error['ten'] = "Tên người dùng ít nhất 5 kí tự ";
+                } else {
+                    $ten = $_POST['ten'];
+                }
+                if (empty($_POST['email'])) {
+                    $error['email'] = "Vui lòng nhập email";
+                } else {
+                    if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                        $error['email'] = "Email email không đúng định dạng ";
+                    } else {
+                        $email = $_POST['email'];
+                    }
+                }
+                if (empty($_POST['sdt'])) {
+                    $error['sdt'] = "Vui lòng nhập số điện thoại";
+                } else {
+                    if (!is_numeric($_POST['sdt'])) {
+                        $error['sdt'] = "Số điện thoại phải là số ";
+                    } else {
+                        $sdt = $_POST['sdt'];
+                    }
+                }
 
-                $iddh =  taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt);
-                foreach($_SESSION['giohang'] as $key){
-                    insert_ctdh($iddh, $key[0], $key[4]);
-                    unset($_SESSION['giohang']);
-                }   
-                // if (isset($_SESSION['giohang'])) {
-                //     for ($i = 0; $i < count($_SESSION['giohang']); $i++) {
-                //         insert_ctdh($iddh, $_SESSION['giohang'][$i][0], $_SESSION['giohang'][$i][4]);
-                //         unset($_SESSION['giohang']);
-                //     }
-                // }
+                if (empty($_POST['pttt'])) {
+                    $error['pttt'] = "Vui lòng chọn phương thức thanh toán";
+                } else {
+                    $pttt = $_POST['pttt'];
+                }
+                if (empty($_POST['diachi'])) {
+                    $error['diachi'] = "Vui lòng nhập địa chỉ";
+                } else {
+                    $diachi = $_POST['diachi'];
+                    $ma_dh =  "AMTIMA" . rand(0, 999999);
+                    $id_tk = $_SESSION['user']['id'];
+                }
+                if (empty($error)) {
+                    $iddh =  taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt, $id_tk);
+                    foreach ($_SESSION['giohang'] as $key) {
+                        insert_ctdh($iddh, $key[0], $key[4]);
+                        unset($_SESSION['giohang']);
+                        // header('Location : index.php?act=hoadon');
+                        echo "<script>alert('Bạn đã thanh toán thành công');</script>";
+                    }
+                }
             }
+
+
             include "app/views/Client/giohang.php";
             break;
+            case 'hoadon':
+                include "app/views/Client/thanh_toan.php";
+                break;
         case 'lienhe':
             include "app/views/Client/lienhe.php";
             break;
         case 'sosach':
             include "app/views/Client/sosach.php";
-            break;
-
-        case 'trang_tk':
-            include "app/views/Client/trang_tk.php";
             break;
         case 'suatk':
             if (isset($_SESSION['user'])) {
@@ -273,7 +303,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     update_taikhoan($id, $user, $email, $sdt, $pass, $dia_chi);
                 }
             }
-            $tk = loadone_tk($id);
+            $tk = loadone_tk($id);   
+           $load_ct_dh = load_dh_ng($_SESSION['user']['id']);
+        //    var_dump($load_ct_dh);
             include "app/views/Client/trang_tk.php";
             break;
         case 'dangxuat':

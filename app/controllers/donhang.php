@@ -43,7 +43,7 @@ function deletedh(){
         $id = $_GET['id'];
         delete_don_hang($id);
     }
-    
+    header("Location: ".$_SERVER['HTTP_REFERER']);
     // include 'QTDH/list.php';
 }
 // function chitietdh(){

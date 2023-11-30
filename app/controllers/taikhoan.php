@@ -97,3 +97,4 @@ function suaquyen()
     $loadquyen = loadall_quyen();
     include 'quyen/update.php';
 }
+?>
