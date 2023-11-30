@@ -71,7 +71,7 @@
                         </table>
                     </div>
                     <div class="cart_submit">
-                        <button type="submit">Tiếp tục mua hàng</button>
+                        <button type="submit"><a href="?act=sanpham">Tiếp tục mua hàng</a></button>
                     </div>
                     <div class="cart_submit">
                         <button type="submit"><a href="?act=datelegiohang">Xóa toàn bộ giỏ hàng </a> </button>
