@@ -318,6 +318,17 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             // $loaddh = loadall_donhang(); 
             $load_ct_dh = load_dh_ng1($_SESSION['user']['id']);
             //    var_dump($load_ct_dh);
+
+            include "app/views/Client/trang_tk.php";
+            break;
+
+        case 'huysp':
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                delete_don_hang($id);
+            }
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+
             include "app/views/Client/trang_tk.php";
             break;
 
@@ -328,7 +339,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             }
             header("Location: " . $_SERVER['HTTP_REFERER']);
             include "app/views/Client/trang_tk.php";
-            break;
+
         case 'dangxuat':
             session_unset();
             header("location: index.php");
