@@ -243,7 +243,7 @@
         <div class="section_title">
             <h2><span> <strong>Sản phẩm</strong>cùng loại</span></h2>
         </div>
-
+        <div class="row">
         <?php foreach ($load_sp_dm as $row) {
 
 
@@ -296,8 +296,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
         <?php } ?>
+        </div>
     </div>
 
     </div>
