@@ -48,11 +48,11 @@
                             </p>
                             <p>
                                 <label>Số điện thoại<span>*</span></label>
-                                <input  name ="sdt" type="password">
+                                <input  name ="sdt" type="text">
                                 <span style="color: red;">  <?= is_error('sdt') ?></span>
                             </p>  <p>
                                 <label>địa chỉ<span>*</span></label>
-                                <input name ="diachi" type="password">
+                                <input name ="diachi" type="text">
                                 <span style="color: red;">  <?= is_error('diachi') ?></span>
                             </p>
                             <div class="login_submit">
