@@ -133,7 +133,7 @@
                                     <div class="cart_subtotal ">
                                         <p>Đang chuyển hàng</p>
                                         <p>Tộng cộng</p>
-                                        <?php if (isset($_SESSION['giohang'])) { ?>
+                                        <?php if (!empty($_SESSION['giohang'])) { ?>
                                             <p class="cart_amount"><?= number_format($tong) ?> VND</p>
                                         <?php } else { ?>
                                             <p class="cart_amount">0 VND</p>
@@ -143,7 +143,7 @@
 
                                     <div class="cart_subtotal">
                                         <p>Tộng cộng</p>
-                                        <?php if (isset($_SESSION['giohang'])) { ?>
+                                        <?php if (!empty($_SESSION['giohang'])) { ?>
                                             <p class="cart_amount"><?= number_format($tong) ?> VND</p>
                                         <?php } else { ?>
                                             <p class="cart_amount">0 VND</p>
