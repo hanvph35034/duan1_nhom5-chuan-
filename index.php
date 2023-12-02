@@ -178,6 +178,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
 
         case 'giohang':
+            
             if (isset($_POST['btn']) && $_POST['btn']) {
                 $id = $_POST['id'];
                 $ten = $_POST['ten'];
@@ -208,7 +209,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 // header('Location : index.php?act=giohang');
                 header("Location: " . $_SERVER['HTTP_REFERER']);
             }
-
+            $tk = loadone_tk($id);
             include "app/views/Client/giohang.php";
             break;
 
@@ -326,7 +327,10 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 delete_don_hang($id);
             }
             header("Location: " . $_SERVER['HTTP_REFERER']);
+
             include "app/views/Client/trang_tk.php";
+            break;
+
 
         case 'dangxuat':
             session_unset();

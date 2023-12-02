@@ -1,3 +1,26 @@
+<style>
+    .rating {
+    width: 200px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+}
+
+.rating input:checked~label {
+    color: rgb(255, 0, 0);
+}
+</style>
 
 <div class="breadcrumbs_area">
     <div class="container">
@@ -82,9 +105,9 @@
                         </div>
                         <div class="product_variant quantity">
                             <label>Số lượng</label>
-                            <input min="1" max="<?= $loadone_sp['so_luong']?>" value="1" name="soluong" type="number">
+                            <input min="1" max="<?= $loadone_sp['so_luong'] ?>" value="1" name="soluong" type="number">
                             <input type="hidden" value="<?= $loadone_sp['Idsp'] ?>" name="id">
-                           
+
                             <input type="hidden" value="<?= $loadone_sp['ten']  ?>" name="ten">
                             <input type="hidden" value="<?= $loadone_sp['img_dai_dien'] ?>" name="img">
                             <input type="hidden" value="<?= $loadone_sp['gia_sale'] ?>" name="gia">
@@ -172,11 +195,18 @@
                                 <div class="product_ratting mb-10">
                                     <h3>Your rating</h3>
                                     <ul>
+                                        <div class="rating">
+                                            <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+                                            <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+                                            <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+                                            <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+                                            <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
+                                        </div>
+                                        <!-- <li><a href="#"><i class="fa fa-star"></i></a></li>
                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-star"></i></a></li> -->
                                     </ul>
                                 </div>
                                 <div class="product_review_form">
@@ -213,62 +243,63 @@
         <div class="section_title">
             <h2><span> <strong>Sản phẩm</strong>cùng loại</span></h2>
         </div>
+        <div class="row">
+        <?php foreach ($load_sp_dm as $row) {
 
-            <?php foreach ($load_sp_dm as $row) {
 
-
-            ?>
-                <div class="col-md-3">
-                    <div class="single_product">
-                        <div class="product_name">
-                            <h3><a href="product-details.html"><?= $row['ten'] ?></a></h3>
-                            <p class="manufacture_product"><a href="#">Quần áo</a></p>
+        ?>
+            <div class="col-md-3">
+                <div class="single_product">
+                    <div class="product_name">
+                        <h3><a href="product-details.html"><?= $row['ten'] ?></a></h3>
+                        <p class="manufacture_product"><a href="#">Quần áo</a></p>
+                    </div>
+                    <div class="product_thumb">
+                        <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 230px" src="public/img/product/<?= $row['img_dai_dien'] ?>" alt=""></a>
+                        <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 230px" src="public/img/product/<?= $row['img_1'] ?>" alt=""></a>
+                        <div class="label_product">
+                            <span class="label_sale"><a href="#">50%</span>
                         </div>
-                        <div class="product_thumb">
-                            <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 230px" src="public/img/product/<?= $row['img_dai_dien'] ?>" alt=""></a>
-                            <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 230px" src="public/img/product/<?= $row['img_1'] ?>" alt=""></a>
-                            <div class="label_product">
-                                <span class="label_sale"><a href="#">50%</span>
-                            </div>
 
-                            <div class="action_links">
-                                <ul>
-                                    <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                    <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
-                                </ul>
+                        <div class="action_links">
+                            <ul>
+                                <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
+                                <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="product_content">
+                        <div class="product_ratings">
+                            <ul>
+                                <li><a href="#"><i class="ion-star"></i></a></li>
+                                <li><a href="#"><i class="ion-star"></i></a></li>
+                                <li><a href="#"><i class="ion-star"></i></a></li>
+                                <li><a href="#"><i class="ion-star"></i></a></li>
+                                <li><a href="#"><i class="ion-star"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="product_footer d-flex align-items-center">
+                            <div class="price_box">
+                                <span class="current_price"><?= number_format($row['gia_sale']) ?></span>
+                                <span class="old_price"><?= number_format($row['Gia']) ?></span>
+                            </div>
+                            <div class="add_to_cart">
+                                <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
                             </div>
                         </div>
-                        <div class="product_content">
-                            <div class="product_ratings">
-                                <ul>
-                                    <li><a href="#"><i class="ion-star"></i></a></li>
-                                    <li><a href="#"><i class="ion-star"></i></a></li>
-                                    <li><a href="#"><i class="ion-star"></i></a></li>
-                                    <li><a href="#"><i class="ion-star"></i></a></li>
-                                    <li><a href="#"><i class="ion-star"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="product_footer d-flex align-items-center">
-                                <div class="price_box">
-                                    <span class="current_price"><?= number_format($row['gia_sale']) ?></span>
-                                    <span class="old_price"><?= number_format($row['Gia']) ?></span>
-                                </div>
-                                <div class="add_to_cart">
-                                    <a href="" title="add to cart"><span class="lnr lnr-cart"></span></a>
-                                </div>
-                            </div>
-                            <div class="quantity_progress">
-                                <p class="product_sold">Đã bán: <span>199</span></p>
-                                <p class="product_available">Số lượng: <span><?= $row['so_luong'] ?></span></p>
-                            </div>
-                            <div class="bar_percent">
-                            </div>
+                        <div class="quantity_progress">
+                            <p class="product_sold">Đã bán: <span>199</span></p>
+                            <p class="product_available">Số lượng: <span><?= $row['so_luong'] ?></span></p>
+                        </div>
+                        <div class="bar_percent">
                         </div>
                     </div>
                 </div>
-            <?php } ?>
+                </div>
+        <?php } ?>
         </div>
+    </div>
 
     </div>
 </section>
