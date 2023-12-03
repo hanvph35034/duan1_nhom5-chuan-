@@ -42,7 +42,6 @@
                         <th>STT</th>
                         <th>Tiêu đề</th>
                         <th>Ảnh</th>
-                        <th>Nội dung </th>
                         <th>Ngày đăng </th>
                         <th>Sửa</th>
                         <th>Xóa</th>
@@ -50,16 +49,16 @@
                     </thead>
                  <tbody>
                       <?php 
+                      $i=1;
                         foreach($loadbaiviet as $listbv){
                           extract($listbv);
                           $linkimg1 = '../../../public/img/bai_viet/' . $anh;
 
                           echo'
                           <tr>
-                          <td>'.$id.'</td>
+                          <td>'.$i++.'</td>
                           <td>'.$tieu_de.'</td>
-                          <td><img src="'.$linkimg1.'" alt="" width="100"></td>
-                          <td>'.$noi_dung.'</td>
+                          <td><img  width="50px" height="50px" src="'.$linkimg1.'" alt="" width="100"></td>
                           <td>'.$ngay_dang.'</td>
                           <td><a href="?act=suabv&&id='.$id.'"> Sửa </a></td>
                           <td> <a href="?act=deletebv&&id='.$id.'"> Xóa</a> </td>

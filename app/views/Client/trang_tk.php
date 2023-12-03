@@ -105,8 +105,8 @@
                                             <th>Ngày đặt </th>
                                             <th>Tổng tiền </th>
                                             <th>Trạng thái </th>
-                                            <th>Xem</th>
-                                            <th>Xóa</th>
+                                            <th>CTDH</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -130,20 +130,31 @@
                                                     echo 'Đang vận chuyển';
                                                   } elseif ($trangthai == 3) {
                                                     echo 'Đã giao thành công';
-                                                  } else {
+                                                  }
+                                                  elseif ($trangthai == 4) {
+                                                    echo 'Đơn hàng đã hủy';
+                                                  }
+                                                   else {
                                                     echo 'Trạng thái không xác định';
                                                   }
                                                 ?>
                                                 </td>
                                                 
-                                                <td><a href="?act=ctdh&id=<?=$id?>" class="view">view</a></td>
+                                                <td><a href="?act=ctdh&id=<?=$id?>" class="view">Xem</a></td>
                                                 <td><a href="?act=huysp&id=<?=$id?>" class="view"><?php
                                                 if ($trangthai == 0) {
-                                                    echo 'Hủy';
-                                                  }  else {
+                                                    ?><a href="?act=huysp&id=<?=$id?>">Hủy</a>
+                                                    <?php
+                                                  } 
+                                                  elseif ($trangthai == 2) {
+                                                    ?><a href="?act=huysp&id=<?=$id?>">đã nhận đc hàng </a>
+                                                    <?php
+                                                  }
+                                                   else {
                                                     echo '';
                                                   }
                                                 ?></a></td>
+
                                             </tr>
                                         <?php } ?>
                                     </tbody>

@@ -138,3 +138,23 @@ function load_dh_ng($id){
           return   pdo_query($sql);
         
         }
+        function update_trangthai($id, $trangthai, $ten, $sdt, $diachi, $ghi_chu)
+        {
+            // Assuming you have a PDO object named $pdo
+            $sql = "UPDATE donhang
+            SET trangthai = 
+                CASE 
+                    WHEN trangthai = 0 THEN 4 
+                    WHEN trangthai = 2 THEN 3
+                    ELSE '$trangthai' 
+                END,
+                ten = '$ten',
+                sdt = '$sdt',
+                diachi = '$diachi',
+                ghi_chu = '$ghi_chu'
+            WHERE id = $id;;
+            ;"
+                    
+                    ;
+            pdo_execute($sql);
+        }

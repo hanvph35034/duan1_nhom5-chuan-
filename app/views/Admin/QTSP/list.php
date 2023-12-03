@@ -43,7 +43,6 @@
                   <tr>
                     <th>STT</th>
                     <th>Tên sản phẩm</th>
-                    <th>Mô tả</th>
                     <th>Giá</th>
                     <th>Hình ảnh</th>
                     <th>Ngày nhập</th>
@@ -58,7 +57,9 @@
                 </thead>
                 <tbody>
                 <?php
+                $i=1;
 foreach ($loadsanpham as $listsp) {
+  
     extract($listsp);
     $linkimg_dai_dien = '../../../public/img/product/' . $img_dai_dien;
     $linkimg_1 = '../../../public/img/product/' . $img_1;
@@ -67,17 +68,16 @@ foreach ($loadsanpham as $listsp) {
 
     echo '
         <tr>
-            <td>' . $Idsp . '</td>
+            <td>' . $i++ . '</td>
             <td>' . $ten . '</td>
-            <td>' . $MoTa . '</td>
             <td>' . $Gia . '</td>
             <td><img width="50px" height="50px" src="' . $linkimg_dai_dien . '" alt="product" width="100"></td>
             <td>' . $ngay_nhap . '</td>
             <td>' . $so_luong . '</td>
             <td>' . $gia_sale . '</td>
-            <td><img src="' . $linkimg_1 . '" alt="product" width="100"></td>
-            <td><img src="' . $linkimg_2 . '" alt="product" width="100"></td>
-            <td><img src="' . $linkimg_3 . '" alt="product" width="100"></td>
+            <td><img  width="50px" height="50px" src="' . $linkimg_1 . '" alt="product" width="100"></td>
+            <td><img  width="50px" height="50px" src="' . $linkimg_2 . '" alt="product" width="100"></td>
+            <td><img  width="50px" height="50px" src="' . $linkimg_3 . '" alt="product" width="100"></td>
             <td><a href="?act=suasp&&id='.$Idsp.'"> Sửa  </a></td>
             <td><a href="?act=deletesp&&id=' .$Idsp . '"> Xóa  </a></td>
         </tr>

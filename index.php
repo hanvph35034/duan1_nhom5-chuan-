@@ -324,7 +324,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'huysp':
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                delete_don_hang($id);
+                update_trangthai($id, $trangthai, $ten, $sdt, $diachi, $ghi_chu);
             }
             header("Location: " . $_SERVER['HTTP_REFERER']);
 

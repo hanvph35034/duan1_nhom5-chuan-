@@ -45,7 +45,7 @@
                     <th>Tổng tiền </th>
                     <th>Trạng thái </th>
                     <th>Xem đơn hàng</th>
-                    <th>Xóa Đơn hàng </th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -71,13 +71,21 @@
                       echo 'Đang vận chuyển';
                     } elseif ($trangthai == 3) {
                       echo 'Đã giao thành công';
+                    } elseif ($trangthai == 4) {
+                      echo 'Khách hủy';
                     } else {
                       echo 'Trạng thái không xác định';
                     }
 
                     echo '</td>
                          <td><a href="?act=suadh&id=' . $id . '"> xem đơn hàng </a></td>
-                          <td> <a href="?act=deletedh&id=' . $id . '"> Xóa đơn hàng</a> </td>
+                        <td>';
+                    if ($trangthai == 4) {
+                      echo '<a href="?act=deletedh&id=' . $id . '">Xóa</a>';
+                    } else {
+                      echo '';
+                    }
+                    echo '</td>
                         </tr>
                           ';
                   }

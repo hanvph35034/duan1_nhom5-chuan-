@@ -70,7 +70,7 @@ foreach($load_thongke as $tk){
                     <thead>
                         <tr>
                             <th style="width: 1%">
-                                #
+                                top
                             </th>
                             <th style="width: 4%">
                                 id
@@ -92,12 +92,13 @@ foreach($load_thongke as $tk){
                     </thead>
                     <tbody>
                         <?php
+                        $i=1;
                         foreach ($load_thongke as $tk) {
                             extract($tk);
                         ?>
                             <tr>
                                 <td>
-                                    #
+                                    <?= $i++?>
                                 </td>
                                 <td>
                                     <?= $id_sp ?>

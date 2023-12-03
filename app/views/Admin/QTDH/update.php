@@ -37,14 +37,16 @@
               </thead>
               <tbody>
                 <?php
+                $i=1;
                 foreach ($loadd1 as $row) {
                   extract($row);
+                  $linkimg_dai_dien = '../../../public/img/product/' . $img_dai_dien;
                   $tong = $so_luong * $gia_sale;
                 ?>
                   <tr>
-                    <td></td>
+                    <td><?=$i++ ?></td>
                     <td><?= $tensp ?></td>
-                    <td><?= $img_dai_dien ?></td>
+                    <td> <img height="50px" width="50px" src="<?= $linkimg_dai_dien ?>" alt=""></td>
                     <td><?= $so_luong ?></td>
                     <td><?= number_format($tong) ?>VND</td>
                   </tr>

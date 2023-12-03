@@ -28,9 +28,10 @@
 
                         <button data-role="grid_3" type="button" class=" btn-grid-3" data-toggle="tooltip" title="3"></button>
 
-                        <button data-role="grid_4" type="button" class=" btn-grid-4" data-toggle="tooltip" title="4"></button>
+                        <button id="defaultButton" data-role="grid_4" type="button" class="btn-grid-4" data-toggle="tooltip" title="4"></button>
 
                         <button data-role="grid_list" type="button" class="active btn-list" data-toggle="tooltip" title="List"></button>
+
                     </div>
                     <div class="">
 
@@ -65,7 +66,7 @@
                             <div class="single_product">
                                 <div class="product_name grid_name">
 
-                                <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp']?>"><?= $sanpham['ten'] ?></a></h3>
+                                    <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><?= $sanpham['ten'] ?></a></h3>
                                     <p class="manufacture_product"><a href="#">Accessories</a></p>
                                 </div>
                                 <div class="product_thumb">
@@ -128,8 +129,8 @@
                                             <p>Số lượng <span><?= $sanpham['so_luong'] ?></span></p>
                                         </div>
                                         <div class="price_box">
-                                        <span class="current_price"> <?= number_format($sanpham['gia_sale'] )?>VND</span>
-                                                <span class="old_price"><?= number_format($sanpham['Gia']) ?>VND</span>
+                                            <span class="current_price"> <?= number_format($sanpham['gia_sale']) ?>VND</span>
+                                            <span class="old_price"><?= number_format($sanpham['Gia']) ?>VND</span>
                                         </div>
                                         <div class="cart_links_btn">
                                             <a href="#" title="add to cart">Thêm vào giỏ hàng</a>

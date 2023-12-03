@@ -52,7 +52,7 @@
                                                                         <tr>
                                                                             <td><?= $i++ ?></td>
                                                                             <td><?= $tensp ?></td>
-                                                                            <td><img src="public/img/product/<?=$img_dai_dien ?>" alt=""></td>
+                                                                            <td><img width="70px" height="70px" src="public/img/product/<?=$img_dai_dien ?>" alt=""></td>
                                                                                                                                                     
                                                                             <td><?= $so_luong ?></td>
                                                                             <td><?= number_format(($gia_sale)) ?></td>  
