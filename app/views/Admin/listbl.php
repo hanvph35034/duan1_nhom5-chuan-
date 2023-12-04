@@ -53,13 +53,15 @@
                     </thead>
                     <tbody>
                       <?php
+                      $i=1;
                       foreach ($load_binhluan as $row) {
                         extract($row);
+                        $linkimg_1 = '../../../public/img/product/' . $img_dai_dien;
                           echo '  <tr>
-                          <td>'.$id.'</td>
+                          <td>'.$i++.'</td>
                           <td>'.$ten_dn.' </td>
                           <td><a>'.$tensp. ' </a></td>
-                          <td> '.$img_dai_dien.' </td>
+                          <td><img width="50px" height="50px" src="' . $linkimg_1 . '" alt="product" width="100"></td>
                           <td>'.$ndbl.'</td>
                           <td>'.$ngaybl.'</td>
                           <td><a href="?act=deletebl&&id='.$id.'"> Xóa </a></td>

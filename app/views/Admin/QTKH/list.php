@@ -51,11 +51,11 @@
                 </thead>
                 <tbody>
                 <?php 
-                  
+                  $i=1;
                   foreach ($loadkh as $khachhang) {
                     extract($khachhang);
                     echo' <tr>
-                    <td>'.$id.'</td>
+                    <td>'.$i++.'</td>
                     <td>'.$User.'</td>
                     <td>'.$Email.'</td>
                     <td>'.$sdt.'</td>

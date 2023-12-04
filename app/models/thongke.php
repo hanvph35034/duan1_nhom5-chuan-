@@ -21,5 +21,8 @@ ORDER BY
 ";
     return pdo_query($sql);
 }
-
+function thongke_order_date(){
+    $sql = "SELECT *,SUM(tong_gia) as tongtien FROM `donhang` WHERE trangthai = 3 GROUP BY date(ngay_dat)";
+    return pdo_query($sql);
+}
 ?>
