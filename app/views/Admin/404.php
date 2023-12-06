@@ -34,7 +34,7 @@
                       
                         <div class="card-body">
                           <h3>xin chào bạn  </h3>
-                          <h4>Bạn đã vào trang lỗi</h4>
+                          <h4>Bạn không có quyền truy cập vào vui lòng quay lại trang trước đó</h4>
                         </div>
                    
                     </div>
