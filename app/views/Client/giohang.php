@@ -32,7 +32,7 @@
                                     <th class="product_name">Sản phẩm</th>
                                     <th class="product-price">Giá</th>
                                     <th class="product_quantity">Số lượng</th>
-                                    <th class="product_total">Size</th>
+                                  
                                     <th class="product_total">Tổng giá</th>
                                 </tr>
                             </thead>
@@ -56,7 +56,7 @@
                                             <td class="product_name"><a href="#"><?= $row['1'] ?> </a></td>
                                             <td class="product-price">£<?= number_format($row['3']) ?></td>
                                             <td class="product_quantity"><label><?= $row[4] ?></label> </td>
-                                            <td>S</td>
+                                            
 
                                             <td class="product_total"><?= number_format($sum) ?>VND</td>
                                 </tr>
