@@ -26,17 +26,27 @@
                             <h3 class="card-title">Admin xin chào </h3>
                         </div>
                     </div>
-             
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">code là đam mê</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                          <h3>xin chào bạn  </h3>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
+                    
+    <?php
+    if (isset($_SESSION['user'])) {
+      extract($_SESSION['user']);
+    ?>
+      <p>Tên người dùng: <?= $ten_dn?></p>
+      <?php
+      if ($id_quyen == 1) {
+      ?>
+        <p>Chức vụ: ADMIN</p>
+    <?php
+      }  
+      else{
+        ?>
+        <p>Chức vụ: Nhân viên</p>
+        <?php
+      }
+    }
+    ?>
+  </section>
+                    
                     <!-- /.card -->
                 </div>
                 <!-- /.col -->
