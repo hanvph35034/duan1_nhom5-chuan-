@@ -2,7 +2,7 @@
 //tat ca banner
 function loadall_banner()
 {
-    $sql = "SELECT * FROM `banner` ";
+    $sql = "SELECT * FROM `banner` limit 5";
     $listbanner = pdo_query($sql);
     return $listbanner;
 }
