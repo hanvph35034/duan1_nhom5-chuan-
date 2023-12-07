@@ -70,22 +70,23 @@
                                 <ul>
                                     <li class="top_links"><a href="#"><i class="ion-android-person"></i>Tài khoản của tôi<i class="ion-ios-arrow-down"></i></a>
                                         <ul class="dropdown_links">
-                                            <?php if (!isset($_SESSION['user']))  { ?>
+                                            <?php if (!isset($_SESSION['user'])) { ?>
                                                 <li><a href="?act=dangki">Đăng kí </a></li>
                                                 <li><a href="?act=login">Đăng nhập</a></li>
-                                                
+
 
                                             <?php } else { ?>
                                                 <li><a href="?act=suatk">Tài khoản của tôi</a></li>
                                                 <li><a href="?act=dangxuat">Đăng xuất</a></li>
                                                 <li><a href="?act=giohang">Giỏ hàng</a></li>
                                             <?php } ?>
-                                           
+
                                             <?php
-                                            if (isset($_SESSION['user']) && $_SESSION['user']['id_quyen'] == "1") {
+                                            if (isset($_SESSION['user']) && ($_SESSION['user']['id_quyen'] == "1" || $_SESSION['user']['id_quyen'] == "3")) {
                                             ?>
                                                 <li><a href="app/views/Admin/index.php">Quản trị viên</a></li>
                                             <?php }  ?>
+
 
                                         </ul>
                                     </li>
@@ -120,14 +121,14 @@
                             <div class="middel_right_info">
 
                                 <div class="header_wishlist">
-                                    <a href="wishlist.html"> <?php echo  'Xin chào' ;
-                                    echo  '<br>' ;
-                                    echo (isset($_SESSION['user']['ten_dn'])) ? $_SESSION['user']['ten_dn'] : '' ;?> </a>
+                                    <a href="wishlist.html"> <?php echo  'Xin chào';
+                                                                echo  '<br>';
+                                                                echo (isset($_SESSION['user']['ten_dn'])) ? $_SESSION['user']['ten_dn'] : ''; ?> </a>
 
                                 </div>
                                 <div class="mini_cart_wrapper">
                                     <a href="?act=giohang"><span class="lnr lnr-cart"></span>Giỏ hàng </a>
-                                    <span class="cart_quantity"><?= count($_SESSION['giohang'])?></span>
+                                    <span class="cart_quantity"><?= count($_SESSION['giohang']) ?></span>
                                 </div>
                             </div>
 
@@ -140,7 +141,7 @@
 
         <!--mini cart-->
         <!-- menu con -->
-        
+
         <!--mini cart end-->
 
         <!--header bottom satrt-->
@@ -156,7 +157,7 @@
                                     </li>
                                     <li><a href="?act=sanpham">Sản phẩm</a>
                                     <li><a href="?act=sanpham">Danh mục<i class="fa fa-angle-down"></i></a>
-                                    <ul class="sub_menu pages">
+                                        <ul class="sub_menu pages">
                                             <ul class="mega_menu_inner">
                                                 <li>
                                                     <ul>
@@ -180,7 +181,7 @@
                                             <li><a href="bai_viet2.html">bài viết 2</a></li>
                                         </ul> -->
                                     </li>
-                                
+
 
                                     <li><a href="?act=lienhe"> Liên hệ với chúng tôi</a></li>
                                 </ul>

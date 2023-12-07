@@ -52,34 +52,56 @@
                                                                         <tr>
                                                                             <td><?= $i++ ?></td>
                                                                             <td><?= $tensp ?></td>
-                                                                            <td><img width="70px" height="70px" src="public/img/product/<?=$img_dai_dien ?>" alt=""></td>
-                                                                                                                                                    
+                                                                            <td><img width="70px" height="70px" src="public/img/product/<?= $img_dai_dien ?>" alt=""></td>
+
                                                                             <td><?= $so_luong ?></td>
-                                                                            <td><?= number_format(($gia_sale)) ?></td>  
+                                                                            <td><?= number_format(($gia_sale)) ?></td>
                                                                         </tr>
                                                                     <?php } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                        
+
                                                         <h3>Thông tin người nhận</h3>
-                                                            <div class="col-lg-6 mb-20">
-                                                                <label style="font-size: 25px;" >Họ và tên <span>*</span> : <?= $ten ?></label>
-                                                            </div>
-                                                            <div class="col-12 mb-20">
-                                                                <label style="font-size: 20px;">Địa chỉ <span>*</span>: <?= $diachi ?></label>
-                                                            </div>
+                                                        <div class="col-12 mb-20">
+                                                            <label style="font-size: 20px;">Trạng thái đơn hàng <span>*</span>:
+                                                             <?php if ($trangthai == 0) {
+                                                             ?> <label style="font-size: 20px;"><span>Chờ xác nhận</span></label><?php
+                                                             }
+                                                            elseif ($trangthai == 1) {
+                                                                ?> <label style="font-size: 20px;"><span>Đơn hàng đã được xác nhận</span></label><?php
+                                                                }
+                                                            elseif ($trangthai == 2) {
+                                                                    ?> <label style="font-size: 20px;"><span>Đơn hàng đang được vận chuyển...</span></label><?php
+                                                                    }
+                                                            elseif ($trangthai == 3) {
+                                                                        ?> <label style="font-size: 20px;"><span>Đơn hàng đã dược giao thành công</span></label><?php
+                                                                        }
+                                                            elseif ($trangthai == 4) {
+                                                                            ?> <label style="font-size: 20px;"><span>Đơn hàng đã hủy bởi khách hàng</span></label><?php
+                                                                            }
+                                                             else {
+                                                                ?> <label style="font-size: 20px;"><span>Đơn hàng của bạn đã bị thất lạc</span></label><?php
+                                                             }
+                                                             ?></label>
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label style="font-size: 25px;">Họ và tên <span>*</span> : <?= $ten ?></label>
+                                                        </div>
+                                                        <div class="col-12 mb-20">
+                                                            <label style="font-size: 20px;">Địa chỉ <span>*</span>: <?= $diachi ?></label>
+                                                        </div>
 
 
 
-                                                            <div class="col-lg-6 mb-20">
-                                                                <label style="font-size: 20px;">Số điện thoại<span>*</span>: <?= $sdt ?></label>
-                                                            </div>
-                                                            <div class="col-lg-6 mb-20">
-                                                                <label style="font-size: 20px;"> Địa chỉ Email <span>*</span>: <?= $email ?></label>
-                                                            </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label style="font-size: 20px;">Số điện thoại<span>*</span>: <?= $sdt ?></label>
+                                                        </div>
+                                                        <div class="col-lg-6 mb-20">
+                                                            <label style="font-size: 20px;"> Địa chỉ Email <span>*</span>: <?= $email ?></label>
+                                                        </div>
 
-                                                        
+
                                                     </form>
                                                 </div>
 
@@ -145,22 +167,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-
-                        <div class="tab-pane" id="address">
-                            <p>The following addresses will be used on the checkout page by default.</p>
-                            <h4 class="billing-address">Billing address</h4>
-                            <a href="#" class="view">Edit</a>
-                            <p><strong>Bobby Jackson</strong></p>
-                            <address>
-                                House #15<br>
-                                Road #1<br>
-                                Block #C <br>
-                                Banasree <br>
-                                Dhaka <br>
-                                1212
-                            </address>
-                            <p>Bangladesh</p>
                         </div>
 
                     </div>
