@@ -97,6 +97,9 @@
               <a href="?act=qtbv" class="nav-link">Quản Lý bài viết </a>
             </li>
             <li class="nav-item">
+              <a href="?act=qtlh" class="nav-link">Quản Lý Liên hệ</a>
+            </li>
+            <li class="nav-item">
               <a href="?act=quyen" class="nav-link">Chức Vụ </a>
             </li> 
             <li class="nav-item">
