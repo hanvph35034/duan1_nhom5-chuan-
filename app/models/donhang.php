@@ -158,3 +158,38 @@ function load_dh_ng($id){
                     ;
             pdo_execute($sql);
         }
+        function loaddh($key = "", $trangthai = "")
+{
+    $sql = "SELECT * FROM `donhang`";
+    // if ($danhmuc > 0 && $gia != "") {
+    //     $sql .= " and gia_sale >= $gia and id_dm = '$danhmuc'";
+    // }
+    // if ($danhmuc > 0) {
+    //     $sql .= " AND id_dm = '$danhmuc'";
+    // }
+    // if ($key != "") {
+    //     $sql .= " and ten like '%$key%'";
+    // }
+    // if ($gia != "") {
+    //     $sql .= " AND gia_sale BETWEEN $gia";
+    // }
+    if ($trangthai == "") {
+        $sql .= " WHERE 1 ";
+    }
+    if ($trangthai == "0") {
+        $sql .= " WHERE trangthai = 0 ";
+    }
+    if ($trangthai == "1") {
+        $sql .= " WHERE trangthai = 1";
+    }
+    if ($trangthai == "2" ) {
+        $sql .= " WHERE trangthai = 2";
+    }
+    if ($trangthai == "3" ) {
+        $sql .= " WHERE trangthai = 3";
+    }
+    if ($trangthai == "4" ) {
+        $sql .= " WHERE trangthai = 4";
+    }
+    return pdo_query($sql);
+}

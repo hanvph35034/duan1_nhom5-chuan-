@@ -1,6 +1,22 @@
 <?php 
 
 function qtdh(){
+    if (isset($_POST['btn']) && $_POST['btn']) {
+        if (isset($_POST['trangthai'])) {
+            $trangthai = $_POST['trangthai'];
+        } else {
+            $trangthai = '';
+        }
+        if (isset($_POST['key'])) {
+            $key = $_POST['key'];
+            echo $key;
+        } else {
+            $key = '';
+        }
+    } else {
+        $key = $trangthai = '';
+    }
+    $loaddh1 = loaddh($key, $trangthai);
     $loaddh = loadall_donhang();
     include 'QTDH/list.php';
 }
