@@ -87,13 +87,13 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $quyen = 2;
                 }
                 if (empty($error)) {
-                    insert_taikhoan($user,$pass, $ten, $email, $sdt, $dia_chi, $quyen);
+                    insert_taikhoan($user, $pass, $ten, $email, $sdt, $dia_chi, $quyen);
                 }
             }
             include "app/views/Client/dangki.php";
             break;
         case 'home':
-            $loadspban=loadall_sanpham_thongke();
+            $loadspban = loadall_sanpham_thongke();
             $loadsanpham = loadall_sanpham();
             $loadbaiviet = loadall_baiviet();
             include "app/views/Client/home.php";
@@ -178,7 +178,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             break;
 
         case 'giohang':
-            
+
             if (isset($_POST['btn']) && $_POST['btn']) {
                 $id = $_POST['id'];
                 $ten = $_POST['ten'];
@@ -286,16 +286,14 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
         case 'hoadon':
             include "app/views/Client/thanh_toan.php";
             break;
-        case 'lienhe':
-            include "app/views/Client/lienhe.php";
-            break;
+
 
 
         case 'ctdh':
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $loadd1 = loadone_ctdonhang($id);
-        $loadsp = loadone_dh($id);
+                $loadsp = loadone_dh($id);
             }
             include "app/views/Client/ctdh.php";
 
@@ -329,6 +327,17 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             header("Location: " . $_SERVER['HTTP_REFERER']);
 
             include "app/views/Client/trang_tk.php";
+            break;
+
+        case 'lienhe':
+            if (isset($_POST['btn']) && $_POST['btn']) {
+                $user = $_POST['user'];
+                $email = $_POST['email'];
+                $chude = $_POST['chude'];
+                $noidung = $_POST['noidung'];
+                themlh($user,  $email, $chude, $noidung);
+            }
+            include "app/views/Client/lienhe.php";
             break;
         case 'dangxuat':
             session_unset();
