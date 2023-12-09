@@ -30,6 +30,19 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Bảng danh sách Đơn hàng</h3>
+              <form class="" style="float: right;" action="" method="post">
+                            <select name="trangthai" id="short">
+                                <option hidden value="">Tùy chọn</option>
+                                <option value="">Tất cả đơn hàng</option>
+                                <option value="0">Chờ xác nhận</option>
+                                <option value="1">Đã xác nhận</option>
+                                <option value="2">Đang vận chuyển</option>
+                                <option value="3">Giao hàng thành công</option>
+                                <option value="4">Đơn hàng bị hủy</option>
+                            </select>
+
+                            <button style="background-color: aqua;border-radius: 10px;" value="btn" name="btn" type="submit">Lọc</button>
+                        </form>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -51,7 +64,7 @@
                 <tbody>
                   <?php
                   $i = 1;
-                  foreach ($loaddh as $lisdh) {
+                  foreach ($loaddh1 as $lisdh) {
                     extract($lisdh);
                     echo '
                           <tr>
