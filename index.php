@@ -330,8 +330,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
             include "app/views/Client/trang_tk.php";
             break;
-
-
         case 'dangxuat':
             session_unset();
             header("location: index.php");
