@@ -335,8 +335,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 $email = $_POST['email'];
                 $chude = $_POST['chude'];
                 $noidung = $_POST['noidung'];
- 
-                echo $user;
                 themlh($user,  $email, $chude, $noidung);
             }
             include "app/views/Client/lienhe.php";
