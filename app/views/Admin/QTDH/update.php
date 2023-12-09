@@ -85,14 +85,13 @@
                       <option value="0">Chờ xác nhận</option>
                       <option value="1">xác nhận</option>
                       <option value="2">Đang vận chuyển</option>
-                      <option value="3">Đã giao thành công</option>
                     <?php elseif ($trangthai == 1) : ?>
                       <option value="1">xác nhận</option>
                       <option value="2">Đang vận chuyển</option>
-                      <option value="3">Đã giao thành công</option>
                       <?php elseif ($trangthai == 2) : ?>
                       <option value="2">Đang vận chuyển</option>
-                      <option value="3">Đã giao thành công</option>
+                      <?php elseif ($trangthai == 4) : ?>
+                      <option value="4">Đơn hàng đã hủy</option>
                     <?php else : ?>
                       <option value="3">Đã giao thành công</option>
                     <?php endif; ?>
