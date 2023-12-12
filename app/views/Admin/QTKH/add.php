@@ -35,35 +35,35 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tên tài khoản</label>
-                    <input name="user" type="text" class="form-control"  placeholder="Thêm  mới">
+                    <input name="user" type="text" class="form-control"  placeholder="Tên tài khoản có 5 kí tự" minlength="5" required>
                     <span style="color: red;"> <?= is_error('user') ?></span>
                   </div>
                   <div class="form-group">
                     <label >Mật khẩu</label>
-                    <input name="pass" type="password" class="form-control"  placeholder="Thêm  mới">
+                    <input name="pass" type="password" class="form-control"  placeholder="mật khẩu không được để Trống"  required>
                     <span style="color: red;">  <?= is_error('pass') ?></span>
 
                   </div>
                   <div class="form-group">
                     <label >Họ và Tên</label>
-                    <input name="ten_dn"  type="text" class="form-control"  placeholder="Thêm  mới">
+                    <input name="ten_dn"  type="text" class="form-control"  placeholder="Họ tên không được để trống" required>
                     <span style="color: red;"> <?= is_error('ten') ?></span>
                   </div>
                   <div class="form-group">
                     <label >Địa chỉ </label>
-                    <input name="diachi" type="text" class="form-control"  placeholder="Thêm  mới">
+                    <input name="diachi" type="text" class="form-control"  placeholder="vui lòng nhập địa chỉ">
                     <span style="color: red;">  <?= is_error('diachi') ?></span>
 
                   </div>
                   <div class="form-group">
                     <label>Số điện thoại</label>
-                    <input name="sdt" type="text" class="form-control"  placeholder="Thêm  mới">
+                    <input name="sdt" type="text" class="form-control"  placeholder="Số điện thoại phải là số">
                     <span style="color: red;">  <?= is_error('sdt') ?></span>
 
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">email </label>
-                    <input name ="email" type="text" class="form-control"  placeholder="Thêm  mới">
+                    <input name ="email" type="text" class="form-control"  placeholder="vui lòng nhập email">
                     <span style="color: red;"> <?= is_error('email') ?></span>
 
                   </div>

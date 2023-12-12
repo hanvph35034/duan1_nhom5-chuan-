@@ -8,7 +8,6 @@ include '../../models/sanpham.php';
 include '../../models/baiviet.php';
 include '../../models/danhmuc.php';
 include '../../models/binhluan.php';
-include '../../models/khachhang.php';
 include '../../models/quyen.php';
 include '../../models/donhang.php';
 include '../../models/thongke.php';

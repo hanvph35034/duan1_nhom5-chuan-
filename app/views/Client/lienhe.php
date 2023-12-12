@@ -53,7 +53,7 @@
                         <form method="POST" action="?act=lienhe">
                             <p>
                                 <label> Tên của bạn (bắt buộc)</label>
-                                <input name="user" placeholder="Tên chủ bạn *" type="text" required>
+                                <input name="user" placeholder="Tên chủ bạn *" type="text" minlength="5"  required>
                             </p>
                             <p>
                                 <label> Email của bạn (bắt buộc)<label>

@@ -34,20 +34,20 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Ảnh banner</label>
                     <br>
-                    <input type="file" name="img" id="img">
+                    <input type="file" name="img" id="img" required>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tên banner</label>
-                    <input type="text" name="ten" id="ten" class="form-control"  placeholder="Tên banner">
+                    <input type="text" name="ten" id="ten" class="form-control"  placeholder="Tên banner" required>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Tiêu đề </label>
-                    <input type="text" name="tieu_de" id="ten" class="form-control"  placeholder="Tên banner">
+                    <input type="text" name="tieu_de" id="ten" class="form-control"  placeholder="Tên banner" required>
                   </div>
                     
                   <div class="form-group">
                     <label for="exampleInputEmail1">Link</label>
-                    <input type="text" name="link" id="link" class="form-control"  placeholder="LInk truyền">
+                    <input type="text" name="link" id="link" class="form-control"  placeholder="link truyền" required>
                   </div>
                   </div>
                 </div>

@@ -33,16 +33,16 @@
                 <div class="card-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Tiêu đề</label>
-                    <input type="text" name="tieu_de" id="tieu_de" class="form-control"  placeholder="Tiêu đề bài viết">
+                    <input type="text" name="tieu_de" id="tieu_de" class="form-control"  placeholder="Tiêu đề bài viết" required >
                   </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Ảnh bài viết</label>
                     <br>
-                    <input type="file" name="anh" id="anh" >
+                    <input type="file" name="anh" id="anh" required>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nội Dung</label>
-                    <input type="text" name="noi_dung" id="noi_dung" class="form-control"  placeholder="Nội dung bài viết">
+                    <input type="text" name="noi_dung" id="noi_dung" class="form-control"  placeholder="Nội dung bài viết" required>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Ngày đăng</label>
