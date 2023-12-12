@@ -8,11 +8,7 @@ function loadall_danhmuc(){
 
 
 // load danh muc xoa mem
-function loadall_danhmuc_xoamem(){
-    $sql = "select * from danhmuc where trang_thai = '1' order by id desc";
-    $listdanhmuc = pdo_query($sql);
-    return $listdanhmuc;
-}
+
 
 // them danh muc 
 function insert_danhmuc($Danhmuc){
@@ -34,16 +30,8 @@ function delete_danhmuc($id){
 }
 
 // xoa mem
-function delete_mem($id){
-    $sql = "update danhmuc set trang_thai = '1' where id = '$id'";
-    pdo_execute($sql);
-}
-
 // khoi phuc danh muc
-function restore_danhmuc($id){
-    $sql = "update danhmuc set trang_thai = '0' where id = '$id'";
-    pdo_execute($sql);
-}
+
 
 // sua danh muc
 function fix_danhmuc($id, $ten){

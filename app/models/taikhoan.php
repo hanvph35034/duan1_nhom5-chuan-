@@ -58,19 +58,6 @@ function update_taikhoan($id, $user, $email, $sdt, $pass, $diachi)
     pdo_execute($sql);
 }
 
-function suatk($id, $user, $email, $sdt, $pass, $address, $img)
-{
-    if ($pass != '' && $img != '') {
-        $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', pass='$pass', address='$address', img='$img' where id='$id';";
-    } else if ($pass == '' && $img == '') {
-        $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', address='$address' where id='$id';";
-    } else if ($pass == '' && $img != '') {
-        $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', address='$address', img='$img' where id='$id';";
-    } else if ($pass != '' && $img == '') {
-        $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', pass='$pass', address='$address' where id='$id';";
-    }
-    pdo_execute($sql);
-}
 
 // xoa tai khoan
 function delete_taikhoan($id)
