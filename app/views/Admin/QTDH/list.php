@@ -73,7 +73,7 @@
                           <td>' . $ngay_dat . '</td>
                           <td>' . $ten . '</td>
                           <td>' . $diachi . '</td>
-                          <td>' . number_format(($tong_gia)) . ' VND</td>
+                          <td>' .number_format(floatval($tong_gia)) . ' VND</td>
                           <td>';
 
                     if ($trangthai == 0) {

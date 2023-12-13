@@ -8,7 +8,6 @@ include '../../models/sanpham.php';
 include '../../models/baiviet.php';
 include '../../models/danhmuc.php';
 include '../../models/binhluan.php';
-include '../../models/khachhang.php';
 include '../../models/quyen.php';
 include '../../models/donhang.php';
 include '../../models/thongke.php';
@@ -24,14 +23,7 @@ include '../../controllers/binhluan.php';
 include '../../controllers/baiviet.php';
 include '../../controllers/donhang.php';
 
-// if (isset($_SESSION['user']) || !isset($_SESSION['user'])) {
-//     if (isset($_SESSION['user']['id_quyen']) && $_SESSION['user']['id_quyen'] > 1) {
-//         // header("Location: ../../../index.php");
-//         echo "
-//         <script>alert('111')</script>
-//         ";
-//     }
-// } else {
+
 include 'header.php';
 if (isset($_SESSION['user']) && ($_SESSION['user'])) {
     extract($_SESSION['user']);

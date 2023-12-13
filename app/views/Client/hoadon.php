@@ -17,8 +17,6 @@
         </div>
     </div>
     <!--breadcrumbs area end-->
-
-
     <!--Checkout page section-->
     <div class="Checkout_section mt-32">
         <div class="container">

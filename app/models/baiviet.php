@@ -30,18 +30,7 @@ function load4_baiviet()
     $list = pdo_query($sql);
     return $list;
 }
-//sửa bài viết
-// function update_baiviet($id, $tieu_de, $anh, $noi_dung, $ngay_dang)
-// {
-//     $sql = "UPDATE `bai_viet`
-//      SET 
-//     `tieu_de` = '$tieu_de',
-//     `noi_dung` = '$noi_dung',
-//     `ngay_dang` = '$ngay_dang'
-//     WHERE
-//       `id`='$id' AND (`anh`='$anh' OR '$anh' = '');";
-//     pdo_execute($sql);
-// }
+
 function update_baiviet($id, $tieu_de, $img, $noi_dung, $ngay_dang)
 {
     if ($img != '') {

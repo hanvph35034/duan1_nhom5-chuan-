@@ -284,7 +284,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include "app/views/Client/giohang.php";
             break;
         case 'hoadon':
-            include "app/views/Client/thanh_toan.php";
+            include "app/views/Client/hoadon.php";
             break;
 
 
