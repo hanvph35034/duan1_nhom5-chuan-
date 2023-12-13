@@ -112,8 +112,8 @@
                                     </div>
                                     <div class="product_footer d-flex align-items-center">
                                         <div class="price_box">
-                                            <span class="current_price"><?= number_format($gia_sale) ?>VND</span>
-                                            <span class="old_price"><?= number_format($Gia) ?></span>
+                                            <span class="current_price"><?= number_format($gia_sale) ?>.VND</span>
+                                            <span class="old_price"><?= number_format($Gia) ?>.VND</span>
                                         </div>
                                         <div class="add_to_cart">
                                             <button type="submit" value="btn" name="btn"><span class="lnr lnr-cart"></span></button>
@@ -190,8 +190,8 @@
                                 </div>
                                 <div class="product_footer d-flex align-items-center">
                                     <div class="price_box">
-                                        <span class="current_price"><?= number_format($sanpham['GiaSale']) ?>VND</span>
-                                        <span class="old_price"><?= number_format($sanpham['GiaSale']) ?></span>
+                                        <span class="current_price"><?= number_format($sanpham['GiaSale']) ?>.VND</span>
+                                        <span class="old_price"><?= number_format($sanpham['GiaSale']) ?>.VND</span>
                                     </div>
                                     <div class="add_to_cart">
                                             <button type="submit" value="btn" name="btn"><span class="lnr lnr-cart"></span></button>
@@ -285,8 +285,8 @@
                                     </div>
                                     <div class="product_footer d-flex align-items-center">
                                         <div class="price_box">
-                                            <span class="current_price"><?= number_format($sanpham['gia_sale']) ?>VND</span>
-                                            <span class="old_price"><?= number_format($sanpham['Gia']) ?></span>
+                                            <span class="current_price"><?= number_format($sanpham['gia_sale']) ?>.VND</span>
+                                            <span class="old_price"><?= number_format($sanpham['Gia']) ?>.VND</span>
                                         </div>
                                         <div class="add_to_cart">
                                             <button type="submit" value="btn" name="btn"><span class="lnr lnr-cart"></span></button>
