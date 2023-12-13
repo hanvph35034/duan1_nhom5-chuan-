@@ -108,13 +108,82 @@
                     </div>
 
                 </div>
+
+
+                <select id="payment_method" class="select-order">
+                    <option value="cash" selected>Thanh toán khi nhận hàng</option>
+                    <option value="momo">Thanh toán bằng Momo</option>
+                </select>
+
+
                 <div class="col-lg-7 col-md-6">
+
                     <?php if (isset($_SESSION['user']['ten_dn'])) { ?>
                         <div class="coupon_code right">
                             <h3>Thông tin khách hàng</h3>
 
-                            <form action="?act=thanh_toan" method="POST">
 
+
+                            <form id="cash_form" action="?act=thanh_toan" method="POST">
+                                <div class="coupon_inner">
+                                    <p>Họ và tên</p>
+                                    <input style="width: 400px;" placeholder="Họ và tên" value="<?= $_SESSION['user']['ten_dn'] ?>" type="text" name="ten">
+                                    <br>
+                                    <span style="color: red;"> <?= is_error('ten') ?></span>
+                                </div>
+                                <div class="coupon_inner">
+                                    <p>Địa chỉ </p>
+                                    <input style="width: 400px;" placeholder="Nhập Địa chỉ " value="<?= $_SESSION['user']['dia_chi'] ?>" type="text" name="diachi">
+                                    <br>
+                                    <span style="color: red;"> <?= is_error('diachi') ?></span>
+                                </div>
+                                <div class="coupon_inner">
+                                    <p>Email</p>
+                                    <input style="width: 400px;" placeholder="Nhập email" value="<?= $_SESSION['user']['Email'] ?>" type="text" name="email">
+                                    <br>
+                                    <span style="color: red;"> <?= is_error('email') ?></span>
+                                    <br>
+                                </div>
+                                <div class="coupon_inner">
+                                    <p>Nhập Số điện thoại</p>
+                                    <input style="width: 400px;" placeholder="Nhập số điện thoại" type="text" value="<?= $_SESSION['user']['sdt'] ?>" name="sdt">
+                                    <br>
+                                    <span style="color: red;"> <?= is_error('sdt') ?></span>
+                                </div>
+                                <div class="coupon_inner">
+                                    <div class="cart_subtotal">
+                                        <p>Tổng phụ</p>
+                                        <p class="cart_amount">0</p>
+                                    </div>
+                                    <div class="cart_subtotal ">
+                                        <p>Đang chuyển hàng</p>
+                                        <p>Tộng cộng</p>
+                                        <?php if (!empty($_SESSION['giohang'])) { ?>
+                                            <p class="cart_amount"><?= number_format($tong) ?> VND</p>
+                                        <?php } else { ?>
+                                            <p class="cart_amount">0 VND</p>
+                                        <?php } ?>
+                                    </div>
+                                    <a href="#">Tính toán vận chuyển</a>
+
+                                    <div class="cart_subtotal">
+                                        <p>Tộng cộng</p>
+                                        <?php if (!empty($_SESSION['giohang'])) { ?>
+                                            <p class="cart_amount"><?= number_format($tong) ?> VND</p>
+                                        <?php } else { ?>
+                                            <p class="cart_amount">0 VND</p>
+                                        <?php } ?>
+                                    </div>
+                                        <div class="checkout_btn">
+                                            <input type="hidden" value="<?= $tong ?>" name="tong">
+
+                                            <button name="btn" value="btn">Thanh toán khi nhận hàng</button>
+                                        </div>
+                                    
+                                </div>
+                            </form>
+
+                            <form class="" style="display: none;" method="POST" id="momo_form" target="_blank" enctype="application/x-www-form-urlencoded" action="app/views/Client/xuly_momo.php">
                                 <div class="coupon_inner">
                                     <p>Họ và tên</p>
                                     <input style="width: 400px;" placeholder="Họ và tên" value="<?= $_SESSION['user']['ten_dn'] ?>" type="text" name="ten">
@@ -165,50 +234,15 @@
                                         <?php } ?>
                                     </div>
 
-                                    <div class="payment_method">
-                                        <div class="panel-default">
-                                            <input id="payment" name="pttt" type="radio" value="1" data-target="createp_account" checked />
-                                            <label for="payment" data-bs-toggle="collapse" href="#method" aria-controls="method">Thanh toán khi nhận hàng</label>
-
-                                            <div id="method" class="collapse one" data-parent="#accordion">
-                                                <div class="card-body1">
-                                                    <p>Vui lòng gửi séc đến Tên cửa hàng, Phố cửa hàng, Thị trấn cửa hàng, Tiểu bang / Quận cửa hàng, Mã bưu điện cửa hàng.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        </form>
-
-                                        <div class="panel-default">
-                                        <input id="payment" name="pttt" type="radio" value="1" data-target="createp_account" checked />
-                                        
-                                            <label for="payment_defult" data-bs-toggle="collapse" href="#collapsedefult" aria-controls="collapsedefult" class="faded">
-                                                Thanh toán bằng momo <img src="public/img/icon/papyel.png" alt="">
-                                            </label>
-                                            
-                                            <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="app/views/Client/xuly_momo.php">
-
-
-                                          </form>
-                                            <br>
-                                          
-                                        </div>
-
-                                        <span style="color: red;"> <?= is_error('pttt') ?></span>
-                                    </div>
-
-
-
 
                                     <div class="checkout_btn">
                                         <input type="hidden" value="<?= $tong ?>" name="tong">
 
-                                        <button name="btn" value="btn">Thanh toán</button>
+                                        <button name="btn" value="btn">Thanh toán bằng momo</button>
                                     </div>
-                                </div>
-                            
-
+                            </form>
                         </div>
+
                 </div>
             <?php } else { ?>
                 <h3 style="color:red;">bạn phải đăng nhập để mua hàng</h3>
@@ -218,3 +252,26 @@
 
     </div>
 </div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var paymentMethodSelect = document.getElementById("payment_method");
+        var cashForm = document.getElementById("cash_form");
+        var momoForm = document.getElementById("momo_form");
+
+        paymentMethodSelect.addEventListener("change", function() {
+            // Hide all forms
+            cashForm.style.display = "none";
+            momoForm.style.display = "none";
+
+            // Show the selected form based on the payment method
+            var selectedPaymentMethod = paymentMethodSelect.value;
+            if (selectedPaymentMethod === "cash") {
+                cashForm.style.display = "block";
+            } else if (selectedPaymentMethod === "momo") {
+                momoForm.style.display = "block";
+            }
+        });
+    });
+</script>

@@ -1,7 +1,12 @@
 <?php
+error_reporting(0);
 session_start();
 ob_start();
+
 if (!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
+if (!isset($_SESSION['buyOnline'])) {
+    $_SESSION['buyOnline'] = [];
+}
 include "app/models/pdo.php";
 include "app/models/taikhoan.php";
 include "app/models/sanpham.php";
@@ -13,9 +18,26 @@ include "app/models/banner.php";
 include "app/models/donhang.php";
 
 include "app/controllers/taikhoan.php";
+if (isset($_GET['message']) && strpos($_GET['message'], 'Successful') !== false) {
+    if (isset($_SESSION['user'])) {
+        $id_account = $_SESSION['user']['id'];
 
+    }
+    $ma_dh =  "AMTIMA" . rand(0, 999999);
+    $pttt = 1;
+    $iddh =  taodonhang($ma_dh, $_SESSION['buyOnline'][4], $pttt, $_SESSION['buyOnline'][0], $_SESSION['buyOnline'][3], $_SESSION['buyOnline'][2], $_SESSION['buyOnline'][1], $id_account);
+    foreach ($_SESSION['giohang'] as $key) {
+        insert_ctdh($iddh, $key[0], $key[4]);
+        unset($_SESSION['giohang']);
+    }
+    unset($_SESSION['buyOnline']);
+    // include "app/views/Client/xuly_momo.php";
+    header('Location: index.php');
+
+}
 $loaddm = loadall_danhmuc();
 include "app/views/Client/header.php";
+
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
 
@@ -258,7 +280,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                 if (empty($_POST['pttt'])) {
                     $error['pttt'] = "Vui lòng chọn phương thức thanh toán";
                 } else {
-                    $pttt = $_POST['pttt'];
+                    $pttt = 1;
                 }
                 if (empty($_POST['diachi'])) {
                     $error['diachi'] = "Vui lòng nhập địa chỉ";
@@ -266,6 +288,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     $diachi = $_POST['diachi'];
                     $ma_dh =  "AMTIMA" . rand(0, 999999);
                     $id_tk = $_SESSION['user']['id'];
+
                 }
                 if (empty($error)) {
                     $iddh =  taodonhang($ma_dh, $tong, $pttt, $ten, $diachi, $email, $sdt, $id_tk);
