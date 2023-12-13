@@ -4,63 +4,52 @@
 include_once '../loader.php';
 include_once '../vendor/autoload.php';
 
-use MService\Payment\Pay\Processors\AppPay;
-use MService\Payment\Pay\Processors\PaymentConfirmation;
-use MService\Payment\Pay\Processors\POSPay;
-use MService\Payment\Pay\Processors\QRNotify;
-use MService\Payment\Pay\Processors\TransactionQuery;
-use MService\Payment\Pay\Processors\TransactionRefund;
+use MService\Payment\AllInOne\Processors\CaptureIPN;
+use MService\Payment\AllInOne\Processors\PayATM;
+use MService\Payment\AllInOne\Processors\QueryStatusTransaction;
+use MService\Payment\AllInOne\Processors\RefundATM;
+use MService\Payment\AllInOne\Processors\RefundMoMo;
+use MService\Payment\AllInOne\Processors\RefundStatus;
 use MService\Payment\Shared\SharedModels\Environment;
 use MService\Payment\Shared\SharedModels\PartnerInfo;
+use MService\Payment\AllInOne\Processors\CaptureMoMo;
 
-$env = new Environment("https://test-payment.momo.vn/pay/pos", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'), 'development');
-$publicKey = "-----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE
-40UoXhoQf9K6attSIclTZMEGfq6gmJm2BogVJtPkjvri5/j9mBntA8qKMzzanSQaBEbr8FyByHnf
-226dsLt1RbJSMLjCd3UC1n0Yq8KKvfHhvmvVbGcWfpgfo7iQTVmL0r1eQxzgnSq31EL1yYNMuaZj
-pHmQuT24Hmxl9W9enRtJyVTUhwKhtjOSOsR03sMnsckpFT9pn1/V9BE2Kf3rFGqc6JukXkqK6ZW9
-mtmGLSq3K+JRRq2w8PVmcbcvTr/adW4EL2yc1qk9Ec4HtiDhtSYd6/ov8xLVkKAQjLVt7Ex3/agR
-PfPrNwIDAQAB
------END PUBLIC KEY-----";
+$orderId = time() . "";
 $requestId = time() . "";
-$partnerRefId = time() . "";
 
-/** Pay Processes:
- * App-In-App
- * POS
- * QR Code
- * Payment Confirmation
- * Transaction Query
- * Transaction Refund
- */
+$env = new Environment("https://test-payment.momo.vn/gw_payment/transactionProcessor",
+    new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOLRJZ20181206', 'KqBEecvaJf1nULnhPF5htpG3AMtDIOlD'),
+    'development', '', false);
 
-//get new Token from MoMoApp and put in appData
-//uncomment to use AppPay function
-//$appData = '' ;
-//$customerNumber = '0917003000';
-//$pKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE40UoXhoQf9K6attSIclTZMEGfq6gmJm2BogVJtPkjvri5/j9mBntA8qKMzzanSQaBEbr8FyByHnf226dsLt1RbJSMLjCd3UC1n0Yq8KKvfHhvmvVbGcWfpgfo7iQTVmL0r1eQxzgnSq31EL1yYNMuaZjpHmQuT24Hmxl9W9enRtJyVTUhwKhtjOSOsR03sMnsckpFT9pn1/V9BE2Kf3rFGqc6JukXkqK6ZW9mtmGLSq3K+JRRq2w8PVmcbcvTr/adW4EL2yc1qk9Ec4HtiDhtSYd6/ov8xLVkKAQjLVt7Ex3/agRPfPrNwIDAQAB';
-//AppPay::process(new Environment("https://test-payment.momo.vn/pay/app", new PartnerInfo("IICsyHpuwP8IzVvE", 'CGV01', 'vLujzooXM8ySdHJOBFuwmWB3T4ZBYLJ'), 'development'), 10000, $appData, $pKey, $customerNumber, $partnerRefId);
+/** MoMo Wallet Processes:
+ * CaptureMoMo returns a payURL with a QR Code for user to scan with MoMo App and pay
+ * QueryStatusTransaction checks the status of the transaction, given orderId and requestId
+ * CaptureIPN processes the request MoMo sent to the server
+ * RefundMoMo allows user to request refund for transactions paid through MoMo Wallet
+ * RefundStatus checks the status of the refund requests, given the orderId of the paid transaction and requestId
+ **/
 
-//POSPay::process($env, 'MM587977818202493946', 50000, $publicKey, $partnerRefId, '', '', '');
+CaptureMoMo::process($env, $orderId, "Pay With MoMo", "35000", "sjygdvi", $requestId, "https://google.com.vn", "https://google.com.vn");
+QueryStatusTransaction::process($env, $requestId, $orderId);
 
-$qrRawData = '{
-  "partnerCode": "MOMOIQA420180417",
-  "accessKey": "mTCKt9W3eU1m39TW",
-  "amount": 10000,
-  "partnerRefId": "B001221",
-  "partnerTransId": "",
-  "transType": "momo_wallet",
-  "momoTransId": "43121679",
-  "status": 0,
-  "message": "Thành Công",
-  "responseTime": 1555472829549,
-  "signature": "e33dcd33ea016023a1ca49877241fa35609163e967e86716f9fc974e91a23164",
-  "storeId": "store001"
-}';
-//QRNotify::process($env, $qrRawData);
+$data = "partnerCode=MOMOLRJZ20181206&accessKey=mTCKt9W3eU1m39TW&requestId=1555383430&orderId=1555383430&orderInfo=&orderType=momo_wallet&transId=2302586804&errorCode=0&message=Success&localMessage=Th%C3%A0nh%20c%C3%B4ng&payType=qr&responseTime=2019-04-09%2014%3A53%3A38&extraData=&signature=e9469360fe360e8c63a97a755300e4321648a796593e41411bea5c426af33249&amount=300000";
+CaptureIPN::process($env, $data);
 
-PaymentConfirmation::process(new Environment("https://test-payment.momo.vn/pay/confirm", new PartnerInfo("IICsyHpuwP8IzVvE", 'CGV01', 'vLujzooXM8ySdHJOBFuwmWB3T4ZBYLJ'), 'development'), 'e671ffb0-af61-11e9-ba3c-4b08721e3699', "capture", "2305581638", $requestId);
+$orderId = (time() + (10 * 24 * 60 * 60))."";
+RefundMoMo::process($env, $orderId, '1561972963', '7000', '2304963974');
+RefundStatus::process($env, '1561972963', '1561972963');
 
-TransactionQuery::process(new Environment("https://test-payment.momo.vn/pay/query-status", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'), 'development'), '1562138468', $publicKey, '1562138427');
+/** MoMo ATM Processes:
+ * PayATM
+ * QueryStatusTransaction
+ * RefundATM
+**/
 
-TransactionRefund::process(new Environment("https://test-payment.momo.vn/pay/refund", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'), 'development'), $requestId, 10000, $publicKey, '1562138427', '2305016460');
+$orderId = (time() + (7 * 24 * 60 * 60))."";
+$requestId = (time() + (7 * 24 * 60 * 60))."";
+
+PayATM::process($env, $orderId, "Pay With MoMo", "35000", '', $requestId, "https://google.com.vn", "https://google.com.vn", "SML");
+QueryStatusTransaction::process($env, $orderId, $requestId);
+
+$orderId = (time() + (5 * 24 * 60 * 60))."";
+RefundATM::process($env, $orderId, '1562059843', '10000', '2304992176', 'SML');
