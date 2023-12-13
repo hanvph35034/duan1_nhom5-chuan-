@@ -26,7 +26,7 @@
                             <li><a href="#dashboard" data-toggle="tab" class="nav-link active">Trang Tài Khoản</a></li>
                             <li> <a href="#orders" data-toggle="tab" class="nav-link">Đơn đặt hàng</a></li>
                             <li><a href="#address" data-toggle="tab" class="nav-link">Quên mật khẩu</a></li>
-                           
+
                         </ul>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                                             </div>
                                                             <div class="col-lg-6 mb-20">
                                                                 <label>Mat khau<span>*</span></label>
-                                                                <input type="password" name="pass" value="<?=$tk['pass']?>">
+                                                                <input type="password" name="pass" value="<?= $tk['pass'] ?>">
                                                             </div>
                                                             <!-- <div class="col-12 mb-20">
                                                                 <label>Company Name</label>
@@ -62,17 +62,17 @@
                                                                 <label>Địa chỉ <span>*</span></label>
                                                                 <input name="diachi" value="<?= $tk['dia_chi'] ?>" placeholder="House number and street name" type="text">
                                                             </div>
-                                                          
-                                                        
+
+
 
                                                             <div class="col-lg-6 mb-20">
                                                                 <label>Số điện thoại<span>*</span></label>
-                                                                <input name ="sdt" value=" <?= $tk['sdt'] ?>" type="text">
+                                                                <input name="sdt" value=" <?= $tk['sdt'] ?>" type="text">
 
                                                             </div>
                                                             <div class="col-lg-6 mb-20">
                                                                 <label> Địa chỉ Email <span>*</span></label>
-                                                                <input name="email" value="<?= $tk['Email'] ?>" type="text" >
+                                                                <input name="email" value="<?= $tk['Email'] ?>" type="text">
 
                                                             </div>
 
@@ -82,7 +82,7 @@
                                                                     <button name="btn" value="btn" type="submit">Cật nhật tài khoản</button>
                                                                 </div>
                                                             </div>
-                                                          
+
                                                         </div>
                                                     </form>
                                                 </div>
@@ -98,48 +98,71 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
-                                        
+
                                         <tr>
-                                            <th>Đặt hàng</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Trạng thái</th>
-                                            <th>Tổng cộng</th>
-                                            <th>Hủy đơn hàng</th>
+                                            <th>STT</th>
+                                            <th>Mã đơn hàng </th>
+                                            <th>Ngày đặt </th>
+                                            <th>Tổng tiền </th>
+                                            <th>Trạng thái </th>
+                                            <th>CTDH</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach($load_ct_dh as $row){
+                                        <?php
+                                        $i = 1;
+                                        foreach ($load_ct_dh as $row) {
                                             extract($row);
-                                            ?>
-                                        <tr>    
-                                            <td>1</td>
-                                            <td><?= $tensp ?></td>
-                                            <td><span class="success"><?= $trangthai ?></span></td>
-                                            <td><?= number_format($gia_sale)?> VND Với <?= $so_luong?> Sản phẩm  </td>
-                                            <td><a href="cart.html" class="view">view</a></td>
-                                        </tr>
-                                        <?php }?>
+                                        ?>
+                                            <tr>
+                                                <td><?= $i++ ?></td>
+                                                <td><?= $ma_dh ?></td>
+                                                <td><?= $ngay_dat ?></td>
+                                                <td><?= number_format(($tong_gia)) ?></td>
+                                                <td>
+                                                <?php
+                                                if ($trangthai == 0) {
+                                                    echo 'Chờ xác nhận';
+                                                  } elseif ($trangthai == 1) {
+                                                    echo 'Xác nhận';
+                                                  } elseif ($trangthai == 2) {
+                                                    echo 'Đang vận chuyển';
+                                                  } elseif ($trangthai == 3) {
+                                                    echo 'Đã giao thành công';
+                                                  }
+                                                  elseif ($trangthai == 4) {
+                                                    echo 'Đơn hàng đã hủy';
+                                                  }
+                                                   else {
+                                                    echo 'Trạng thái không xác định';
+                                                  }
+                                                ?>
+                                                </td>
+                                                
+                                                <td><a href="?act=ctdh&id=<?=$id?>" class="view">Xem</a></td>
+                                                <td><a href="?act=huysp&id=<?=$id?>" class="view"><?php
+                                                if ($trangthai == 0) {
+                                                    ?><a href="?act=huysp&id=<?=$id?>">Hủy</a>
+                                                    <?php
+                                                  } 
+                                                  elseif ($trangthai == 2) {
+                                                    ?><a href="?act=huysp&id=<?=$id?>">đã nhận đc hàng </a>
+                                                    <?php
+                                                  }
+                                                   else {
+                                                    echo '';
+                                                  }
+                                                ?></a></td>
+
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                     
-                        <div class="tab-pane" id="address">
-                            <p>The following addresses will be used on the checkout page by default.</p>
-                            <h4 class="billing-address">Billing address</h4>
-                            <a href="#" class="view">Edit</a>
-                            <p><strong>Bobby Jackson</strong></p>
-                            <address>
-                                House #15<br>
-                                Road #1<br>
-                                Block #C <br>
-                                Banasree <br>
-                                Dhaka <br>
-                                1212
-                            </address>
-                            <p>Bangladesh</p>
-                        </div>
-                       
+
+
                     </div>
                 </div>
             </div>

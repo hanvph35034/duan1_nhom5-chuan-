@@ -34,21 +34,21 @@
                 <div class="banner_container">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="public/img/bg/44.png" alt=""></a>
+                            <a href="?act=chitietsp&idsp=11&iddm=1"><img src="public/img/bg/z4936326208611_a43ea2a1637737a33d7bb7aa9f756b7d.jpg" alt=""></a>
                             <div class="banner_text">
                                 <h3>Dành cho 100 khách hàng đầu tiên</h3>
                                 <h2>Ưu đại lớn khi mua 1 tặng 2</h2>
-                                <a href="shop.html">Mua ngay</a>
+                                <a href="?act=chitietsp&idsp=11&iddm=1">Mua ngay</a>
                             </div>
                         </div>
                     </div>
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="public/img/bg/44.png" alt=""></a>
+                            <a href="?act=chitietsp&idsp=11&iddm=1"><img src="public/img/bg/44.png" alt=""></a>
                             <div class="banner_text">
-                                <h3>20/10 Giảm 20% toàn bộ sản phẩm</h3>
+                                <h3>Cuối năm Giảm 20% toàn bộ sản phẩm</h3>
                                 <h2>Mua sản phẩm có ưa đại lớn </h2>
-                                <a href="shop.html">Mua ngay</a>
+                                <a href="?act=chitietsp&idsp=11&iddm=1">Mua ngay</a>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section_title">
-                    <h2><span> <strong>Sản phẩm </strong>bán chạy</span></h2>
+                    <h2><span> <strong>Sản phẩm </strong>mới về</span></h2>
                 </div>
                 <div class="product_carousel product_column4 owl-carousel">
                 
@@ -84,7 +84,6 @@
                             <form action="index.php?act=giohang" method="POST">
                                 <div class="product_name">
                                     <h3><a href="?act=chitietsp&idsp=<?= $Idsp ?>&iddm=<?= $id_dm ?>"><?= $ten ?> </a></h3>
-                                    <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
                                 </div>
                                 <div class="product_thumb">
                                     <a class="primary_img" href="?act=chitietsp&idsp=<?= $Idsp ?>&iddm=<?= $id_dm ?>"><img style="height: 250px; width: 250px" src="public/img/product/<?= $img_dai_dien ?>" alt=""></a>
@@ -159,12 +158,12 @@
                         <div class="single_product">
                         <form action="index.php?act=giohang" method="POST">
                             <div class="product_name">
-                                <h3><a href="product-details.html"><?= $sanpham['TenSanPham'] ?> </a></h3>
+                                <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm'] ?>"><?= $sanpham['TenSanPham'] ?> </a></h3>
                                 <p class="manufacture_product"><a href="#"><?= $sanpham['TenDanhMuc'] ?></a></p>
                             </div>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien ?>" alt=""></a>
-                                <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1 ?>" alt=""></a>
+                                <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm'] ?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien ?>" alt=""></a>
+                                <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm'] ?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_1 ?>" alt=""></a>
                                 <div class="label_product">
                                     <span class="label_sale"><a href="#"><?= $sanpham['PhanTramGiamGia'] ?>%</span>
 
@@ -255,12 +254,11 @@
                         <div class="single_product">
                         <form action="index.php?act=giohang" method="POST">
                             <div class="product_name">
-                                <h3><a href="product-details.html"><?= $sanpham['ten'] ?> </a></h3>
-                                <p class="manufacture_product"><a href="#">Danh mục sản phẩm</a></p>
+                                <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm'] ?>"><?= $sanpham['ten'] ?> </a></h3>
 
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien ?>" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img style="height: 250px; width: 250px" src="<?= $linkimg_1 ?>" alt=""></a>
+                                    <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm'] ?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_dai_dien ?>" alt=""></a>
+                                    <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>&iddm=<?= $sanpham['id_dm'] ?>"><img style="height: 250px; width: 250px" src="<?= $linkimg_1 ?>" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">-47%</span>
 
@@ -287,8 +285,8 @@
                                     </div>
                                     <div class="product_footer d-flex align-items-center">
                                         <div class="price_box">
-                                            <span class="current_price"><?= $sanpham['gia_sale'] ?>VND</span>
-                                            <span class="old_price"><?= $sanpham['Gia'] ?></span>
+                                            <span class="current_price"><?= number_format($sanpham['gia_sale']) ?>VND</span>
+                                            <span class="old_price"><?= number_format($sanpham['Gia']) ?></span>
                                         </div>
                                         <div class="add_to_cart">
                                             <button type="submit" value="btn" name="btn"><span class="lnr lnr-cart"></span></button>

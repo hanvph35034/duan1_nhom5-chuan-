@@ -36,12 +36,20 @@ function dangxuat()
         unset($_SESSION['user']);
     }
 }
+function load_lh(){
+    $sql = "SELECT * FROM `lien_he` WHERE 1";
+    return pdo_query($sql);
+}
+function xoalh($id){
+    $sql = "delete from lien_he where id = '$id'";
+    pdo_execute($sql);
+}
+function themlh($user, $email, $chude, $noidung)
+{
+    $sql = "INSERT INTO `lien_he`( `user`, `email`, `chude`, `noidung`) VALUES ('$user','$email','$chude','$noidung')";
+    pdo_execute($sql);
+}
 
-
-// function update_taikhoan($id, $user, $pass, $email, $address, $tel){
-//     $sql = "update taikhoan set user = '$user', pass = '$pass', email = '$email', address = '$address', tel = '$tel' where id = '$id'";
-//     pdo_execute($sql);
-// }
 
 // sua tai khoan
 function update_taikhoan($id, $user, $email, $sdt, $pass, $diachi)
@@ -50,19 +58,6 @@ function update_taikhoan($id, $user, $email, $sdt, $pass, $diachi)
     pdo_execute($sql);
 }
 
-function suatk($id, $user, $email, $sdt, $pass, $address, $img)
-{
-    if ($pass != '' && $img != '') {
-        $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', pass='$pass', address='$address', img='$img' where id='$id';";
-    } else if ($pass == '' && $img == '') {
-        $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', address='$address' where id='$id';";
-    } else if ($pass == '' && $img != '') {
-        $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', address='$address', img='$img' where id='$id';";
-    } else if ($pass != '' && $img == '') {
-        $sql = "update taikhoan set user='$user', email='$email', sdt='$sdt', pass='$pass', address='$address' where id='$id';";
-    }
-    pdo_execute($sql);
-}
 
 // xoa tai khoan
 function delete_taikhoan($id)

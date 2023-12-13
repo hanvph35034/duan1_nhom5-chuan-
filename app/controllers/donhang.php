@@ -1,6 +1,22 @@
 <?php 
 
 function qtdh(){
+    if (isset($_POST['btn']) && $_POST['btn']) {
+        if (isset($_POST['trangthai'])) {
+            $trangthai = $_POST['trangthai'];
+        } else {
+            $trangthai = '';
+        }
+        if (isset($_POST['key'])) {
+            $key = $_POST['key'];
+            echo $key;
+        } else {
+            $key = '';
+        }
+    } else {
+        $key = $trangthai = '';
+    }
+    $loaddh1 = loaddh($key, $trangthai);
     $loaddh = loadall_donhang();
     include 'QTDH/list.php';
 }
@@ -19,25 +35,24 @@ function suadh(){
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $loadd1 = loadone_ctdonhang($id);
+        $loadsp = loadone_dh($id);
     }
     include 'QTDH/update.php';
 
 }
 function updatedh(){
-    if (isset($_POST['btn']) && $_POST['btn'] !="") {
-        $id = $_GET['id'];
-       $ten = $_POST['ten'];
-       $diachi = $_POST['diachi'];
-       $sdt = $_POST['sdt'];
-       $trangthai = $_POST['trangthai'];
-       $ghichu = $_POST['ghichu'];
-     
-      updatectdh($id,$ten,$diachi,$sdt,$trangthai,$ghichu);
-       
-        //
+    if (isset($_POST['submit'])) {
+        $id = $_POST['id'];
+        $trangthai = $_POST['trangthai'];
+        $ten = $_POST['ten'];
+        $sdt = $_POST['sdt'];
+        $diachi = $_POST['diachi'];
+        $ghi_chu = $_POST['ghi_chu'];
+        update_dh($id, $trangthai, $ten, $sdt, $diachi, $ghi_chu);
     }
-    // $loaddh = loadall_donhang();
-    // include 'QTDH/list.php';
+    $loaddh = loadall_donhang();
+    $loadd1 = loadone_ctdonhang($id);
+    include 'QTDH/update.php';
 }
 function deletedh(){
     if (isset($_GET['id'])) {

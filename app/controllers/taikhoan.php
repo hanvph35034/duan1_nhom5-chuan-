@@ -97,4 +97,16 @@ function suaquyen()
     $loadquyen = loadall_quyen();
     include 'quyen/update.php';
 }
+function list_lh(){
+    $load_lh = load_lh();
+    include 'QTLH/list.php';
+}
+function deletelh(){
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        xoalh($id);
+        }
+        $load_lh = load_lh();
+        include 'QTLH/list.php';
+}
 ?>

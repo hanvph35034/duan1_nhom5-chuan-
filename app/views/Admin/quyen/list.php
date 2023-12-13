@@ -41,8 +41,8 @@
                     <thead>
                       <tr>
                         <th>STT</th>
+                        <th>Chức vụ</th>
                         <th>Tên người dùng</th>
-                        <th>Tên chức vụ</th>
                       
                         <th>Sửa chức vụ</th>
                       </tr>

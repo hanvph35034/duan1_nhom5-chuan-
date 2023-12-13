@@ -1,20 +1,10 @@
 <?php
 
 // hiển thị 9 sản phẩm home
-function loadall_sanpham_home()
-{
-    $sql = "select * from sanpham where 1 and trangthai='0' order by view desc limit 0,12 ";
-    $listsanpham = pdo_query($sql);
-    return $listsanpham;
-}
+
 
 //load top 10 sản phẩm có lượt xem cao nhất
-function loadall_sanpham_top10()
-{
-    $sql = "select * from sanpham where 1 order by view desc limit 0,10";
-    $listsanpham = pdo_query($sql);
-    return $listsanpham;
-}
+
 //lọc sp
 function loc_san_pham($tk, $id){
     $sql = "SELECT * FROM sanpham 
@@ -45,12 +35,7 @@ function loadone_sanpham($id)
 }
 
 // load các sản phẩm cùng loại trừ sản phẩm đang xem
-function loadallsp_cungloai($Idsp, $id_dm)
-{
-    $sql = "select * from sanpham where Idsp!=$Idsp and id_dm = $id_dm limit 0,4";
-    $sanpham = pdo_query($sql);
-    return $sanpham;
-}
+
 
 // load all san pham cung danh muc
 function loadallsp_cungdanhmuc($danhmuc)
@@ -122,77 +107,25 @@ function add_sanpham($ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc
     pdo_execute($sql);
 }
 
-function add_sanpham1($tensanpham, $giasanpham, $anhdaidien, $mota, $soluongsanpham, $iddm)
-{
-    $sql = "insert into 
-        sanpham(ten_san_pham, gia_san_pham, img_dai_dien, mo_ta_san_pham, so_luong, iddm) 
-        VALUES($tensanpham, $giasanpham, $anhdaidien, $mota, $soluongsanpham, $iddm);";
-    pdo_execute($sql);
-}
+
 
 
 // luot xem ++
-function update_view($idsp)
-{
-    $sql = "update sanpham set luot_xem = luot_xem+1 where id='$idsp'";
-    pdo_execute($sql);
-}
+
 
 // xóa mềm
-function soft_delete_sanpham($id)
-{
-    $sql = "update sanpham set trangthai='1' where id = '$id'";
-    pdo_execute($sql);
-}
+
 // khôi phục sản phẩm xóa mềm
-function restore_sanpham($id)
-{
-    $sql = "update sanpham set trangthai='0' where id = '$id'";
-    pdo_execute($sql);
-}
+
 // loadall các sản phẩm xóa mềm
-function loadall_sanpham_soft($keyw = "", $iddm = 0)
-{
-    $sql = "select * from sanpham where trangthai!='0' ";
-    if ($keyw != "") {
-        $sql .= "and name like '%" . $keyw . "%'";
-    }
-    if ($iddm > 0) {
-        $sql .= "and iddm = '" . $iddm . "'";
-    }
-    $sql .= "order by id desc";
-    $listsanpham = pdo_query($sql);
-    return $listsanpham;
-}
-// luot xem ++
-// function update_view($idsp)
-// {
-//     $sql = "update sanpham set luot_xem = luot_xem+1 where id='$idsp'";
-//     pdo_execute($sql);
-// }
+
+
 
 // check trùng sản phẩm
-function checktrungsp($id)
-{
-    $vitri = -1;
-    for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
-        if ($_SESSION['giohang'][$i][0] == $id) {
-            $vitri = $i;
-        }
-    }
-    return $vitri;
-}
+
 
 // update số lượng sản phẩm giỏ hàng
-function updateslsp($vitrisptrung, $soluong)
-{
-    for ($i = 0; $i < sizeof($_SESSION['giohang']); $i++) {
-        if ($i == $vitrisptrung) {
-            $_SESSION['giohang'][$i][4] += $soluong;
-            break;
-        }
-    }
-}
+
 function delete_sanpham($id)
 {
     $sql = "delete from sanpham where Idsp = '$id'";
@@ -237,18 +170,5 @@ function loadsp_timkiem($keyw = "", $iddm = 0)
     $listsanpham = pdo_query($sql);
     return $listsanpham;
 }
-function listcart($idtk)
-{
-    $sql = "SELECT giohang.id as idcart , sanpham.ten ,sanpham.img_dai_dien , sanpham.gia_sale , sanpham.Idsp , giohang.soluong FROM sanpham JOIN giohang ON sanpham.Idsp = giohang.id_sp Where id_tk = $idtk ";
-    return pdo_query($sql);
-}
-function themcart($idsp, $idtk, $soluong)
-{
-    $sql = "INSERT INTO `giohang`(`id_tk`, `id_sp`, `soluong`) VALUES ('$idtk','$idsp','$soluong')";
-    pdo_execute($sql);
-}
-function xoagiohang($id)
-{
-    $sql = "delete from `giohang` where id = '$id'";
-    pdo_execute($sql);
-}
+
+

@@ -32,7 +32,9 @@
                                     <th class="product_name">Sản phẩm</th>
                                     <th class="product-price">Giá</th>
                                     <th class="product_quantity">Số lượng</th>
+
                                   
+
                                     <th class="product_total">Tổng giá</th>
                                 </tr>
                             </thead>
@@ -56,6 +58,8 @@
                                             <td class="product_name"><a href="#"><?= $row['1'] ?> </a></td>
                                             <td class="product-price"><?= number_format($row['3']) ?>VND</td>
                                             <td class="product_quantity"><label><?= $row[4] ?></label> </td>
+
+
                                             <td class="product_total"><?= number_format($sum) ?>VND</td>
                                 </tr>
                         <?php $id++;
@@ -113,6 +117,7 @@
 
                 <div class="col-lg-7 col-md-6">
 
+
                     <?php if (isset($_SESSION['user']['ten_dn'])) { ?>
 
                         <div class="coupon_code right">
@@ -124,11 +129,13 @@
                             </select>
 
                             <form id="cash_form" action="?act=thanh_toan" method="POST">
+
                                 <div class="coupon_inner">
                                     <p>Họ và tên</p>
                                     <input style="width: 400px;" placeholder="Họ và tên" value="<?= $_SESSION['user']['ten_dn'] ?>" type="text" name="ten">
                                     <br>
                                     <span style="color: red;"> <?= is_error('ten') ?></span>
+
                                 </div>
                                 <div class="coupon_inner">
                                     <p>Địa chỉ </p>
@@ -150,6 +157,7 @@
                                     <span style="color: red;"> <?= is_error('sdt') ?></span>
                                 </div>
                                 <div class="coupon_inner">
+
                                     <div class="cart_subtotal">
                                         <p>Tổng phụ</p>
                                         <p class="cart_amount">0</p>
@@ -164,6 +172,7 @@
                                         <?php } ?>
                                     </div>
                                     <a href="#">Tính toán vận chuyển</a>
+
 
                                     <div class="cart_subtotal">
                                         <p>Tộng cộng</p>
@@ -181,6 +190,7 @@
 
                                 </div>
                             </form>
+
 
                             <form class="" style="display: none;" method="POST" id="momo_form" target="_blank" enctype="application/x-www-form-urlencoded" action="app/views/Client/xuly_momo.php">
                                 <div class="coupon_inner">
@@ -237,10 +247,12 @@
                                     <div class="checkout_btn">
                                         <input type="hidden" value="<?= $tong ?>" name="tong">
 
+
                                         <button name="btn" value="btn">Thanh toán bằng momo</button>
                                     </div>
                             </form>
                         </div>
+
 
                 </div>
             <?php } else { ?>

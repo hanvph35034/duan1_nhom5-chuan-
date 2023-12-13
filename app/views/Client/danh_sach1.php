@@ -1,5 +1,3 @@
-
-    
 <div class="breadcrumbs_area">
     <div class="container">
         <div class="row">
@@ -39,23 +37,23 @@
                         <button data-role="grid_list" type="button" class="active btn-list" data-toggle="tooltip" title="List"></button>
                     </div>
                     <div class="">
-                    <?php
-            if (isset($_GET['id']) && ($_GET['id'])) {
-                $iddm = $_GET['id'];
-            ?>
-                <form action="#" method="post">
-                    <input type="hidden" name="id" id="" value="<?= $iddm ?>">
-                    <select name="tk" id="" style="width: 200px;">
-                        <option value="">--Lọc sản phẩm--</option>
-                        <option value="3">Hàng mới về</option>
-                        <option value="1">Giá tăng dần</option>
-                        <option value="2">Giá giảm dần</option>
-                    </select>
-                    <input type="submit" name="loc" placeholder="" value="Lọc" id="" style="width: 50px;">
-                </form>
-            <?php
-            }
-            ?>
+                        <?php
+                        if (isset($_GET['id']) && ($_GET['id'])) {
+                            $iddm = $_GET['id'];
+                        ?>
+                            <form action="#" method="post">
+                                <input type="hidden" name="id" id="" value="<?= $iddm ?>">
+                                <select name="tk" id="" style="width: 200px;">
+                                    <option value="">--Lọc sản phẩm--</option>
+                                    <option value="3">Hàng mới về</option>
+                                    <option value="1">Giá tăng dần</option>
+                                    <option value="2">Giá giảm dần</option>
+                                </select>
+                                <input type="submit" name="loc" placeholder="" value="Lọc" id="" style="width: 50px;">
+                            </form>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <div class="page_amount">
                         <p>Hiện thị kết quả</p>
@@ -65,87 +63,28 @@
 
                 <div class="row shop_wrapper grid_list">
                     <?php
-                     foreach ($sanpham as $sanpham) {
+                    foreach ($sanpham as $sanpham) {
                         $linkimg_dai_dien = 'public/img/product/' .  $sanpham['img_dai_dien'];
                         $linkimg_1 = 'public/img/product/' .  $sanpham['img_1'];
                         $linkimg_2 = 'public/img/product/' .  $sanpham['img_2'];
                         $linkimg_3 = 'public/img/product/' .  $sanpham['img_3'];
                     ?>
                         <div class=" col-12 ">
+                            <form action="index.php?act=giohang" method="POST">
 
-                            <div class="single_product">
-                                <div class="product_name grid_name">
+                                <div class="single_product">
+                                    <div class="product_name grid_name">
 
-                                    <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp']?>"><?= $sanpham['ten'] ?></a></h3>
-                                    <p class="manufacture_product"><a href="#">Accessories</a></p>
-                                </div>
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><img src="<?= $linkimg_dai_dien?>" alt=""></a>
-                                    <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><img src="<?= $linkimg_1?>" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">50 %</span>
+                                        <h3><a href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><?= $sanpham['ten'] ?></a></h3>
+                                        <p class="manufacture_product"><a href="#">Accessories</a></p>
                                     </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                            <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product_content grid_content">
-                                    <div class="content_inner">
-                                        <div class="product_ratings">
-                                            <ul>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                            </ul>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><img src="<?= $linkimg_dai_dien ?>" alt=""></a>
+                                        <a class="secondary_img" href="?act=chitietsp&idsp=<?= $sanpham['Idsp'] ?>"><img src="<?= $linkimg_1 ?>" alt=""></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">50 %</span>
                                         </div>
-                                        <div class="product_footer d-flex align-items-center">
-                                            <div class="price_box">
-                                                <span class="current_price"> <?= number_format($sanpham['gia_sale'] )?>VND</span>
-                                                <span class="old_price"><?= number_format($sanpham['Gia']) ?>VND</span>
-                                            </div>
-                                            <div class="add_to_cart">
-                                                <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <div class="left_caption">
-                                        <div class="product_name">
-                                            <h3><a href="product-details.html"><?= $sanpham['ten'] ?></a></h3>
-                                        </div>
-                                        <div class="product_ratings">
-                                            <ul>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                                <li><a href="#"><i class="ion-star"></i></a></li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="product_desc">
-                                            <p><?= $sanpham['MoTa'] ?></p>
-                                        </div>
-                                    </div>
-                                    <div class="right_caption">
-                                        <div class="text_available">
-                                            <p>Số lượng <span><?= $sanpham['so_luong'] ?></span></p>
-                                        </div>
-                                        <div class="price_box">
-                                        <span class="current_price"> <?= number_format($sanpham['gia_sale'] )?>VND</span>
-                                                <span class="old_price"><?= number_format($sanpham['Gia']) ?>VND</span>
-                                        </div>
-                                        <div class="cart_links_btn">
-                                            <a href="#" title="add to cart">Thêm vào giỏ hàng</a>
-                                        </div>
-                                        <div class="action_links_btn">
+                                        <div class="action_links">
                                             <ul>
                                                 <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
                                                 <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
@@ -153,108 +92,85 @@
                                             </ul>
                                         </div>
                                     </div>
+                                    <div class="product_content grid_content">
+                                        <div class="content_inner">
+                                            <div class="product_ratings">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="product_footer d-flex align-items-center">
+                                                <div class="price_box">
+                                                    <span class="current_price"> <?= number_format($sanpham['gia_sale']) ?>VND</span>
+                                                    <span class="old_price"><?= number_format($sanpham['Gia']) ?>VND</span>
+                                                </div>
+
+
+
+                                                <input type="hidden" value="<?= $sanpham['Idsp'] ?>" name="id">
+                                                <input type="hidden" value="<?= $sanpham['ten']  ?>" name="ten">
+                                                <input type="hidden" value="<?= $sanpham['img_dai_dien'] ?>" name="img">
+                                                <input type="hidden" value="<?= $sanpham['gia_sale'] ?>" name="gia">
+
+
+
+
+                                                <div class="add_to_cart">
+                                                <button type="submit" value="btn" name="btn"><span class="lnr lnr-cart"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product_content list_content">
+                                        <div class="left_caption">
+                                            <div class="product_name">
+                                                <h3><a href="product-details.html"><?= $sanpham['ten'] ?></a></h3>
+                                            </div>
+                                            <div class="product_ratings">
+                                                <ul>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                    <li><a href="#"><i class="ion-star"></i></a></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="product_desc">
+                                                <p><?= $sanpham['MoTa'] ?></p>
+                                            </div>
+                                        </div>
+                                        <div class="right_caption">
+                                            <div class="text_available">
+                                                <p>Số lượng <span><?= $sanpham['so_luong'] ?></span></p>
+                                            </div>
+                                            <div class="price_box">
+                                                <span class="current_price"> <?= number_format($sanpham['gia_sale']) ?>VND</span>
+                                                <span class="old_price"><?= number_format($sanpham['Gia']) ?>VND</span>
+                                            </div>
+                                            <div class="product_variant quantity">
+                                            <button class="button" name="btn" value="btn" type="submit">Thêm vào giỏ hàng </button>
+                                            </div>
+                                            <div class="action_links_btn">
+                                                <ul>
+                                                    <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
+                                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
+                                                    <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
+
                         </div>
                     <?php } ?>
-                    <!-- <div class="col-12 ">
-                        <div class="single_product">
-                            <div class="product_name grid_name">
-                                <h3><a href="product-details.html">Accusantium dolorem Security Camera</a></h3>
-                                <p class="manufacture_product"><a href="#">Accessories</a></p>
-                            </div>
-                            <div class="product_thumb">
-                                <a class="primary_img" href="product-details.html"><img src="public/img/product/product1.jpg" alt=""></a>
-                                <a class="secondary_img" href="product-details.html"><img src="public/img/product/product2.jpg" alt=""></a>
-                                <div class="label_product">
-                                    <span class="label_sale">-47%</span>
-                                </div>
-                                <div class="action_links">
-                                    <ul>
-                                        <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                        <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                        <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product_content grid_content">
-                                <div class="content_inner">
-                                    <div class="product_ratings">
-                                        <ul>
-                                            <li><a href="#"><i class="ion-star"></i></a></li>
-                                            <li><a href="#"><i class="ion-star"></i></a></li>
-                                            <li><a href="#"><i class="ion-star"></i></a></li>
-                                            <li><a href="#"><i class="ion-star"></i></a></li>
-                                            <li><a href="#"><i class="ion-star"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product_footer d-flex align-items-center">
-                                        <div class="price_box">
-                                            <span class="current_price">$150.00</span>
-                                            <span class="old_price">$3200.00</span>
-                                        </div>
-                                        <div class="add_to_cart">
-                                            <a href="cart.html" title="add to cart"><span class="lnr lnr-cart"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product_content list_content">
-                                <div class="left_caption">
-                                    <div class="product_name">
-                                        <h3><a href="product-details.html">Accusantium dolorem Security Camera</a></h3>
-                                    </div>
-                                    <div class="product_ratings">
-                                        <ul>
-                                            <li><a href="#"><i class="ion-star"></i></a></li>
-                                            <li><a href="#"><i class="ion-star"></i></a></li>
-                                            <li><a href="#"><i class="ion-star"></i></a></li>
-                                            <li><a href="#"><i class="ion-star"></i></a></li>
-                                            <li><a href="#"><i class="ion-star"></i></a></li>
-                                        </ul>
-                                    </div>
 
-                                    <div class="product_desc">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ad, iure incidunt. Ab consequatur temporibus non eveniet inventore doloremque necessitatibus sed, ducimus quisquam, ad asperiores </p>
-                                    </div>
-                                </div>
-                                <div class="right_caption">
-                                    <div class="text_available">
-                                        <p>availabe: <span>99 in stock</span></p>
-                                    </div>
-                                    <div class="price_box">
-                                        <span class="current_price">$150.00</span>
-                                        <span class="old_price">$420.00</span>
-                                    </div>
-                                    <div class="cart_links_btn">
-                                        <a href="#" title="add to cart">add to cart</a>
-                                    </div>
-                                    <div class="action_links_btn">
-                                        <ul>
-                                            <li class="quick_button"><a href="#" data-bs-toggle="modal" data-bs-target="#modal_box" title="quick view"> <span class="lnr lnr-magnifier"></span></a></li>
-                                            <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><span class="lnr lnr-heart"></span></a></li>
-                                            <li class="compare"><a href="compare.html" title="compare"><span class="lnr lnr-sync"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
-
-                <!-- <div class="shop_toolbar t_bottom">
-                    <div class="pagination">
-                        <ul>
-                            <li class="current">1</li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="next"><a href="#">next</a></li>
-                            <li><a href="#">>></a></li>
-                        </ul>
-                    </div>
-                </div> -->
-                <!--shop toolbar end-->
-                <!--shop wrapper end-->
             </div>
         </div>
     </div>
@@ -322,7 +238,7 @@
                                 </div>
                                 <div class="modal_price mb-10">
                                     <span class="new_price">$64.99</span>
-                                    <span class="old_price" >$78.99</span>
+                                    <span class="old_price">$78.99</span>
                                 </div>
                                 <div class="modal_description mb-15">
                                     <p>Lpora sint ullam autem deleniti nam in quos qui nemo ipsum numquam, reiciendis maiores quidem aperiam, rerum vel recusandae </p>
@@ -373,7 +289,3 @@
         </div>
     </div>
 </div>
-
-  
-
-

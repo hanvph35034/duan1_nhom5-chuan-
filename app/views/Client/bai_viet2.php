@@ -22,14 +22,14 @@
             <div class="col-lg-3 col-md-12">
                 <div class="blog_sidebar_widget">
                     <div class="widget_list widget_search">
-                        <h3>Search</h3>
+                        <h3>Tìm kiếm</h3>
                         <form action="#">
                             <input placeholder="Search..." type="text">
-                            <button type="submit">search</button>
+                            <button type="submit">Tìm kiếm</button>
                         </form>
                     </div>
                     <div class="widget_list widget_tag">
-                        <h3>Tag products</h3>
+                        <h3>Sản phẩm được gắn thẻ</h3>
                         <div class="tag_widget">
                             <ul>
                                 <li><a href="#">asian</a></li>
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="widget_list widget_post">
-                        <h3>Recent Posts</h3>
+                        <h3>Bài viết gần đây</h3>
 
 
 
@@ -70,33 +70,6 @@
                         }
                         ?>
 
-                        <!-- <div class="post_wrapper">
-                                <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="public/img/blog/blog13.jpg" alt=""></a>
-                                </div>
-                                <div class="post_info">
-                                    <h3><a href="blog-details.html">Post with Gallery</a></h3>
-                                    <span>March 16, 2018 </span>
-                                </div>
-                            </div> -->
-                        <!-- <div class="post_wrapper">
-                                <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="public/img/blog/blog14.jpg" alt=""></a>
-                                </div>
-                                <div class="post_info">
-                                    <h3><a href="blog-details.html">Post with Audio</a></h3>
-                                    <span>March 16, 2018 </span>
-                                </div>
-                            </div> -->
-                        <!-- <div class="post_wrapper">
-                                <div class="post_thumb">
-                                    <a href="blog-details.html"><img src="public/img/blog/blog15.jpg" alt=""></a>
-                                </div>
-                                <div class="post_info">
-                                    <h3><a href="blog-details.html">Post with Video</a></h3>
-                                    <span>March 16, 2018 </span>
-                                </div>
-                            </div> -->
                     </div>
 
                     <!-- <div class="widget_list comments_post">
@@ -139,7 +112,7 @@
                             </div>
                         </div> -->
                     <div class="widget_list widget_categories">
-                        <h3>danh mục</h3>
+                        <h3>Danh mục</h3>
                         <ul>
                             <?php
                             foreach ($loaddm as $dm) {

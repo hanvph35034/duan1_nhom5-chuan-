@@ -50,25 +50,25 @@
                 <div class="col-lg-6 col-md-12">
                     <div class="contact_message form">
                         <h3>Hãy Cho Chúng Tôi Biết Trải niệm Của Bạn</h3>
-                        <form id="contact-form" method="POST" action="https://htmldemo.net/autima/autima/public/mail.php">
+                        <form method="POST" action="?act=lienhe">
                             <p>
                                 <label> Tên của bạn (bắt buộc)</label>
-                                <input name="name" placeholder="Tên chủ bạn *" type="text" required>
+                                <input name="user" placeholder="Tên chủ bạn *" type="text" minlength="5"  required>
                             </p>
                             <p>
-                                <label> Email của bạn (bắt buộc)label>
+                                <label> Email của bạn (bắt buộc)<label>
                                 <input name="email" placeholder="Email *" required type="email">
                             </p>
                             <p>
                                 <label> Chủ đề</label>
-                                <input name="subject" placeholder="Chủ đề *"  required type="text">
+                                <input name="chude" placeholder="Chủ đề *"  required type="text">
                             </p>
                             <div class="contact_textarea">
                                 <label> Tin nhắn của bạn</label>
-                                <textarea placeholder="Nội dung *" name="message"  required class="form-control2"></textarea>
+                                <textarea placeholder="Nội dung *" name="noidung"  required class="form-control2"></textarea>
                             </div>
-                            <button type="submit"> Gửi</button>
-                            <p class="form-messege"></p>
+                            <button type="submit" name="btn" value="btn" > Gửi</button>
+                           
                         </form>
 
                     </div>
