@@ -275,16 +275,11 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
                     } else {
                         $sdt = $_POST['sdt'];
                     }
-                }
-
-                if (empty($_POST['pttt'])) {
-                    $error['pttt'] = "Vui lòng chọn phương thức thanh toán";
-                } else {
-                    $pttt = 1;
-                }
+                }    
                 if (empty($_POST['diachi'])) {
                     $error['diachi'] = "Vui lòng nhập địa chỉ";
                 } else {
+                    $pttt = 1;
                     $diachi = $_POST['diachi'];
                     $ma_dh =  "AMTIMA" . rand(0, 999999);
                     $id_tk = $_SESSION['user']['id'];

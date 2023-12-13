@@ -32,7 +32,7 @@
                                     <th class="product_name">Sản phẩm</th>
                                     <th class="product-price">Giá</th>
                                     <th class="product_quantity">Số lượng</th>
-                                    <th class="product_total">Size</th>
+                                  
                                     <th class="product_total">Tổng giá</th>
                                 </tr>
                             </thead>
@@ -54,10 +54,8 @@
                                             <td class="product_remove"><a href="?act=datelegiohang&id=<?= $id ?>"><i class="fa fa-trash-o"></i></a></td>
                                             <td class="product_thumb"><a href="#"><img src="public/img/product/<?= $row['2'] ?>" alt="act"></a></td>
                                             <td class="product_name"><a href="#"><?= $row['1'] ?> </a></td>
-                                            <td class="product-price">£<?= number_format($row['3']) ?></td>
+                                            <td class="product-price"><?= number_format($row['3']) ?>VND</td>
                                             <td class="product_quantity"><label><?= $row[4] ?></label> </td>
-                                            <td>S</td>
-
                                             <td class="product_total"><?= number_format($sum) ?>VND</td>
                                 </tr>
                         <?php $id++;
@@ -110,19 +108,20 @@
                 </div>
 
 
-                <select id="payment_method" class="select-order">
-                    <option value="cash" selected>Thanh toán khi nhận hàng</option>
-                    <option value="momo">Thanh toán bằng Momo</option>
-                </select>
+
 
 
                 <div class="col-lg-7 col-md-6">
 
                     <?php if (isset($_SESSION['user']['ten_dn'])) { ?>
+
                         <div class="coupon_code right">
                             <h3>Thông tin khách hàng</h3>
 
-
+                            <select id="payment_method" class="select-order">
+                                <option value="cash" selected>Thanh toán khi nhận hàng</option>
+                                <option value="momo">Thanh toán bằng Momo</option>
+                            </select>
 
                             <form id="cash_form" action="?act=thanh_toan" method="POST">
                                 <div class="coupon_inner">
@@ -174,12 +173,12 @@
                                             <p class="cart_amount">0 VND</p>
                                         <?php } ?>
                                     </div>
-                                        <div class="checkout_btn">
-                                            <input type="hidden" value="<?= $tong ?>" name="tong">
+                                    <div class="checkout_btn">
+                                        <input type="hidden" value="<?= $tong ?>" name="tong">
 
-                                            <button name="btn" value="btn">Thanh toán khi nhận hàng</button>
-                                        </div>
-                                    
+                                        <button name="btn" value="btn">Thanh toán khi nhận hàng</button>
+                                    </div>
+
                                 </div>
                             </form>
 
