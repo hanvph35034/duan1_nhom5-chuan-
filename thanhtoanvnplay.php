@@ -1,191 +1,66 @@
 <?php
-header('Content-type: text/html; charset=utf-8');
 
-$config = file_get_contents('../config.json');
-$array = json_decode($config, true);
+//Sample Code -- please change the autoload yourself as appropriate
+include_once '../loader.php';
+include_once '../vendor/autoload.php';
 
-include "../common/helper.php";
+use MService\Payment\Pay\Processors\AppPay;
+use MService\Payment\Pay\Processors\PaymentConfirmation;
+use MService\Payment\Pay\Processors\POSPay;
+use MService\Payment\Pay\Processors\QRNotify;
+use MService\Payment\Pay\Processors\TransactionQuery;
+use MService\Payment\Pay\Processors\TransactionRefund;
+use MService\Payment\Shared\SharedModels\Environment;
+use MService\Payment\Shared\SharedModels\PartnerInfo;
 
+$env = new Environment("https://test-payment.momo.vn/pay/pos", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'), 'development');
+$publicKey = "-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE
+40UoXhoQf9K6attSIclTZMEGfq6gmJm2BogVJtPkjvri5/j9mBntA8qKMzzanSQaBEbr8FyByHnf
+226dsLt1RbJSMLjCd3UC1n0Yq8KKvfHhvmvVbGcWfpgfo7iQTVmL0r1eQxzgnSq31EL1yYNMuaZj
+pHmQuT24Hmxl9W9enRtJyVTUhwKhtjOSOsR03sMnsckpFT9pn1/V9BE2Kf3rFGqc6JukXkqK6ZW9
+mtmGLSq3K+JRRq2w8PVmcbcvTr/adW4EL2yc1qk9Ec4HtiDhtSYd6/ov8xLVkKAQjLVt7Ex3/agR
+PfPrNwIDAQAB
+-----END PUBLIC KEY-----";
+$requestId = time() . "";
+$partnerRefId = time() . "";
 
-$endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
+/** Pay Processes:
+ * App-In-App
+ * POS
+ * QR Code
+ * Payment Confirmation
+ * Transaction Query
+ * Transaction Refund
+ */
 
+//get new Token from MoMoApp and put in appData
+//uncomment to use AppPay function
+//$appData = '' ;
+//$customerNumber = '0917003000';
+//$pKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkpa+qMXS6O11x7jBGo9W3yxeHEsAdyDE40UoXhoQf9K6attSIclTZMEGfq6gmJm2BogVJtPkjvri5/j9mBntA8qKMzzanSQaBEbr8FyByHnf226dsLt1RbJSMLjCd3UC1n0Yq8KKvfHhvmvVbGcWfpgfo7iQTVmL0r1eQxzgnSq31EL1yYNMuaZjpHmQuT24Hmxl9W9enRtJyVTUhwKhtjOSOsR03sMnsckpFT9pn1/V9BE2Kf3rFGqc6JukXkqK6ZW9mtmGLSq3K+JRRq2w8PVmcbcvTr/adW4EL2yc1qk9Ec4HtiDhtSYd6/ov8xLVkKAQjLVt7Ex3/agRPfPrNwIDAQAB';
+//AppPay::process(new Environment("https://test-payment.momo.vn/pay/app", new PartnerInfo("IICsyHpuwP8IzVvE", 'CGV01', 'vLujzooXM8ySdHJOBFuwmWB3T4ZBYLJ'), 'development'), 10000, $appData, $pKey, $customerNumber, $partnerRefId);
 
-$partnerCode = $array["partnerCode"];
-$accessKey = $array["accessKey"];
-$secretKey = $array["secretKey"];
-$orderInfo = "Thanh toán qua MoMo";
-$amount = "10000";
-$orderId = time() ."";
-$returnUrl = "http://localhost:8000/paymomo/result.php";
-$notifyurl = "http://localhost:8000/paymomo/ipn_momo.php";
-// Lưu ý: link notifyUrl không phải là dạng localhost
-$extraData = "merchantName=MoMo Partner";
+//POSPay::process($env, 'MM587977818202493946', 50000, $publicKey, $partnerRefId, '', '', '');
 
+$qrRawData = '{
+  "partnerCode": "MOMOIQA420180417",
+  "accessKey": "mTCKt9W3eU1m39TW",
+  "amount": 10000,
+  "partnerRefId": "B001221",
+  "partnerTransId": "",
+  "transType": "momo_wallet",
+  "momoTransId": "43121679",
+  "status": 0,
+  "message": "Thành Công",
+  "responseTime": 1555472829549,
+  "signature": "e33dcd33ea016023a1ca49877241fa35609163e967e86716f9fc974e91a23164",
+  "storeId": "store001"
+}';
+//QRNotify::process($env, $qrRawData);
 
-if (!empty($_POST)) {
-    $partnerCode = $_POST["partnerCode"];
-    $accessKey = $_POST["accessKey"];
-    $serectkey = $_POST["secretKey"];
-    $orderId = $_POST["orderId"]; // Mã đơn hàng
-    $orderInfo = $_POST["orderInfo"];
-    $amount = $_POST["amount"];
-    $notifyurl = $_POST["notifyUrl"];
-    $returnUrl = $_POST["returnUrl"];
-    $extraData = $_POST["extraData"];
+PaymentConfirmation::process(new Environment("https://test-payment.momo.vn/pay/confirm", new PartnerInfo("IICsyHpuwP8IzVvE", 'CGV01', 'vLujzooXM8ySdHJOBFuwmWB3T4ZBYLJ'), 'development'), 'e671ffb0-af61-11e9-ba3c-4b08721e3699', "capture", "2305581638", $requestId);
 
-    $requestId = time() . "";
-    $requestType = "captureMoMoWallet";
-    $extraData = ($_POST["extraData"] ? $_POST["extraData"] : "");
-    //before sign HMAC SHA256 signature
-    $rawHash = "partnerCode=" . $partnerCode . "&accessKey=" . $accessKey . "&requestId=" . $requestId . "&amount=" . $amount . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&returnUrl=" . $returnUrl . "&notifyUrl=" . $notifyurl . "&extraData=" . $extraData;
-    $signature = hash_hmac("sha256", $rawHash, $serectkey);
-    $data = array('partnerCode' => $partnerCode,
-        'accessKey' => $accessKey,
-        'requestId' => $requestId,
-        'amount' => $amount,
-        'orderId' => $orderId,
-        'orderInfo' => $orderInfo,
-        'returnUrl' => $returnUrl,
-        'notifyUrl' => $notifyurl,
-        'extraData' => $extraData,
-        'requestType' => $requestType,
-        'signature' => $signature);
-    $result = execPostRequest($endpoint, json_encode($data));
-    $jsonResult = json_decode($result, true);  // decode json
+TransactionQuery::process(new Environment("https://test-payment.momo.vn/pay/query-status", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'), 'development'), '1562138468', $publicKey, '1562138427');
 
-    //Just a example, please check more in there
-
-    header('Location: ' . $jsonResult['payUrl']);
-}
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>MoMo Sandbox</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet"
-          href="./statics/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"/>
-    <!-- CSS -->
-</head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Initial payment/Khởi tạo thanh toán</h3>
-                </div>
-                <div class="panel-body">
-                    <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded"
-                          action="init_payment.php">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">PartnerCode</label>
-                                    <div class='input-group date' id='fxRate'>
-                                        <input type='text' name="partnerCode" value="<?php echo $partnerCode; ?>"
-                                               class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">AccessKey</label>
-                                    <div class='input-group date' id='fxRate'>
-                                        <input type='text' name="accessKey" value="<?php echo $accessKey;?>"
-                                               class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">SecretKey</label>
-                                    <div class='input-group date' id='fxRate'>
-                                        <input type='text' name="secretKey" value="<?php echo $secretKey; ?>"
-                                               class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">OrderId</label>
-                                    <div class='input-group date' id='fxRate'>
-                                        <input type='text' name="orderId" value="<?php echo $orderId; ?>"
-                                               class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">ExtraData</label>
-                                    <div class='input-group date' id='fxRate'>
-                                        <input type='text' type="text" name="extraData" value="<?php echo $extraData?>"
-                                               class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">OrderInfo</label>
-                                    <div class='input-group date' id='fxRate'>
-                                        <input type='text' name="orderInfo" value="<?php echo $orderInfo; ?>"
-                                               class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">Amount</label>
-                                    <div class='input-group date' id='fxRate'>
-                                        <input type='text' name="amount" value="<?php echo $amount; ?>" class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">NotifyUrl</label>
-                                    <div class='input-group date' id='fxRate'>
-                                        <input type='text' name="notifyUrl" value="<?php echo $notifyurl; ?>"
-                                               class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="fxRate" class="col-form-label">ReturnUrl</label>
-                                    <div class='input-group date' id='fxRate'>
-                                        <input type='text' name="returnUrl" value="<?php echo $returnUrl; ?>"
-                                               class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p>
-                        <div style="margin-top: 1em;">
-                            <button type="submit" class="btn btn-primary btn-block">Start MoMo payment....</button>
-                        </div>
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
-<script type="text/javascript" src="./statics/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="./statics/moment/min/moment.min.js"></script>
-<script type="text/javascript" src="./statics/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript"
-        src="./statics/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-
-</body>
-</html>
+TransactionRefund::process(new Environment("https://test-payment.momo.vn/pay/refund", new PartnerInfo("mTCKt9W3eU1m39TW", 'MOMOIQA420180417', 'PPuDXq1KowPT1ftR8DvlQTHhC03aul17'), 'development'), $requestId, 10000, $publicKey, '1562138427', '2305016460');
