@@ -31,13 +31,13 @@ function themsp(){
         $target_file3 = $target_dir . basename($img_3);
         move_uploaded_file($_FILES['img_3']['tmp_name'], $target_file3);
 
-        // if ($ten != '' && $mo_ta != '' && $gia > 0 && $img_dai_dien != '' && $ngay_nhap != '' && $img_1 != '' && $img_2 != '' && $img_3 != '') {
+        if ($ten != '' && $mo_ta != '' && $gia > 0 && $img_dai_dien != '' && $ngay_nhap != '' && $img_1 != '' && $img_2 != '' && $img_3 != '') {
             add_sanpham($ten, $mo_ta, $gia, $img_dai_dien, $ngay_nhap, $id_danh_muc, $so_luong, $gia_sale, $img_1, $img_2, $img_3);
 
             header("Location: ?act=qtsp");
-        // } else {
-        //     $thongbao = 'Thất bại';
-        // }
+        } else {
+            $thongbao = 'Thất bại';
+        }
     }
     $loaddm = loadall_danhmuc();
     include 'QTSP/add.php';

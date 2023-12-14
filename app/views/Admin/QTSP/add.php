@@ -35,22 +35,22 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Tên sản phẩm</label>
-                  <input name="ten" type="text" class="form-control" id="exampleInputEmail1" placeholder="Tên sản phẩm">
+                  <input name="ten" type="text" class="form-control" id="exampleInputEmail1" placeholder="Tên sản phẩm" required>
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Mô tả sản phẩm</label>
-                  <input name="mo_ta" type="text" class="form-control" id="exampleInputEmail1" placeholder="Mô tả sản phẩm">
+                  <input name="mo_ta" type="text" class="form-control" id="exampleInputEmail1" placeholder="Mô tả sản phẩm" required>
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Giá sản phẩm</label>
-                  <input name="gia" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm">
+                  <input name="gia" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm" required>
                 </div>
 
                 <div class="form-group">
                   <label for="img_dai_dien">Ảnh đại diện sản phẩm</label><br>
-                  <input type="file" name="img_dai_dien" id="img_dai_dien">
+                  <input type="file" name="img_dai_dien" id="img_dai_dien" required>
                 </div>
 
                 <div class="form-group">
@@ -74,27 +74,27 @@
                 <div class="form-group">
               
                   <label for="img_1">Ảnh 1</label><br>
-                  <input type="file" name="img_1" id="img_1">
+                  <input type="file" name="img_1" id="img_1" required>
                 </div>
 
                 <div class="form-group">
                   <label for="img_2">Ảnh 2</label><br>
-                  <input type="file" name="img_2" id="img_2">
+                  <input type="file" name="img_2" id="img_2" required>
                 </div>
 
                 <div class="form-group">
                   <label for="img_3">Ảnh 3</label><br>
-                  <input type="file" name="img_3" id="img_3">
+                  <input type="file" name="img_3" id="img_3" required>
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Số lương </label>
-                  <input name="soluong" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm">
+                  <input name="soluong" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm" required>
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Giá Sale</label>
-                  <input name="giasale" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm">
+                  <input name="giasale" type="text" class="form-control" id="exampleInputEmail1" placeholder="Giá sản phẩm" required>
                 </div>
 
               </div>
