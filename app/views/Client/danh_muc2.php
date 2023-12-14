@@ -96,8 +96,8 @@
                                         </div>
                                         <div class="product_footer d-flex align-items-center">
                                             <div class="price_box">
-                                                <span class="current_price"> <?= number_format($sanpham['gia_sale']) ?>VND</span>
-                                                <span class="old_price"><?= number_format($sanpham['Gia']) ?>VND</span>
+                                                <span class="current_price"> <?= number_format($sanpham['gia_sale']) ?>.VND</span>
+                                                <span class="old_price"><?= number_format($sanpham['Gia']) ?>.VND</span>
                                             </div>
 
 
@@ -140,8 +140,8 @@
                                             <p>Số lượng <span><?= $sanpham['so_luong'] ?></span></p>
                                         </div>
                                         <div class="price_box">
-                                            <span class="current_price"> <?= number_format($sanpham['gia_sale']) ?>VND</span>
-                                            <span class="old_price"><?= number_format($sanpham['Gia']) ?>VND</span>
+                                            <span class="current_price"> <?= number_format($sanpham['gia_sale']) ?>.VND</span>
+                                            <span class="old_price"><?= number_format($sanpham['Gia']) ?>.VND</span>
                                         </div>
                                         <div class="product_variant quantity">
                                             <button class="button" name="btn" value="btn" type="submit">Thêm vào giỏ hàng </button>
